@@ -1,7 +1,10 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Thanh Vu
- * Date: 10/18/2017
- * Time: 9:58 AM
- */
+<!--//head-->
+<?php get_template_part( 'head'); ?>
+
+<!--//header-->
+<?php get_header(); ?>
+
+
+
+<!--//footer-->
+<?php get_footer(); ?>
