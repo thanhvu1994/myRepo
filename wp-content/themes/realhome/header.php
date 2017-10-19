@@ -14,7 +14,7 @@
         <div class="top-nav">
             <ul class="right-icons">
                 <li><span ><i class="glyphicon glyphicon-phone"> </i><?php echo get_option('phone_field'); ?></span></li>
-                <li><a  href="login.html"><i class="glyphicon glyphicon-user"> </i>Login</a></li>
+                <li><a  href="<?php echo admin_url(); ?>"><i class="glyphicon glyphicon-user"> </i>Login</a></li>
                 <li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a></li>
 
             </ul>
@@ -111,8 +111,8 @@
             'offset'           => 0,
             'category'         => '',
             'category_name'    => '',
-            'orderby'          => 'date',
-            'order'            => 'DESC',
+            'orderby'          => 'menu_order',
+            'order'            => 'ASC',
             'include'          => '',
             'exclude'          => '',
             'meta_key'         => '',
@@ -131,18 +131,20 @@
             <div class="callbacks_container">
                 <ul class="rslides" id="slider">
                     <?php foreach($bannerItem_array as $bannerItem): ?>
-                    <li>
-                        <div class="banner-item" style="background: url(<?php echo (get_field('background_image',$bannerItem->ID)); ?>) no-repeat; background-size: cover;">
-                            <div class="caption">
-                                <?php
-                                    $first = substr($bannerItem->post_title, 0, 5);
-                                    $theRest = substr($bannerItem->post_title, 5 , count($bannerItem->post_title));
-                                ?>
-                                <h3><span><?php echo $first; ?></span><?php echo $theRest; ?></h3>
-                                <p><?php echo $bannerItem->post_content; ?></p>
-                            </div>
-                        </div>
-                    </li>
+                        <?php if(get_field('active',$bannerItem->ID)) : ?>
+                            <li>
+                                <div class="banner-item" style="background: url(<?php echo (get_field('background_image',$bannerItem->ID)); ?>) no-repeat; background-size: cover;">
+                                    <div class="caption">
+                                        <?php
+                                        $first = substr($bannerItem->post_title, 0, 5);
+                                        $theRest = substr($bannerItem->post_title, 5 , 1000);
+                                        ?>
+                                        <h3><span><?php echo $first; ?></span><?php echo $theRest; ?></h3>
+                                        <p><?php echo $bannerItem->post_content; ?></p>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </ul>
             </div>
@@ -154,63 +156,43 @@
 <div class="banner-bottom-top">
     <div class="container">
         <div class="bottom-header">
-            <div class="header-bottom">
-                <div class=" bottom-head">
-                    <a href="buy.html">
-                        <div class="buy-media">
-                            <i class="buy"> </i>
-                            <h6>Buy</h6>
-                        </div>
-                    </a>
-                </div>
-                <div class=" bottom-head">
-                    <a href="buy.html">
-                        <div class="buy-media">
-                            <i class="rent"> </i>
-                            <h6>Rent</h6>
-                        </div>
-                    </a>
-                </div>
-                <div class=" bottom-head">
-                    <a href="buy.html">
-                        <div class="buy-media">
-                            <i class="pg"> </i>
-                            <h6>Hostels</h6>
-                        </div>
-                    </a>
-                </div>
-                <div class=" bottom-head">
-                    <a href="buy.html">
-                        <div class="buy-media">
-                            <i class="sell"> </i>
-                            <h6>Resale</h6>
-                        </div>
-                    </a>
-                </div>
-                <div class=" bottom-head">
-                    <a href="loan.html">
-                        <div class="buy-media">
-                            <i class="loan"> </i>
-                            <h6>Home Loans</h6>
-                        </div>
-                    </a>
-                </div>
-                <div class=" bottom-head">
-                    <a href="buy.html">
-                        <div class="buy-media">
-                            <i class="apart"> </i>
-                            <h6>Projects</h6>
-                        </div>
-                    </a>
-                </div>
-                <div class=" bottom-head">
-                    <a href="dealers.html">
-                        <div class="buy-media">
-                            <i class="deal"> </i>
-                            <h6>Dealers</h6>
-                        </div>
-                    </a>
-                </div>
+
+            <?php $args = array(
+                'posts_per_page'   => MAX_HEADER_BOTTOM_MENU,
+                'offset'           => 0,
+                'category'         => '',
+                'category_name'    => '',
+                'orderby'          => 'menu_order',
+                'order'            => 'ASC',
+                'include'          => '',
+                'exclude'          => '',
+                'meta_key'         => '',
+                'meta_value'       => '',
+                'post_type'        => 'header_bottom_menu',
+                'post_mime_type'   => '',
+                'post_parent'      => '',
+                'author'	   => '',
+                'author_name'	   => '',
+                'post_status'      => 'publish',
+                'suppress_filters' => true
+            );
+            $menuItem_array = get_posts( $args );
+            $countMenuItem = count($menuItem_array);
+            $marginPercent = WIDTH_PERCENT_HEADER_BOTTOM_MENU_ITEM*(MAX_HEADER_BOTTOM_MENU-$countMenuItem)/2;
+            ?>
+            <div class="header-bottom" style="width: <?php echo WIDTH_PERCENT_HEADER_BOTTOM_MENU_ITEM*$countMenuItem; ?>%; margin-left: <?php echo $marginPercent; ?>%;">
+
+                <?php foreach($menuItem_array as $menuItem) :?>
+                    <div class=" bottom-head" style="width: <?php echo WIDTH_PERCENT_HEADER_BOTTOM_MENU_ITEM; ?>%;">
+                        <a href="buy.html">
+                            <div class="buy-media">
+                                <i class="<?php echo get_field('icon',$menuItem->ID); ?>"></i>
+                                <h6><?php echo get_field('title',$menuItem->ID); ?></h6>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+
                 <div class="clearfix"> </div>
             </div>
         </div>

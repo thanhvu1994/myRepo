@@ -32,4 +32,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
         });
     </script>
+    <script type="text/javascript" src="<?php echo THEME_URL; ?>/js/jquery.flexisel.js"></script>
 </head>

@@ -1,7 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4629907e-2c5c-47c9-9bda-17914ddccdae" name="Default" comment="" />
+    <list default="true" id="4629907e-2c5c-47c9-9bda-17914ddccdae" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/fonts/Montserrat-Regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/fonts/Oxygen-Regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/fonts/glyphicons-halflings-regular.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/fonts/glyphicons-halflings-regular.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/11.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ab.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/arr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/at.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/at1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/av.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ba.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ba1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ba2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ba3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ba4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/back1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/bl.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/bl1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/bl2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/bo.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/bo1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/bo2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/bo3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/bo4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ce.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ce1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ce2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ce3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ce4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ce5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ci.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ci1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ci2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ci3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ci4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ci5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ci6.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ci7.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/co.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/de.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/de1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/de10.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/de11.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/de2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/de3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/de4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/de5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/de6.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/de7.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/de8.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/de9.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ga.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ga1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ga2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ga3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ho1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/img-sprite.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/lg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/lg1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/lg2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/lg3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/lg4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/lg5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/lg6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/lg7.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/lg8.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/lg9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/lo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/lo1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/lo2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/pc1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/pc2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/pc3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/pc4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/pc5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ph1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/pi.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/pi1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/pi2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/pi3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/pr.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/sb.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/sb1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/sb2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/sb3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/sb4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/sb5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/sb6.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/search.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/sl.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/sl1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/sl2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/sl3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/sl4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ss.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ss1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ss2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/ss3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/star1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/te.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/te1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/te2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/about.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/blog.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/blog_single.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/buy.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/buy_single.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/career.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/contact.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/css/bootstrap.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/css/default.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/css/flexslider.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/css/popuo-box.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/css/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/css/styles.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/dealers.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/faqs.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/feedback.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/fonts/glyphicons-halflings-regular.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/js/easyResponsiveTabs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/js/jquery.flexisel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/js/jquery.flexslider.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/js/jquery.magnific-popup.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/js/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/js/responsiveslides.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/js/scripts.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/loan.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/loan_single.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/login.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/mobile_app.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/privacy.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/register.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/single.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/suggestion.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/terms.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/typo.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/w3layouts-License.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/themes/realhome/templates/page-about-us.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/realhome/css/style.css" afterPath="$PROJECT_DIR$/wp-content/themes/realhome/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/realhome/functions.php" afterPath="$PROJECT_DIR$/wp-content/themes/realhome/functions.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/realhome/head.php" afterPath="$PROJECT_DIR$/wp-content/themes/realhome/head.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/realhome/header.php" afterPath="$PROJECT_DIR$/wp-content/themes/realhome/header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/realhome/index.php" afterPath="$PROJECT_DIR$/wp-content/themes/realhome/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/realhome/js/scripts.js" afterPath="$PROJECT_DIR$/wp-content/themes/realhome/js/scripts.js" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,21 +169,93 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+            <state relative-caret-position="753">
+              <caret line="320" column="22" lean-forward="true" selection-start-line="320" selection-start-column="22" selection-end-line="320" selection-end-column="22" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="buy.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/buy.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="449" column="41" lean-forward="true" selection-start-line="449" selection-start-column="41" selection-end-line="449" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/header.php">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="134" column="56" lean-forward="true" selection-start-line="134" selection-start-column="56" selection-end-line="134" selection-end-column="56" />
+            <state relative-caret-position="794">
+              <caret line="5008" column="26" lean-forward="true" selection-start-line="5008" selection-start-column="26" selection-end-line="5008" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="flexslider.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/css/flexslider.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2657">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery.flexisel.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/js/jquery.flexisel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="333">
+              <caret line="97" column="48" lean-forward="false" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scripts.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/js/scripts.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="7" lean-forward="false" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="contact.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/templates/contact.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page-about-us.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/templates/page-about-us.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="34" lean-forward="true" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="e#6#117#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/functions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -39,8 +265,16 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>j</find>
-      <find>jpg</find>
       <find>images/</find>
+      <find>jpg</find>
+      <find>apart</find>
+      <find>banner-bottom-top</find>
+      <find>211.5px</find>
+      <find>nbs-flexisel-container</find>
+      <find>nbs-flexisel-item</find>
+      <find>setMaxWidthAndHeight</find>
+      <find>project-fur</find>
+      <find>most-1</find>
     </findStrings>
     <replaceStrings>
       <replace>&lt;?php echo THEME_URL; ?&gt;/images/</replace>
@@ -49,10 +283,21 @@
       <dir>C:\xampp\htdocs\realhome</dir>
     </dirStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/wp-content/themes/realhome/functions.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/realhome/header.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/realhome/head.php" />
+        <option value="$PROJECT_DIR$/html/buy.html" />
         <option value="$PROJECT_DIR$/wp-content/themes/realhome/index.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/realhome/css/style.css" />
+        <option value="$PROJECT_DIR$/wp-content/themes/realhome/js/scripts.js" />
+        <option value="$PROJECT_DIR$/wp-content/themes/realhome/single.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/realhome/templates/page-about-us.php" />
       </list>
     </option>
   </component>
@@ -62,6 +307,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="localhost" id="d09990b5-c458-4319-b399-cd537726aebe" name="localhost" />
+    </servers>
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
@@ -69,6 +319,7 @@
     <option name="width" value="1932" />
     <option name="height" value="1056" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -90,60 +341,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="realhome" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="realhome" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="realhome" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="realhome" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wp-content" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="realhome" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="realhome" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wp-content" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="themes" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="realhome" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="realhome" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wp-content" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="themes" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="realhome" />
@@ -245,12 +442,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1508379366425</updated>
-      <workItem from="1508379373336" duration="2137000" />
+      <workItem from="1508379373336" duration="16436000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2137000" />
+    <option name="totallyTimeSpent" value="16436000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
@@ -260,12 +457,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997833" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -281,24 +478,128 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/index.php">
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="331" column="1" lean-forward="true" selection-start-line="331" selection-start-column="1" selection-end-line="331" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="134" column="56" lean-forward="true" selection-start-line="134" selection-start-column="56" selection-end-line="134" selection-end-column="56" />
+        <state relative-caret-position="272">
+          <caret line="16" column="56" lean-forward="false" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
           <folding>
             <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/head.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="97" lean-forward="true" selection-start-line="34" selection-start-column="97" selection-end-line="34" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/css/flexslider.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2657">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/js/jquery.flexisel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="97" column="48" lean-forward="false" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/buy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="449" column="41" lean-forward="true" selection-start-line="449" selection-start-column="41" selection-end-line="449" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="794">
+          <caret line="5008" column="26" lean-forward="true" selection-start-line="5008" selection-start-column="26" selection-end-line="5008" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/templates/contact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/js/scripts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="7" lean-forward="false" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="753">
+          <caret line="320" column="22" lean-forward="true" selection-start-line="320" selection-start-column="22" selection-end-line="320" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/single.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/realhome/templates/page-about-us.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="34" lean-forward="true" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+          <folding>
+            <element signature="e#6#117#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -13,6 +13,8 @@
  **/
 define( 'THEME_URL', get_stylesheet_directory_uri() );
 define( 'CORE', THEME_URL . '/core' );
+define( 'MAX_HEADER_BOTTOM_MENU', 7);
+define( 'WIDTH_PERCENT_HEADER_BOTTOM_MENU_ITEM', 100 / MAX_HEADER_BOTTOM_MENU);
 
 /**
 @ Load file /core/init.php
@@ -129,4 +131,54 @@ function add_phone_field() {
 function add_phone_field_callback($args) {
     $option = get_option($args[0]);
     echo '<input type="text" id="'. $args[0] .'" name="'. $args[0] .'" value="' . $option . '" />';
+}
+
+add_filter( 'manage_edit-header_bottom_menu_columns', 'my_edit_header_bottom_menu_columns' ) ;
+
+function my_edit_header_bottom_menu_columns( $columns ) {
+
+    $columns = array(
+        'cb' => '<input type="checkbox" />',
+        'title_custom' => __( 'Title' ),
+        'icon' => __( 'Icon' ),
+        'date' => __( 'Date' )
+    );
+
+    return $columns;
+}
+
+add_action( 'manage_header_bottom_menu_posts_custom_column', 'my_manage_header_bottom_menu_columns', 10, 2 );
+
+function my_manage_header_bottom_menu_columns( $column, $post_id ) {
+    global $post;
+
+    switch( $column ) {
+
+        case 'title_custom' :
+
+            $title = get_post_meta( $post_id, 'title', true );
+
+            if ( empty( $title ) )
+                echo __( 'Unknown' );
+
+            else
+                printf( __( '<a class="row-title" href="post.php?post='.$post_id.'&action=edit">%s</a>' ), $title );
+
+            break;
+
+        case 'icon' :
+
+            $icon = get_post_meta( $post_id, 'icon', true );
+
+            if ( empty( $icon ) )
+                echo __( 'Unknown' );
+
+            else
+                printf( $icon );
+
+            break;
+
+        default :
+            break;
+    }
 }
