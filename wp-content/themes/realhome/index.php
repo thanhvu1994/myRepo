@@ -20,42 +20,8 @@
     <?php get_template_part( 'inc/service'); ?>
 
     <!--features-->
-    <div class="content-middle">
-        <div class="container">
-            <div class="mid-content">
-                <h3>the best features</h3>
-                <p>Contrary to popular belief
-                    , Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-                <a class="hvr-sweep-to-right more-in" href="single.html">Read More</a>
-            </div>
-        </div>
-    </div>
-    <!--//features-->
-    <!--phone-->
-    <div class="phone">
-        <div class="container">
-            <div class="col-md-6">
-                <img src="<?php echo THEME_URL; ?>/images/ph1.png" class="img-responsive" alt=""/>
-            </div>
-            <div class="col-md-6 phone-text">
-                <h4>Search Homes Everywhere</h4>
-                <div class="text-1">
-                    <h5>Custom Location Tracker</h5>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majorit</p>
-                </div>
-                <div class="text-1">
-                    <h5>Map Search</h5>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majorit</p>
-                </div>
-                <div class="text-1">
-                    <h5>Quick Details</h5>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majorit</p>
-                </div>
-                <a href="mobile_app.html" class="hvr-sweep-to-right more">Download the App</a>
-            </div>
-        </div>
-    </div>
-    <!--//phone-->
+    <?php get_template_part( 'inc/home_inner_banner'); ?>
+
     <!--project--->
     <div class="project">
         <div class="container">

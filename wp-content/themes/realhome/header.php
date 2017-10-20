@@ -19,12 +19,9 @@
 
             </ul>
             <div class="nav-icon">
-                <div class="hero fa-navicon fa-2x nav_slide_button" id="hero">
+                <div class="hero nav_slide_button" id="hero">
                     <a href="#"><i class="glyphicon glyphicon-menu-hamburger"></i> </a>
                 </div>
-                <!---
-                <a href="#" class="right_bt" id="activator"><i class="glyphicon glyphicon-menu-hamburger"></i>  </a>
-            --->
             </div>
             <div class="clearfix"> </div>
             <!---pop-up-box---->

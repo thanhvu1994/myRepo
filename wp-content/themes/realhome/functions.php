@@ -182,3 +182,16 @@ function my_manage_header_bottom_menu_columns( $column, $post_id ) {
             break;
     }
 }
+
+add_filter( 'map_meta_cap', function ( $caps, $cap, $user_id, $args )
+{
+    // Nothing to do
+    if( 'delete_post' !== $cap || empty( $args[0] ) )
+        return $caps;
+
+    // Target the payment and transaction post types
+    if( in_array( get_post_type( $args[0] ), [ 'inner_banner' ], true ) )
+        $caps[] = 'do_not_allow';
+
+    return $caps;
+}, 10, 4 );
