@@ -1,81 +1,24 @@
 <!--//head-->
-<?php get_template_part( 'head'); ?>
+<?php get_template_part( 'inc/head'); ?>
 
 <!--//header-->
 <?php get_header(); ?>
 
 <!--//banner-->
-<?php get_template_part( 'banner'); ?>
+<?php get_template_part( 'inc/banner'); ?>
 
 <!--//header_bottom-->
-<?php get_template_part( 'header_bottom'); ?>
+<?php get_template_part( 'inc/header_bottom'); ?>
 
 <!--//main-->
 <!--content-->
 <div class="content">
     <!--//most_popular-->
-    <?php get_template_part( 'most_popular'); ?>
+    <?php get_template_part( 'inc/most_popular'); ?>
 
     <!--service-->
-    <div class="services">
-        <div class="container">
-            <div class="service-top">
-                <h3>Services</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-            <div class="services-grid">
-                <div class="col-md-6 service-top1">
-                    <div class=" ser-grid">
-                        <a href="#" class="hi-icon hi-icon-archive glyphicon glyphicon-user"> </a>
-                    </div>
-                    <div  class="ser-top">
-                        <h4>Ut wisi enim ad</h4>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text.
-                            It has roots in a piece of classical.Contrary to popular belief, Lorem Ipsum </p>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-                <div class="col-md-6 service-top1">
-                    <div class=" ser-grid">
-                        <a href="#" class="hi-icon hi-icon-archive glyphicon glyphicon-leaf"> </a>
-                    </div>
-                    <div  class="ser-top">
-                        <h4>Ut wisi enim ad</h4>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text.
-                            It has roots in a piece of classical.Contrary to popular belief, Lorem Ipsum </p>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-                <div class="clearfix"> </div>
-            </div>
-            <div class="services-grid">
-                <div class="col-md-6 service-top1">
-                    <div class=" ser-grid">
-                        <a href="#" class="hi-icon hi-icon-archive glyphicon glyphicon-cog"> </a>
-                    </div>
-                    <div  class="ser-top">
-                        <h4>Ut wisi enim ad</h4>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text.
-                            It has roots in a piece of classical.Contrary to popular belief, Lorem Ipsum </p>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-                <div class="col-md-6 service-top1">
-                    <div class=" ser-grid">
-                        <a href="#" class="hi-icon hi-icon-archive glyphicon glyphicon-file"> </a>
-                    </div>
-                    <div  class="ser-top">
-                        <h4>Ut wisi enim ad</h4>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text.
-                            It has roots in a piece of classical .Contrary to popular belief, Lorem Ipsum</p>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-                <div class="clearfix"> </div>
-            </div>
-        </div>
-    </div>
-    <!--//services-->
+    <?php get_template_part( 'inc/service'); ?>
+
     <!--features-->
     <div class="content-middle">
         <div class="container">
