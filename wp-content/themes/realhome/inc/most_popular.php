@@ -24,6 +24,7 @@
                 );
                 $mostPopuItem_array = get_posts( $args ); ?>
 
+                <?php $count = 0; ?>
                 <?php foreach($mostPopuItem_array as $item) : ?>
                     <li>
                         <div class="mostPopu box_2">
@@ -41,6 +42,7 @@
                             </div>
                         </div>
                     </li>
+                    <?php $count++; ?>
                 <?php endforeach; ?>
             </ul>
         </div>

@@ -1518,7 +1518,6 @@ span.fur-money{
 	color:#000;
 }
 .fur2{
-	border-top:1px dotted  #CACACA ;
 	padding: 1em 1.5em 0em;
 }
 .fur2 span{
@@ -5008,4 +5007,15 @@ div.mostPopu {
 
 ul#mostPopularSlider li {
 	display: inline-block;
+}
+
+.fur2 span {
+	border-bottom:1px dotted  #CACACA ;
+	font-size: 0.8em;
+}
+
+#project-gallery .cover {
+	object-fit: cover;
+	width: 400px;
+	height: 300px;
 }

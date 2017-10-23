@@ -5,6 +5,8 @@
 <head>
     <title><?php echo get_bloginfo( 'sitename' ) . ' - ' . get_bloginfo( 'description' ); ?></title>
     <link href="<?php echo THEME_URL; ?>/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link href="<?php echo THEME_URL; ?>/css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="<?php echo THEME_URL; ?>/js/jquery.min.js"></script>
     <!-- Custom Theme files -->

@@ -15,6 +15,9 @@ define( 'THEME_URL', get_stylesheet_directory_uri() );
 define( 'CORE', THEME_URL . '/core' );
 define( 'MAX_HEADER_BOTTOM_MENU', 7);
 define( 'WIDTH_PERCENT_HEADER_BOTTOM_MENU_ITEM', 100 / MAX_HEADER_BOTTOM_MENU);
+define( 'INNER_BANNER_WITH_BACKGROUND', 1);
+define( 'INNER_BANNER_NO_BACKGROUND', 2);
+define( 'INNER_BANNER_WITH_VIDEO', 3);
 
 /**
 @ Load file /core/init.php

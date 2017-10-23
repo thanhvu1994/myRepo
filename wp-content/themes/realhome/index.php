@@ -17,101 +17,21 @@
     <?php get_template_part( 'inc/most_popular'); ?>
 
     <!--service-->
-    <?php get_template_part( 'inc/service'); ?>
+    <?php
+        get_template_part( 'inc/service');
+    ?>
 
     <!--features-->
-    <?php get_template_part( 'inc/home_inner_banner'); ?>
+    <?php
+        set_query_var( 'inner_banner_slug', 'home-inner-banner' );
+        get_template_part( 'inc/inner_banner');
+    ?>
 
     <!--project--->
-    <div class="project">
-        <div class="container">
-            <h3>Project Gallery</h3>
-            <div class="project-top">
-                <div class="col-md-3 project-grid">
-                    <div class="project-grid-top">
-                        <a href="single.html" class="mask"><img src="<?php echo THEME_URL; ?>/images/ga.jpg" class="img-responsive zoom-img" alt=""/></a>
-                        <div class="col-md1">
-                            <div class="col-md2">
-                                <div class="col-md3">
-                                    <span class="star"> 4.5</span>
-                                </div>
-                                <div class="col-md4">
-                                    <strong>Venice</strong>
-                                    <small>50 Reviews</small>
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
-                            <p>2, 3, 4 BHK Flats</p>
-                            <p class="cost">$65,000</p>
-                            <a href="single.html" class="hvr-sweep-to-right more">See Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 project-grid">
-                    <div class="project-grid-top">
-                        <a href="single.html" class="mask"><img src="<?php echo THEME_URL; ?>/images/ga1.jpg" class="img-responsive zoom-img" alt=""/></a>
-                        <div class="col-md1">
-                            <div class="col-md2">
-                                <div class="col-md3">
-                                    <span class="star"> 4.5</span>
-                                </div>
-                                <div class="col-md4">
-                                    <strong>Venice</strong>
-                                    <small>50 Reviews</small>
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
-                            <p>2, 3, 4 BHK Flats</p>
-                            <p class="cost">$65,000</p>
-                            <a href="single.html" class="hvr-sweep-to-right more">See Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 project-grid">
-                    <div class="project-grid-top">
-                        <a href="single.html" class="mask"><img src="<?php echo THEME_URL; ?>/images/ga2.jpg" class="img-responsive zoom-img" alt=""/></a>
-                        <div class="col-md1">
-                            <div class="col-md2">
-                                <div class="col-md3">
-                                    <span class="star"> 4.5</span>
-                                </div>
-                                <div class="col-md4">
-                                    <strong>Venice</strong>
-                                    <small>50 Reviews</small>
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
-                            <p>2, 3, 4 BHK Flats</p>
-                            <p class="cost">$65,000</p>
-                            <a href="single.html" class="hvr-sweep-to-right more">See Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 project-grid">
-                    <div class="project-grid-top">
-                        <a href="single.html" class="mask"><img src="<?php echo THEME_URL; ?>/images/ga3.jpg" class="img-responsive zoom-img" alt=""/></a>
-                        <div class="col-md1">
-                            <div class="col-md2">
-                                <div class="col-md3">
-                                    <span class="star"> 4.5</span>
-                                </div>
-                                <div class="col-md4">
-                                    <strong>Venice</strong>
-                                    <small>50 Reviews</small>
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
-                            <p>2, 3, 4 BHK Flats</p>
-                            <p class="cost">$65,000</p>
-                            <a href="single.html" class="hvr-sweep-to-right more">See Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix"> </div>
-            </div>
-        </div>
-    </div>
-    <!--//project-->
+    <?php
+    get_template_part( 'inc/project_gallery');
+    ?>
+
     <!--test-->
     <div class="content-bottom">
         <div class="container">

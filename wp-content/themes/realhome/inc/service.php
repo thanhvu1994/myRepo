@@ -2,7 +2,7 @@
     <div class="container">
         <div class="service-top">
             <h3>Services</h3>
-            <p>We provide the best quality Services                                                                                                                                                                                       </p>
+            <p>We provide the best quality Services</p>                                                                                                                                                                                      </p>
         </div>
         <?php $args = array(
             'posts_per_page'   => 4,
