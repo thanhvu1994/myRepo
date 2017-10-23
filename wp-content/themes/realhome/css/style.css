@@ -5011,7 +5011,10 @@ ul#mostPopularSlider li {
 
 .fur2 span {
 	border-bottom:1px dotted  #CACACA ;
-	font-size: 0.8em;
+	font-size: 1em;
+}
+.fur2 span a{
+	color: #27da93;
 }
 
 #project-gallery .cover {
