@@ -1,13 +1,3 @@
-<?php
-/**
- * Template Name: Blog Page
- *
- * @package WordPress
- * @subpackage realhome
- * @since realhome 1.0
- */
-?>
-
 <!--//head-->
 <?php get_template_part( 'head'); ?>
 

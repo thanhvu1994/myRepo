@@ -5026,3 +5026,7 @@ ul#mostPopularSlider li {
 .blog-head hr{
 	border-color: #27DA93;
 }
+.pagination-custom a{
+	width: 40px;
+	text-align: center;
+}

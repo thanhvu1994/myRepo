@@ -34,7 +34,7 @@
 		<?php endif ?>
 		<div class="clearfix"> </div>
  	</div>
-	  <div class="blog-list">
+  	<div class="blog-list">
      	<h4>Archive</h4>
 		<ul >
 		<?php 
@@ -47,35 +47,69 @@
 				);
 				$the_query = new WP_Query( $args );
 				$post_count = $the_query->post_count;
-				echo '<li><a href="#"><i class="glyphicon glyphicon-arrow-right"> </i>'.$month_name.' ('.$post_count.')</a></li>';
+				echo '<li><a href="'.home_url( '/blog/?month='.$month_name ).'"><i class="glyphicon glyphicon-arrow-right"> </i>'.$month_name.' ('.$post_count.')</a></li>';
 			}
 		} ?>
 		</ul>
  	</div>
-
+	<?php 
+	$args = array(
+	            'posts_per_page'   => 3,
+	            'offset'           => 0,
+	            'category'         => '',
+	            'category_name'    => '',
+	            'orderby'          => 'menu_order',
+	            'order'            => 'ASC',
+	            'include'          => '',
+	            'exclude'          => '',
+	            'meta_key'         => '',
+	            'meta_value'       => '',
+	            'post_type'        => 'post',
+	            'post_mime_type'   => '',
+	            'post_parent'      => '',
+	            'author'	   => '',
+	            'author_name'	   => '',
+	            'post_status'      => 'publish',
+	            'suppress_filters' => true,
+	            'meta_query' => array(
+							        array(
+							            'key'   => 'popular',
+							            'value' => true,
+							        	)
+							    	)
+			);
+	$menuItem_array = get_posts( $args );
+	?>
  	<div class="blog-list1">
      	<h4>Popular Blog</h4>
-		<div class="blog-list-top">
-			<div class="blog-img">
-				<a href="blog_single.html"><img class="img-responsive" src="images/bo.jpg" alt=""></a>
-			</div>
-			<div class="blog-text">
-				<p ><a href="#">Lorem ipsum dolor sit amet, consectetuer</a></p>
-				<span class="link">
-					Feb 14, 2015
-					<a href="#">
-						<i class="glyphicon glyphicon-heart"> </i>
-					</a>16
-				</span>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
+     	<?php if ($menuItem_array) {
+     		foreach ($menuItem_array as $blog) { ?>
+	     		<div class="blog-list-top">
+					<div class="blog-img">
+						<a href="<?php echo get_permalink($blog)?>"><img class="img-responsive" src="<?php echo the_post_thumbnail_url($blog->ID); ?>" alt="<?php echo $blog->post_title?>"></a>
+					</div>
+					<div class="blog-text">
+						<p ><a href="<?php echo get_permalink($blog)?>"><?php echo $blog->post_title?></a></p>
+						<span class="link">
+							<?php echo get_the_date('d-m-Y', $blog->ID) ?>
+						</span>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+     	<?php }
+     	} ?>
  	</div>
+ 	<?php $tags = get_tags(); ?>
   	<div class="blog-list2">
      	<h4>Tags</h4>
-		<ul>
-			<li><a href="#">Web Design</a></li>
-		</ul>
+     	<?php if (!empty($tags)): ?>
+     		<ul>
+     		<?php foreach ($tags as $tag): ?>
+				<li><a href="<?php echo get_tag_link( $tag->term_id )?>"><?php echo $tag->name ?></a></li>
+     		<?php endforeach ?>
+			</ul>
+     	<?php endif ?>
+		
 	</div>
 </div>
 <div class="clearfix"> </div>
