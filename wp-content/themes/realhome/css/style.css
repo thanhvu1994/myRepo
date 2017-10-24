@@ -5022,3 +5022,7 @@ ul#mostPopularSlider li {
 	width: 400px;
 	height: 300px;
 }
+
+.blog-head hr{
+	border-color: #27DA93;
+}
