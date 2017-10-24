@@ -12,28 +12,7 @@
 
 <!--content-->
 <div class="content">
-    <!--//most_popular-->
-    <?php get_template_part( 'inc/most_popular'); ?>
-
-    <!--service-->
-    <?php
-        get_template_part( 'inc/service');
-    ?>
-
-    <!--features-->
-    <?php
-        set_query_var( 'inner_banner_slug', 'home-inner-banner' );
-        get_template_part( 'inc/inner_banner');
-    ?>
-
-    <!--project--->
-    <?php get_template_part( 'inc/project_gallery'); ?>
-
-    <!--testimonial--->
-    <?php get_template_part( 'inc/testimonial'); ?>
-
-    <!--partners-->
-    <?php get_template_part( 'inc/partner'); ?>
+    <?php dynamic_sidebar('home_page'); ?>
 </div>
 
 <!--//footer-->
