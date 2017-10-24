@@ -90,10 +90,30 @@ register_nav_menu ( 'main-menu', __('Main Menu', 'realhome') );
 * Tạo sidebar cho theme
 */
 $sidebar = array(
-    'name' => __('Main Sidebar', 'realhome'),
-    'id' => 'main-sidebar',
-    'description' => 'Main sidebar for Real Home theme',
-    'class' => 'main-sidebar',
+    'name' => __('Header', 'realhome'),
+    'id' => 'header',
+    'description' => 'Header for Real Home theme',
+    'class' => 'header',
+    'before_title' => '<h3 class="widgettitle">',
+    'after_title' => '</h3>'
+);
+register_sidebar( $sidebar );
+
+$sidebar = array(
+    'name' => __('Home Page', 'realhome'),
+    'id' => 'home_page',
+    'description' => 'Home Page for Real Home theme',
+    'class' => 'home_page',
+    'before_title' => '<h3 class="widgettitle">',
+    'after_title' => '</h3>'
+);
+register_sidebar( $sidebar );
+
+$sidebar = array(
+    'name' => __('Footer', 'realhome'),
+    'id' => 'Footer',
+    'description' => 'Footer for Real Home theme',
+    'class' => 'footer',
     'before_title' => '<h3 class="widgettitle">',
     'after_title' => '</h3>'
 );
@@ -153,8 +173,6 @@ function my_edit_header_bottom_menu_columns( $columns ) {
 add_action( 'manage_header_bottom_menu_posts_custom_column', 'my_manage_header_bottom_menu_columns', 10, 2 );
 
 function my_manage_header_bottom_menu_columns( $column, $post_id ) {
-    global $post;
-
     switch( $column ) {
 
         case 'title_custom' :
@@ -198,3 +216,51 @@ add_filter( 'map_meta_cap', function ( $caps, $cap, $user_id, $args )
 
     return $caps;
 }, 10, 4 );
+
+add_filter( 'manage_edit-testimonial_columns', 'my_edit_testimonial_columns' ) ;
+
+function my_edit_testimonial_columns( $columns ) {
+
+    $columns = array(
+        'cb' => '<input type="checkbox" />',
+        'username' => __( 'Username' ),
+        'comment' => __( 'Comment' ),
+        'date' => __( 'Date' )
+    );
+
+    return $columns;
+}
+
+add_action( 'manage_testimonial_posts_custom_column', 'my_manage_testimonial_columns', 10, 2 );
+
+function my_manage_testimonial_columns( $column, $post_id ) {
+    switch( $column ) {
+
+        case 'username' :
+
+            $username = get_post_meta( $post_id, 'username', true );
+
+            if ( empty( $username ) )
+                echo __( 'Unknown' );
+
+            else
+                printf( __( '<a class="row-title" href="post.php?post='.$post_id.'&action=edit">%s</a>' ), $username );
+
+            break;
+
+        case 'comment' :
+
+            $comment = get_post_meta( $post_id, 'comment', true );
+
+            if ( empty( $comment ) )
+                echo __( 'Unknown' );
+
+            else
+                printf( $comment );
+
+            break;
+
+        default :
+            break;
+    }
+}
