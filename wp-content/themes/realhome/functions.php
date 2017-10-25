@@ -18,6 +18,7 @@ define( 'WIDTH_PERCENT_HEADER_BOTTOM_MENU_ITEM', 100 / MAX_HEADER_BOTTOM_MENU);
 define( 'INNER_BANNER_WITH_BACKGROUND', 1);
 define( 'INNER_BANNER_NO_BACKGROUND', 2);
 define( 'INNER_BANNER_WITH_VIDEO', 3);
+define( 'DEFAULT_PAGE_SIZE', 2);
 
 /**
 @ Load file /core/init.php
@@ -262,5 +263,68 @@ function my_manage_testimonial_columns( $column, $post_id ) {
 
         default :
             break;
+    }
+}
+
+function custom_pagination($numpages = '', $pagerange = '', $paged='', $base) {
+
+    if (empty($pagerange)) {
+        $pagerange = 2;
+    }
+
+    /**
+     * This first part of our function is a fallback
+     * for custom pagination inside a regular loop that
+     * uses the global $paged and global $wp_query variables.
+     *
+     * It's good because we can now override default pagination
+     * in our theme, and use this function in default quries
+     * and custom queries.
+     */
+    global $wp_query;
+
+    if (empty($paged)) {
+        $paged = 1;
+    }
+
+    if ($numpages == '') {
+
+        $numpages = $wp_query->max_num_pages;
+        if(!$numpages) {
+            $numpages = 1;
+        }
+    }
+
+    /**
+     * We construct the pagination arguments to enter into our paginate_links
+     * function.
+     */
+    $pagination_args = array(
+        'base'            => $base.'%_%',
+        'format'          => '/%#%',
+        'total'           => $numpages,
+        'current'         => $paged,
+        'show_all'        => False,
+        'end_size'        => 1,
+        'mid_size'        => $pagerange,
+        'prev_next'       => True,
+        'prev_text'       => __('&laquo;'),
+        'next_text'       => __('&raquo;'),
+        'type'            => 'array',
+        'add_args'        => false,
+        'add_fragment'    => ''
+    );
+
+    $paginate_links = paginate_links($pagination_args);
+    if (!empty($paginate_links) && is_array($paginate_links)) {
+        echo "<nav><ul class='pagination pagination-custom'>";
+        foreach ($paginate_links as $link) {
+            if (strpos($link, 'current') !== false) {
+                echo '<li class="active"><a href="javascript:void(0)">'.$paged.'<span class="sr-only">(current)</span></a></li>';
+            } else {
+                echo '<li>'.$link.'</li>';
+            }
+        }
+        echo "</ul></nav>";
     }
 }
