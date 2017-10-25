@@ -1,8 +1,8 @@
 <!--//head-->
-<?php get_template_part( 'inc/head'); ?>
+<?php get_template_part( 'head'); ?>
 
 <!--//header-->
-<?php get_header(); ?>
+<?php dynamic_sidebar('header'); ?>
 
 <!--//banner-->
 <?php get_template_part( 'inc/banner'); ?>
@@ -16,4 +16,4 @@
 </div>
 
 <!--//footer-->
-<?php get_footer(); ?>
+<?php dynamic_sidebar('footer'); ?>
