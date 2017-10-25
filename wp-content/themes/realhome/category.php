@@ -14,8 +14,10 @@ get_template_part( 'inc/page_banner');
 <div class="blog">
 	<div class="container">
 		<h3>Blog</h3>
-	   	<?php get_template_part('templates/blog/index'); ?>
-		
+	   	<?php 
+	   	set_query_var( 'has_category', true );
+	   	get_template_part('templates/blog/index'); 
+	   	?>
 		<!--//side bar-->
 	   	<?php get_template_part('templates/blog/side_bar'); ?>
 	</div>
