@@ -17,21 +17,28 @@
     $paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1;
 
     global $wp_query;
-    $category = get_the_category($post->ID);
     $slug_category = $slug_tag = $month = '';
-    if (isset($category[0])) {
-        $slug_category = $category[0]->slug;
+    $home_url = home_url( '/blog' );
+    if (isset($has_category) && $has_category == true) {
+        $category = get_the_category($post->ID);
+        if (isset($category[0])) {
+            $slug_category = $category[0]->slug;
+            $home_url = home_url( 'blog/category/'.$slug_category.'/?page=' );
+        }
+    } else {
+        $tag = get_the_tags($post->ID);
+        if (isset($tag[0])) {
+            $slug_tag = $tag[0]->slug;
+            $home_url = home_url( 'blog/tag/'.$slug_tag.'/?page=' );
+        }
     }
-    $tag = get_the_tags($post->ID);
-    if (isset($tag[0])) {
-        $slug_tag = $tag[0]->slug;
-        $slug_category = '';
-    }
+    
     if (isset($_GET['month'])) {
         $month = array_search($_GET['month'], $arr_month);
+        $slug_category = $slug_tag = '';
+        $home_url = home_url( '/blog' );
     }
 
-    // $month_name =  ? 
     $custom_args = array(
         'post_type' => 'post',
         'posts_per_page' => DEFAULT_PAGE_SIZE,
@@ -48,14 +55,14 @@
         $custom_args['tag'] = $slug_tag;
     }
 
-    // if ($month) {
-    //     $custom_args['meta_query'] = [[
-    //                                     'key' => 'post_date',
-    //                                 ]];
-    // }
+    if ($month && is_numeric($month)) {
+        $custom_args['date_query'] = [[
+                                        'month' => $month,
+                                    ]];
+    }
 
     $custom_query = new WP_Query( $custom_args );
-    $wp_query = $custom_query
+    $wp_query = $custom_query;
     ?>
 
     <?php if ( $custom_query->have_posts() ) : ?>
@@ -73,7 +80,7 @@
         <?php wp_reset_postdata(); ?>
         <?php
             if (function_exists(custom_pagination)) {
-                custom_pagination($custom_query->max_num_pages,"", $paged, esc_url( home_url( '/blog' ) ) );
+                custom_pagination($custom_query->max_num_pages,"", $paged, esc_url( $home_url ) );
             }
         ?>
     <?php endif; ?>
