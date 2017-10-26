@@ -7,16 +7,34 @@
         <h3><span><?php echo $first; ?></span><?php echo $theRest; ?></h3>
         <!---->
         <div class="menu-right">
+            <?php $args = array(
+                'posts_per_page'   => MAX_HEADER_BOTTOM_MENU,
+                'offset'           => 0,
+                'category'         => '',
+                'category_name'    => '',
+                'orderby'          => 'menu_order',
+                'order'            => 'ASC',
+                'include'          => '',
+                'exclude'          => '',
+                'meta_key'         => '',
+                'meta_value'       => '',
+                'post_type'        => 'header_bottom_menu',
+                'post_mime_type'   => '',
+                'post_parent'      => '',
+                'author'	   => '',
+                'author_name'	   => '',
+                'post_status'      => 'publish',
+                'suppress_filters' => true
+            );
+            $menuItem_array = get_posts( $args );
+            ?>
+
             <ul class="menu">
                 <li class="item1"><a href="#"> Menu<i class="glyphicon glyphicon-menu-down"> </i> </a>
                     <ul class="cute" style="display: none;">
-                        <li class="subitem1"><a href="buy.html">Buy </a></li>
-                        <li class="subitem2"><a href="buy.html">Rent </a></li>
-                        <li class="subitem3"><a href="buy.html">Hostels </a></li>
-                        <li class="subitem1"><a href="buy.html">Resale</a></li>
-                        <li class="subitem2"><a href="loan.html">Home Loan</a></li>
-                        <li class="subitem3"><a href="buy.html">Apartment </a></li>
-                        <li class="subitem3"><a href="dealers.html">Dealers</a></li>
+                        <?php foreach($menuItem_array as $item): ?>
+                            <li class="subitem1"><a href="buy.html"><?php echo get_field('title',$item->ID)?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </li>
             </ul>

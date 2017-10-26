@@ -1,0 +1,60 @@
+fieldset.widget-listing-fieldset {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+    box-shadow:  0px 0px 0px 0px #000;
+}
+legend.widget-listing-legend {
+    width:inherit; /* Or auto */
+    padding:0 10px; /* To give a bit of padding on the left and right */
+    border-bottom:none;
+}
+
+.icon-picker-list {
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+    padding-left: 0;
+}
+
+.icon-picker-list li {
+    display: flex;
+    flex: 0 0 20%;
+    float: left;
+    width: 20%;
+}
+
+.icon-picker-list a {
+    background-color: #f9f9f9;
+    border: 1px solid #fff;
+    color: black;
+    display: block;
+    flex: 1 1 auto;
+    font-size: 12px;
+    line-height: 1.4;
+    min-height: 100px;
+    padding: 10px;
+    text-align: center;
+    user-select: none;
+}
+
+.icon-picker-list a:hover,
+.icon-picker-list a.active{
+    background-color: #009E49;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.icon-picker-list .fa {
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.icon-picker-list .name-class {
+    display: block;
+    text-align: center;
+    word-wrap: break-word;
+}

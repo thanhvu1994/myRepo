@@ -2,13 +2,17 @@
 <?php get_template_part( 'head'); ?>
 
 <!--//header-->
-<?php get_header(); ?>
+<?php dynamic_sidebar('header'); ?>
 
 <?php 
 	if ($post->post_type == 'post') {
 		get_template_part('content/content-post');
-	}
+	}else if ($post->post_type == 'project') {
+        get_template_part('content/content-project');
+    }else {
+        get_template_part('content/content-none');
+    }
  ?>
 
 <!--//footer-->
-<?php get_footer(); ?>
+<?php dynamic_sidebar('footer'); ?>

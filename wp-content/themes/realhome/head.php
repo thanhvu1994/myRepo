@@ -17,6 +17,7 @@
     <!--//menu-->
     <!--theme-style-->
     <link href="<?php echo THEME_URL; ?>/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="<?php echo THEME_URL; ?>/css/flexslider.css" rel="stylesheet" type="text/css" media="all" />
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -35,4 +36,5 @@
         });
     </script>
     <script type="text/javascript" src="<?php echo THEME_URL; ?>/js/jquery.flexisel.js"></script>
+    <script type="text/javascript" src="<?php echo THEME_URL; ?>/js/jquery.flexslider.js"></script>
 </head>
