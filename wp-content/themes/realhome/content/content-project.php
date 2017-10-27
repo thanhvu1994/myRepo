@@ -27,10 +27,10 @@
                     <p><span class="bath">Location </span>: <span class="two"><?php echo get_field('location',$post->ID); ?></span></p>
                     <p><span class="bath1">Area </span>: <span class="two"><?php echo get_field('area',$post->ID); ?> m<sup>2</sup></span></p>
                     <p><span class="bath2">Floors </span>: <span class="two"><?php echo get_field('floor',$post->ID); ?></span></p>
-                    <p><span class="bath3">Bedrooms </span>:<span class="two"><?php echo get_field('bedroom',$post->ID); ?></span></p>
+                    <p><span class="bath3">Bedrooms </span>: <span class="two"><?php echo get_field('bedroom',$post->ID); ?></span></p>
                     <p><span class="bath4">Price </span> : <span class="two"><?php echo get_field('price',$post->ID); ?></span></p>
                     <div class="   right-side">
-                        <a href="contact.html" class="hvr-sweep-to-right more" >Contact Builder</a>
+                        <a href="<?php echo get_permalink(get_page_by_title('contact')); ?>" class="hvr-sweep-to-right more" >Contact Builder</a>
                     </div>
                 </div>
                 <div class="col-sm-7 buy-sin">
