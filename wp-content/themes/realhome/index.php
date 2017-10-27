@@ -2,7 +2,7 @@
 <?php get_template_part( 'head'); ?>
 
 <!--//header-->
-<?php dynamic_sidebar('header'); ?>
+<?php get_header(); ?>
 
 <!--//banner-->
 <?php get_template_part( 'inc/banner'); ?>
@@ -16,4 +16,4 @@
 </div>
 
 <!--//footer-->
-<?php dynamic_sidebar('footer'); ?>
+<?php get_footer(); ?>

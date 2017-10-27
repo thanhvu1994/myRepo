@@ -403,20 +403,23 @@ class Realhome_Widget extends WP_Widget {
             'suppress_filters' => true
         );
 
-        $partnerItem_array = get_posts( $args ); ?>
+        $partnerItem_array = get_posts( $args );
+
+        $countPartner = count($partnerItem_array);
+        ?>
 
         <div class="content-bottom1">
             <h3><?php echo $instance['title']; ?></h3>
             <div class="container">
                 <ul>
-                    <?php for($i = 0; $i < 5 ; $i++): ?>
-                        <li><a href="#"><img class="img-responsive" src="<?php echo get_the_post_thumbnail_url($partnerItem_array[$i]); ?>" alt=""></a></li>
+                    <?php for($i = 0; $i < (($countPartner > 5) ? 5 : $countPartner) ; $i++): ?>
+                        <li><a <?php echo (!empty(get_field('url',$partnerItem_array[$i])))? 'href="'.get_field('url',$partnerItem_array[$i]).'"' : ''; ?> ><img class="img-responsive" src="<?php echo get_the_post_thumbnail_url($partnerItem_array[$i]); ?>" alt=""></a></li>
                     <?php endfor; ?>
                     <div class="clearfix"> </div>
                 </ul>
                 <ul>
-                    <?php for($i = 5; $i < 10 ; $i++): ?>
-                        <li><a href="#"><img class="img-responsive" src="<?php echo get_the_post_thumbnail_url($partnerItem_array[$i]); ?>" alt=""></a></li>
+                    <?php for($i = 5; $i < $countPartner ; $i++): ?>
+                        <li><a <?php echo (!empty(get_field('url',$partnerItem_array[$i])))? 'href="'.get_field('url',$partnerItem_array[$i]).'"' : ''; ?> ><img class="img-responsive" src="<?php echo get_the_post_thumbnail_url($partnerItem_array[$i]); ?>" alt=""></a></li>
                     <?php endfor; ?>
                     <div class="clearfix"> </div>
                 </ul>

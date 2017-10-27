@@ -1243,6 +1243,7 @@ select.in-drop {
   padding: 2em 0 0;
 }
 .top-grid {
+	margin-top: 20px;
   padding: 0 0 5em;
 }
 /*---------------*/
@@ -5058,6 +5059,7 @@ ul#mostPopularSlider li {
 
 .footer-distributed .footer-left{
 	width: 25%;
+	margin-left: 15%;
 }
 
 /* The company logo */
@@ -5097,7 +5099,7 @@ ul#mostPopularSlider li {
 /* Footer Center */
 
 .footer-distributed .footer-center{
-	width: 35%;
+	width: 25%;
 }
 
 .footer-distributed .footer-center i{
@@ -5141,7 +5143,7 @@ ul#mostPopularSlider li {
 /* Footer Right */
 
 .footer-distributed .footer-right{
-	width: 35%;
+	width: 20%;
 }
 
 .footer-distributed .footer-company-about{
@@ -5321,4 +5323,9 @@ hr {
 
 .flex-control-thumbs li:nth-child(4n + 0){
 	margin : 0.5% 0 0 0 !important;
+}
+
+.premium h5 a{
+	text-decoration: none;
+	color: white;
 }

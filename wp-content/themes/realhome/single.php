@@ -9,6 +9,8 @@
 		get_template_part('content/content-post');
 	}else if ($post->post_type == 'project') {
         get_template_part('content/content-project');
+    }else if ($post->post_type == 'city') {
+        get_template_part('content/content-city');
     }else {
         get_template_part('content/content-none');
     }

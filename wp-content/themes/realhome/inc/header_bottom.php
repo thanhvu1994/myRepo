@@ -29,8 +29,8 @@
             <div class="header-bottom" style="width: <?php echo WIDTH_PERCENT_HEADER_BOTTOM_MENU_ITEM*$countMenuItem; ?>%; margin-left: <?php echo $marginPercent; ?>%;">
 
                 <?php foreach($menuItem_array as $menuItem) :?>
-                    <div class=" bottom-head" style="width: <?php echo WIDTH_PERCENT_HEADER_BOTTOM_MENU_ITEM; ?>%;">
-                        <a href="buy.html">
+                    <div class=" bottom-head" style="width: <?php echo 100/$countMenuItem; ?>%;">
+                        <a href="<?php echo get_field('page',$menuItem->ID); ?>">
                             <div class="buy-media">
                                 <i class="<?php echo get_field('icon',$menuItem->ID); ?>"></i>
                                 <h6><?php echo get_field('title',$menuItem->ID); ?></h6>

@@ -45,11 +45,18 @@
                     <iframe src="<?php echo get_field('iframe_map',$post->ID); ?>"></iframe>
                 </div>
             </div>
-            <div class="video-pre">
-                <h4>Video Presentation</h4>
-                <iframe src="<?php echo get_field('iframe_video',$post->ID); ?>"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-            </div>
+            <?php
+                $videos = explode(';',get_field('iframe_video',$post->ID));
+            ?>
+            <?php if(!empty($videos)): ?>
+                <?php foreach($videos as $key => $video) : ?>
+                    <div class="video-pre">
+                        <?php echo ($key == 0)? '<h4>Video Presentation</h4>' : '';?>
+                        <iframe src="<?php echo $video; ?>"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
 
 
@@ -84,19 +91,19 @@
     </div>
 </div>
 
-<!---->
-<?php
-$args = array(
-    'post_type' => 'project',
-    'posts_per_page' => 6,
-    'orderby' => 'rand',
-    'meta_key'		=> 'type',
-    'meta_value'	=> 'sell',
-    'post__not_in' => array($post->ID)
-);
+    <!---->
+    <?php
+    $args = array(
+        'post_type' => 'project',
+        'posts_per_page' => 6,
+        'orderby' => 'rand',
+        'meta_key'		=> 'type',
+        'meta_value'	=> 'sell',
+        'post__not_in' => array($post->ID)
+    );
 
-$projects = get_posts($args);
-?>
+    $projects = get_posts($args);
+    ?>
     <div class="container">
         <div class="future">
             <?php if(count($projects) >= 2) : ?>
@@ -108,7 +115,7 @@ $projects = get_posts($args);
                         <li>
                             <div class="project-fur">
                                 <?php $url = wp_get_attachment_url( get_post_thumbnail_id($project->ID), 'Large' ); ?>
-                                <a href="<?php echo get_permalink($project->ID); ?>" ><img class="img-responsive" src="<?php echo $url; ?>" alt="" />	</a>
+                                <a href="<?php echo get_permalink($project->ID); ?>" ><img style="width: 310px; height:232px;" class="img-responsive" src="<?php echo $url; ?>" alt="" />	</a>
                                 <div class="fur">
                                     <div class="fur1">
                                         <span class="fur-money"><?php echo get_field('price',$project->ID); ?></span>
@@ -124,7 +131,7 @@ $projects = get_posts($args);
                 <script type="text/javascript">
                     $(window).load(function() {
                         $("#flexiselDemo1").flexisel({
-                            visibleItems: <?php echo count($projects); ?>,
+                            visibleItems: <?php echo (count($projects) > 4) ? '4' : count($projects); ?>,
                             animationSpeed: 1000,
                             autoPlay: true,
                             autoPlaySpeed: 3000,

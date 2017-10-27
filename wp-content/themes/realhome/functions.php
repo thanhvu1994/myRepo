@@ -328,3 +328,40 @@ function custom_pagination($numpages = '', $pagerange = '', $paged='', $base) {
         echo "</ul></nav>";
     }
 }
+
+function acf_load_city_field_choices( $field ) {
+    // reset choices
+    $field['choices'] = array();
+
+    $args = array(
+    'offset'           => 0,
+    'category'         => '',
+    'category_name'    => '',
+    'orderby'          => 'menu_order',
+    'order'            => 'ASC',
+    'include'          => '',
+    'exclude'          => '',
+    'meta_key'         => '',
+    'meta_value'       => '',
+    'post_type'        => 'city',
+    'post_mime_type'   => '',
+    'post_parent'      => '',
+    'author'	   => '',
+    'author_name'	   => '',
+    'post_status'      => 'publish',
+    'suppress_filters' => true
+    );
+    $cities = get_posts( $args );
+
+    if( !empty($cities) ) {
+        foreach( $cities as $city ) {
+            $field['choices'][ $city->post_name ] = $city->post_title;
+        }
+    }
+
+    // return the field
+    return $field;
+
+}
+
+add_filter('acf/load_field/name=city', 'acf_load_city_field_choices');
