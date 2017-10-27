@@ -4,23 +4,23 @@
         <div class="single-buy">
             <div class="col-sm-3 check-top-single">
                 <div class="single-bottom">
-                    <h4>Property Type</h4>
+                    <h4>Area</h4>
                     <ul>
                         <li>
-                            <input type="checkbox"  id="brand" value="">
-                            <label for="brand"><span></span> Duplex</label>
+                            <input type="checkbox"  id="brand" value="0-50">
+                            <label for="brand"><span></span> 0 - 50 m<sup>2</sup></label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand1" value="">
-                            <label for="brand1"><span></span> Apartment</label>
+                            <input type="checkbox"  id="brand1" value="50-100">
+                            <label for="brand1"><span></span> 50 - 100 m<sup>2</sup></label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand2" value="">
-                            <label for="brand2"><span></span>Villa</label>
+                            <input type="checkbox"  id="brand2" value="100-200">
+                            <label for="brand2"><span></span> 100 - 200 m<sup>2</sup></label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand3" value="">
-                            <label for="brand3"><span></span> Pent House</label>
+                            <input type="checkbox"  id="brand3" value="200+">
+                            <label for="brand3"><span></span> 200 m<sup>2</sup> <</label>
                         </li>
 
                     </ul>
@@ -28,23 +28,23 @@
             </div>
             <div class="col-sm-3 check-top-single">
                 <div class="single-bottom">
-                    <h4>BHK</h4>
+                    <h4>Floors</h4>
                     <ul>
                         <li>
-                            <input type="checkbox"  id="brand5" value="">
-                            <label for="brand5"><span></span> 1 BHK</label>
+                            <input type="checkbox"  id="brand5" value="1-2">
+                            <label for="brand5"><span></span> 1 - 2 Floor(s)</label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand6" value="">
-                            <label for="brand6"><span></span> 2 BHK</label>
+                            <input type="checkbox"  id="brand6" value="3-4">
+                            <label for="brand6"><span></span> 3 - 4 Floors</label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand7" value="">
-                            <label for="brand7"><span></span>3 BHK</label>
+                            <input type="checkbox"  id="brand7" value="5-6">
+                            <label for="brand7"><span></span> 5 - 6 Floors</label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand8" value="">
-                            <label for="brand8"><span></span> 3+ BHK</label>
+                            <input type="checkbox"  id="brand8" value="7+">
+                            <label for="brand8"><span></span> 7+ Floors</label>
                         </li>
 
                     </ul>
@@ -52,23 +52,23 @@
             </div>
             <div class="col-sm-3 check-top-single">
                 <div class="single-bottom">
-                    <h4>Amenities</h4>
+                    <h4>Bedrooms</h4>
                     <ul>
                         <li>
-                            <input type="checkbox"  id="brand9" value="">
-                            <label for="brand9"><span></span>Lift </label>
+                            <input type="checkbox"  id="brand9" value="1-4">
+                            <label for="brand9"><span></span> 1-4 Bedroom(s) </label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand10" value="">
-                            <label for="brand10"><span></span>GYM </label>
+                            <input type="checkbox"  id="brand10" value="5-8">
+                            <label for="brand10"><span></span> 5-8 Bedrooms </label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand11" value="">
-                            <label for="brand11"><span></span>Swimming Pool</label>
+                            <input type="checkbox"  id="brand11" value="9-13">
+                            <label for="brand11"><span></span> 9-13 Bedrooms</label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand12" value="">
-                            <label for="brand12"><span></span> Gas Pipeline</label>
+                            <input type="checkbox"  id="brand12" value="14+">
+                            <label for="brand12"><span></span> 14+ Bedrooms</label>
                         </li>
 
                     </ul>
@@ -76,15 +76,27 @@
             </div>
             <div class="col-sm-3 check-top-single">
                 <div class="single-bottom">
-                    <h4>Property Status</h4>
+                    <h4>Price</h4>
                     <ul>
                         <li>
-                            <input type="checkbox"  id="brand13" value="">
-                            <label for="brand13"><span></span> Under Construction</label>
+                            <input type="checkbox"  id="brand13" value="0-1000000000">
+                            <label for="brand13"><span></span> Under 1.000.000.000 VND </label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand14" value="">
-                            <label for="brand14"><span></span> Ready to Move</label>
+                            <input type="checkbox"  id="brand14" value="1000000000-2000000000">
+                            <label for="brand14"><span></span> 1 - 2.000.000.000 VND</label>
+                        </li>
+                        <li>
+                            <input type="checkbox"  id="brand15" value="2000000000-4000000000">
+                            <label for="brand15"><span></span> 2 - 4.000.000.000 VND</label>
+                        </li>
+                        <li>
+                            <input type="checkbox"  id="brand16" value="4000000000-8000000000">
+                            <label for="brand16"><span></span> 4 - 8.000.000.000 VND</label>
+                        </li>
+                        <li>
+                            <input type="checkbox"  id="brand17" value="8000000000+">
+                            <label for="brand17"><span></span> 8.000.000.000 VND < </label>
                         </li>
 
                     </ul>
@@ -100,120 +112,62 @@
         <div class="buy-single">
             <?php
                 switch($_GET['type']){
-
+                    case 'buy':
+                        $title = 'Houses for sale';
+                        break;
+                    case 'rent':
+                        $title = 'Houses, Apartments for Rent';
+                        break;
+                    case 'apartment':
+                        $title = 'Apartments for Sale';
+                        break;
+                    case 'hotel':
+                        $title = 'Hotels for Sale';
+                        break;
+                    default:
+                        $title = 'Houses for Sale';
                 }
             ?>
-            <h3>Residential Flats, Apartments</h3>
+            <h3><?php echo $title; ?></h3>
             <div class="box-sin">
                 <div class="col-md-9 single-box">
-                    <div class="box-col">
-                        <div class=" col-sm-7 left-side ">
-                            <a href="single.html"> <img class="img-responsive" src="images/sb.jpg" alt=""></a>
-                        </div>
-                        <div class="  col-sm-5 middle-side">
-                            <h4>Possession: Immediate</h4>
-                            <p><span class="bath">Bed </span>: <span class="two">2 BHK</span></p>
-                            <p>  <span class="bath1">Baths </span>: <span class="two">2</span></p>
-                            <p><span class="bath2">Built-up Area</span>: <span class="two">100 Sq.Yrds</span></p>
-                            <p><span class="bath3">Plot Area </span>:<span class="two"> 150 Sq.Yrds</span></p>
-                            <p><span class="bath4">Age of property</span> : <span class="two">4 - 10 Years</span></p>
-                            <p><span class="bath5">Price </span>:<span class="two"> 30-40 Lacs</span></p>
-                            <div class="   right-side">
-                                <a href="contact.html" class="hvr-sweep-to-right more" >Contact Builder</a>
+                    <?php
+                            $args = array(
+                            'post_type' => 'project',
+                            'posts_per_page' => 6,
+                            'orderby' => 'menu_order',
+                            'order' => 'ASC',
+                            'meta_key'		=> 'type',
+                            'meta_value'	=> 'sell',
+                            'post__not_in' => array($post->ID)
+                            );
+
+                            $projects = get_posts($args);
+                    ?>
+                    <?php foreach($projects as $project): ?>
+                        <div class="box-col">
+                            <div class=" col-sm-7 left-side ">
+                                <a href="<?php echo get_permalink($project->ID); ?>">
+                                    <?php
+                                        $image = wp_get_attachment_image_src( get_post_thumbnail_id( $project->ID ), '498.755x349.16' );
+                                    ?>
+                                    <img class="img-responsive" src="<?php echo $image[0]; ?>" alt="">
+                                </a>
                             </div>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="box-col">
-                        <div class=" col-sm-7 left-side ">
-                            <a href="single.html"><img class="img-responsive" src="images/sb1.jpg" alt=""></a>
-                        </div>
-                        <div class="  col-sm-5 middle-side">
-                            <h4>Possession: Immediate</h4>
-                            <p><span class="bath">Bed </span>: <span class="two">2 BHK</span></p>
-                            <p>  <span class="bath1">Baths </span>: <span class="two">2</span></p>
-                            <p><span class="bath2">Built-up Area</span>: <span class="two">100 Sq.Yrds</span></p>
-                            <p><span class="bath3">Plot Area </span>:<span class="two"> 150 Sq.Yrds</span></p>
-                            <p><span class="bath4">Age of property</span> : <span class="two">4 - 10 Years</span></p>
-                            <p><span class="bath5">Price </span>:<span class="two"> 30-40 Lacs</span></p>
-                            <div class="   right-side">
-                                <a href="contact.html" class="hvr-sweep-to-right more" >Contact Builder</a>
+                            <div class="  col-sm-5 middle-side">
+                                <h4>Project Detail</h4>
+                                <p><span class="bath">Location </span>: <span class="two"><?php echo get_field('location',$project->ID); ?></span></p>
+                                <p><span class="bath1">Area </span>: <span class="two"><?php echo get_field('area',$project->ID); ?> m<sup>2</sup></span></p>
+                                <p><span class="bath2">Floors </span>: <span class="two"><?php echo get_field('floor',$project->ID); ?></span></p>
+                                <p><span class="bath3">Bedrooms </span>: <span class="two"><?php echo get_field('bedroom',$project->ID); ?></span></p>
+                                <p><span class="bath4">Price </span> : <span class="two"><?php echo get_field('price',$project->ID); ?></span></p>
+                                <div class="   right-side">
+                                    <a href="<?php echo get_permalink(get_page_by_title('contact')); ?>" class="hvr-sweep-to-right more">Contact Now</a>
+                                </div>
                             </div>
+                            <div class="clearfix"> </div>
                         </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="box-col">
-                        <div class=" col-sm-7 left-side ">
-                            <a href="single.html"> <img class="img-responsive" src="images/sb2.jpg" alt=""></a>
-                        </div>
-                        <div class="  col-sm-5 middle-side">
-                            <h4>Possession: Immediate</h4>
-                            <p><span class="bath">Bed </span>: <span class="two">2 BHK</span></p>
-                            <p>  <span class="bath1">Baths </span>: <span class="two">2</span></p>
-                            <p><span class="bath2">Built-up Area</span>: <span class="two">100 Sq.Yrds</span></p>
-                            <p><span class="bath3">Plot Area </span>:<span class="two"> 150 Sq.Yrds</span></p>
-                            <p><span class="bath4">Age of property</span> : <span class="two">4 - 10 Years</span></p>
-                            <p><span class="bath5">Price </span>:<span class="two"> 30-40 Lacs</span></p>
-                            <div class="   right-side">
-                                <a href="contact.html" class="hvr-sweep-to-right more" >Contact Builder</a>
-                            </div>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="box-col">
-                        <div class=" col-sm-7 left-side ">
-                            <a href="single.html"> <img class="img-responsive" src="images/sb3.jpg" alt=""></a>
-                        </div>
-                        <div class="  col-sm-5 middle-side">
-                            <h4>Possession: Immediate</h4>
-                            <p><span class="bath">Bed </span>: <span class="two">2 BHK</span></p>
-                            <p>  <span class="bath1">Baths </span>: <span class="two">2</span></p>
-                            <p><span class="bath2">Built-up Area</span>: <span class="two">100 Sq.Yrds</span></p>
-                            <p><span class="bath3">Plot Area </span>:<span class="two"> 150 Sq.Yrds</span></p>
-                            <p><span class="bath4">Age of property</span> : <span class="two">4 - 10 Years</span></p>
-                            <p><span class="bath5">Price </span>:<span class="two"> 30-40 Lacs</span></p>
-                            <div class="   right-side">
-                                <a href="contact.html" class="hvr-sweep-to-right more" >Contact Builder</a>
-                            </div>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="box-col">
-                        <div class=" col-sm-7 left-side ">
-                            <a href="single.html"> <img class="img-responsive" src="images/sb4.jpg" alt=""></a>
-                        </div>
-                        <div class="  col-sm-5 middle-side">
-                            <h4>Possession: Immediate</h4>
-                            <p><span class="bath">Bed </span>: <span class="two">2 BHK</span></p>
-                            <p>  <span class="bath1">Baths </span>: <span class="two">2</span></p>
-                            <p><span class="bath2">Built-up Area</span>: <span class="two">100 Sq.Yrds</span></p>
-                            <p><span class="bath3">Plot Area </span>:<span class="two"> 150 Sq.Yrds</span></p>
-                            <p><span class="bath4">Age of property</span> : <span class="two">4 - 10 Years</span></p>
-                            <p><span class="bath5">Price </span>:<span class="two"> 30-40 Lacs</span></p>
-                            <div class="   right-side">
-                                <a href="contact.html" class="hvr-sweep-to-right more" >Contact Builder</a>
-                            </div>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="box-col">
-                        <div class=" col-sm-7 left-side ">
-                            <a href="single.html"><img class="img-responsive" src="images/sb5.jpg" alt=""></a>
-                        </div>
-                        <div class="  col-sm-5 middle-side">
-                            <h4>Possession: Immediate</h4>
-                            <p><span class="bath">Bed </span>: <span class="two">2 BHK</span></p>
-                            <p>  <span class="bath1">Baths </span>: <span class="two">2</span></p>
-                            <p><span class="bath2">Built-up Area</span>: <span class="two">100 Sq.Yrds</span></p>
-                            <p><span class="bath3">Plot Area </span>:<span class="two"> 150 Sq.Yrds</span></p>
-                            <p><span class="bath4">Age of property</span> : <span class="two">4 - 10 Years</span></p>
-                            <p><span class="bath5">Price </span>:<span class="two"> 30-40 Lacs</span></p>
-                            <div class="   right-side">
-                                <a href="contact.html" class="hvr-sweep-to-right more" >Contact Builder</a>
-                            </div>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="col-md-3 map-single-bottom">
@@ -222,56 +176,26 @@
                 </div>
                 <div class="single-box-right">
                     <h4>Featured Communities</h4>
-                    <div class="single-box-img">
-                        <div class="box-img">
-                            <a href="single.html"><img class="img-responsive" src="images/sl.jpg" alt=""></a>
+                    <?php
+                    $communities = acf_photo_gallery('Community',$post->ID);
+                    ?>
+                    <?php foreach($communities as $community): ?>
+                        <div class="single-box-img ">
+                            <div class="box-img">
+                                <a href="<?php echo $community['url']; ?>" target="_blank"><img class="img-responsive" src="<?php echo $community['full_image_url']; ?>" alt=""></a>
+                            </div>
+                            <div class="box-text">
+                                <p>
+                                    <a href="<?php echo $community['url']; ?>" target="_blank" ><?php echo $community['title']; ?></a>
+                                </p>
+                                <p style="font-weight: normal">
+                                    <?php echo $community['caption']; ?>
+                                </p>
+                                <a href="<?php echo $community['url']; ?>" class="in-box" target="_blank">More Info</a>
+                            </div>
+                            <div class="clearfix"> </div>
                         </div>
-                        <div class="box-text">
-                            <p><a href="single.html">Lorem ipsum dolor sit amet</a></p>
-                            <a href="single.html" class="in-box">More Info</a>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="single-box-img">
-                        <div class="box-img">
-                            <a href="single.html"><img class="img-responsive" src="images/sl1.jpg" alt=""></a>
-                        </div>
-                        <div class="box-text">
-                            <p><a href="single.html">Lorem ipsum dolor sit amet</a></p>
-                            <a href="single.html" class="in-box">More Info</a>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="single-box-img">
-                        <div class="box-img">
-                            <a href="single.html"><img class="img-responsive" src="images/sl2.jpg" alt=""></a>
-                        </div>
-                        <div class="box-text">
-                            <p><a href="single.html">Lorem ipsum dolor sit amet</a></p>
-                            <a href="single.html" class="in-box">More Info</a>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="single-box-img">
-                        <div class="box-img">
-                            <a href="single.html"><img class="img-responsive" src="images/sl3.jpg" alt=""></a>
-                        </div>
-                        <div class="box-text">
-                            <p><a href="single.html">Lorem ipsum dolor sit amet</a></p>
-                            <a href="single.html" class="in-box">More Info</a>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="single-box-img">
-                        <div class="box-img">
-                            <a href="single.html"><img class="img-responsive" src="images/sl4.jpg" alt=""></a>
-                        </div>
-                        <div class="box-text">
-                            <p><a href="single.html">Lorem ipsum dolor sit amet</a></p>
-                            <a href="single.html" class="in-box">More Info</a>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="clearfix"> </div>

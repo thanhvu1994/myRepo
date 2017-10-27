@@ -125,8 +125,8 @@ function acf_photo_gallery_edit($field, $nonce, $attachment, $url = '', $title, 
 			<?php if( $type == 'text' ){ ?>
 			<label><?php echo $label; ?></label><input class="acf-photo-gallery-edit-field" type="<?php echo $type; ?>" name="<?php echo $name; ?>" value="<?php echo $value; ?>"/>
 			<?php } else if( $type == 'checkbox' ){ ?>
-			<label><input class="acf-photo-gallery-edit-field" type="checkbox" name="target" value="<?php echo $value; ?>" <?php if( $target == 'true' ){?> checked<?php } ?>/><?php echo $label; ?></label>
-			<?php } else if( $type == 'textarea' ){ ?>		
+<!--			<label><input class="acf-photo-gallery-edit-field" type="checkbox" name="target" value="<?php /*echo $value; */?>" <?php /*if( $target == 'true' ){*/?> checked<?php /*} */?>/><?php /*echo $label; */?></label>
+-->			<?php } else if( $type == 'textarea' ){ ?>
 			<label><?php echo $label; ?></label><textarea class="acf-photo-gallery-edit-field" name="<?php echo $name; ?>"><?php echo $value; ?></textarea>
 			<?php } ?>
 		<?php } ?>
