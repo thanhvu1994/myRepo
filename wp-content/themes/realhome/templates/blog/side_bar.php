@@ -86,7 +86,9 @@
      		foreach ($menuItem_array as $blog) { ?>
 	     		<div class="blog-list-top">
 					<div class="blog-img">
-						<a href="<?php echo get_permalink($blog)?>"><img class="img-responsive" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($blog->ID)); ?>" alt="<?php echo $blog->post_title?>"></a>
+						<a href="<?php echo get_permalink($blog)?>">
+							<img class="img-responsive" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($blog->ID)); ?>" alt="<?php echo $blog->post_title?>">
+						</a>
 					</div>
 					<div class="blog-text">
 						<p ><a href="<?php echo get_permalink($blog)?>"><?php echo $blog->post_title?></a></p>
