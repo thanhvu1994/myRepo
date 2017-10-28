@@ -49,7 +49,7 @@ get_template_part( 'inc/page_banner');
                 <?php if(array_key_exists(0,$cities)) : ?>
                     <div class="col-md-3 grid-city">
                         <div class="grid-lo">
-                            <a href="<?php echo esc_url( add_query_arg( 'type', 'buy', get_permalink( $cities[0]->ID ))); ?>">
+                            <a href="<?php echo get_permalink( $cities[0]->ID ).'buy'; ?>">
                                 <figure class="effect-layla">
                                     <?php
                                         $image = wp_get_attachment_url( get_post_thumbnail_id($cities[0]->ID));
@@ -67,7 +67,7 @@ get_template_part( 'inc/page_banner');
                 <?php if(array_key_exists(1,$cities)) : ?>
                     <div class="col-md-3 grid-city">
                     <div class="grid-lo">
-                        <a href="<?php echo esc_url( add_query_arg( 'type', 'buy', get_permalink( $cities[1]->ID ))); ?>">
+                        <a href="<?php echo get_permalink( $cities[1]->ID ).'buy'; ?>">
                             <figure class="effect-layla">
                                 <?php
                                 $image = wp_get_attachment_url( get_post_thumbnail_id($cities[1]->ID));
@@ -88,7 +88,7 @@ get_template_part( 'inc/page_banner');
                         <?php if(array_key_exists(2,$cities)) : ?>
                         <div class="col-md-8 grid-lo1">
                             <div class=" grid-lo">
-                                <a href="<?php echo esc_url( add_query_arg( 'type', 'buy', get_permalink( $cities[2]->ID ))); ?>">
+                                <a href="<?php echo get_permalink( $cities[2]->ID ).'buy'; ?>">
                                     <figure class="effect-layla">
                                         <?php
                                         $image = wp_get_attachment_url( get_post_thumbnail_id($cities[2]->ID));
@@ -106,7 +106,7 @@ get_template_part( 'inc/page_banner');
                         <?php if(array_key_exists(3,$cities)) : ?>
                         <div class="col-md-4 grid-lo2">
                             <div class=" grid-lo">
-                                <a href="<?php echo esc_url( add_query_arg( 'type', 'buy', get_permalink( $cities[3]->ID ))); ?>">
+                                <a href="<?php echo get_permalink( $cities[3]->ID ).'buy'; ?>">
                                     <figure class="effect-layla">
                                         <?php
                                         $image = wp_get_attachment_url( get_post_thumbnail_id($cities[3]->ID));
@@ -126,7 +126,7 @@ get_template_part( 'inc/page_banner');
                         <?php if(array_key_exists(4,$cities)) : ?>
                         <div class="col-md-6 grid-lo3">
                             <div class=" grid-lo">
-                                <a href="<?php echo esc_url( add_query_arg( 'type', 'buy', get_permalink( $cities[5]->ID ))); ?>">
+                                <a href="<?php echo get_permalink( $cities[4]->ID ).'buy'; ?>">
                                     <figure class="effect-layla">
                                         <?php
                                         $image = wp_get_attachment_url( get_post_thumbnail_id($cities[4]->ID));
@@ -144,7 +144,7 @@ get_template_part( 'inc/page_banner');
                         <?php if(array_key_exists(5,$cities)) : ?>
                         <div class="col-md-6 grid-lo4">
                             <div class=" grid-lo">
-                                <a href="<?php echo esc_url( add_query_arg( 'type', 'buy', get_permalink( $cities[5]->ID ))); ?>">
+                                <a href="<?php echo get_permalink( $cities[5]->ID ).'buy'; ?>">
                                     <figure class="effect-layla">
                                         <?php
                                         $image = wp_get_attachment_url( get_post_thumbnail_id($cities[5]->ID));

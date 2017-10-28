@@ -550,6 +550,7 @@ function custom_rewrite_tag() {
     add_rewrite_tag('%type%', '([^&]+)');
     add_rewrite_tag('%page%', '([^&]+)');
     add_rewrite_tag('%month%', '([^&]+)');
+    add_rewrite_tag('%city%', '([^&]+)');
 }
 add_action('init', 'custom_rewrite_tag', 10, 0);
 
@@ -559,6 +560,7 @@ function custom_rewrite_rule() {
     add_rewrite_rule('^search/([^/]*)/([^/]*)/([^/]*)/?([0-9]{1,})/?','index.php?s=$matches[1]&post_type=$matches[2]&type=$matches[3]&page=$matches[4]','top');
     add_rewrite_rule('^blog/month/([^/]*)/?','index.php?page_id=9&month=$matches[1]','top');
     add_rewrite_rule('^blog/month/([^/]*)/([^/]*)/?','index.php?page_id=9&month=$matches[1]&page=$matches[2]','top');
+    add_rewrite_rule('^city/([^/]*)/([^/]*)/?','index.php?post_type=city&city=$matches[1]&type=$matches[2]','top');
 }
 add_action('init', 'custom_rewrite_rule', 10, 0);
 

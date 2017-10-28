@@ -142,6 +142,10 @@
 
         <div class="buy-single">
             <?php
+                if(empty($_GET)){
+                    $_GET['type'] = get_query_var('type');
+                }
+
                 switch($_GET['type']){
                     case 'buy':
                         $title = 'Houses for sale';
@@ -175,13 +179,25 @@
                             'posts_per_page' => 6,
                             'orderby' => 'menu_order',
                             'order' => 'ASC',
-                            'meta_key'		=> 'type',
-                            'meta_value'	=> $type,
+                                'meta_query' => array(
+                                    'relation' => 'AND', // Optional, defaults to "AND"
+                                    array(
+                                        'key'     => 'type',
+                                        'value'   => $type,
+                                        'compare' => '='
+                                    ),
+                                    array(
+                                        'key'     => 'city',
+                                        'value'   => $post->post_name,
+                                        'compare' => '='
+                                    )
+                                )
                             );
 
                             $projects = get_posts($args);
                     ?>
                     <?php foreach($projects as $project): ?>
+                        <?php echo get_field('city',$project->ID); ?>
                         <div class="box-col">
                             <div class=" col-sm-7 left-side ">
                                 <a href="<?php echo get_permalink($project->ID); ?>">
