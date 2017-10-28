@@ -61,14 +61,13 @@
 			  <?php endif; ?>
 			</div>
 			<div class="col-md-6 contact-right">
-	            <?php echo get_post_field('form', $post->ID) ?>
+	            <?php echo get_post_field('form_contact', $info[0]->ID) ?>
 			</div>
 			<div class="clearfix"> </div>
 		</div>
 	</div>
 	<div class="map">
-     	<!-- <iframe src="<?php //echo get_field('map', $info->ID) ?>"> </iframe> -->
-     	<iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=university of san francisco&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+     	<?php echo get_field('map', $info[0]->ID) ?>
     </div>
 </div>
 
