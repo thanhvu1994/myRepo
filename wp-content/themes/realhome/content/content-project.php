@@ -98,7 +98,7 @@
         'posts_per_page' => 6,
         'orderby' => 'rand',
         'meta_key'		=> 'type',
-        'meta_value'	=> 'sell',
+        'meta_value'	=> get_field('type',$post->ID),
         'post__not_in' => array($post->ID)
     );
 
@@ -115,7 +115,7 @@
                         <li>
                             <div class="project-fur">
                                 <?php $url = wp_get_attachment_url( get_post_thumbnail_id($project->ID), 'Large' ); ?>
-                                <a href="<?php echo get_permalink($project->ID); ?>" ><img style="width: 310px; height:232px;" class="img-responsive" src="<?php echo $url; ?>" alt="" />	</a>
+                                <a href="<?php echo get_permalink($project->ID); ?>" ><img style="width: 481px; height:232px;" class="img-responsive" src="<?php echo $url; ?>" alt="" />	</a>
                                 <div class="fur">
                                     <div class="fur1">
                                         <span class="fur-money"><?php echo get_field('price',$project->ID); ?></span>
@@ -155,7 +155,6 @@
 
                     });
                 </script>
-                <script type="text/javascript" src="js/jquery.flexisel.js"></script>
             </div>
             <?php endif; ?>
         </div>
