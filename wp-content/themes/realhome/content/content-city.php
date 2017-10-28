@@ -114,18 +114,24 @@
                 switch($_GET['type']){
                     case 'buy':
                         $title = 'Houses for sale';
+                        $type = 'sell';
                         break;
                     case 'rent':
                         $title = 'Houses, Apartments for Rent';
+                        $type = 'rent';
                         break;
                     case 'apartment':
                         $title = 'Apartments for Sale';
+                        $type = 'apartment';
                         break;
                     case 'hotel':
                         $title = 'Hotels for Sale';
+                        $type = 'hotel';
                         break;
                     default:
                         $title = 'Houses for Sale';
+                        $type = 'sell';
+                        break;
                 }
             ?>
             <h3><?php echo $title; ?></h3>
@@ -138,8 +144,7 @@
                             'orderby' => 'menu_order',
                             'order' => 'ASC',
                             'meta_key'		=> 'type',
-                            'meta_value'	=> 'sell',
-                            'post__not_in' => array($post->ID)
+                            'meta_value'	=> $type,
                             );
 
                             $projects = get_posts($args);
