@@ -15,7 +15,7 @@
         12 => 'December',
     ];
     $paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1;
-
+    var_dump($paged);
     global $wp_query;
     $slug_category = $slug_tag = $month = '';
     $home_url = home_url( '/blog' );
@@ -32,11 +32,11 @@
             $home_url = home_url( 'blog/tag/'.$slug_tag.'/?page=' );
         }
     }
-    
-    if (isset($_GET['month'])) {
-        $month = array_search($_GET['month'], $arr_month);
+
+    if (get_query_var( 'month' )) {
+        $month = array_search(ucfirst(get_query_var( 'month' )), $arr_month);
         $slug_category = $slug_tag = '';
-        $home_url = home_url( '/blog' );
+        $home_url = home_url( '/blog/month/'.ucfirst(get_query_var( 'month' )) );
     }
 
     $custom_args = array(
