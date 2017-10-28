@@ -542,3 +542,36 @@ function misha_filter_function(){
 add_action('wp_ajax_myfilter', 'misha_filter_function');
 add_action('wp_ajax_nopriv_myfilter', 'misha_filter_function');
 
+
+
+function custom_rewrite_tag() {
+    add_rewrite_tag('%s%', '([^&]+)');
+    add_rewrite_tag('%post_type%', '([^&]+)');
+    add_rewrite_tag('%type%', '([^&]+)');
+    add_rewrite_tag('%page%', '([^&]+)');
+    add_rewrite_tag('%month%', '([^&]+)');
+}
+add_action('init', 'custom_rewrite_tag', 10, 0);
+
+//search
+function custom_rewrite_rule() {
+    add_rewrite_rule('^search/([^/]*)/([^/]*)/([^/]*)/?','index.php?post_type=$matches[2]&type=$matches[3]&s=$matches[1]','top');
+    add_rewrite_rule('^search/([^/]*)/([^/]*)/([^/]*)/?([0-9]{1,})/?','index.php?s=$matches[1]&post_type=$matches[2]&type=$matches[3]&page=$matches[4]','top');
+    add_rewrite_rule('^blog/month/([^/]*)/?','index.php?page_id=9&month=$matches[1]','top');
+    add_rewrite_rule('^blog/month/([^/]*)/([^/]*)/?','index.php?page_id=9&month=$matches[1]&page=$matches[2]','top');
+}
+add_action('init', 'custom_rewrite_rule', 10, 0);
+
+function change_search_url_rewrite() {
+    if ( is_search() && ! empty( $_GET['s'] ) && ! empty( $_GET['post_type'] )) {
+        $url = home_url( "/search/" ) . urlencode( get_query_var( 's' ) ) .'/';
+        if (!isset($_GET['type']) || empty($_GET['type'])) {
+            $url .= urlencode( get_query_var( 'post_type' ) ) .'/all';
+        } else {
+            $url .= urlencode( get_query_var( 'post_type' ) ) .'/'. urlencode( get_query_var( 'type' ) );
+        }
+        wp_redirect($url);
+        exit();
+    }
+}
+add_action( 'template_redirect', 'change_search_url_rewrite' );

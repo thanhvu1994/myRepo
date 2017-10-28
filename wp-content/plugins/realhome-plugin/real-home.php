@@ -299,7 +299,7 @@ class Realhome_Widget extends WP_Widget {
         <?php
         $args = array(
             'post_type' => 'project',
-            'posts_per_page' => 6,
+            'posts_per_page' => 4,
             'orderby' => 'rand'
         );
 
@@ -307,25 +307,37 @@ class Realhome_Widget extends WP_Widget {
         ?>
 
         <div class="project">
-            <div class="container"  style="width:1400px">
+            <div class="container">
                 <h3><?php echo $instance['title']; ?></h3>
-                <div class="content-bottom-in">
-                    <ul id="project-gallery">
-                        <?php foreach($projects as $project): ?>
-                            <?php
-                            $gallery = acf_photo_gallery('photo_gallery',$project->ID);
-                            $ranImage = array_rand ( $gallery, 1);
-                            ?>
-                            <li>
-                                <div style="margin : 0px 2px 0px 2px;">
-                                    <a href="<?php echo get_permalink($project->ID); ?>" ><img class="img-responsive cover" src="<?php echo $gallery[$ranImage]['full_image_url']; ?>" alt="<?php echo $gallery[$ranImage]['caption']; ?>" /></a>
-                                    <div class="fur2">
-                                        <span><a href="<?php echo get_permalink($project->ID); ?>" ><?php echo $project->post_title; ?></a></span>
-                                    </div>
-                                </div>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
+                <div class="project-top">
+                    <?php foreach($projects as $project): ?>
+                    <?php
+                        $gallery = acf_photo_gallery('photo_gallery',$project->ID);
+                        $ranImage = array_rand ( $gallery, 1);
+                        $image = wp_get_attachment_image_src( get_post_thumbnail_id( $project->ID ), '275x206' );
+                    ?>
+                    <div class="col-md-3 project-grid">
+                        <div class="project-grid-top custom-img">
+                             <a href="<?php echo get_permalink($project->ID); ?>" class="mask">
+                                <img class="img-responsive zoom-img" src="<?php echo isset($image[0]) ? $image[0] : '' ?>" alt="<?php echo $gallery[$ranImage]['caption']; ?>" />
+                            </a>
+                             <div class="col-md1">
+                                 <div class="col-md2">
+                                     <div class="col-md3">
+                                        <span class="star"></span>
+                                     </div>
+                                     <div class="col-md4">
+                                        <strong><?php echo $project->post_title; ?></strong>
+                                     </div>
+                                     <div class="clearfix"> </div>
+                                 </div>
+                                 <p><?php echo get_field('location', $project->ID) ?></p>
+                                 <a href="<?php echo get_permalink($project->ID); ?>" class="hvr-sweep-to-right more">See Details</a>
+                             </div>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                    <div class="clearfix"> </div>
                 </div>
             </div>
         </div>

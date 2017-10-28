@@ -47,7 +47,7 @@
 				);
 				$the_query = new WP_Query( $args );
 				$post_count = $the_query->post_count;
-				echo '<li><a href="'.home_url( '/blog/?month='.$month_name ).'"><i class="glyphicon glyphicon-arrow-right"> </i>'.$month_name.' ('.$post_count.')</a></li>';
+				echo '<li><a href="'.home_url( '/blog/month/'.strtolower($month_name)).'"><i class="glyphicon glyphicon-arrow-right"> </i>'.$month_name.' ('.$post_count.')</a></li>';
 			}
 		} ?>
 		</ul>
