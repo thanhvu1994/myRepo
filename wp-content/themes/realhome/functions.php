@@ -378,3 +378,167 @@ function template_chooser($template)
     return $template;
 }
 add_filter('template_include', 'template_chooser');
+
+function misha_filter_function(){
+    $filter = $_POST;
+
+    switch($filter['type']){
+        case 'buy':
+            $type = 'sell';
+            break;
+        case 'rent':
+            $type = 'rent';
+            break;
+        case 'apartment':
+            $type = 'apartment';
+            break;
+        case 'hotel':
+            $type = 'hotel';
+            break;
+        default:
+            $type = 'sell';
+            break;
+    }
+
+    ?>
+        <div class="col-md-9 single-box">
+            <?php
+            $args = array(
+                'post_type' => 'project',
+                'posts_per_page' => 6,
+                'orderby' => 'menu_order',
+                'order' => 'ASC',
+                'meta_key'	=> 'type',
+                'meta_value'	=> $type,
+            );
+
+            $projects = get_posts($args);
+
+            foreach($projects as $key => $value){
+                //filter by Area
+                $area_range = explode('-', $filter['area']);
+                $projectArea = get_field('area',$value->ID);
+
+                if(count($area_range) < 2){
+                    if( $projectArea < $area_range[0]){
+                        unset($projects[$key]);
+                        continue;
+                    }
+                }else{
+                    if( $projectArea < $area_range[0] || $area_range[1] < $projectArea){
+                        unset($projects[$key]);
+                        continue;
+                    }
+                }
+
+                //filter by Floor
+                $floor_range = explode('-', $filter['floor']);
+                $projectFloor = get_field('floor',$value->ID);
+
+                if(count($floor_range) < 2){
+                    if( $projectFloor < $floor_range[0]){
+                        unset($projects[$key]);
+                        continue;
+                    }
+                }else{
+                    if( $projectFloor < $floor_range[0] || $floor_range[1] < $projectFloor){
+                        unset($projects[$key]);
+                        continue;
+                    }
+                }
+
+                //filter by Bedroom
+                $bedroom_range = explode('-', $filter['bedroom']);
+                $projectBedroom = get_field('bedroom',$value->ID);
+
+                if(count($bedroom_range) < 2){
+                    if( $projectBedroom < $bedroom_range[0]){
+                        unset($projects[$key]);
+                        continue;
+                    }
+                }else{
+                    if( $projectBedroom < $bedroom_range[0] || $bedroom_range[1] < $projectBedroom){
+                        unset($projects[$key]);
+                        continue;
+                    }
+                }
+
+                //filter by Price
+                $price_range = explode('-', $filter['price']);
+                $projectPrice = get_field('price',$value->ID);
+
+                $result = preg_match('![\d+\.\,]+!', $projectPrice, $price);
+
+                if($result == 1){
+                    $toRemove = array('.',',');
+                    $price = str_replace($toRemove, '', $price[0]);
+                }else{
+                    $price = false;
+                }
+
+                if($price){
+                    if(count($price_range) < 2){
+                        if( $price < $price_range[0]){
+                            unset($projects[$key]);
+                            continue;
+                        }
+                    }else{
+                        if( $price < $price_range[0] || $price_range[1] < $price){
+                            unset($projects[$key]);
+                            continue;
+                        }
+                    }
+                }
+            }
+
+            if(empty($projects)){
+                echo '<div class="alert alert-danger">
+                        No Project matches your filter, please try to clear your filter and try again, following is some random projects you may like
+                      </div>';
+
+                $args = array(
+                    'post_type' => 'project',
+                    'posts_per_page' => 6,
+                    'orderby' => 'rand',
+                    'meta_key'	=> 'type',
+                    'meta_value'	=> $type,
+                );
+
+                $projects = get_posts($args);
+            }
+
+            ?>
+            <?php foreach($projects as $project): ?>
+                <div class="box-col">
+                    <div class=" col-sm-7 left-side ">
+                        <a href="<?php echo get_permalink($project->ID); ?>">
+                            <?php
+                            $image = wp_get_attachment_image_src( get_post_thumbnail_id( $project->ID ), '498.755x349.16' );
+                            ?>
+                            <img class="img-responsive" src="<?php echo $image[0]; ?>" alt="">
+                        </a>
+                    </div>
+                    <div class="  col-sm-5 middle-side">
+                        <h4>Project Detail</h4>
+                        <p><span class="bath">Location </span>: <span class="two"><?php echo get_field('location',$project->ID); ?></span></p>
+                        <p><span class="bath1">Area </span>: <span class="two"><?php echo get_field('area',$project->ID); ?> m<sup>2</sup></span></p>
+                        <p><span class="bath2">Floors </span>: <span class="two"><?php echo get_field('floor',$project->ID); ?></span></p>
+                        <p><span class="bath3">Bedrooms </span>: <span class="two"><?php echo get_field('bedroom',$project->ID); ?></span></p>
+                        <p><span class="bath4">Price </span> : <span class="two"><?php echo get_field('price',$project->ID); ?></span></p>
+                        <div class="   right-side">
+                            <a href="<?php echo get_permalink(get_page_by_title('contact')); ?>" class="hvr-sweep-to-right more">Contact Now</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php
+
+    die();
+}
+
+
+add_action('wp_ajax_myfilter', 'misha_filter_function');
+add_action('wp_ajax_nopriv_myfilter', 'misha_filter_function');
+

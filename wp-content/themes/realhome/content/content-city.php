@@ -1,49 +1,59 @@
 <div class="single">
     <div class="container">
-
-        <div class="single-buy">
+        <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter">
+            <div class="single-buy">
             <div class="col-sm-3 check-top-single">
                 <div class="single-bottom">
                     <h4>Area</h4>
                     <ul>
                         <li>
-                            <input type="checkbox"  id="brand" value="0-50">
+                            <input name="area" type="radio"  id="brand" value="0-50">
                             <label for="brand"><span></span> 0 - 50 m<sup>2</sup></label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand1" value="50-100">
-                            <label for="brand1"><span></span> 50 - 100 m<sup>2</sup></label>
+                            <input name="area" type="radio"  id="brand1" value="51-101">
+                            <label for="brand1"><span></span> 51 - 100 m<sup>2</sup></label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand2" value="100-200">
-                            <label for="brand2"><span></span> 100 - 200 m<sup>2</sup></label>
+                            <input name="area" type="radio"  id="brand2" value="101-200">
+                            <label for="brand2"><span></span> 101 - 200 m<sup>2</sup></label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand3" value="200+">
-                            <label for="brand3"><span></span> 200 m<sup>2</sup> <</label>
+                            <input name="area" type="radio"  id="brand3" value="201">
+                            <label for="brand3"><span></span> 201 m<sup>2</sup> <</label>
                         </li>
-
+                        <li>
+                            <button style="background-color: white; color:#27da93; border-color: #27da93;" class="btn btn-success apply">Apply filter</button>
+                            <button onclick="clearFilter()" style="background-color: white; color:#27da93; border-color: #27da93;" class="btn btn-success clear">Clear filter</button>
+                            <input type="hidden" name="action" value="myfilter">
+                            <input type="hidden" name="type" value="<?php echo $_GET['type']; ?>">
+                        </li>
                     </ul>
                 </div>
             </div>
+                <script>
+                    function clearFilter(){
+                        jQuery('input').attr('checked',false);
+                    }
+                </script>
             <div class="col-sm-3 check-top-single">
                 <div class="single-bottom">
                     <h4>Floors</h4>
                     <ul>
                         <li>
-                            <input type="checkbox"  id="brand5" value="1-2">
+                            <input name="floor" type="radio"  id="brand5" value="1-2">
                             <label for="brand5"><span></span> 1 - 2 Floor(s)</label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand6" value="3-4">
+                            <input name="floor" type="radio"  id="brand6" value="3-4">
                             <label for="brand6"><span></span> 3 - 4 Floors</label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand7" value="5-6">
+                            <input name="floor" type="radio"  id="brand7" value="5-6">
                             <label for="brand7"><span></span> 5 - 6 Floors</label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand8" value="7+">
+                            <input name="floor" type="radio"  id="brand8" value="7">
                             <label for="brand8"><span></span> 7+ Floors</label>
                         </li>
 
@@ -55,19 +65,19 @@
                     <h4>Bedrooms</h4>
                     <ul>
                         <li>
-                            <input type="checkbox"  id="brand9" value="1-4">
+                            <input name="bedroom" type="radio"  id="brand9" value="1-4">
                             <label for="brand9"><span></span> 1-4 Bedroom(s) </label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand10" value="5-8">
+                            <input name="bedroom" type="radio"  id="brand10" value="5-8">
                             <label for="brand10"><span></span> 5-8 Bedrooms </label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand11" value="9-13">
+                            <input name="bedroom" type="radio"  id="brand11" value="9-13">
                             <label for="brand11"><span></span> 9-13 Bedrooms</label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand12" value="14+">
+                            <input name="bedroom" type="radio"  id="brand12" value="14">
                             <label for="brand12"><span></span> 14+ Bedrooms</label>
                         </li>
 
@@ -79,31 +89,52 @@
                     <h4>Price</h4>
                     <ul>
                         <li>
-                            <input type="checkbox"  id="brand13" value="0-1000000000">
+                            <input name="price" type="radio"  id="brand13" value="0-1000000000">
                             <label for="brand13"><span></span> Under 1.000.000.000 VND </label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand14" value="1000000000-2000000000">
+                            <input name="price" type="radio"  id="brand14" value="1000000000-2000000000">
                             <label for="brand14"><span></span> 1 - 2.000.000.000 VND</label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand15" value="2000000000-4000000000">
+                            <input name="price" type="radio"  id="brand15" value="2000000000-4000000000">
                             <label for="brand15"><span></span> 2 - 4.000.000.000 VND</label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand16" value="4000000000-8000000000">
+                            <input name="price" type="radio"  id="brand16" value="4000000000-8000000000">
                             <label for="brand16"><span></span> 4 - 8.000.000.000 VND</label>
                         </li>
                         <li>
-                            <input type="checkbox"  id="brand17" value="8000000000+">
+                            <input name="price" type="radio"  id="brand17" value="8000000000">
                             <label for="brand17"><span></span> 8.000.000.000 VND < </label>
                         </li>
-
                     </ul>
                 </div>
             </div>
             <div class="clearfix"> </div>
         </div>
+        </form>
+
+        <script>
+            jQuery(function($){
+                $('#filter').submit(function(){
+                    var filter = $('#filter');
+                    $.ajax({
+                        url:filter.attr('action'),
+                        data:filter.serialize(), // form data
+                        type:filter.attr('method'), // POST
+                        beforeSend:function(xhr){
+                            filter.find('button.apply').text('Processing...'); // changing the button label
+                        },
+                        success:function(data){
+                            filter.find('button.apply').text('Apply filter'); // changing the button label back
+                            $('#response').html(data); // insert data
+                        }
+                    });
+                    return false;
+                });
+            });
+        </script>
     </div>
 
     <!---->
@@ -135,7 +166,8 @@
                 }
             ?>
             <h3><?php echo $title; ?></h3>
-            <div class="box-sin">
+
+            <div id="response" class="box-sin">
                 <div class="col-md-9 single-box">
                     <?php
                             $args = array(
@@ -175,6 +207,7 @@
                     <?php endforeach; ?>
                 </div>
             </div>
+
             <div class="col-md-3 map-single-bottom">
                 <div class="map-single">
                     <iframe src="<?php echo get_field('iframe_map', $post->ID); ?>"></iframe>
@@ -203,6 +236,7 @@
                     <?php endforeach; ?>
                 </div>
             </div>
+
             <div class="clearfix"> </div>
             <div class="nav-page">
                 <nav>
