@@ -39,7 +39,7 @@ get_template_part( 'inc/page_banner');
 
 <div class="container">
     <div class="buy-single">
-        <h3>Residential Flats, Apartments</h3>
+        <h3>All House</h3>
         <div class="box-sin">
             <div class="col-md-9 single-box">
                 <?php if ( $custom_query->have_posts() ) : while ( $custom_query->have_posts() ) : $custom_query->the_post(); ?>

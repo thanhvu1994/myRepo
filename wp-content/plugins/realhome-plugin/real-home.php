@@ -109,52 +109,62 @@ class Realhome_Widget extends WP_Widget {
     function getMostPopular($instance){
         ?>
         <div class="content-grid">
-            <div class="container" style="width: 1400px">
-                <h3><?php echo $instance['title']; ?></h3>
-                <div class="content-bottom-in">
-                    <ul id="mostPopularSlider">
-                        <?php $args = array(
-                            'posts_per_page'   => 6,
-                            'offset'           => 0,
-                            'category'         => '',
-                            'category_name'    => '',
-                            'orderby'          => 'menu_order',
-                            'order'            => 'ASC',
-                            'include'          => '',
-                            'exclude'          => '',
-                            'meta_key'         => '',
-                            'meta_value'       => '',
-                            'post_type'        => 'project',
-                            'post_mime_type'   => '',
-                            'post_parent'      => '',
-                            'author'	   => '',
-                            'author_name'	   => '',
-                            'post_status'      => 'publish',
-                            'suppress_filters' => true
-                        );
-                        $mostPopuItem_array = get_posts( $args ); ?>
+            <div class="banner-bottom">
+                <div class="container">
+                    <div class="banner-bottom-grids">
+                        <h3><?php echo $instance['title']; ?></h3>
+                        <ul id="flexiselDemo1">
+                            <?php $args = array(
+                                'posts_per_page'   => 6,
+                                'offset'           => 0,
+                                'category'         => '',
+                                'category_name'    => '',
+                                'orderby'          => 'menu_order',
+                                'order'            => 'ASC',
+                                'include'          => '',
+                                'exclude'          => '',
+                                'meta_key'         => '',
+                                'meta_value'       => '',
+                                'post_type'        => 'project',
+                                'post_mime_type'   => '',
+                                'post_parent'      => '',
+                                'author'	   => '',
+                                'author_name'	   => '',
+                                'post_status'      => 'publish',
+                                'suppress_filters' => true
+                            );
+                            $mostPopuItem_array = get_posts( $args ); ?>
 
-                        <?php $count = 0; ?>
-                        <?php foreach($mostPopuItem_array as $item) : ?>
-                            <li>
-                                <div class="mostPopu box_2">
-                                    <a href="<?php echo get_permalink($item->ID); ?>" class="mask">
+                            <?php $count = 0; ?>
+                            <?php foreach($mostPopuItem_array as $item) : ?>
+                                <li style="line-height: 33px">
+                                    <div class="banner-bottom-grid">
                                         <?php $url = wp_get_attachment_url( get_post_thumbnail_id($item->ID), 'Large' ); ?>
-
-                                        <img class="img-responsive zoom-img" src="<?php echo $url; ?>">
-                                    </a>
-                                    <div class="most-1">
-                                        <h5><a href="<?php echo get_permalink($item->ID); ?>"><?php echo $item->post_title; ?></a></h5>
-                                        <p>
-                                            <br>
-                                            <?php echo get_field('short_description',$item->ID); ?>
-                                        </p>
+                                        <img src="<?php echo $url; ?>" alt="<?php echo $item->post_title; ?>" class="img-responsive" />
+                                        <div class="banner-bottom-grid-info">
+                                            <div class="col-xs-4 banner-bottom-grid-infol">
+                                                <?php if ((int)$count + 1 < 10): ?>
+                                                    <p>.0<?php echo (int)$count + 1 ?></p>
+                                                <?php else: ?>
+                                                    <p>.<?php echo (int)$count + 1 ?></p>
+                                                <?php endif ?>
+                                            </div>
+                                            <div class="col-xs-8 banner-bottom-grid-infor">
+                                                <h4><?php echo $item->post_title; ?></h4>
+                                            </div>
+                                            <div class="clearfix"> </div>
+                                            <p class="vel"><?php echo get_field('short_description',$item->ID); ?></p>
+                                            <div class="more m1">
+                                                <a href="<?php echo get_permalink($item->ID); ?>">Learn More</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
                             <?php $count++; ?>
-                        <?php endforeach; ?>
-                    </ul>
+                            <?php endforeach; ?>
+                        </ul>
+                        <div class="clearfix"> </div>
+                    </div>
                 </div>
             </div>
         </div>
