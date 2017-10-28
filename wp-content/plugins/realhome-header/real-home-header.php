@@ -80,7 +80,7 @@ class Realhome_Header_Widget extends WP_Widget {
         </div>
 
         <div class="header">
-            <div class="container" style="width:1400px">
+            <div class="container">
                 <!--logo-->
                 <div class="logo">
                     <img class="header-img" src="<?php echo $instance['media_uri'] ?>" />
@@ -101,9 +101,6 @@ class Realhome_Header_Widget extends WP_Widget {
                     </div>
                     <div class="clearfix"> </div>
                     <!---pop-up-box---->
-
-                    <link href="<?php echo THEME_URL; ?>/css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
-                    <script src="<?php echo THEME_URL; ?>/js/jquery.magnific-popup.js" type="text/javascript"></script>
                     <!---//pop-up-box---->
                     <div id="small-dialog" class="mfp-hide">
                         <!----- tabs-box ---->
