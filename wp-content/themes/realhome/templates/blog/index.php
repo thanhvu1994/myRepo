@@ -1,26 +1,32 @@
 <div class="col-md-9 blog-head">
 <?php
-    $arr_month = [
-        1 => 'January',
-        2 => 'February',
-        3 => 'March',
-        4 => 'April',
-        5 => 'May',
-        6 => 'June',
-        7 => 'July',
-        8 => 'August',
-        9 => 'September',
-        10 => 'October',
-        11 => 'November',
-        12 => 'December',
-    ];
+    // $arr_month = [
+    //     1 => 'January',
+    //     2 => 'February',
+    //     3 => 'March',
+    //     4 => 'April',
+    //     5 => 'May',
+    //     6 => 'June',
+    //     7 => 'July',
+    //     8 => 'August',
+    //     9 => 'September',
+    //     10 => 'October',
+    //     11 => 'November',
+    //     12 => 'December',
+    // ];
     $paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1;
-    var_dump($paged);
+    var_dump(get_query_var( 'page' ));
+    echo '<br>';
+    var_dump(get_query_var( 'paged' ));
+    echo '<br>';
+    var_dump(get_query_var( 'category' ));
+    echo '<br>';
+    var_dump($_GET);
     global $wp_query;
     // $slug_category = $slug_tag = $month = '';
     $slug_category = ( get_query_var( 'category' ) ) ? get_query_var( 'category' ) : '';
 
-    $home_url = home_url( '/blog/all/' );
+    $home_url = home_url( '/blog' );
     // if (isset($has_category) && $has_category == true) {
     //     $category = get_the_category($post->ID);
     //     if (isset($category[0])) {
@@ -28,8 +34,8 @@
     //         $home_url = home_url( 'blog/category/'.$slug_category.'/?page=' );
     //     }
     // }
-    if (!empty($slug_category)) {
-        $home_url = home_url( 'blog/').$slug_category;
+    if (!empty($slug_category) && $slug_category != 'all') {
+        $home_url = home_url( 'blog/').$slug_category.'/page';
     }
     // else {
     //     $tag = get_the_tags($post->ID);

@@ -579,31 +579,38 @@ function custom_rewrite_tag() {
     add_rewrite_tag('%post_type%', '([^&]+)');
     add_rewrite_tag('%type%', '([^&]+)');
     add_rewrite_tag('%page%', '([^&]+)');
+    add_rewrite_tag('%city%', '([^&]+)');
+    add_rewrite_tag('%category%', '([^&]+)');
+    add_rewrite_tag('%p%', '([^&]+)');
 }
 add_action('init', 'custom_rewrite_tag', 10, 0);
 
 function custom_rewrite_rule() {
     add_rewrite_rule('^search/([^/]*)/([^/]*)/([^/]*)/([0-9]{1,})/?','index.php?s=$matches[1]&post_type=$matches[2]&type=$matches[3]&page=$matches[4]','top');
-    add_rewrite_rule('^blog/([^/]*)/page/([0-9]{1,})/?','index.php?category=$matches[1]&page=$matches[3]','top');
-}
-add_action('init', 'custom_rewrite_rule', 10, 0);
-
-function custom_rewrite_tag_2() {
-    add_rewrite_tag('%post_type%', '([^&]+)');
-    add_rewrite_tag('%type%', '([^&]+)');
-    add_rewrite_tag('%s%', '([^&]+)');
-    add_rewrite_tag('%city%', '([^&]+)');
-    add_rewrite_tag('%category%', '([^&]+)');
-}
-add_action('init', 'custom_rewrite_tag_2', 10, 0);
-
-function custom_rewrite_rule_2() {
     add_rewrite_rule('^search/([^/]*)/([^/]*)/([^/]*)/?','index.php?s=$matches[1]&post_type=$matches[2]&type=$matches[3]','top');
     add_rewrite_rule('^city/([^/]*)/([^/]*)/?','index.php?post_type=city&city=$matches[1]&type=$matches[2]','top');
     add_rewrite_rule('^blog/([^/]*)/([^/]*)/?','index.php?category=$matches[1]&name=$matches[2]','top');
+    // add_rewrite_rule('^blog/([^/]*)/([0-9]{1,})/?','index.php?page_id=9&category=$matches[1]&page=$matches[2]','top');
     add_rewrite_rule('^blog/([^/]*)/?','index.php?page_id=9&category=$matches[1]','top');
 }
-add_action('init', 'custom_rewrite_rule_2', 10, 0);
+add_action('init', 'custom_rewrite_rule', 10, 0);
+
+// function custom_rewrite_tag_2() {
+//     add_rewrite_tag('%s%', '([^&]+)');
+//     add_rewrite_tag('%post_type%', '([^&]+)');
+//     add_rewrite_tag('%type%', '([^&]+)');
+//     add_rewrite_tag('%city%', '([^&]+)');
+//     add_rewrite_tag('%category%', '([^&]+)');
+// }
+// add_action('init', 'custom_rewrite_tag_2', 10, 0);
+
+// function custom_rewrite_rule_2() {
+//     add_rewrite_rule('^search/([^/]*)/([^/]*)/([^/]*)/?','index.php?s=$matches[1]&post_type=$matches[2]&type=$matches[3]','top');
+//     // add_rewrite_rule('^city/([^/]*)/([^/]*)/?','index.php?post_type=city&city=$matches[1]&type=$matches[2]','top');
+    // add_rewrite_rule('^blog/([^/]*)/([^/]*)/?','index.php?category=$matches[1]&name=$matches[2]','top');
+    // add_rewrite_rule('^blog/([^/]*)/?','index.php?page_id=9&category=$matches[1]','top');
+// }
+// add_action('init', 'custom_rewrite_rule_2', 10, 0);
 
 //blog
 ///////////////////////////
