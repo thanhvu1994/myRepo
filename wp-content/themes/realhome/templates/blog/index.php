@@ -15,7 +15,6 @@
         12 => 'December',
     ];
     $paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1;
-    var_dump($paged);
     global $wp_query;
     $slug_category = $slug_tag = $month = '';
     $home_url = home_url( '/blog' );
@@ -63,18 +62,19 @@
 
     $custom_query = new WP_Query( $custom_args );
     $wp_query = $custom_query;
+    // echo $custom_query->found_posts;
     ?>
 
     <?php if ( $custom_query->have_posts() ) : ?>
         <?php while ( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
             <div class="blog-top">
-                <a href="<?php echo get_permalink()?>"><img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive" alt="<?php echo get_the_title() ?>"/></a>
-                <h4><a href="<?php echo get_permalink()?>"><?php echo get_the_title() ?></a></h4>
+                <a href="<?php echo home_url( '/blog/').get_post_field( 'post_name', get_post())?>"><img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive" alt="<?php echo get_the_title() ?>"/></a>
+                <h4><a href="<?php echo home_url( '/blog/').get_post_field( 'post_name', get_post())?>"><?php echo get_the_title() ?></a></h4>
                 <h5>Date : <?php echo get_the_date('d-m-Y') ?></h5>
                 <?php echo get_field('description') ?>
-                <a class="hvr-sweep-to-right more" href="<?php echo get_permalink()?>">Read More</a>
-            </div> 
-            <hr>
+                <a class="hvr-sweep-to-right more" href="<?php echo home_url( '/blog/').get_post_field( 'post_name', get_post())?>">Read More</a>
+            </div>
+            <div class="links"><hr></div>
         <?php endwhile; ?>
 
         <?php wp_reset_postdata(); ?>
@@ -83,5 +83,16 @@
                 custom_pagination($custom_query->max_num_pages,"", $paged, esc_url( $home_url ) );
             }
         ?>
+        <nav>
+            <ul class="pagination">
+                <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+            </ul>
+        </nav>
     <?php endif; ?>
 </div>
