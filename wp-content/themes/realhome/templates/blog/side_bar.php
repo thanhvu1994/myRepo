@@ -34,6 +34,7 @@
 		<?php endif ?>
 		<div class="clearfix"> </div>
  	</div>
+ 	<?php /*
   	<div class="blog-list">
      	<h4>Archive</h4>
 		<ul >
@@ -51,7 +52,7 @@
 			}
 		} ?>
 		</ul>
- 	</div>
+ 	</div>*/?>
 	<?php 
 	$args = array(
 	            'posts_per_page'   => 3,
@@ -101,6 +102,7 @@
      	<?php }
      	} ?>
  	</div>
+ 	<?php /*
  	<?php $tags = get_tags(); ?>
   	<div class="blog-list2">
      	<h4>Tags</h4>
@@ -111,7 +113,6 @@
      		<?php endforeach ?>
 			</ul>
      	<?php endif ?>
-		
-	</div>
+	</div>*/?>
 </div>
 <div class="clearfix"> </div>

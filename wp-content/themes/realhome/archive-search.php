@@ -12,6 +12,7 @@ get_template_part( 'inc/page_banner');
 
 <?php
     $paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1;
+
     global $wp_query;
     $home_url = home_url( "/search/" ) . urlencode( get_query_var( 's' ) ) .'/'. urlencode( get_query_var( 'post_type' ) );
     if (!isset($_GET['type']) || empty($_GET['type'])) {
