@@ -33,7 +33,7 @@
                 <li class="item1"><a href="#"> Menu<i class="glyphicon glyphicon-menu-down"> </i> </a>
                     <ul class="cute" style="display: none;">
                         <?php foreach($menuItem_array as $item): ?>
-                            <li class="subitem1"><a href="buy.html"><?php echo get_field('title',$item->ID)?></a></li>
+                            <li class="subitem1"><a href="<?php echo(get_field('page',$item)); ?>"><?php echo get_field('title',$item->ID)?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </li>
