@@ -402,16 +402,32 @@ function misha_filter_function(){
             break;
     }
 
+    $city = $filter['city'];
+
+    $paged = $filter['page'];
+
     ?>
         <div class="col-md-9 single-box">
             <?php
             $args = array(
                 'post_type' => 'project',
-                'posts_per_page' => 6,
+                'posts_per_page' => 2,
                 'orderby' => 'menu_order',
                 'order' => 'ASC',
-                'meta_key'	=> 'type',
-                'meta_value'	=> $type,
+                'meta_query' => array(
+                    'relation' => 'AND', // Optional, defaults to "AND"
+                    array(
+                        'key'     => 'type',
+                        'value'   => $type,
+                        'compare' => '='
+                    ),
+                    array(
+                        'key'     => 'city',
+                        'value'   => $city,
+                        'compare' => '='
+                    )
+                ),
+                'paged' => $paged,
             );
 
             $projects = get_posts($args);
@@ -500,10 +516,23 @@ function misha_filter_function(){
 
                 $args = array(
                     'post_type' => 'project',
-                    'posts_per_page' => 6,
-                    'orderby' => 'rand',
-                    'meta_key'	=> 'type',
-                    'meta_value'	=> $type,
+                    'posts_per_page' => 2,
+                    'orderby' => 'menu_order',
+                    'order' => 'ASC',
+                    'meta_query' => array(
+                        'relation' => 'AND', // Optional, defaults to "AND"
+                        array(
+                            'key'     => 'type',
+                            'value'   => $type,
+                            'compare' => '='
+                        ),
+                        array(
+                            'key'     => 'city',
+                            'value'   => $city,
+                            'compare' => '='
+                        )
+                    ),
+                    'paged' => $paged,
                 );
 
                 $projects = get_posts($args);

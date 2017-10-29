@@ -44,6 +44,11 @@ get_template_part( 'inc/page_banner');
 
     <div class="container">
         <div class="top-grid">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?php echo home_url(); ?>">Home</a></li>
+                <li class="breadcrumb-item active"><?php echo $post->post_title; ?></li>
+            </ol>
+
             <h3>Top City</h3>
             <div class="grid-at">
                 <?php if(array_key_exists(0,$cities)) : ?>

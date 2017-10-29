@@ -1,6 +1,5 @@
 <div class="bgimg">
     <div class="topleft">
-        <p>Real home</p>
     </div>
     <div class="middle">
         <h1>COMING SOON</h1>

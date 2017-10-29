@@ -23,6 +23,11 @@ get_template_part( 'inc/page_banner');
 <!--blog-->
 <div class="blog">
 	<div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?php echo home_url(); ?>">Home</a></li>
+            <li class="breadcrumb-item active"><?php echo $post->post_title; ?></li>
+        </ol>
+
 		<h3>Blog</h3>
 	   	<?php get_template_part('templates/blog/index'); ?>
 		
