@@ -1,5 +1,27 @@
+<?php
+$type_page = explode('-', get_query_var('type'));
+
+if(count($type_page) == 1) {
+    $typed = $type_page[0];
+    $paged = 1;
+}else if(count($type_page) == 2) {
+    $typed = $type_page[0];
+    $paged = $type_page[1];
+}else{
+    $typed = 'buy';
+    $paged = 1;
+}
+?>
+
 <div class="single">
     <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?php echo home_url(); ?>">Home</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo get_permalink(get_page_by_title($typed)); ?>"><?php echo ucfirst($typed); ?></a></li>
+            <li class="breadcrumb-item active"><?php echo $post->post_title; ?></li>
+        </ol>
+
+
         <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter">
             <div class="single-buy">
                 <div class="col-sm-3 check-top-single">
@@ -26,7 +48,9 @@
                                 <button style="background-color: white; color:#27da93; border-color: #27da93;" class="btn btn-success apply">Apply filter</button>
                                 <button onclick="clearFilter()" style="background-color: white; color:#27da93; border-color: #27da93;" class="btn btn-success clear">Clear filter</button>
                                 <input type="hidden" name="action" value="myfilter">
-                                <input type="hidden" name="type" value="<?php echo $_GET['type']; ?>">
+                                <input type="hidden" name="type" value="<?php echo $typed; ?>">
+                                <input type="hidden" name="page" value="<?php echo $paged; ?>">
+                                <input type="hidden" name="city" value="<?php echo $post->post_name; ?>">
                             </li>
                         </ul>
                     </div>
@@ -142,19 +166,6 @@
 
         <div class="buy-single">
             <?php
-            $type_page = explode('-', get_query_var('type'));
-
-            if(count($type_page) == 1) {
-                $typed = $type_page[0];
-                $paged = 1;
-            }else if(count($type_page) == 2) {
-                $typed = $type_page[0];
-                $paged = $type_page[1];
-            }else{
-                $typed = 'buy';
-                $paged = 1;
-            }
-
             switch($typed){
                 case 'buy':
                     $title = 'Houses for sale';
@@ -186,7 +197,7 @@
 
                     $args = array(
                         'post_type' => 'project',
-                        'posts_per_page' => 1,
+                        'posts_per_page' => 2,
                         'orderby' => 'menu_order',
                         'order' => 'ASC',
                         'meta_query' => array(

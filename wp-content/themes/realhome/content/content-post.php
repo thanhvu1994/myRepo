@@ -1,5 +1,11 @@
 <div class="blog">
 	<div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?php echo home_url(); ?>">Home</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo get_permalink(get_page_by_title('blog')); ?>">Blog</a></li>
+            <li class="breadcrumb-item active"><?php echo $post->post_title; ?></li>
+        </ol>
+
 	   <div class="col-md-9 blog-head">
 	     	<div class="blog-top">
 		        <img src="<?php echo get_the_post_thumbnail_url()?>" class="img-responsive" alt=""/>

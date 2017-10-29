@@ -1,8 +1,14 @@
 <?php get_template_part( 'inc/page_banner'); ?>
 
 <div class="container">
-
     <div class="buy-single-single">
+        <ol class="breadcrumb">
+
+            <li class="breadcrumb-item"><a href="<?php echo home_url(); ?>">Home</a></li>
+            <?php $city = get_page_by_path( get_field('city') , object, 'city' ); ?>
+            <li class="breadcrumb-item"><a href="<?php echo get_permalink($city); ?>"><?php echo $city->post_title; ?></a></li>
+            <li class="breadcrumb-item active"><?php echo $post->post_title; ?></li>
+        </ol>
 
         <div class="col-md-9 single-box">
 
