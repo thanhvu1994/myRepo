@@ -1627,6 +1627,9 @@ option.rm{
 .single-bottom ul li input[type="checkbox"] {
   	display: none;
 }
+.single-bottom ul li input[type="radio"] {
+	display: none;
+}
 .single-bottom ul li input[type="checkbox"]+label {
   	position: relative;
   	padding-left: 31px;
@@ -1634,6 +1637,14 @@ option.rm{
      font-size: 0.8em;
  	 color: #000;
  	 font-weight:normal;
+}
+.single-bottom ul li input[type="radio"]+label {
+	position: relative;
+	padding-left: 31px;
+	width: 100%;
+	font-size: 0.8em;
+	color: #000;
+	font-weight:normal;
 }
 .single-bottom ul li input[type="checkbox"]+label span:first-child {
   	width: 18px;
@@ -1643,6 +1654,15 @@ option.rm{
   	position: absolute;
   	left: 0;
   	bottom: 0px;
+}
+.single-bottom ul li input[type="radio"]+label span:first-child {
+	width: 18px;
+	height: 18px;
+	display: inline-block;
+	border: 2px solid #D4D4D4;
+	position: absolute;
+	left: 0;
+	bottom: 0px;
 }
 .single-bottom ul li input[type="checkbox"]:checked+label span:first-child:before {
   	content: "";
@@ -1654,6 +1674,16 @@ option.rm{
   	width:16px;
   	height:16px;
   }
+.single-bottom ul li input[type="radio"]:checked+label span:first-child:before {
+	content: "";
+	background:url(../images/11.png)no-repeat;
+	position: absolute;
+	left: 2px;
+	top: 2px;
+	font-size: 10px;
+	width:16px;
+	height:16px;
+}
 /*----*/
 .buy-single h3{
 	font-size: 1.5em;
