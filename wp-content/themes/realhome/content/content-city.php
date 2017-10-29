@@ -142,11 +142,20 @@
 
         <div class="buy-single">
             <?php
-            $type = get_query_var('type');
+            $type_page = explode('-', get_query_var('type'));
 
-            var_dump($type);
+            if(count($type_page) == 1) {
+                $typed = $type_page[0];
+                $paged = 1;
+            }else if(count($type_page) == 2) {
+                $typed = $type_page[0];
+                $paged = $type_page[1];
+            }else{
+                $typed = 'buy';
+                $paged = 1;
+            }
 
-            switch($type){
+            switch($typed){
                 case 'buy':
                     $title = 'Houses for sale';
                     $type = 'sell';
@@ -174,8 +183,6 @@
             <div id="response" class="box-sin">
                 <div class="col-md-9 single-box">
                     <?php
-
-                    $paged = ( get_query_var( 'type' ) ) ? get_query_var( 'type' ) : 1;
 
                     $args = array(
                         'post_type' => 'project',
@@ -264,13 +271,27 @@
             <div class="nav-page">
                 <nav>
                     <ul class="pagination">
-                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                        <li><a href="<?php echo get_permalink(); ?>">2</a></li>
-                        <li><a href="<?php echo get_permalink(); ?>">3</a></li>
-                        <li><a href="<?php echo get_permalink(); ?>">4</a></li>
-                        <li><a href="<?php echo get_permalink(); ?>">5</a></li>
-                        <li><a href="<?php echo get_permalink(); ?>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                        <?php
+                            $arrPages = array($paged-2 ,$paged-1 , (int)$paged, $paged+1, $paged+2);
+                        ?>
+                        <li <?php echo ($paged == 1)? 'class="disabled"' : ''; ?> ><a href="<?php echo get_permalink().$typed.'/'; ?>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+
+                        <?php foreach($arrPages as $page) : ?>
+                            <?php
+                                $class = '';
+                                if($page == $paged){
+                                    echo '<li class="active"><a href="javascript:void(0)">'.$page.'<span class="sr-only">(current)</span></a></li>';
+                                }else if($page > 0 && $page <= $custom_query->max_num_pages){
+                                    if($page == 1){
+                                        echo '<li><a href="'.get_permalink().$typed.'/'.'">'.$page.'</a></li>';
+                                    }else{
+                                        echo '<li><a href="'.get_permalink().$typed.'-'.$page.'/'.'">'.$page.'</a></li>';
+                                    }
+                                }
+                            ?>
+                        <?php endforeach; ?>
+
+                        <li <?php echo ($paged == $custom_query->max_num_pages)? 'class="disabled"' : ''; ?>><a href="<?php echo get_permalink().$typed.'-'.$custom_query->max_num_pages.'/'; ?>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
                     </ul>
                 </nav>
             </div>
