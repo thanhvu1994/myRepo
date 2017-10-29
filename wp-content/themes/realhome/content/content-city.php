@@ -273,6 +273,7 @@
                     <ul class="pagination">
                         <?php
                             $arrPages = array($paged-2 ,$paged-1 , (int)$paged, $paged+1, $paged+2);
+                            $max_page = ($custom_query->max_num_pages >= 1)? $custom_query->max_num_pages : 1;
                         ?>
                         <li <?php echo ($paged == 1)? 'class="disabled"' : ''; ?> ><a href="<?php echo get_permalink().$typed.'/'; ?>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
 
@@ -281,7 +282,7 @@
                                 $class = '';
                                 if($page == $paged){
                                     echo '<li class="active"><a href="javascript:void(0)">'.$page.'<span class="sr-only">(current)</span></a></li>';
-                                }else if($page > 0 && $page <= $custom_query->max_num_pages){
+                                }else if($page > 0 && $page <= $max_page){
                                     if($page == 1){
                                         echo '<li><a href="'.get_permalink().$typed.'/'.'">'.$page.'</a></li>';
                                     }else{
@@ -291,7 +292,7 @@
                             ?>
                         <?php endforeach; ?>
 
-                        <li <?php echo ($paged == $custom_query->max_num_pages)? 'class="disabled"' : ''; ?>><a href="<?php echo get_permalink().$typed.'-'.$custom_query->max_num_pages.'/'; ?>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                        <li <?php echo ($paged == $max_page)? 'class="disabled"' : ''; ?>><a href="<?php echo get_permalink().$typed.'-'.$max_page.'/'; ?>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
                     </ul>
                 </nav>
             </div>
