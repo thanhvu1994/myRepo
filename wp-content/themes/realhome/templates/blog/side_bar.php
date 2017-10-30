@@ -26,14 +26,14 @@
 		<?php if (!empty($categories)): ?>
 			<ul >
 				<?php foreach( $categories as $category ) { 
-					$category_link = sprintf('<a href="%1$s" alt="%2$s"><i class="glyphicon glyphicon-arrow-right"> </i>%3$s</a>', esc_url( get_category_link( $category->term_id ) ), esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ), esc_html( $category->name )
-				    ); ?>
-				<li><?php echo $category_link ?></li>
+					$category_link = home_url( '/blog/' ) . strtolower($category->name);?>
+				<li><a href="<?php echo $category_link?>"><i class="glyphicon glyphicon-arrow-right"> </i><?php echo $category->name ?></a></li>
 				<?php } ?>
 			</ul>
 		<?php endif ?>
 		<div class="clearfix"> </div>
  	</div>
+ 	<?php /*
   	<div class="blog-list">
      	<h4>Archive</h4>
 		<ul >
@@ -47,11 +47,11 @@
 				);
 				$the_query = new WP_Query( $args );
 				$post_count = $the_query->post_count;
-				echo '<li><a href="'.home_url( '/blog/?month='.$month_name ).'"><i class="glyphicon glyphicon-arrow-right"> </i>'.$month_name.' ('.$post_count.')</a></li>';
+				echo '<li><a href="'.home_url( '/blog/month/'.strtolower($month_name)).'"><i class="glyphicon glyphicon-arrow-right"> </i>'.$month_name.' ('.$post_count.')</a></li>';
 			}
 		} ?>
 		</ul>
- 	</div>
+ 	</div>*/?>
 	<?php 
 	$args = array(
 	            'posts_per_page'   => 3,
@@ -86,7 +86,9 @@
      		foreach ($menuItem_array as $blog) { ?>
 	     		<div class="blog-list-top">
 					<div class="blog-img">
-						<a href="<?php echo get_permalink($blog)?>"><img class="img-responsive" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($blog->ID)); ?>" alt="<?php echo $blog->post_title?>"></a>
+						<a href="<?php echo get_permalink($blog)?>">
+							<img class="img-responsive" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($blog->ID)); ?>" alt="<?php echo $blog->post_title?>">
+						</a>
 					</div>
 					<div class="blog-text">
 						<p ><a href="<?php echo get_permalink($blog)?>"><?php echo $blog->post_title?></a></p>
@@ -99,6 +101,7 @@
      	<?php }
      	} ?>
  	</div>
+ 	<?php /*
  	<?php $tags = get_tags(); ?>
   	<div class="blog-list2">
      	<h4>Tags</h4>
@@ -109,7 +112,6 @@
      		<?php endforeach ?>
 			</ul>
      	<?php endif ?>
-		
-	</div>
+	</div>*/?>
 </div>
 <div class="clearfix"> </div>

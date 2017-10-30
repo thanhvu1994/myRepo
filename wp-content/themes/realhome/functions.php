@@ -328,3 +328,317 @@ function custom_pagination($numpages = '', $pagerange = '', $paged='', $base) {
         echo "</ul></nav>";
     }
 }
+
+function acf_load_city_field_choices( $field ) {
+    // reset choices
+    $field['choices'] = array();
+
+    $args = array(
+    'offset'           => 0,
+    'category'         => '',
+    'category_name'    => '',
+    'orderby'          => 'menu_order',
+    'order'            => 'ASC',
+    'include'          => '',
+    'exclude'          => '',
+    'meta_key'         => '',
+    'meta_value'       => '',
+    'post_type'        => 'city',
+    'post_mime_type'   => '',
+    'post_parent'      => '',
+    'author'	   => '',
+    'author_name'	   => '',
+    'post_status'      => 'publish',
+    'suppress_filters' => true
+    );
+    $cities = get_posts( $args );
+
+    if( !empty($cities) ) {
+        foreach( $cities as $city ) {
+            $field['choices'][ $city->post_name ] = $city->post_title;
+        }
+    }
+
+    // return the field
+    return $field;
+
+}
+
+add_filter('acf/load_field/name=city', 'acf_load_city_field_choices');
+
+function template_chooser($template)
+{
+    global $wp_query;
+    $post_type = get_query_var('post_type');
+
+    if( $wp_query->is_search && $post_type == 'project' )
+    {
+        return locate_template('archive-search.php');  //  redirect to archive-search.php
+    }
+    return $template;
+}
+add_filter('template_include', 'template_chooser');
+
+//search
+
+function misha_filter_function(){
+    $filter = $_POST;
+
+    switch($filter['type']){
+        case 'buy':
+            $type = 'sell';
+            break;
+        case 'rent':
+            $type = 'rent';
+            break;
+        case 'apartment':
+            $type = 'apartment';
+            break;
+        case 'hotel':
+            $type = 'hotel';
+            break;
+        default:
+            $type = 'sell';
+            break;
+    }
+
+    $city = $filter['city'];
+
+    $paged = $filter['page'];
+
+    ?>
+        <div class="col-md-9 single-box">
+            <?php
+            $args = array(
+                'post_type' => 'project',
+                'posts_per_page' => 2,
+                'orderby' => 'menu_order',
+                'order' => 'ASC',
+                'meta_query' => array(
+                    'relation' => 'AND', // Optional, defaults to "AND"
+                    array(
+                        'key'     => 'type',
+                        'value'   => $type,
+                        'compare' => '='
+                    ),
+                    array(
+                        'key'     => 'city',
+                        'value'   => $city,
+                        'compare' => '='
+                    )
+                ),
+                'paged' => $paged,
+            );
+
+            $projects = get_posts($args);
+
+            foreach($projects as $key => $value){
+                //filter by Area
+                $area_range = explode('-', $filter['area']);
+                $projectArea = get_field('area',$value->ID);
+
+                if(count($area_range) < 2){
+                    if( $projectArea < $area_range[0]){
+                        unset($projects[$key]);
+                        continue;
+                    }
+                }else{
+                    if( $projectArea < $area_range[0] || $area_range[1] < $projectArea){
+                        unset($projects[$key]);
+                        continue;
+                    }
+                }
+
+                //filter by Floor
+                $floor_range = explode('-', $filter['floor']);
+                $projectFloor = get_field('floor',$value->ID);
+
+                if(count($floor_range) < 2){
+                    if( $projectFloor < $floor_range[0]){
+                        unset($projects[$key]);
+                        continue;
+                    }
+                }else{
+                    if( $projectFloor < $floor_range[0] || $floor_range[1] < $projectFloor){
+                        unset($projects[$key]);
+                        continue;
+                    }
+                }
+
+                //filter by Bedroom
+                $bedroom_range = explode('-', $filter['bedroom']);
+                $projectBedroom = get_field('bedroom',$value->ID);
+
+                if(count($bedroom_range) < 2){
+                    if( $projectBedroom < $bedroom_range[0]){
+                        unset($projects[$key]);
+                        continue;
+                    }
+                }else{
+                    if( $projectBedroom < $bedroom_range[0] || $bedroom_range[1] < $projectBedroom){
+                        unset($projects[$key]);
+                        continue;
+                    }
+                }
+
+                //filter by Price
+                $price_range = explode('-', $filter['price']);
+                $projectPrice = get_field('price',$value->ID);
+
+                $result = preg_match('![\d+\.\,]+!', $projectPrice, $price);
+
+                if($result == 1){
+                    $toRemove = array('.',',');
+                    $price = str_replace($toRemove, '', $price[0]);
+                }else{
+                    $price = false;
+                }
+
+                if($price){
+                    if(count($price_range) < 2){
+                        if( $price < $price_range[0]){
+                            unset($projects[$key]);
+                            continue;
+                        }
+                    }else{
+                        if( $price < $price_range[0] || $price_range[1] < $price){
+                            unset($projects[$key]);
+                            continue;
+                        }
+                    }
+                }
+            }
+
+            if(empty($projects)){
+                echo '<div class="alert alert-danger">
+                        No Project matches your filter, please try to clear your filter and try again, following is some random projects you may like
+                      </div>';
+
+                $args = array(
+                    'post_type' => 'project',
+                    'posts_per_page' => 2,
+                    'orderby' => 'menu_order',
+                    'order' => 'ASC',
+                    'meta_query' => array(
+                        'relation' => 'AND', // Optional, defaults to "AND"
+                        array(
+                            'key'     => 'type',
+                            'value'   => $type,
+                            'compare' => '='
+                        ),
+                        array(
+                            'key'     => 'city',
+                            'value'   => $city,
+                            'compare' => '='
+                        )
+                    ),
+                    'paged' => $paged,
+                );
+
+                $projects = get_posts($args);
+            }
+
+            ?>
+            <?php foreach($projects as $project): ?>
+                <div class="box-col">
+                    <div class=" col-sm-7 left-side ">
+                        <a href="<?php echo get_permalink($project->ID); ?>">
+                            <?php
+                            $image = wp_get_attachment_image_src( get_post_thumbnail_id( $project->ID ), '498.755x349.16' );
+                            ?>
+                            <img class="img-responsive" src="<?php echo $image[0]; ?>" alt="">
+                        </a>
+                    </div>
+                    <div class="  col-sm-5 middle-side">
+                        <h4>Project Detail</h4>
+                        <p><span class="bath">Location </span>: <span class="two"><?php echo get_field('location',$project->ID); ?></span></p>
+                        <p><span class="bath1">Area </span>: <span class="two"><?php echo get_field('area',$project->ID); ?> m<sup>2</sup></span></p>
+                        <p><span class="bath2">Floors </span>: <span class="two"><?php echo get_field('floor',$project->ID); ?></span></p>
+                        <p><span class="bath3">Bedrooms </span>: <span class="two"><?php echo get_field('bedroom',$project->ID); ?></span></p>
+                        <p><span class="bath4">Price </span> : <span class="two"><?php echo get_field('price',$project->ID); ?></span></p>
+                        <div class="   right-side">
+                            <a href="<?php echo get_permalink(get_page_by_title('contact')); ?>" class="hvr-sweep-to-right more">Contact Now</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php
+
+    die();
+}
+
+
+add_action('wp_ajax_myfilter', 'misha_filter_function');
+add_action('wp_ajax_nopriv_myfilter', 'misha_filter_function');
+
+//search
+function custom_rewrite_tag() {
+    add_rewrite_tag('%s%', '([^&]+)');
+    add_rewrite_tag('%post_type%', '([^&]+)');
+    add_rewrite_tag('%type%', '([^&]+)');
+    add_rewrite_tag('%page%', '([^&]+)');
+    add_rewrite_tag('%city%', '([^&]+)');
+    add_rewrite_tag('%category%', '([^&]+)');
+    add_rewrite_tag('%p%', '([^&]+)');
+}
+add_action('init', 'custom_rewrite_tag', 10, 0);
+
+function custom_rewrite_rule() {
+    add_rewrite_rule('^search/([^/]*)/([^/]*)/([^/]*)/([0-9]{1,})/?','index.php?s=$matches[1]&post_type=$matches[2]&type=$matches[3]&page=$matches[4]','top');
+    add_rewrite_rule('^search/([^/]*)/([^/]*)/([^/]*)/?','index.php?s=$matches[1]&post_type=$matches[2]&type=$matches[3]','top');
+    add_rewrite_rule('^city/([^/]*)/([^/]*)/?','index.php?post_type=city&city=$matches[1]&type=$matches[2]','top');
+    add_rewrite_rule('^blog/([^/]*)/([^/]*)/?','index.php?category=$matches[1]&name=$matches[2]','top');
+    // add_rewrite_rule('^blog/([^/]*)/([0-9]{1,})/?','index.php?page_id=9&category=$matches[1]&page=$matches[2]','top');
+    add_rewrite_rule('^blog/([^/]*)/?','index.php?page_id=9&category=$matches[1]','top');
+}
+add_action('init', 'custom_rewrite_rule', 10, 0);
+
+// function custom_rewrite_tag_2() {
+//     add_rewrite_tag('%s%', '([^&]+)');
+//     add_rewrite_tag('%post_type%', '([^&]+)');
+//     add_rewrite_tag('%type%', '([^&]+)');
+//     add_rewrite_tag('%city%', '([^&]+)');
+//     add_rewrite_tag('%category%', '([^&]+)');
+// }
+// add_action('init', 'custom_rewrite_tag_2', 10, 0);
+
+// function custom_rewrite_rule_2() {
+//     add_rewrite_rule('^search/([^/]*)/([^/]*)/([^/]*)/?','index.php?s=$matches[1]&post_type=$matches[2]&type=$matches[3]','top');
+//     // add_rewrite_rule('^city/([^/]*)/([^/]*)/?','index.php?post_type=city&city=$matches[1]&type=$matches[2]','top');
+    // add_rewrite_rule('^blog/([^/]*)/([^/]*)/?','index.php?category=$matches[1]&name=$matches[2]','top');
+    // add_rewrite_rule('^blog/([^/]*)/?','index.php?page_id=9&category=$matches[1]','top');
+// }
+// add_action('init', 'custom_rewrite_rule_2', 10, 0);
+
+//blog
+///////////////////////////
+// function custom_rewrite_tag_3() {
+//     add_rewrite_tag('%month%', '([^&]+)');
+// }
+// add_action('init', 'custom_rewrite_tag_3', 10, 0);
+
+// function custom_rewrite_rule_3() {
+//     add_rewrite_rule('^blog/month/([^/]*)/?','index.php?page_id=9&month=$matches[1]','top');
+// }
+// add_action('init', 'custom_rewrite_rule_3', 10, 0);
+
+// function custom_rewrite_rule_4() {
+//     add_rewrite_rule('^blog/([^/]*)/?','index.php?name=$matches[1]','top');
+// }
+// add_action('init', 'custom_rewrite_rule_4', 10, 0);
+
+function change_search_url_rewrite() {
+    if ( is_search() && ! empty( $_GET['s'] ) && ! empty( $_GET['post_type'] )) {
+        $url = home_url( "/search/" ) . urlencode( get_query_var( 's' ) ) .'/';
+        if (!isset($_GET['type']) || empty($_GET['type'])) {
+            $url .= urlencode( get_query_var( 'post_type' ) ) .'/all';
+        } else {
+            $url .= urlencode( get_query_var( 'post_type' ) ) .'/'. urlencode( get_query_var( 'type' ) );
+        }
+        wp_redirect($url);
+        exit();
+    }
+}
+add_action( 'template_redirect', 'change_search_url_rewrite' );

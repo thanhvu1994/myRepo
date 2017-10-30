@@ -109,52 +109,62 @@ class Realhome_Widget extends WP_Widget {
     function getMostPopular($instance){
         ?>
         <div class="content-grid">
-            <div class="container" style="width: 1400px">
-                <h3><?php echo $instance['title']; ?></h3>
-                <div class="content-bottom-in">
-                    <ul id="mostPopularSlider">
-                        <?php $args = array(
-                            'posts_per_page'   => 6,
-                            'offset'           => 0,
-                            'category'         => '',
-                            'category_name'    => '',
-                            'orderby'          => 'menu_order',
-                            'order'            => 'ASC',
-                            'include'          => '',
-                            'exclude'          => '',
-                            'meta_key'         => '',
-                            'meta_value'       => '',
-                            'post_type'        => 'project',
-                            'post_mime_type'   => '',
-                            'post_parent'      => '',
-                            'author'	   => '',
-                            'author_name'	   => '',
-                            'post_status'      => 'publish',
-                            'suppress_filters' => true
-                        );
-                        $mostPopuItem_array = get_posts( $args ); ?>
+            <div class="banner-bottom">
+                <div class="container">
+                    <div class="banner-bottom-grids">
+                        <h3><?php echo $instance['title']; ?></h3>
+                        <ul id="flexiselDemo1">
+                            <?php $args = array(
+                                'posts_per_page'   => 6,
+                                'offset'           => 0,
+                                'category'         => '',
+                                'category_name'    => '',
+                                'orderby'          => 'menu_order',
+                                'order'            => 'ASC',
+                                'include'          => '',
+                                'exclude'          => '',
+                                'meta_key'         => '',
+                                'meta_value'       => '',
+                                'post_type'        => 'project',
+                                'post_mime_type'   => '',
+                                'post_parent'      => '',
+                                'author'	   => '',
+                                'author_name'	   => '',
+                                'post_status'      => 'publish',
+                                'suppress_filters' => true
+                            );
+                            $mostPopuItem_array = get_posts( $args ); ?>
 
-                        <?php $count = 0; ?>
-                        <?php foreach($mostPopuItem_array as $item) : ?>
-                            <li>
-                                <div class="mostPopu box_2">
-                                    <a href="<?php echo get_permalink($item->ID); ?>" class="mask">
+                            <?php $count = 0; ?>
+                            <?php foreach($mostPopuItem_array as $item) : ?>
+                                <li style="line-height: 33px">
+                                    <div class="banner-bottom-grid">
                                         <?php $url = wp_get_attachment_url( get_post_thumbnail_id($item->ID), 'Large' ); ?>
-
-                                        <img class="img-responsive zoom-img" src="<?php echo $url; ?>">
-                                    </a>
-                                    <div class="most-1">
-                                        <h5><a href="<?php echo get_permalink($item->ID); ?>"><?php echo $item->post_title; ?></a></h5>
-                                        <p>
-                                            <br>
-                                            <?php echo get_field('short_description',$item->ID); ?>
-                                        </p>
+                                        <img src="<?php echo $url; ?>" alt="<?php echo $item->post_title; ?>" class="img-responsive" />
+                                        <div class="banner-bottom-grid-info">
+                                            <div class="col-xs-4 banner-bottom-grid-infol">
+                                                <?php if ((int)$count + 1 < 10): ?>
+                                                    <p>.0<?php echo (int)$count + 1 ?></p>
+                                                <?php else: ?>
+                                                    <p>.<?php echo (int)$count + 1 ?></p>
+                                                <?php endif ?>
+                                            </div>
+                                            <div class="col-xs-8 banner-bottom-grid-infor">
+                                                <h4><?php echo $item->post_title; ?></h4>
+                                            </div>
+                                            <div class="clearfix"> </div>
+                                            <p class="vel"><?php echo get_field('short_description',$item->ID); ?></p>
+                                            <div class="more m1">
+                                                <a href="<?php echo get_permalink($item->ID); ?>">Learn More</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
                             <?php $count++; ?>
-                        <?php endforeach; ?>
-                    </ul>
+                            <?php endforeach; ?>
+                        </ul>
+                        <div class="clearfix"> </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -289,7 +299,7 @@ class Realhome_Widget extends WP_Widget {
         <?php
         $args = array(
             'post_type' => 'project',
-            'posts_per_page' => 6,
+            'posts_per_page' => 4,
             'orderby' => 'rand'
         );
 
@@ -297,25 +307,37 @@ class Realhome_Widget extends WP_Widget {
         ?>
 
         <div class="project">
-            <div class="container"  style="width:1400px">
+            <div class="container">
                 <h3><?php echo $instance['title']; ?></h3>
-                <div class="content-bottom-in">
-                    <ul id="project-gallery">
-                        <?php foreach($projects as $project): ?>
-                            <?php
-                            $gallery = acf_photo_gallery('photo_gallery',$project->ID);
-                            $ranImage = array_rand ( $gallery, 1);
-                            ?>
-                            <li>
-                                <div style="margin : 0px 2px 0px 2px;">
-                                    <a href="<?php echo get_permalink($project->ID); ?>" ><img class="img-responsive cover" src="<?php echo $gallery[$ranImage]['full_image_url']; ?>" alt="<?php echo $gallery[$ranImage]['caption']; ?>" /></a>
-                                    <div class="fur2">
-                                        <span><a href="<?php echo get_permalink($project->ID); ?>" ><?php echo $project->post_title; ?></a></span>
-                                    </div>
-                                </div>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
+                <div class="project-top">
+                    <?php foreach($projects as $project): ?>
+                    <?php
+                        $gallery = acf_photo_gallery('photo_gallery',$project->ID);
+                        $ranImage = array_rand ( $gallery, 1);
+                        $image = wp_get_attachment_image_src( get_post_thumbnail_id( $project->ID ), '275x206' );
+                    ?>
+                    <div class="col-md-3 project-grid">
+                        <div class="project-grid-top custom-img">
+                             <a href="<?php echo get_permalink($project->ID); ?>" class="mask">
+                                <img class="img-responsive zoom-img" src="<?php echo isset($image[0]) ? $image[0] : '' ?>" alt="<?php echo $gallery[$ranImage]['caption']; ?>" />
+                            </a>
+                             <div class="col-md1">
+                                 <div class="col-md2">
+                                     <div class="col-md3">
+                                        <span class="star"></span>
+                                     </div>
+                                     <div class="col-md4">
+                                        <strong><?php echo $project->post_title; ?></strong>
+                                     </div>
+                                     <div class="clearfix"> </div>
+                                 </div>
+                                 <p><?php echo get_field('location', $project->ID) ?></p>
+                                 <a href="<?php echo get_permalink($project->ID); ?>" class="hvr-sweep-to-right more">See Details</a>
+                             </div>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                    <div class="clearfix"> </div>
                 </div>
             </div>
         </div>
@@ -403,20 +425,23 @@ class Realhome_Widget extends WP_Widget {
             'suppress_filters' => true
         );
 
-        $partnerItem_array = get_posts( $args ); ?>
+        $partnerItem_array = get_posts( $args );
+
+        $countPartner = count($partnerItem_array);
+        ?>
 
         <div class="content-bottom1">
             <h3><?php echo $instance['title']; ?></h3>
             <div class="container">
                 <ul>
-                    <?php for($i = 0; $i < 5 ; $i++): ?>
-                        <li><a href="#"><img class="img-responsive" src="<?php echo get_the_post_thumbnail_url($partnerItem_array[$i]); ?>" alt=""></a></li>
+                    <?php for($i = 0; $i < (($countPartner > 5) ? 5 : $countPartner) ; $i++): ?>
+                        <li><a <?php echo (!empty(get_field('url',$partnerItem_array[$i])))? 'href="'.get_field('url',$partnerItem_array[$i]).'"' : ''; ?> ><img class="img-responsive" src="<?php echo get_the_post_thumbnail_url($partnerItem_array[$i]); ?>" alt=""></a></li>
                     <?php endfor; ?>
                     <div class="clearfix"> </div>
                 </ul>
                 <ul>
-                    <?php for($i = 5; $i < 10 ; $i++): ?>
-                        <li><a href="#"><img class="img-responsive" src="<?php echo get_the_post_thumbnail_url($partnerItem_array[$i]); ?>" alt=""></a></li>
+                    <?php for($i = 5; $i < $countPartner ; $i++): ?>
+                        <li><a <?php echo (!empty(get_field('url',$partnerItem_array[$i])))? 'href="'.get_field('url',$partnerItem_array[$i]).'"' : ''; ?> ><img class="img-responsive" src="<?php echo get_the_post_thumbnail_url($partnerItem_array[$i]); ?>" alt=""></a></li>
                     <?php endfor; ?>
                     <div class="clearfix"> </div>
                 </ul>

@@ -80,7 +80,7 @@ class Realhome_Header_Widget extends WP_Widget {
         </div>
 
         <div class="header">
-            <div class="container" style="width:1400px">
+            <div class="container">
                 <!--logo-->
                 <div class="logo">
                     <img class="header-img" src="<?php echo $instance['media_uri'] ?>" />
@@ -101,9 +101,6 @@ class Realhome_Header_Widget extends WP_Widget {
                     </div>
                     <div class="clearfix"> </div>
                     <!---pop-up-box---->
-
-                    <link href="<?php echo THEME_URL; ?>/css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
-                    <script src="<?php echo THEME_URL; ?>/js/jquery.magnific-popup.js" type="text/javascript"></script>
                     <!---//pop-up-box---->
                     <div id="small-dialog" class="mfp-hide">
                         <!----- tabs-box ---->
@@ -119,29 +116,41 @@ class Realhome_Header_Widget extends WP_Widget {
                                     <h2 class="resp-accordion resp-tab-active" role="tab" aria-controls="tab_item-0"><span class="resp-arrow"></span>All Homes</h2><div class="tab-1 resp-tab-content resp-tab-content-active" aria-labelledby="tab_item-0" style="display:block">
                                         <div class="facts">
                                             <div class="login">
-                                                <input type="text" value="Search Address, Neighborhood, City or Zip" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">
-                                                <input type="submit" value="">
+                                                <form role="search" action="<?php echo site_url('/'); ?>" method="get">
+                                                    <input type="text" name="s" value="Search Address, Neighborhood, City or Zip" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">
+                                                    <input type="hidden" name="post_type" value="project" />
+                                                    <input type="submit" alt="Search" value="" />
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                     <h2 class="resp-accordion" role="tab" aria-controls="tab_item-1"><span class="resp-arrow"></span>For Sale</h2><div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
                                         <div class="facts">
                                             <div class="login">
-                                                <input type="text" value="Search Address, Neighborhood, City or Zip" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">
-                                                <input type="submit" value="">
+                                                <form role="search" action="<?php echo site_url('/'); ?>" method="get">
+                                                    <input type="text" name="s" value="Search Address, Neighborhood, City or Zip" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">
+                                                    <input type="hidden" name="post_type" value="project" />
+                                                    <input type="hidden" name="type" value="sell" />
+                                                    <input type="submit" alt="Search" value="" />
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                     <h2 class="resp-accordion" role="tab" aria-controls="tab_item-2"><span class="resp-arrow"></span>For Rent</h2><div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
                                         <div class="facts">
                                             <div class="login">
-                                                <input type="text" value="Search Address, Neighborhood, City or Zip" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">
-                                                <input type="submit" value="">
+                                                <form role="search" action="<?php echo site_url('/'); ?>" method="get">
+                                                    <input type="text" name="s" value="Search Address, Neighborhood, City or Zip" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">
+                                                    <input type="hidden" name="post_type" value="project" />
+                                                    <input type="hidden" name="type" value="rent" />
+                                                    <input type="submit" alt="Search" value="" />
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div>
                             <script src="<?php echo THEME_URL; ?>/js/easyResponsiveTabs.js" type="text/javascript"></script>
                             <script type="text/javascript">
                                 $(document).ready(function () {
@@ -176,6 +185,7 @@ class Realhome_Header_Widget extends WP_Widget {
                 <div class="clearfix"> </div>
             </div>
         </div>
+    </div>
 
         <?php
         echo $after_widget;

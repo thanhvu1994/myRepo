@@ -30,7 +30,7 @@
 
                 <?php foreach($menuItem_array as $menuItem) :?>
                     <div class=" bottom-head" style="width: <?php echo WIDTH_PERCENT_HEADER_BOTTOM_MENU_ITEM; ?>%;">
-                        <a href="buy.html">
+                        <a href="<?php echo get_permalink($menuItem); ?>">
                             <div class="buy-media">
                                 <i class="<?php echo get_field('icon',$menuItem->ID); ?>"></i>
                                 <h6><?php echo get_field('title',$menuItem->ID); ?></h6>

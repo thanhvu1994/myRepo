@@ -342,7 +342,7 @@ h2.resp-accordion:hover{
   	width: 93%;
   	border: none;
   	font-size: 1.1em;
-  	color: #DADADA;
+  	color: #585858;
 }
 .login input[type="submit"] {
 	width: 32px;
@@ -1243,6 +1243,7 @@ select.in-drop {
   padding: 2em 0 0;
 }
 .top-grid {
+	margin-top: 20px;
   padding: 0 0 5em;
 }
 /*---------------*/
@@ -1626,6 +1627,9 @@ option.rm{
 .single-bottom ul li input[type="checkbox"] {
   	display: none;
 }
+.single-bottom ul li input[type="radio"] {
+	display: none;
+}
 .single-bottom ul li input[type="checkbox"]+label {
   	position: relative;
   	padding-left: 31px;
@@ -1633,6 +1637,14 @@ option.rm{
      font-size: 0.8em;
  	 color: #000;
  	 font-weight:normal;
+}
+.single-bottom ul li input[type="radio"]+label {
+	position: relative;
+	padding-left: 31px;
+	width: 100%;
+	font-size: 0.8em;
+	color: #000;
+	font-weight:normal;
 }
 .single-bottom ul li input[type="checkbox"]+label span:first-child {
   	width: 18px;
@@ -1642,6 +1654,15 @@ option.rm{
   	position: absolute;
   	left: 0;
   	bottom: 0px;
+}
+.single-bottom ul li input[type="radio"]+label span:first-child {
+	width: 18px;
+	height: 18px;
+	display: inline-block;
+	border: 2px solid #D4D4D4;
+	position: absolute;
+	left: 0;
+	bottom: 0px;
 }
 .single-bottom ul li input[type="checkbox"]:checked+label span:first-child:before {
   	content: "";
@@ -1653,6 +1674,16 @@ option.rm{
   	width:16px;
   	height:16px;
   }
+.single-bottom ul li input[type="radio"]:checked+label span:first-child:before {
+	content: "";
+	background:url(../images/11.png)no-repeat;
+	position: absolute;
+	left: 2px;
+	top: 2px;
+	font-size: 10px;
+	width:16px;
+	height:16px;
+}
 /*----*/
 .buy-single h3{
 	font-size: 1.5em;
@@ -5058,6 +5089,7 @@ ul#mostPopularSlider li {
 
 .footer-distributed .footer-left{
 	width: 25%;
+	margin-left: 15%;
 }
 
 /* The company logo */
@@ -5097,7 +5129,7 @@ ul#mostPopularSlider li {
 /* Footer Center */
 
 .footer-distributed .footer-center{
-	width: 35%;
+	width: 25%;
 }
 
 .footer-distributed .footer-center i{
@@ -5141,7 +5173,7 @@ ul#mostPopularSlider li {
 /* Footer Right */
 
 .footer-distributed .footer-right{
-	width: 35%;
+	width: 20%;
 }
 
 .footer-distributed .footer-company-about{
@@ -5322,3 +5354,73 @@ hr {
 .flex-control-thumbs li:nth-child(4n + 0){
 	margin : 0.5% 0 0 0 !important;
 }
+
+.premium h5 a{
+	text-decoration: none;
+	color: white;
+}
+
+	/*-- banner-bottom --*/
+.banner-bottom,{
+	padding:5em 0;
+}
+.banner-bottom-grid-infol{
+	padding:1em 0em;
+	background:#363636;
+}
+.banner-bottom-grid-infol p{
+	font-size:2em;
+	color:#fff;
+	margin:0;
+	text-align:center;
+}
+.banner-bottom-grid-infor h4{
+	font-family: 'Montserrat', sans-serif;
+	font-size:1.2em;
+	color:#373737;
+	text-transform:capitalize;
+	margin: .6em 0 0;
+    line-height: 1.3em;
+}
+.banner-bottom-grid {
+	padding: 10px;
+}
+.banner-bottom-grid-info {
+	background-color: #fff;
+}
+p.vel{
+	color:#999;
+	margin:1em 0 2em;
+	line-height:1.8em;
+	font-size:14px;
+	text-align: center;
+}
+.m1 a:hover{
+	color:#fff;
+	background:#373737;
+}
+.m1 {
+	height: 50px;
+}
+.more a {
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 30px;
+    background: #27da93;
+    transition: .5s all;
+    -webkit-transition: .5s all;
+    -moz-transition: .5s all;
+    -o-transition: .5s all;
+    -ms-transition: .5s all;
+    font-family: 'Audiowide', cursive;
+}
+
+#fof{display:block; width:100%; padding:150px 0; line-height:1.6em; text-align:center;}
+#fof .hgroup{display:block; width:60%; margin:0 auto; padding:0;}
+#fof .hgroup h1, #fof .hgroup h2{margin:0 0 0 40px; padding:0; float:left; text-transform:uppercase;}
+#fof .hgroup h1{margin-top:-90px; font-size:200px;}
+#fof .hgroup h2{font-size:60px;}
+#fof .hgroup h2 span{display:block; font-size:30px;}
+#fof p{margin:25px 0 0 0; padding:0; font-size:16px;}
+#fof p:first-child{margin-top:0;}

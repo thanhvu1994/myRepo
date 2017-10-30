@@ -24,6 +24,10 @@ get_template_part( 'inc/page_banner');
 <div class="about">	
 	<div class="about-head">
 		<div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?php echo home_url(); ?>">Home</a></li>
+                <li class="breadcrumb-item active"><?php echo $post->post_title; ?></li>
+            </ol>
 			<h3><?php echo get_the_title($post) ?></h3>
 			<div class="about-in">
 				<a href="javascript:void(0)"><img src="<?php echo the_post_thumbnail_url(); ?>" alt="image" class="img-responsive "></a>
