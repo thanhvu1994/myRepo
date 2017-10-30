@@ -2,7 +2,7 @@
 	<div class="container">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?php echo home_url(); ?>">Home</a></li>
-            <li class="breadcrumb-item"><a href="<?php echo get_permalink(get_page_by_title('blog')); ?>">Blog</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo get_permalink(get_page_by_title('blog')).'all'; ?>">Blog</a></li>
             <li class="breadcrumb-item active"><?php echo $post->post_title; ?></li>
         </ol>
 

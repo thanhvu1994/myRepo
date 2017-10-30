@@ -79,12 +79,16 @@ get_template_part( 'inc/page_banner');
                         }
                     ?>
                 </div>
+            <?php else: ?>
+                <div class="alert alert-danger" style="text-align: center">
+                    No Project matches your filter
+                </div>
             <?php endif; ?>
             </div>
         </div>
         <div class="col-md-3 map-single-bottom">
             <div class="map-single">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37494223.23909492!2d103!3d55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x453c569a896724fb%3A0x1409fdf86611f613!2sRussia!5e0!3m2!1sen!2sin!4v1415776049771"></iframe>
+                <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=viet nam&t=&z=5&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
             </div>
         </div>
         <div class="clearfix"> </div>
