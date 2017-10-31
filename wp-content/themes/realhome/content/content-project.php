@@ -10,6 +10,21 @@
             <li class="breadcrumb-item active"><?php echo $post->post_title; ?></li>
         </ol>
 
+        <!-- Trigger/Open the Modal -->
+        <button onclick="document.getElementById('id01').style.display='block'"
+                class="w3-button">Open Modal</button>
+
+        <a href="#openModal">Open Modal</a>
+
+        <div id="openModal" class="modalDialog">
+            <div>
+                <a href="#close" title="Close" class="close">X</a>
+                <h2>Modal Box</h2>
+                <p>This is a sample modal box that can be created using the powers of CSS3.</p>
+                <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
+            </div>
+        </div>
+
         <div class="col-md-9 single-box">
 
             <div class=" buying-top">
