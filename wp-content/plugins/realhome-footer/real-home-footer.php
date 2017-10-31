@@ -189,7 +189,7 @@ class Realhome_Footer_Widget extends WP_Widget {
 
                 <p class="footer-company-about">
                     <span><?php echo (strpos($instance['iframe'], 'facebook'))? 'Like us on facebook' : 'Our Location'; ?></span>
-                    <iframe src="<?php echo $instance['iframe']; ?>" style="width: 400px; height: 300px"></iframe>
+                    <iframe src="<?php echo $instance['iframe']; ?>" style="width: 100%; height: 300px"></iframe>
                 </p>
 
             </div>

@@ -21,7 +21,7 @@
                     <ul class="slides">
                         <?php foreach($gallery as $item): ?>
                             <li data-thumb="<?php echo $item['full_image_url']; ?>">
-                                <img style="width: 895px; height: 394.33px;" src="<?php echo $item['full_image_url']; ?>" title="<?php echo $item['caption']; ?>"/>
+                                <img class="img-project-detail" src="<?php echo $item['full_image_url']; ?>" title="<?php echo $item['caption']; ?>"/>
                             </li>
                         <?php endforeach; ?>
                     </ul>

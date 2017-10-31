@@ -4,6 +4,7 @@
 
 <head>
     <title><?php echo get_bloginfo( 'sitename' ) . ' - ' . get_bloginfo( 'description' ); ?></title>
+    <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favico.png" />
     <link href="<?php echo THEME_URL; ?>/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="<?php echo THEME_URL; ?>/css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
