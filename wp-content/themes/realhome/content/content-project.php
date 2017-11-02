@@ -10,21 +10,6 @@
             <li class="breadcrumb-item active"><?php echo $post->post_title; ?></li>
         </ol>
 
-        <!-- Trigger/Open the Modal -->
-        <button onclick="document.getElementById('id01').style.display='block'"
-                class="w3-button">Open Modal</button>
-
-        <a href="#openModal">Open Modal</a>
-
-        <div id="openModal" class="modalDialog">
-            <div>
-                <a href="#close" title="Close" class="close">X</a>
-                <h2>Modal Box</h2>
-                <p>This is a sample modal box that can be created using the powers of CSS3.</p>
-                <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
-            </div>
-        </div>
-
         <div class="col-md-9 single-box">
 
             <div class=" buying-top">
@@ -45,7 +30,7 @@
             <div class="buy-sin-single">
                 <div class="col-sm-5 middle-side immediate">
                     <h4>Project Detail</h4>
-                    <p><span class="bath">Location </span>: <span class="two"><?php echo get_field('location',$post->ID); ?></span></p>
+                    <p><span class="bath">Address </span>: <span class="two"><?php echo get_field('location',$post->ID); ?></span></p>
                     <p><span class="bath1">Area </span>: <span class="two"><?php echo get_field('area',$post->ID); ?> m<sup>2</sup></span></p>
                     <p><span class="bath2">Floors </span>: <span class="two"><?php echo get_field('floor',$post->ID); ?></span></p>
                     <p><span class="bath3">Bedrooms </span>: <span class="two"><?php echo get_field('bedroom',$post->ID); ?></span></p>
@@ -92,18 +77,28 @@
                 <?php foreach($communities as $community): ?>
                     <div class="single-box-img ">
                         <div class="box-img">
-                            <a href="<?php echo $community['url']; ?>" target="_blank"><img class="img-responsive" src="<?php echo $community['full_image_url']; ?>" alt=""></a>
+                            <a href="#openModal_<?php echo $community['id']; ?>"><img class="img-responsive" src="<?php echo $community['full_image_url']; ?>" alt=""></a>
                         </div>
                         <div class="box-text">
                             <p>
-                                <a href="<?php echo $community['url']; ?>" target="_blank" ><?php echo $community['title']; ?></a>
+                                <a href="#openModal_<?php echo $community['id']; ?>" ><?php echo $community['title']; ?></a>
                             </p>
                             <p style="font-weight: normal">
-                                <?php echo $community['caption']; ?>
+                                <?php echo (strlen ($community['caption']) > 40)? substr($community['caption'],0,40).'...' : $community['caption']; ?>
                             </p>
-                            <a href="<?php echo $community['url']; ?>" class="in-box" target="_blank">More Info</a>
+                            <a href="#openModal_<?php echo $community['id']; ?>" class="in-box">More Info</a>
                         </div>
                         <div class="clearfix"> </div>
+                    </div>
+
+                    <div id="openModal_<?php echo $community['id']; ?>" class="modalDialog">
+                        <div>
+                            <a href="#close" title="Close" class="close">X</a>
+                            <h2><?php echo $community['title']; ?></h2>
+                            <div class="community-image" style="background: url(<?php echo $community['full_image_url']; ?>);">
+                            </div>
+                            <p><?php echo $community['caption']; ?></p>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>

@@ -261,18 +261,28 @@ if(count($type_page) == 1) {
                     <?php foreach($communities as $community): ?>
                         <div class="single-box-img ">
                             <div class="box-img">
-                                <a href="<?php echo $community['url']; ?>" target="_blank"><img class="img-responsive" src="<?php echo $community['full_image_url']; ?>" alt=""></a>
+                                <a href="#openModal_<?php echo $community['id']; ?>"><img class="img-responsive" src="<?php echo $community['full_image_url']; ?>" alt=""></a>
                             </div>
                             <div class="box-text">
                                 <p>
-                                    <a href="<?php echo $community['url']; ?>" target="_blank" ><?php echo $community['title']; ?></a>
+                                    <a href="#openModal_<?php echo $community['id']; ?>" ><?php echo $community['title']; ?></a>
                                 </p>
                                 <p style="font-weight: normal">
-                                    <?php echo $community['caption']; ?>
+                                    <?php echo (strlen ($community['caption']) > 40)? substr($community['caption'],0,40).'...' : $community['caption']; ?>
                                 </p>
-                                <a href="<?php echo $community['url']; ?>" class="in-box" target="_blank">More Info</a>
+                                <a href="#openModal_<?php echo $community['id']; ?>" class="in-box">More Info</a>
                             </div>
                             <div class="clearfix"> </div>
+                        </div>
+
+                        <div id="openModal_<?php echo $community['id']; ?>" class="modalDialog">
+                            <div>
+                                <a href="#close" title="Close" class="close">X</a>
+                                <h2><?php echo $community['title']; ?></h2>
+                                <div class="community-image" style="background: url(<?php echo $community['full_image_url']; ?>);">
+                                </div>
+                                <p><?php echo $community['caption']; ?></p>
+                            </div>
                         </div>
                     <?php endforeach; ?>
                 </div>
