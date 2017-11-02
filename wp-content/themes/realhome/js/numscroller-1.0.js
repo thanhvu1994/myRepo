@@ -41,13 +41,16 @@
         return this.each(function(i,obj){
             $(this).addClass('scrollzip');
             if ( $.isFunction( settings.showFunction ) ){
-                if(
-                    !$(this).hasClass('isShown')&&
-                    ($(window).outerHeight()+$('#scrollzipPoint').offset().top-settings.showShift)>($(this).offset().top+((settings.wholeVisible)?$(this).outerHeight():0))&&
-                    ($('#scrollzipPoint').offset().top+((settings.wholeVisible)?$(this).outerHeight():0))<($(this).outerHeight()+$(this).offset().top-settings.showShift)
-                ){
-                    $(this).addClass('isShown');
-                    settings.showFunction.call( this );
+                var nav = $('#scrollzipPoint');
+                if (nav.length) {
+                    if(
+                        !$(this).hasClass('isShown')&&
+                        ($(window).outerHeight()+$('#scrollzipPoint').offset().top-settings.showShift)>($(this).offset().top+((settings.wholeVisible)?$(this).outerHeight():0))&&
+                        ($('#scrollzipPoint').offset().top+((settings.wholeVisible)?$(this).outerHeight():0))<($(this).outerHeight()+$(this).offset().top-settings.showShift)
+                    ){
+                        $(this).addClass('isShown');
+                        settings.showFunction.call( this );
+                    }
                 }
             }
             if ( $.isFunction( settings.hideFunction ) ){

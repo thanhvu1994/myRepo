@@ -3814,8 +3814,11 @@ h3.typo1 {
 }
 @media(max-width:480px){
 .logo h1 {
-  font-size: 1.7em;
+  font-size: 1.5em;
 }
+	.logo img {
+		max-height: 40px;
+	}
 .top-nav {
   margin-top: 1px;
 }
@@ -5335,39 +5338,6 @@ p.stats-info {
 	}
 }
 
-@media (max-width:  640px){
-	.stats h3 {
-		margin-bottom: 26.6px;
-		font-size: 34.58px;
-	}
-	.stats-grid i {
-		margin-bottom: 15.96px;
-		width: 73.15px;
-		height: 73.15px;
-		font-size: 33.25px;
-	}
-	.stats-grid {
-		font-size: 31.92px;
-		padding: 0px 5.32px;
-		margin-left:160px;
-	}
-	.stats p {
-		font-size: 17.29px;
-		line-height: 37.24px;
-		letter-spacing: 0.5px;
-	}
-	.stats {
-		padding-top: 20px;
-	}
-
-	.stats h3:before, .stats h3:after{
-		width:50px;
-	}
-
-	.stats-info{
-		margin-top : 0px;
-	}
-}
 /* Set height to 100% for body and html to enable the background image to cover the whole page: */
 body, html {
 	height: 100%
@@ -5660,6 +5630,58 @@ p.vel{
 .most_popular > div{
 	width:25%;
 	padding: 0;
+}
+
+@media(max-width: 480px){
+	.most_popular {
+		padding-top: 30px;
+		background-color: #F7F7F7;
+		height: 400px;
+	}
+
+	.most_popular > div{
+		width:50%;
+		padding: 0;
+	}
+}
+
+@media(max-width: 768px){
+	.most_popular {
+		padding-top: 30px;
+		background-color: #F7F7F7;
+		height: 670px;
+	}
+
+	.most_popular > div{
+		width:50%;
+		padding: 0;
+	}
+}
+
+@media(max-width: 1024px){
+	.most_popular {
+		padding-top: 30px;
+		background-color: #F7F7F7;
+		height: 880px;
+	}
+
+	.most_popular > div{
+		width:50%;
+		padding: 0;
+	}
+}
+
+@media(max-width: 360px){
+	.most_popular {
+		padding-top: 30px;
+		background-color: #F7F7F7;
+		height: 360px;
+	}
+
+	.most_popular > div{
+		width:50%;
+		padding: 0;
+	}
 }
 
 .hovereffect {

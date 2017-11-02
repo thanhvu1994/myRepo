@@ -135,6 +135,7 @@ class Realhome_Widget extends WP_Widget {
                                 <div class="hovereffect">
                                     <img class="img-responsive" src="<?php echo $url; ?>" alt="">
                                     <div class="overlay">
+                                        <h2><u><?php echo $item->post_title; ?></u></h2>
                                         <p>
                                             <a href="<?php echo get_permalink($item->ID); ?>">DETAIL</a>
                                         </p>
