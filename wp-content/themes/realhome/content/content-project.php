@@ -1,5 +1,27 @@
 <?php get_template_part( 'inc/page_banner'); ?>
 
+<?php
+    switch(get_field('type',$post->ID)){
+        case 'sell':
+            $type = 'buy';
+            break;
+        case 'rent':
+            $type = 'rent';
+            break;
+        case 'apartment':
+            $type = 'apartment';
+            break;
+        case 'hotel':
+            $type = 'hotel';
+            break;
+        default:
+            $type = 'sell';
+            break;
+    }
+?>
+
+<?php $_SESSION['sessionProjectType'] = $type; ?>
+
 <div class="container">
     <div class="buy-single-single">
         <ol class="breadcrumb">
@@ -95,9 +117,11 @@
                         <div>
                             <a href="#close" title="Close" class="close">X</a>
                             <h2><?php echo $community['title']; ?></h2>
-                            <div class="community-image" style="background: url(<?php echo $community['full_image_url']; ?>);">
-                            </div>
-                            <p><?php echo $community['caption']; ?></p>
+                            <img class="community-image" src="<?php echo $community['full_image_url']; ?>" />
+                            <blockquote>
+                                <p><?php echo $community['caption']; ?></p>
+                            </blockquote>
+
                         </div>
                     </div>
                 <?php endforeach; ?>

@@ -11,6 +11,14 @@ if(count($type_page) == 1) {
     $typed = 'buy';
     $paged = 1;
 }
+
+if(empty($typed)){
+    $typed = $_SESSION['sessionProjectType'];
+}
+
+if(empty($typed)){
+    $typed = 'buy';
+}
 ?>
 
 <div class="single">
@@ -24,42 +32,6 @@ if(count($type_page) == 1) {
 
         <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter">
             <div class="single-buy">
-                <div class="col-sm-3 check-top-single">
-                    <div class="single-bottom">
-                        <h4>Area</h4>
-                        <ul>
-                            <li>
-                                <input name="area" type="radio"  id="brand" value="0-50">
-                                <label for="brand"><span></span> 0 - 50 m<sup>2</sup></label>
-                            </li>
-                            <li>
-                                <input name="area" type="radio"  id="brand1" value="51-101">
-                                <label for="brand1"><span></span> 51 - 100 m<sup>2</sup></label>
-                            </li>
-                            <li>
-                                <input name="area" type="radio"  id="brand2" value="101-200">
-                                <label for="brand2"><span></span> 101 - 200 m<sup>2</sup></label>
-                            </li>
-                            <li>
-                                <input name="area" type="radio"  id="brand3" value="201">
-                                <label for="brand3"><span></span> 201 m<sup>2</sup> <</label>
-                            </li>
-                            <li>
-                                <button style="background-color: white; color:#27da93; border-color: #27da93;" class="btn btn-success apply">Apply filter</button>
-                                <button onclick="clearFilter()" style="background-color: white; color:#27da93; border-color: #27da93;" class="btn btn-success clear">Clear filter</button>
-                                <input type="hidden" name="action" value="myfilter">
-                                <input type="hidden" name="type" value="<?php echo $typed; ?>">
-                                <input type="hidden" name="page" value="<?php echo $paged; ?>">
-                                <input type="hidden" name="city" value="<?php echo $post->post_name; ?>">
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <script>
-                    function clearFilter(){
-                        jQuery('input').attr('checked',false);
-                    }
-                </script>
                 <div class="col-sm-3 check-top-single">
                     <div class="single-bottom">
                         <h4>Floors</h4>
@@ -81,6 +53,29 @@ if(count($type_page) == 1) {
                                 <label for="brand8"><span></span> 7+ Floors</label>
                             </li>
 
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3 check-top-single">
+                    <div class="single-bottom">
+                        <h4>Price</h4>
+                        <ul>
+                            <li>
+                                <input name="price" type="radio"  id="brand14" value="0-2000000000">
+                                <label for="brand14"><span></span> < 2.000.000.000 VND</label>
+                            </li>
+                            <li>
+                                <input name="price" type="radio"  id="brand15" value="2000000000-4000000000">
+                                <label for="brand15"><span></span> 2 - 4.000.000.000 VND</label>
+                            </li>
+                            <li>
+                                <input name="price" type="radio"  id="brand16" value="4000000000-8000000000">
+                                <label for="brand16"><span></span> 4 - 8.000.000.000 VND</label>
+                            </li>
+                            <li>
+                                <input name="price" type="radio"  id="brand17" value="8000000000">
+                                <label for="brand17"><span></span> 8.000.000.000 VND < </label>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -110,31 +105,40 @@ if(count($type_page) == 1) {
                 </div>
                 <div class="col-sm-3 check-top-single">
                     <div class="single-bottom">
-                        <h4>Price</h4>
+                        <h4>Area</h4>
                         <ul>
                             <li>
-                                <input name="price" type="radio"  id="brand13" value="0-1000000000">
-                                <label for="brand13"><span></span> Under 1.000.000.000 VND </label>
+                                <input name="area" type="radio"  id="brand" value="0-50">
+                                <label for="brand"><span></span> 0 - 50 m<sup>2</sup></label>
                             </li>
                             <li>
-                                <input name="price" type="radio"  id="brand14" value="1000000000-2000000000">
-                                <label for="brand14"><span></span> 1 - 2.000.000.000 VND</label>
+                                <input name="area" type="radio"  id="brand1" value="51-101">
+                                <label for="brand1"><span></span> 51 - 100 m<sup>2</sup></label>
                             </li>
                             <li>
-                                <input name="price" type="radio"  id="brand15" value="2000000000-4000000000">
-                                <label for="brand15"><span></span> 2 - 4.000.000.000 VND</label>
+                                <input name="area" type="radio"  id="brand2" value="101-200">
+                                <label for="brand2"><span></span> 101 - 200 m<sup>2</sup></label>
                             </li>
                             <li>
-                                <input name="price" type="radio"  id="brand16" value="4000000000-8000000000">
-                                <label for="brand16"><span></span> 4 - 8.000.000.000 VND</label>
+                                <input name="area" type="radio"  id="brand3" value="201">
+                                <label for="brand3"><span></span> 201 m<sup>2</sup> <</label>
                             </li>
                             <li>
-                                <input name="price" type="radio"  id="brand17" value="8000000000">
-                                <label for="brand17"><span></span> 8.000.000.000 VND < </label>
+                                <button  class="btn btn-success apply">Apply filter</button>
+                                <button onclick="clearFilter()" class="btn btn-success clear">Clear filter</button>
+                                <input type="hidden" name="action" value="myfilter">
+                                <input type="hidden" name="type" value="<?php echo $typed; ?>">
+                                <input type="hidden" name="page" value="<?php echo $paged; ?>">
+                                <input type="hidden" name="city" value="<?php echo $post->post_name; ?>">
                             </li>
                         </ul>
                     </div>
                 </div>
+                <script>
+                    function clearFilter(){
+                        jQuery('input').attr('checked',false);
+                    }
+                </script>
                 <div class="clearfix"> </div>
             </div>
         </form>
@@ -279,9 +283,10 @@ if(count($type_page) == 1) {
                             <div>
                                 <a href="#close" title="Close" class="close">X</a>
                                 <h2><?php echo $community['title']; ?></h2>
-                                <div class="community-image" style="background: url(<?php echo $community['full_image_url']; ?>);">
-                                </div>
-                                <p><?php echo $community['caption']; ?></p>
+                                <img class="community-image" src="<?php echo $community['full_image_url']; ?>" />
+                                <blockquote>
+                                    <p><?php echo $community['caption']; ?></p>
+                                </blockquote>
                             </div>
                         </div>
                     <?php endforeach; ?>

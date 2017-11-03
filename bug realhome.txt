@@ -1,0 +1,25 @@
+Bug Realhome
+--> bug seo : 
+----> Meta description
+----> 5 images without ALT
+----> Robots.txt
+----> XML Sitemaps
+----> Language: You have not specified a language for your website.
+----> Google™ Analytics
+----> No canonical tag is set for this page.
+
+--> bug breadcum -> fixed
+
+--> featured communities error at show modal on mobile -> fixed
+
+--> mobile layout at filter project in city -> fixed
+
+--> icon at why choose us in about us on mobile -> fixed
+
+--> icon login change to something else
+
+--> logo error -> ???
+
+--> layout mobie can scoll to right
+
+--> layout related project, next and previous button not at middle

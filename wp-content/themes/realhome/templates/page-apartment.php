@@ -48,6 +48,7 @@ get_template_part( 'inc/page_banner');
                 <li class="breadcrumb-item"><a href="<?php echo home_url(); ?>">Home</a></li>
                 <li class="breadcrumb-item active"><?php echo $post->post_title; ?></li>
             </ol>
+
             <h3>Top City</h3>
             <div class="grid-at">
                 <?php if(array_key_exists(0,$cities)) : ?>
@@ -58,7 +59,9 @@ get_template_part( 'inc/page_banner');
                                     <?php
                                         $image = wp_get_attachment_url( get_post_thumbnail_id($cities[0]->ID));
                                     ?>
-                                    <img style="height:491.03px" class=" img-responsive" src="<?php echo $image; ?>" alt="<?php echo $cities[0]->post_title; ?>">
+                                    <div class="city-image-1" style="background: url(<?php echo $image; ?>); background-size: cover">
+                                    </div>
+
                                     <figcaption>
                                         <h4><?php echo $cities[0]->post_title; ?></h4>
                                     </figcaption>
@@ -69,14 +72,16 @@ get_template_part( 'inc/page_banner');
                 <?php endif; ?>
 
                 <?php if(array_key_exists(1,$cities)) : ?>
-                <div class="col-md-3 grid-city">
+                    <div class="col-md-3 grid-city">
                     <div class="grid-lo">
                         <a href="<?php echo get_permalink( $cities[1]->ID ).'apartment/'; ?>">
                             <figure class="effect-layla">
                                 <?php
                                 $image = wp_get_attachment_url( get_post_thumbnail_id($cities[1]->ID));
                                 ?>
-                                <img style="height:491.03px" class=" img-responsive" src="<?php echo $image; ?>" alt="<?php echo $cities[1]->post_title; ?>">
+
+                                <div class="city-image-2" style="background: url(<?php echo $image; ?>); background-size: cover">
+                                </div>
                                 <figcaption>
                                     <h4><?php echo $cities[1]->post_title; ?></h4>
                                 </figcaption>
@@ -97,7 +102,8 @@ get_template_part( 'inc/page_banner');
                                         <?php
                                         $image = wp_get_attachment_url( get_post_thumbnail_id($cities[2]->ID));
                                         ?>
-                                        <img style="width:377px; height:277.5px;" class=" img-responsive" src="<?php echo $image; ?>" alt="<?php echo $cities[2]->post_title; ?>">
+                                        <div class="city-image-3" style="background: url(<?php echo $image; ?>); background-size: cover">
+                                        </div>
                                         <figcaption>
                                             <h4 class="effect1"><?php echo $cities[2]->post_title; ?></h4>
                                         </figcaption>
@@ -115,7 +121,8 @@ get_template_part( 'inc/page_banner');
                                         <?php
                                         $image = wp_get_attachment_url( get_post_thumbnail_id($cities[3]->ID));
                                         ?>
-                                        <img style="width:188px; height:276.73px;" class=" img-responsive" src="<?php echo $image; ?>" alt="<?php echo $cities[3]->post_title; ?>">
+                                        <div class="city-image-4" style="background: url(<?php echo $image; ?>); background-size: cover">
+                                        </div>
                                         <figcaption>
                                             <h4 class="effect2"><?php echo $cities[3]->post_title; ?></h4>
                                         </figcaption>
@@ -135,7 +142,8 @@ get_template_part( 'inc/page_banner');
                                         <?php
                                         $image = wp_get_attachment_url( get_post_thumbnail_id($cities[4]->ID));
                                         ?>
-                                        <img style="width:279px; height:209.25px;" class="img-responsive" src="<?php echo $image; ?>" alt="<?php echo $cities[4]->post_title; ?>">
+                                        <div class="city-image-5" style="background: url(<?php echo $image; ?>); background-size: cover">
+                                        </div>
                                         <figcaption>
                                             <h4 class="effect3"><?php echo $cities[4]->post_title; ?></h4>
                                         </figcaption>
@@ -153,7 +161,8 @@ get_template_part( 'inc/page_banner');
                                         <?php
                                         $image = wp_get_attachment_url( get_post_thumbnail_id($cities[5]->ID));
                                         ?>
-                                        <img style="width:279px; height:209.25px;" class="img-responsive" src="<?php echo $image; ?>" alt="<?php echo $cities[5]->post_title; ?>">
+                                        <div class="city-image-6" style="background: url(<?php echo $image; ?>); background-size: cover">
+                                        </div>
                                         <figcaption>
                                             <h4 class="effect3"><?php echo $cities[5]->post_title; ?></h4>
                                         </figcaption>
@@ -162,7 +171,6 @@ get_template_part( 'inc/page_banner');
                             </div>
                         </div>
                         <?php endif; ?>
-
                         <div class="clearfix"> </div>
                     </div>
                 </div>
@@ -220,7 +228,7 @@ get_template_part( 'inc/page_banner');
                             <li>
                                 <div class="project-fur">
                                     <?php $url = wp_get_attachment_url( get_post_thumbnail_id($project->ID), 'Large' ); ?>
-                                    <a href="<?php echo get_permalink($project->ID); ?>" ><img style="width: 310px; height:232px;" class="img-responsive" src="<?php echo $url; ?>" alt="" />	</a>
+                                    <a href="<?php echo get_permalink($project->ID); ?>" ><img class="img-responsive" src="<?php echo $url; ?>" alt="<?php echo $project->post_title; ?>" />	</a>
                                     <div class="fur">
                                         <div class="fur1">
                                             <span class="fur-money"><?php echo get_field('price',$project->ID); ?></span>
@@ -267,3 +275,6 @@ get_template_part( 'inc/page_banner');
 
 <!--//footer-->
 <?php get_footer(); ?>
+
+<?php set_query_var( 'meta_key', 'type' ); ?>
+<?php set_query_var( 'meta_value', 'apartment' ); ?>
