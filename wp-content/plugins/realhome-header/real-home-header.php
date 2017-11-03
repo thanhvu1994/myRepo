@@ -117,8 +117,8 @@ class Realhome_Header_Widget extends WP_Widget {
                                         <div class="facts">
                                             <div class="login">
                                                 <form role="search" action="<?php echo site_url('/'); ?>" method="get">
-                                                    <input type="text" name="s" value="Search Address, Neighborhood, City or Zip" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">
                                                     <input type="hidden" name="post_type" value="project" />
+                                                    <input type="text" name="s" value="Search Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address';}">
                                                     <input type="submit" alt="Search" value="" />
                                                 </form>
                                             </div>
@@ -128,9 +128,9 @@ class Realhome_Header_Widget extends WP_Widget {
                                         <div class="facts">
                                             <div class="login">
                                                 <form role="search" action="<?php echo site_url('/'); ?>" method="get">
-                                                    <input type="text" name="s" value="Search Address, Neighborhood, City or Zip" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">
                                                     <input type="hidden" name="post_type" value="project" />
                                                     <input type="hidden" name="type" value="sell" />
+                                                    <input type="text" name="s" value="Search Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address';}">
                                                     <input type="submit" alt="Search" value="" />
                                                 </form>
                                             </div>
@@ -140,9 +140,9 @@ class Realhome_Header_Widget extends WP_Widget {
                                         <div class="facts">
                                             <div class="login">
                                                 <form role="search" action="<?php echo site_url('/'); ?>" method="get">
-                                                    <input type="text" name="s" value="Search Address, Neighborhood, City or Zip" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">
                                                     <input type="hidden" name="post_type" value="project" />
                                                     <input type="hidden" name="type" value="rent" />
+                                                    <input type="text" name="s" value="Search Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address';}">
                                                     <input type="submit" alt="Search" value="" />
                                                 </form>
                                             </div>
