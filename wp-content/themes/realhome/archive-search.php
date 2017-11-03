@@ -23,10 +23,9 @@ get_template_part( 'inc/page_banner');
     $post_type = get_query_var('post_type');
     $type = ( get_query_var( 'type' ) ) ? get_query_var( 'type' ) : '';
     $name = ( get_query_var( 's' ) ) ? get_query_var( 's' ) : '';
-
+    echo $name;
     $custom_args = array(
         'post_type' => 'project',
-        's' => $name,
         'posts_per_page' => DEFAULT_PAGE_SIZE,
         'post_status' => 'publish',
         'orderby' => 'date',
@@ -35,9 +34,23 @@ get_template_part( 'inc/page_banner');
     );
 
     if ($type != 'all') {
-        $custom_args['meta_query'] = [[
+        $custom_args['meta_query'] = [
+                                    'relation'      => 'AND',
+                                    [
                                         'key'   => 'type',
                                         'value' => $type,
+                                    ],
+                                    [
+                                        'key'   => 'location',
+                                        'value' => $name,
+                                        'compare'   => 'LIKE',
+                                    ]];
+    } else {
+         $custom_args['meta_query'] = [
+                                    [
+                                        'key'   => 'location',
+                                        'value' => $name,
+                                        'compare'   => 'LIKE',
                                     ]];
     }
 
