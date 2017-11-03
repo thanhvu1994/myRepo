@@ -622,6 +622,23 @@ a.mask {
   	font-size: 1em;
 }
 
+@media (max-width: 480px){
+	.hi-icon {
+		display: inline-block;
+		cursor: pointer;
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		text-align: center;
+		position: relative;
+		z-index: 1;
+		color:#8e8e8e;
+		border:3px solid #27da93;
+		line-height: 4.5em;
+		font-size: 0.7em;
+	}
+}
+
 .hi-icon:after {
 	position: absolute;
 	width: 100%;
@@ -1683,6 +1700,13 @@ option.rm{
 	font-size: 10px;
 	width:16px;
 	height:16px;
+}
+
+.single-bottom button {
+	background-color: white;
+	color:#27da93;
+	border-color: #27da93;
+	margin-bottom: 5px;
 }
 /*----*/
 .buy-single h3{
@@ -3814,7 +3838,7 @@ h3.typo1 {
 }
 @media(max-width:480px){
 .logo h1 {
-  font-size: 1.5em;
+  font-size: 1.4em;
 }
 	.logo img {
 		max-height: 40px;
@@ -3853,7 +3877,7 @@ h3.typo1 {
 .bank-bottom1 h3:before ,.loan-col h3:after, .loan-col h3:before ,.dealers h3:after,
 .dealers h3:before,.top-grid h3:after, .top-grid h3:before,.future h3:after, .future h3:before
 ,h3.typo1:after, h3.typo1:before {
-  width: 50px;
+  width: 30px;
 }
 .content-grid {
   min-height: 456px;
@@ -4237,7 +4261,7 @@ h1.typo1 {
   padding-left: 10px;
 }
 .logo h1 {
-  font-size: 1.5em;
+  font-size: 1.4em;
 }
  .right-icons li a {
   font-size: 0.875em;
@@ -5579,12 +5603,12 @@ p.vel{
 }
 
 .modalDialog > div {
-	width: 840px;
 	position: relative;
-	margin: 10% auto;
 	padding: 5px 20px 13px 20px;
 	border-radius: 5px;
 	background: #fff;
+	display: table;
+	margin: 5% auto;
 }
 
 .modalDialog h2 {
@@ -5594,11 +5618,81 @@ p.vel{
 	color: #27DA93;
 }
 
+.modalDialog blockquote {
+	margin: 0;
+	font-size: 15px;
+}
+
 .modalDialog .community-image {
-	width: 800px;
-	height: 450px;
-	background-size: cover;
 	margin-bottom : 10px;
+	max-width: 800px;
+}
+
+@media (max-width : 480px){
+	.modalDialog .community-image {
+		margin-bottom : 10px;
+		max-width: 100%;
+	}
+	.modalDialog h2 {
+		text-align: center;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		color: #27DA93;
+		font-size : 17px;
+	}
+	.modalDialog p {
+		font-size : 13px;
+	}
+	.modalDialog > div {
+		position: relative;
+		padding: 5px 20px 13px 20px;
+		border-radius: 5px;
+		background: #fff;
+		display: table;
+		margin: 15% auto;
+		width: 90%;
+	}
+
+	.modalDialog blockquote {
+		margin: 0;
+		font-size: 13px;
+	}
+}
+
+@media (max-width : 1024px) and (min-width : 481px){
+	.modalDialog .community-image {
+		margin-bottom : 10px;
+		max-width: 100%;
+	}
+	.modalDialog h2 {
+		text-align: center;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		color: #27DA93;
+		font-size : 17px;
+	}
+	.modalDialog p {
+		font-size : 13px;
+	}
+	.modalDialog > div {
+		position: relative;
+		padding: 5px 20px 13px 20px;
+		border-radius: 5px;
+		background: #fff;
+		display: table;
+		margin: 15% auto;
+		width: 90%;
+	}
+
+	.modalDialog blockquote {
+		margin: 0;
+		font-size: 13px;
+	}
+}
+
+.modalDialog p {
+	margin-bottom : 10px;
+	max-width: 750px;
 }
 .close {
 	background: #606061;
@@ -5643,9 +5737,19 @@ p.vel{
 		width:50%;
 		padding: 0;
 	}
+
+    .hovereffect .overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        padding: 50px 20px !important;
+    }
 }
 
-@media(max-width: 768px){
+@media(max-width: 768px) and (min-width: 481px){
 	.most_popular {
 		padding-top: 30px;
 		background-color: #F7F7F7;
@@ -5658,7 +5762,7 @@ p.vel{
 	}
 }
 
-@media(max-width: 1024px){
+@media(max-width: 1024px) and (min-width: 769px){
 	.most_popular {
 		padding-top: 30px;
 		background-color: #F7F7F7;

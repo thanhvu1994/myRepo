@@ -228,7 +228,7 @@ get_template_part( 'inc/page_banner');
                             <li>
                                 <div class="project-fur">
                                     <?php $url = wp_get_attachment_url( get_post_thumbnail_id($project->ID), 'Large' ); ?>
-                                    <a href="<?php echo get_permalink($project->ID); ?>" ><img class="img-responsive" src="<?php echo $url; ?>" alt="" />	</a>
+                                    <a href="<?php echo get_permalink($project->ID); ?>" ><img class="img-responsive" src="<?php echo $url; ?>" alt="<?php echo $project->post_title; ?>" />	</a>
                                     <div class="fur">
                                         <div class="fur1">
                                             <span class="fur-money"><?php echo get_field('price',$project->ID); ?></span>
