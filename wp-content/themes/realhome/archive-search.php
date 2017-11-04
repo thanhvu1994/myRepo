@@ -23,7 +23,7 @@ get_template_part( 'inc/page_banner');
     $post_type = get_query_var('post_type');
     $type = ( get_query_var( 'type' ) ) ? get_query_var( 'type' ) : '';
     $name = ( get_query_var( 's' ) ) ? get_query_var( 's' ) : '';
-    echo $name;
+
     $custom_args = array(
         'post_type' => 'project',
         'posts_per_page' => DEFAULT_PAGE_SIZE,
@@ -59,7 +59,7 @@ get_template_part( 'inc/page_banner');
 
 <div class="container">
     <div class="buy-single">
-        <h3>All House</h3>
+        <h3>Result for addres: <?php echo $name ?>...</h3>
         <div class="box-sin">
             <div class="col-md-9 single-box">
                 <?php if ( $custom_query->have_posts() ) : while ( $custom_query->have_posts() ) : $custom_query->the_post(); ?>

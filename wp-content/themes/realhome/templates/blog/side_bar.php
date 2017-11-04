@@ -26,7 +26,7 @@
 		<?php if (!empty($categories)): ?>
 			<ul >
 				<?php foreach( $categories as $category ) { 
-					$category_link = home_url( '/blog/' ) . strtolower($category->name);?>
+					$category_link = home_url( '/blog/' ) . strtolower($category->slug);?>
 				<li><a href="<?php echo $category_link?>"><i class="glyphicon glyphicon-arrow-right"> </i><?php echo $category->name ?></a></li>
 				<?php } ?>
 			</ul>

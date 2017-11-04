@@ -230,7 +230,7 @@ if(empty($typed)){
                                         <?php
                                         $image = wp_get_attachment_image_src( get_post_thumbnail_id(), '498.755x349.16' );
                                         ?>
-                                        <img class="img-responsive" src="<?php echo $image[0]; ?>" alt="">
+                                        <img class="img-responsive" src="<?php echo $image[0]; ?>" alt="<?php echo get_the_title()?>">
                                     </a>
                                 </div>
                                 <div class="  col-sm-5 middle-side">
@@ -265,7 +265,7 @@ if(empty($typed)){
                     <?php foreach($communities as $community): ?>
                         <div class="single-box-img ">
                             <div class="box-img">
-                                <a href="#openModal_<?php echo $community['id']; ?>"><img class="img-responsive" src="<?php echo $community['full_image_url']; ?>" alt=""></a>
+                                <a href="#openModal_<?php echo $community['id']; ?>"><img class="img-responsive" src="<?php echo $community['full_image_url']; ?>" alt="<?php echo $community['title']; ?>"></a>
                             </div>
                             <div class="box-text">
                                 <p>
@@ -283,7 +283,7 @@ if(empty($typed)){
                             <div>
                                 <a href="#close" title="Close" class="close">X</a>
                                 <h2><?php echo $community['title']; ?></h2>
-                                <img class="community-image" src="<?php echo $community['full_image_url']; ?>" />
+                                <img class="community-image" src="<?php echo $community['full_image_url']; ?>" alt="<?php echo $community['title']; ?>"/>
                                 <blockquote>
                                     <p><?php echo $community['caption']; ?></p>
                                 </blockquote>

@@ -31,26 +31,38 @@
     // }
     $home_url = home_url( '/blog/' );
 
-    if (!empty($slug_category)) {
-        $slug_page = explode('-', $slug_category);
+    // $cat = get_category_by_slug($slug_category);
+    // $catId = 0;
+    // if ($cat) {
+    //     $catId = $cat->term_id;
+    // }
 
-        if(count($slug_page) == 1) {
-            $slug = $slug_page[0];
-            $paged = 1;
-        }else if(count($slug_page) >= 2 && isset($slug_page[count($slug_page) - 1]) && is_numeric($slug_page[count($slug_page) - 1])) {
-            $paged = $slug_page[count($slug_page) - 1];
-            unset($slug_page[count($slug_page) - 1]);
-            $slug = implode('-', $slug_page);
-        }else{
-            $slug = $slug_category;
-            $paged = 1;
-        }
+    if (!empty($slug_category)) {
+        // if ($catId == 0) {
+            $slug_page = explode('-', $slug_category);
+
+            if(count($slug_page) == 1) {
+                $slug = $slug_page[0];
+                $paged = 1;
+            }else if(count($slug_page) >= 2 && isset($slug_page[count($slug_page) - 1]) && is_numeric($slug_page[count($slug_page) - 1])) {
+                $paged = $slug_page[count($slug_page) - 1];
+                unset($slug_page[count($slug_page) - 1]);
+                $slug = implode('-', $slug_page);
+            }else{
+                $slug = $slug_category;
+                $paged = 1;
+            }
+
+        // } else {
+        //     $slug = $slug_category;
+        //     $paged = 1;
+        // }
 
         $home_url .= $slug;
+
     } else {
         $paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1;
     }
-    
 
     // else {
     //     $tag = get_the_tags($post->ID);

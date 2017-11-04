@@ -65,7 +65,10 @@
 			  <?php endif; ?>
 			</div>
 			<div class="col-md-6 contact-right">
-	            <?php echo get_post_field('form_contact', $info[0]->ID) ?>
+				<?php 
+		        	setup_postdata( $info[0] );
+		        	the_content();
+	        	?>
 			</div>
 			<div class="clearfix"> </div>
 		</div>

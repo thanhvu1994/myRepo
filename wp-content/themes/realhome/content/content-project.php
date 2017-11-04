@@ -99,7 +99,7 @@
                 <?php foreach($communities as $community): ?>
                     <div class="single-box-img ">
                         <div class="box-img">
-                            <a href="#openModal_<?php echo $community['id']; ?>"><img class="img-responsive" src="<?php echo $community['full_image_url']; ?>" alt=""></a>
+                            <a href="#openModal_<?php echo $community['id']; ?>"><img class="img-responsive" src="<?php echo $community['full_image_url']; ?>" alt="<?php echo $community['title']; ?>"></a>
                         </div>
                         <div class="box-text">
                             <p>
@@ -117,7 +117,7 @@
                         <div>
                             <a href="#close" title="Close" class="close">X</a>
                             <h2><?php echo $community['title']; ?></h2>
-                            <img class="community-image" src="<?php echo $community['full_image_url']; ?>" />
+                            <img class="community-image" src="<?php echo $community['full_image_url']; ?>" alt="<?php echo $community['title']; ?>"/>
                             <blockquote>
                                 <p><?php echo $community['caption']; ?></p>
                             </blockquote>
@@ -155,7 +155,7 @@
                         <li>
                             <div class="project-fur">
                                 <?php $url = wp_get_attachment_url( get_post_thumbnail_id($project->ID), 'Large' ); ?>
-                                <a href="<?php echo get_permalink($project->ID); ?>" ><img style="width: 481px; height:232px;" class="img-responsive" src="<?php echo $url; ?>" alt="" />	</a>
+                                <a href="<?php echo get_permalink($project->ID); ?>" ><img style="width: 481px; height:232px;" class="img-responsive" src="<?php echo $url; ?>" alt="<?php echo $project->post_title; ?>" />	</a>
                                 <div class="fur">
                                     <div class="fur1">
                                         <span class="fur-money"><?php echo get_field('price',$project->ID); ?></span>

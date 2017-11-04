@@ -133,7 +133,7 @@ class Realhome_Widget extends WP_Widget {
                         <?php $url = wp_get_attachment_url( get_post_thumbnail_id($item->ID), 'Large' ); ?>
                             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                                 <div class="hovereffect">
-                                    <img class="img-responsive" src="<?php echo $url; ?>" alt="">
+                                    <img class="img-responsive" src="<?php echo $url; ?>" alt="<?php echo $item->post_title; ?>">
                                     <div class="overlay">
                                         <h2><u><?php echo $item->post_title; ?></u></h2>
                                         <p>
@@ -344,7 +344,7 @@ class Realhome_Widget extends WP_Widget {
                                 <p class="para-in"><?php echo get_field('comment',$testimonials[$i]); ?></p>
                                 <i class="dolor"></i>
                                 <div class="men-grid">
-                                    <a href="#" class="men-top"><img class="img-responsive men-top" src="<?php echo get_field('avatar',$testimonials[$i]); ?>" alt=""></a>
+                                    <a href="#" class="men-top"><img class="img-responsive men-top" src="<?php echo get_field('avatar',$testimonials[$i]); ?>" alt="image-<?php echo get_field('username',$testimonials[$i]); ?>"></a>
                                     <div class="men">
                                         <span><?php echo get_field('username',$testimonials[$i]); ?></span>
                                         <p><?php echo get_field('description',$testimonials[$i]); ?></p>
@@ -362,7 +362,7 @@ class Realhome_Widget extends WP_Widget {
                                 <p class="para-in"><?php echo get_field('comment',$testimonials[$i]); ?></p>
                                 <i class="dolor"></i>
                                 <div class="men-grid">
-                                    <a href="#" class="men-top"><img class="img-responsive men-top" src="<?php echo get_field('avatar',$testimonials[$i]); ?>" alt=""></a>
+                                    <a href="#" class="men-top"><img class="img-responsive men-top" src="<?php echo get_field('avatar',$testimonials[$i]); ?>" alt="image-<?php echo get_field('username',$testimonials[$i]); ?>">"></a>
                                     <div class="men">
                                         <span><?php echo get_field('username',$testimonials[$i]); ?></span>
                                         <p><?php echo get_field('description',$testimonials[$i]); ?></p>
@@ -412,13 +412,13 @@ class Realhome_Widget extends WP_Widget {
             <div class="container">
                 <ul>
                     <?php for($i = 0; $i < (($countPartner > 5) ? 5 : $countPartner) ; $i++): ?>
-                        <li><a <?php echo (!empty(get_field('url',$partnerItem_array[$i])))? 'href="'.get_field('url',$partnerItem_array[$i]).'"' : ''; ?> ><img class="img-responsive" src="<?php echo get_the_post_thumbnail_url($partnerItem_array[$i]); ?>" alt=""></a></li>
+                        <li><a <?php echo (!empty(get_field('url',$partnerItem_array[$i])))? 'href="'.get_field('url',$partnerItem_array[$i]).'"' : ''; ?> ><img class="img-responsive" src="<?php echo get_the_post_thumbnail_url($partnerItem_array[$i]); ?>" alt="<?php echo get_the_title($partnerItem_array[$i])?>"></a></li>
                     <?php endfor; ?>
                     <div class="clearfix"> </div>
                 </ul>
                 <ul>
                     <?php for($i = 5; $i < $countPartner ; $i++): ?>
-                        <li><a <?php echo (!empty(get_field('url',$partnerItem_array[$i])))? 'href="'.get_field('url',$partnerItem_array[$i]).'"' : ''; ?> ><img class="img-responsive" src="<?php echo get_the_post_thumbnail_url($partnerItem_array[$i]); ?>" alt=""></a></li>
+                        <li><a <?php echo (!empty(get_field('url',$partnerItem_array[$i])))? 'href="'.get_field('url',$partnerItem_array[$i]).'"' : ''; ?> ><img class="img-responsive" src="<?php echo get_the_post_thumbnail_url($partnerItem_array[$i]); ?>" alt="<?php echo get_the_title($partnerItem_array[$i])?>"></a></li>
                     <?php endfor; ?>
                     <div class="clearfix"> </div>
                 </ul>

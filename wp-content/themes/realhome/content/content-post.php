@@ -8,10 +8,15 @@
 
 	   <div class="col-md-9 blog-head">
 	     	<div class="blog-top">
-		        <img src="<?php echo get_the_post_thumbnail_url()?>" class="img-responsive" alt=""/>
+		        <img src="<?php echo get_the_post_thumbnail_url()?>" class="img-responsive" alt="<?php echo get_the_title() ?>"/>
 	          	<h4><?php echo get_the_title() ?></h4>
 	         	<h5>Date : <?php echo get_the_date('d-m-Y') ?></h5>
-		        <p><?php echo $post->post_content ?></p>
+		        <p>
+		        	<?php 
+			        	setup_postdata( $post );
+			        	the_content();
+		        	?>
+		        </p>
 	           	<div class="links"><hr></div>
 		 	</div> 
 		 	<!---->
