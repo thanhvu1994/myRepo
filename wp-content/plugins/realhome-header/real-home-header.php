@@ -96,7 +96,7 @@ class Realhome_Header_Widget extends WP_Widget {
                     </ul>
                     <div class="nav-icon">
                         <div class="hero nav_slide_button" id="hero">
-                            <a href="#"><i class="glyphicon glyphicon-menu-hamburger"></i> </a>
+                            <a href="javascript:void(0)"><i class="glyphicon glyphicon-menu-hamburger"></i> </a>
                         </div>
                     </div>
                     <div class="clearfix"> </div>
