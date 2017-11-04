@@ -362,7 +362,7 @@ class Realhome_Widget extends WP_Widget {
                                 <p class="para-in"><?php echo get_field('comment',$testimonials[$i]); ?></p>
                                 <i class="dolor"></i>
                                 <div class="men-grid">
-                                    <a href="#" class="men-top"><img class="img-responsive men-top" src="<?php echo get_field('avatar',$testimonials[$i]); ?>" alt="image-<?php echo get_field('username',$testimonials[$i]); ?>">"></a>
+                                    <a href="#" class="men-top"><img class="img-responsive men-top" src="<?php echo get_field('avatar',$testimonials[$i]); ?>" alt="image-<?php echo get_field('username',$testimonials[$i]); ?>"></a>
                                     <div class="men">
                                         <span><?php echo get_field('username',$testimonials[$i]); ?></span>
                                         <p><?php echo get_field('description',$testimonials[$i]); ?></p>

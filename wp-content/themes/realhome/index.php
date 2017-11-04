@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html <?php language_attributes(); ?> class="ie8"> <![endif]-->
+<!--[if !IE]> <html <?php language_attributes(); ?>> <![endif]-->
+
+<html lang="vi">
 <!--//head-->
 <?php get_template_part( 'head'); ?>
 
@@ -43,3 +48,4 @@
 	    });
 	});
 </script>
+</html>

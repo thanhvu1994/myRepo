@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<!--[if IE 8]> <html <?php language_attributes(); ?> class="ie8"> <![endif]-->
-<!--[if !IE]> <html <?php language_attributes(); ?>> <![endif]-->
-
 <head>
     <title><?php echo get_bloginfo( 'sitename' ) . ' - ' . get_bloginfo( 'description' ); ?></title>
     <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favico.png" />

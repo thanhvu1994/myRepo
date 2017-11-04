@@ -4,7 +4,7 @@
         <div class="content-bottom-in">
             <ul id="mostPopularSlider">
                 <?php $args = array(
-                    'posts_per_page'   => 6,
+                    'posts_per_page'   => 4,
                     'offset'           => 0,
                     'category'         => '',
                     'category_name'    => '',

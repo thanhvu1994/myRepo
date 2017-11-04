@@ -111,7 +111,7 @@ class Realhome_Footer_Widget extends WP_Widget {
 
             <div class="footer-left">
 
-                <h3><?php echo $instance['title']; ?><span><img src="<?php echo $instance['media_uri']; ?>" alt="logo foolter"/></span></h3>
+                <h3><span><img class="logo-footer" src="<?php echo $instance['media_uri']; ?>" alt="logo foolter"/></span><?php echo $instance['title'].'  '; ?></h3>
 
                 <?php $args = array(
                     'posts_per_page'   => 6,
@@ -150,8 +150,7 @@ class Realhome_Footer_Widget extends WP_Widget {
             <div class="footer-center">
 
                 <div>
-                    <i class="fa fa-map-marker"></i>
-                    <p><?php echo $instance['address']; ?></p>
+                    <p><i class="fa fa-map-marker"></i><?php echo $instance['address']; ?></p>
                 </div>
 
                 <div>
@@ -189,7 +188,7 @@ class Realhome_Footer_Widget extends WP_Widget {
 
                 <p class="footer-company-about">
                     <span><?php echo (strpos($instance['iframe'], 'facebook'))? 'Like us on facebook' : 'Our Location'; ?></span>
-                    <iframe src="<?php echo $instance['iframe']; ?>" style="width: 100%; height: 300px"></iframe>
+                    <iframe class="iframe-index" src="<?php echo $instance['iframe']; ?>"></iframe>
                 </p>
 
             </div>

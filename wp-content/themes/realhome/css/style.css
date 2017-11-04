@@ -11,10 +11,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     font-family: 'Oxygen-Regular';
     src:url(../fonts/Oxygen-Regular.ttf) format('truetype');
 }
+@font-face {
+	font-family: 'Arial';
+	src:url(../fonts/Oxygen-Regular.ttf) format('truetype');
+}
 html,body{
 	background:#fff;
 	font-size: 100%;
-	font-family: 'Oxygen-Regular';
+	font-family: 'Times New Roman';
 }
 body a{
 	transition: 0.5s all;
@@ -579,7 +583,7 @@ a.mask {
   	text-align:center;
 }
 .services{
-  	padding: 5em 0 3em;
+  	padding: 3em 0 3em;
 }
 .service-top {
   	padding: 0em 0 4em;
@@ -5104,7 +5108,7 @@ ul#mostPopularSlider li {
 	text-align: left;
 	font: bold 16px sans-serif;
 
-	padding: 55px 50px;
+	padding: 55px 10px;
 }
 
 .footer-distributed .footer-left,
@@ -5117,8 +5121,8 @@ ul#mostPopularSlider li {
 /* Footer left */
 
 .footer-distributed .footer-left{
-	width: 25%;
-	margin-left: 15%;
+	width: 30%;
+	margin-left: 5%;
 }
 
 /* The company logo */
@@ -5158,7 +5162,7 @@ ul#mostPopularSlider li {
 /* Footer Center */
 
 .footer-distributed .footer-center{
-	width: 25%;
+	width: 30%;
 }
 
 .footer-distributed .footer-center i{
@@ -5202,7 +5206,7 @@ ul#mostPopularSlider li {
 /* Footer Right */
 
 .footer-distributed .footer-right{
-	width: 20%;
+	width: 30%;
 }
 
 .footer-distributed .footer-company-about{
@@ -5223,6 +5227,7 @@ ul#mostPopularSlider li {
 
 .footer-distributed .footer-icons{
 	margin-top: 25px;
+	margin-left: 15px;
 }
 
 .footer-distributed .footer-icons a{
@@ -5726,11 +5731,11 @@ p.vel{
 	padding: 0;
 }
 
-@media(max-width: 480px){
+@media(max-width: 480px) and (min-width: 361px){
 	.most_popular {
 		padding-top: 30px;
 		background-color: #F7F7F7;
-		height: 400px;
+		height: 370px;
 	}
 
 	.most_popular > div{
@@ -5745,8 +5750,19 @@ p.vel{
         overflow: hidden;
         top: 0;
         left: 0;
-        padding: 50px 20px !important;
+        padding: 70px 20px !important;
     }
+
+	.hovereffect {
+		width: 100%;
+		height: 170px !important;
+		float: left;
+		overflow: hidden;
+		position: relative;
+		text-align: center;
+		cursor: default;
+		background: #42b078;
+	}
 }
 
 @media(max-width: 768px) and (min-width: 481px){
@@ -5760,18 +5776,94 @@ p.vel{
 		width:50%;
 		padding: 0;
 	}
+
+	.hovereffect {
+		width: 100%;
+		height: 304px !important;
+		float: left;
+		overflow: hidden;
+		position: relative;
+		text-align: center;
+		cursor: default;
+		background: #42b078;
+	}
+
+	.hovereffect .overlay {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		overflow: hidden;
+		top: 0;
+		left: 0;
+		padding: 130px 20px !important;
+	}
 }
 
 @media(max-width: 1024px) and (min-width: 769px){
 	.most_popular {
 		padding-top: 30px;
 		background-color: #F7F7F7;
-		height: 880px;
+		height: 830px;
 	}
 
 	.most_popular > div{
 		width:50%;
 		padding: 0;
+	}
+
+	.hovereffect {
+		width: 100%;
+		height: 400px !important;
+		float: left;
+		overflow: hidden;
+		position: relative;
+		text-align: center;
+		cursor: default;
+		background: #42b078;
+	}
+
+	.hovereffect .overlay {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		overflow: hidden;
+		top: 0;
+		left: 0;
+		padding: 180px 20px !important;
+	}
+}
+
+@media(max-width: 1440px) and (min-width: 1025px){
+	.most_popular {
+		padding-top: 30px;
+		background-color: #F7F7F7;
+		height: 270px;
+	}
+
+	.most_popular > div{
+		width:25%;
+		padding: 0;
+	}
+
+	.hovereffect {
+		width: 100%;
+		height: 100%;
+		float: left;
+		overflow: hidden;
+		position: relative;
+		text-align: center;
+		cursor: default;
+		background: #42b078;
+	}
+
+	.hovereffect .overlay {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		overflow: hidden;
+		top: 0;
+		left: 0;
+		padding: 110px 20px !important;
 	}
 }
 
@@ -5779,12 +5871,33 @@ p.vel{
 	.most_popular {
 		padding-top: 30px;
 		background-color: #F7F7F7;
-		height: 360px;
+		height: 330px;
 	}
 
 	.most_popular > div{
 		width:50%;
 		padding: 0;
+	}
+
+	.hovereffect {
+		width: 100%;
+		height: 150px !important;
+		float: left;
+		overflow: hidden;
+		position: relative;
+		text-align: center;
+		cursor: default;
+		background: #42b078;
+	}
+
+	.hovereffect .overlay {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		overflow: hidden;
+		top: 0;
+		left: 0;
+		padding: 60px 20px !important;
 	}
 }
 
@@ -5874,4 +5987,14 @@ p.vel{
 	filter: alpha(opacity=100);
 	-webkit-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
+}
+
+.iframe-index {
+	width: 90%;
+	height: 250px;
+}
+
+.logo-footer {
+	max-height : 45px;
+	margin-right: 15px;
 }

@@ -201,7 +201,7 @@ if(empty($typed)){
 
                     $args = array(
                         'post_type' => 'project',
-                        'posts_per_page' => 2,
+                        'posts_per_page' => DEFAULT_PAGE_SIZE,
                         'orderby' => 'menu_order',
                         'order' => 'ASC',
                         'meta_query' => array(

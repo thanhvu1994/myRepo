@@ -18,7 +18,7 @@ define( 'WIDTH_PERCENT_HEADER_BOTTOM_MENU_ITEM', 100 / MAX_HEADER_BOTTOM_MENU);
 define( 'INNER_BANNER_WITH_BACKGROUND', 1);
 define( 'INNER_BANNER_NO_BACKGROUND', 2);
 define( 'INNER_BANNER_WITH_VIDEO', 3);
-define( 'DEFAULT_PAGE_SIZE', 2);
+define( 'DEFAULT_PAGE_SIZE', 10);
 
 /**
 @ Load file /core/init.php
@@ -411,7 +411,7 @@ function misha_filter_function(){
             <?php
             $args = array(
                 'post_type' => 'project',
-                'posts_per_page' => 2,
+                'posts_per_page' => DEFAULT_PAGE_SIZE,
                 'orderby' => 'menu_order',
                 'order' => 'ASC',
                 'meta_query' => array(

@@ -90,7 +90,6 @@ class Realhome_Header_Widget extends WP_Widget {
                 <div class="top-nav">
                     <ul class="right-icons">
                         <li><span ><i class="glyphicon glyphicon-phone"> </i><?php echo $instance['phone'] ?></span></li>
-                        <li><a  href="<?php echo admin_url(); ?>"><i class="glyphicon glyphicon-user"> </i>Login</a></li>
                         <li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a></li>
 
                     </ul>
