@@ -114,7 +114,7 @@ class Realhome_Footer_Widget extends WP_Widget {
                 <h3><span><img class="logo-footer" src="<?php echo $instance['media_uri']; ?>" alt="logo foolter"/></span><?php echo $instance['title'].'  '; ?></h3>
 
                 <?php $args = array(
-                    'posts_per_page'   => 6,
+                    'posts_per_page'   => 5,
                     'offset'           => 0,
                     'category'         => '',
                     'category_name'    => '',
