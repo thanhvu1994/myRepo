@@ -308,7 +308,7 @@ class Realhome_Widget extends WP_Widget {
                                      </div>
                                      <div class="clearfix"> </div>
                                  </div>
-                                 <p><?php echo get_field('location', $project->ID) ?></p>
+                                 <p><?php echo get_field('location', $project->ID); ?></p>
                                  <a href="<?php echo get_permalink($project->ID); ?>" class="hvr-sweep-to-right more">See Details</a>
                              </div>
                         </div>
