@@ -21,7 +21,7 @@ get_template_part( 'inc/page_banner');
 ?>
     <!--top city-->
     <?php $args = array(
-        'posts_per_page'   => 6,
+        'posts_per_page'   => 6 + DEFAULT_PAGE_SIZE,
         'offset'           => 0,
         'category'         => '',
         'category_name'    => '',
@@ -179,6 +179,30 @@ get_template_part( 'inc/page_banner');
 
         </div>
     </div>
+
+    <?php if(count($cities) > 6): ?>
+        <div class="container">
+            <div class="grid-city-full">
+                <h3>Recommended City</h3>
+                <ul>
+                    <?php for($i = 6; $i < 6 + DEFAULT_PAGE_SIZE; $i++) : ?>
+                        <?php if(array_key_exists($i,$cities)) : ?>
+                            <?php
+                            $image = wp_get_attachment_url( get_post_thumbnail_id($cities[$i]->ID));
+                            ?>
+
+                            <li>
+                                <a href="<?php echo get_permalink( $cities[$i]->ID ).'buy/'; ?>">
+                                    <div style="background: url(<?php echo $image; ?>); background-size: cover">
+                                    </div>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                </ul>
+            </div>
+        </div>
+    <?php endif; ?>
 
     <?php
     $args = array(

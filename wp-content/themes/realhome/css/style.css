@@ -5998,3 +5998,73 @@ p.vel{
 	max-height : 45px;
 	margin-right: 15px;
 }
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.grid-city-full{
+	width: 1140px;
+	margin: 20px auto;
+	overflow: auto;
+	padding: 0 0 5em;
+}
+
+.grid-city-full h3{
+	font-size: 3em;
+	color: #000;
+	margin: 0 0 0.4em;
+	font-family: 'Montserrat-Regular';
+	text-align: center;
+}
+
+.grid-city-full h3:before, .grid-city-full h3:after{
+	width: 200px;
+	height: 1px;
+	display: inline-block;
+	vertical-align: middle;
+	content: "";
+	background: #000;
+	margin: 0 1%;
+}
+
+.grid-city-full ul {
+	list-style-type: none;
+	margin: 5px 20px;
+}
+
+.grid-city-full div {
+	width: 200px;
+	height: 200px;
+	-webkit-filter: brightness(50%);
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	-ms-transition: all 1s ease;
+	transition: all 1s ease;
+}
+
+.grid-city-full div:hover {
+	-webkit-filter: brightness(100%);
+}
+
+.shrink img:hover{
+	-webkit-transform: scale(0.8);
+	-ms-transform: scale(0.8);
+	transform: scale(0.8);
+	transition: 1s ease;
+}
+
+.grid-city-full li img {
+	float: left;
+	margin: 5px;
+	border: 5px solid #333;
+	-moz-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+.grid-city-full li img:hover {
+	border: 5px solid #F15123;
+}
