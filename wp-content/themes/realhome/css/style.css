@@ -3372,7 +3372,7 @@ span.four {
   	margin-top: 2em;
 }
 .project-grid {
-  	width: 50%;
+  	/*width: 50%;*/
   	float: left;
     margin-bottom: 2em;
 }
