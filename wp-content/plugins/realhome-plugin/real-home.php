@@ -339,7 +339,9 @@ class Realhome_Widget extends WP_Widget {
                 <h3><?php echo $instance['title']; ?></h3>
                 <div class="col-md-6 name-in">
                     <?php for($i = 0; $i < 2 ; $i++): ?>
-                        <?php if(!empty(get_field('comment',$testimonials[$i]))): ?>
+                        <?php
+                        $comment = get_field('comment',$testimonials[$i]);
+                        if(!empty($comment)): ?>
                             <div class=" bottom-in">
                                 <p class="para-in"><?php echo get_field('comment',$testimonials[$i]); ?></p>
                                 <i class="dolor"></i>

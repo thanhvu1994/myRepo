@@ -29,119 +29,330 @@ if(empty($typed)){
             <li class="breadcrumb-item active"><?php echo $post->post_title; ?></li>
         </ol>
 
+        <?php if(isset($_SESSION['sessionFilterProject'])) : ?>
+            <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter">
+                <div class="single-buy">
+                    <div class="col-sm-3 check-top-single">
+                        <div class="single-bottom">
+                            <?php if(isset($_SESSION['sessionFilterProject']['floor'])): ?>
+                                <h4>Floors</h4>
+                                <ul>
+                                    <li>
+                                        <input <?php echo ($_SESSION['sessionFilterProject']['floor'] == '1-2' )? 'checked' : ''; ?> name="floor" type="radio"  id="brand5" value="1-2">
+                                        <label for="brand5"><span></span> 1 - 2 Floor(s)</label>
+                                    </li>
+                                    <li>
+                                        <input <?php echo ($_SESSION['sessionFilterProject']['floor'] == '3-4' )? 'checked' : ''; ?> name="floor" type="radio"  id="brand6" value="3-4">
+                                        <label for="brand6"><span></span> 3 - 4 Floors</label>
+                                    </li>
+                                    <li>
+                                        <input <?php echo ($_SESSION['sessionFilterProject']['floor'] == '5-6' )? 'checked' : ''; ?> name="floor" type="radio"  id="brand7" value="5-6">
+                                        <label for="brand7"><span></span> 5 - 6 Floors</label>
+                                    </li>
+                                    <li>
+                                        <input <?php echo ($_SESSION['sessionFilterProject']['floor'] == '7' )? 'checked' : ''; ?> name="floor" type="radio"  id="brand8" value="7">
+                                        <label for="brand8"><span></span> 7+ Floors</label>
+                                    </li>
 
-        <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter">
-            <div class="single-buy">
-                <div class="col-sm-3 check-top-single">
-                    <div class="single-bottom">
-                        <h4>Floors</h4>
-                        <ul>
-                            <li>
-                                <input name="floor" type="radio"  id="brand5" value="1-2">
-                                <label for="brand5"><span></span> 1 - 2 Floor(s)</label>
-                            </li>
-                            <li>
-                                <input name="floor" type="radio"  id="brand6" value="3-4">
-                                <label for="brand6"><span></span> 3 - 4 Floors</label>
-                            </li>
-                            <li>
-                                <input name="floor" type="radio"  id="brand7" value="5-6">
-                                <label for="brand7"><span></span> 5 - 6 Floors</label>
-                            </li>
-                            <li>
-                                <input name="floor" type="radio"  id="brand8" value="7">
-                                <label for="brand8"><span></span> 7+ Floors</label>
-                            </li>
+                                </ul>
+                            <?php else: ?>
+                                <h4>Floors</h4>
+                                <ul>
+                                    <li>
+                                        <input name="floor" type="radio"  id="brand5" value="1-2">
+                                        <label for="brand5"><span></span> 1 - 2 Floor(s)</label>
+                                    </li>
+                                    <li>
+                                        <input name="floor" type="radio"  id="brand6" value="3-4">
+                                        <label for="brand6"><span></span> 3 - 4 Floors</label>
+                                    </li>
+                                    <li>
+                                        <input name="floor" type="radio"  id="brand7" value="5-6">
+                                        <label for="brand7"><span></span> 5 - 6 Floors</label>
+                                    </li>
+                                    <li>
+                                        <input name="floor" type="radio"  id="brand8" value="7">
+                                        <label for="brand8"><span></span> 7+ Floors</label>
+                                    </li>
 
-                        </ul>
+                                </ul>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-3 check-top-single">
-                    <div class="single-bottom">
-                        <h4>Price</h4>
-                        <ul>
-                            <li>
-                                <input name="price" type="radio"  id="brand14" value="0-2000000000">
-                                <label for="brand14"><span></span> < 2.000.000.000 VND</label>
-                            </li>
-                            <li>
-                                <input name="price" type="radio"  id="brand15" value="2000000000-4000000000">
-                                <label for="brand15"><span></span> 2 - 4.000.000.000 VND</label>
-                            </li>
-                            <li>
-                                <input name="price" type="radio"  id="brand16" value="4000000000-8000000000">
-                                <label for="brand16"><span></span> 4 - 8.000.000.000 VND</label>
-                            </li>
-                            <li>
-                                <input name="price" type="radio"  id="brand17" value="8000000000">
-                                <label for="brand17"><span></span> 8.000.000.000 VND < </label>
-                            </li>
-                        </ul>
+                    <div class="col-sm-3 check-top-single">
+                        <div class="single-bottom">
+                            <?php if(isset($_SESSION['sessionFilterProject']['price'])): ?>
+                                <h4>Price</h4>
+                                <ul>
+                                    <li>
+                                        <input <?php echo ($_SESSION['sessionFilterProject']['price'] == '0-2000000000' )? 'checked' : ''; ?> name="price" type="radio"  id="brand14" value="0-2000000000">
+                                        <label for="brand14"><span></span> < 2.000.000.000 VND</label>
+                                    </li>
+                                    <li>
+                                        <input <?php echo ($_SESSION['sessionFilterProject']['price'] == '2000000000-4000000000' )? 'checked' : ''; ?> name="price" type="radio"  id="brand15" value="2000000000-4000000000">
+                                        <label for="brand15"><span></span> 2 - 4.000.000.000 VND</label>
+                                    </li>
+                                    <li>
+                                        <input <?php echo ($_SESSION['sessionFilterProject']['price'] == '4000000000-8000000000' )? 'checked' : ''; ?> name="price" type="radio"  id="brand16" value="4000000000-8000000000">
+                                        <label for="brand16"><span></span> 4 - 8.000.000.000 VND</label>
+                                    </li>
+                                    <li>
+                                        <input <?php echo ($_SESSION['sessionFilterProject']['price'] == '8000000000' )? 'checked' : ''; ?> name="price" type="radio"  id="brand17" value="8000000000">
+                                        <label for="brand17"><span></span> 8.000.000.000 VND < </label>
+                                    </li>
+                                </ul>
+                            <?php else: ?>
+                                <h4>Price</h4>
+                                <ul>
+                                    <li>
+                                        <input name="price" type="radio"  id="brand14" value="0-2000000000">
+                                        <label for="brand14"><span></span> < 2.000.000.000 VND</label>
+                                    </li>
+                                    <li>
+                                        <input name="price" type="radio"  id="brand15" value="2000000000-4000000000">
+                                        <label for="brand15"><span></span> 2 - 4.000.000.000 VND</label>
+                                    </li>
+                                    <li>
+                                        <input name="price" type="radio"  id="brand16" value="4000000000-8000000000">
+                                        <label for="brand16"><span></span> 4 - 8.000.000.000 VND</label>
+                                    </li>
+                                    <li>
+                                        <input name="price" type="radio"  id="brand17" value="8000000000">
+                                        <label for="brand17"><span></span> 8.000.000.000 VND < </label>
+                                    </li>
+                                </ul>
+                            <?php endif; ?>
+                        </div>
                     </div>
+                    <div class="col-sm-3 check-top-single">
+                        <div class="single-bottom">
+                            <?php if(isset($_SESSION['sessionFilterProject']['bedroom'])): ?>
+                                <h4>Bedrooms</h4>
+                                <ul>
+                                    <li>
+                                        <input <?php echo ($_SESSION['sessionFilterProject']['bedroom'] == '1-4' )? 'checked' : ''; ?> name="bedroom" type="radio"  id="brand9" value="1-4">
+                                        <label for="brand9"><span></span> 1-4 Bedroom(s) </label>
+                                    </li>
+                                    <li>
+                                        <input <?php echo ($_SESSION['sessionFilterProject']['bedroom'] == '5-8' )? 'checked' : ''; ?> name="bedroom" type="radio"  id="brand10" value="5-8">
+                                        <label for="brand10"><span></span> 5-8 Bedrooms </label>
+                                    </li>
+                                    <li>
+                                        <input <?php echo ($_SESSION['sessionFilterProject']['bedroom'] == '9-13' )? 'checked' : ''; ?> name="bedroom" type="radio"  id="brand11" value="9-13">
+                                        <label for="brand11"><span></span> 9-13 Bedrooms</label>
+                                    </li>
+                                    <li>
+                                        <input <?php echo ($_SESSION['sessionFilterProject']['bedroom'] == '14' )? 'checked' : ''; ?> name="bedroom" type="radio"  id="brand12" value="14">
+                                        <label for="brand12"><span></span> 14+ Bedrooms</label>
+                                    </li>
+                                </ul>
+                            <?php else: ?>
+                                <h4>Bedrooms</h4>
+                                <ul>
+                                    <li>
+                                        <input name="bedroom" type="radio"  id="brand9" value="1-4">
+                                        <label for="brand9"><span></span> 1-4 Bedroom(s) </label>
+                                    </li>
+                                    <li>
+                                        <input name="bedroom" type="radio"  id="brand10" value="5-8">
+                                        <label for="brand10"><span></span> 5-8 Bedrooms </label>
+                                    </li>
+                                    <li>
+                                        <input name="bedroom" type="radio"  id="brand11" value="9-13">
+                                        <label for="brand11"><span></span> 9-13 Bedrooms</label>
+                                    </li>
+                                    <li>
+                                        <input name="bedroom" type="radio"  id="brand12" value="14">
+                                        <label for="brand12"><span></span> 14+ Bedrooms</label>
+                                    </li>
+                                </ul>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 check-top-single">
+                        <div class="single-bottom">
+                            <?php if(isset($_SESSION['sessionFilterProject']['area'])): ?>
+                                <h4>Area</h4>
+                                <ul>
+                                    <li>
+                                        <input <?php echo ($_SESSION['sessionFilterProject']['area'] == '0-50' )? 'checked' : ''; ?> name="area" type="radio"  id="brand" value="0-50">
+                                        <label for="brand"><span></span> 0 - 50 m<sup>2</sup></label>
+                                    </li>
+                                    <li>
+                                        <input <?php echo ($_SESSION['sessionFilterProject']['area'] == '51-101' )? 'checked' : ''; ?> name="area" type="radio"  id="brand1" value="51-101">
+                                        <label for="brand1"><span></span> 51 - 100 m<sup>2</sup></label>
+                                    </li>
+                                    <li>
+                                        <input <?php echo ($_SESSION['sessionFilterProject']['area'] == '101-200' )? 'checked' : ''; ?> name="area" type="radio"  id="brand2" value="101-200">
+                                        <label for="brand2"><span></span> 101 - 200 m<sup>2</sup></label>
+                                    </li>
+                                    <li>
+                                        <input <?php echo ($_SESSION['sessionFilterProject']['area'] == '201' )? 'checked' : ''; ?> name="area" type="radio"  id="brand3" value="201">
+                                        <label for="brand3"><span></span> 201 m<sup>2</sup> <</label>
+                                    </li>
+                                    <li>
+                                        <button  class="btn btn-success apply">Apply filter</button>
+                                        <button onclick="clearFilter()" class="btn btn-success clear">Clear filter</button>
+                                        <input type="hidden" name="action" value="myfilter">
+                                        <input type="hidden" name="type" value="<?php echo $typed; ?>">
+                                        <input type="hidden" name="page" value="<?php echo $paged; ?>">
+                                        <input type="hidden" name="city" value="<?php echo $post->post_name; ?>">
+                                    </li>
+                                </ul>
+                            <?php else: ?>
+                                <h4>Area</h4>
+                                <ul>
+                                    <li>
+                                        <input name="area" type="radio"  id="brand" value="0-50">
+                                        <label for="brand"><span></span> 0 - 50 m<sup>2</sup></label>
+                                    </li>
+                                    <li>
+                                        <input name="area" type="radio"  id="brand1" value="51-101">
+                                        <label for="brand1"><span></span> 51 - 100 m<sup>2</sup></label>
+                                    </li>
+                                    <li>
+                                        <input name="area" type="radio"  id="brand2" value="101-200">
+                                        <label for="brand2"><span></span> 101 - 200 m<sup>2</sup></label>
+                                    </li>
+                                    <li>
+                                        <input name="area" type="radio"  id="brand3" value="201">
+                                        <label for="brand3"><span></span> 201 m<sup>2</sup> <</label>
+                                    </li>
+                                    <li>
+                                        <button  class="btn btn-success apply">Apply filter</button>
+                                        <button onclick="clearFilter()" class="btn btn-success clear">Clear filter</button>
+                                        <input type="hidden" name="action" value="myfilter">
+                                        <input type="hidden" name="type" value="<?php echo $typed; ?>">
+                                        <input type="hidden" name="page" value="<?php echo $paged; ?>">
+                                        <input type="hidden" name="city" value="<?php echo $post->post_name; ?>">
+                                    </li>
+                                </ul>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <script>
+                        function clearFilter(){
+                            jQuery('input').attr('checked',false);
+                        }
+                    </script>
+                    <div class="clearfix"> </div>
                 </div>
-                <div class="col-sm-3 check-top-single">
-                    <div class="single-bottom">
-                        <h4>Bedrooms</h4>
-                        <ul>
-                            <li>
-                                <input name="bedroom" type="radio"  id="brand9" value="1-4">
-                                <label for="brand9"><span></span> 1-4 Bedroom(s) </label>
-                            </li>
-                            <li>
-                                <input name="bedroom" type="radio"  id="brand10" value="5-8">
-                                <label for="brand10"><span></span> 5-8 Bedrooms </label>
-                            </li>
-                            <li>
-                                <input name="bedroom" type="radio"  id="brand11" value="9-13">
-                                <label for="brand11"><span></span> 9-13 Bedrooms</label>
-                            </li>
-                            <li>
-                                <input name="bedroom" type="radio"  id="brand12" value="14">
-                                <label for="brand12"><span></span> 14+ Bedrooms</label>
-                            </li>
+            </form>
+        <?php else : ?>
+            <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter">
+                <div class="single-buy">
+                    <div class="col-sm-3 check-top-single">
+                        <div class="single-bottom">
+                            <h4>Floors</h4>
+                            <ul>
+                                <li>
+                                    <input name="floor" type="radio"  id="brand5" value="1-2">
+                                    <label for="brand5"><span></span> 1 - 2 Floor(s)</label>
+                                </li>
+                                <li>
+                                    <input name="floor" type="radio"  id="brand6" value="3-4">
+                                    <label for="brand6"><span></span> 3 - 4 Floors</label>
+                                </li>
+                                <li>
+                                    <input name="floor" type="radio"  id="brand7" value="5-6">
+                                    <label for="brand7"><span></span> 5 - 6 Floors</label>
+                                </li>
+                                <li>
+                                    <input name="floor" type="radio"  id="brand8" value="7">
+                                    <label for="brand8"><span></span> 7+ Floors</label>
+                                </li>
 
-                        </ul>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-3 check-top-single">
-                    <div class="single-bottom">
-                        <h4>Area</h4>
-                        <ul>
-                            <li>
-                                <input name="area" type="radio"  id="brand" value="0-50">
-                                <label for="brand"><span></span> 0 - 50 m<sup>2</sup></label>
-                            </li>
-                            <li>
-                                <input name="area" type="radio"  id="brand1" value="51-101">
-                                <label for="brand1"><span></span> 51 - 100 m<sup>2</sup></label>
-                            </li>
-                            <li>
-                                <input name="area" type="radio"  id="brand2" value="101-200">
-                                <label for="brand2"><span></span> 101 - 200 m<sup>2</sup></label>
-                            </li>
-                            <li>
-                                <input name="area" type="radio"  id="brand3" value="201">
-                                <label for="brand3"><span></span> 201 m<sup>2</sup> <</label>
-                            </li>
-                            <li>
-                                <button  class="btn btn-success apply">Apply filter</button>
-                                <button onclick="clearFilter()" class="btn btn-success clear">Clear filter</button>
-                                <input type="hidden" name="action" value="myfilter">
-                                <input type="hidden" name="type" value="<?php echo $typed; ?>">
-                                <input type="hidden" name="page" value="<?php echo $paged; ?>">
-                                <input type="hidden" name="city" value="<?php echo $post->post_name; ?>">
-                            </li>
-                        </ul>
+                    <div class="col-sm-3 check-top-single">
+                        <div class="single-bottom">
+                            <h4>Price</h4>
+                            <ul>
+                                <li>
+                                    <input name="price" type="radio"  id="brand14" value="0-2000000000">
+                                    <label for="brand14"><span></span> < 2.000.000.000 VND</label>
+                                </li>
+                                <li>
+                                    <input name="price" type="radio"  id="brand15" value="2000000000-4000000000">
+                                    <label for="brand15"><span></span> 2 - 4.000.000.000 VND</label>
+                                </li>
+                                <li>
+                                    <input name="price" type="radio"  id="brand16" value="4000000000-8000000000">
+                                    <label for="brand16"><span></span> 4 - 8.000.000.000 VND</label>
+                                </li>
+                                <li>
+                                    <input name="price" type="radio"  id="brand17" value="8000000000">
+                                    <label for="brand17"><span></span> 8.000.000.000 VND < </label>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
+                    <div class="col-sm-3 check-top-single">
+                        <div class="single-bottom">
+                            <h4>Bedrooms</h4>
+                            <ul>
+                                <li>
+                                    <input name="bedroom" type="radio"  id="brand9" value="1-4">
+                                    <label for="brand9"><span></span> 1-4 Bedroom(s) </label>
+                                </li>
+                                <li>
+                                    <input name="bedroom" type="radio"  id="brand10" value="5-8">
+                                    <label for="brand10"><span></span> 5-8 Bedrooms </label>
+                                </li>
+                                <li>
+                                    <input name="bedroom" type="radio"  id="brand11" value="9-13">
+                                    <label for="brand11"><span></span> 9-13 Bedrooms</label>
+                                </li>
+                                <li>
+                                    <input name="bedroom" type="radio"  id="brand12" value="14">
+                                    <label for="brand12"><span></span> 14+ Bedrooms</label>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 check-top-single">
+                        <div class="single-bottom">
+                            <h4>Area</h4>
+                            <ul>
+                                <li>
+                                    <input name="area" type="radio"  id="brand" value="0-50">
+                                    <label for="brand"><span></span> 0 - 50 m<sup>2</sup></label>
+                                </li>
+                                <li>
+                                    <input name="area" type="radio"  id="brand1" value="51-101">
+                                    <label for="brand1"><span></span> 51 - 100 m<sup>2</sup></label>
+                                </li>
+                                <li>
+                                    <input name="area" type="radio"  id="brand2" value="101-200">
+                                    <label for="brand2"><span></span> 101 - 200 m<sup>2</sup></label>
+                                </li>
+                                <li>
+                                    <input name="area" type="radio"  id="brand3" value="201">
+                                    <label for="brand3"><span></span> 201 m<sup>2</sup> <</label>
+                                </li>
+                                <li>
+                                    <button  class="btn btn-success apply">Apply filter</button>
+                                    <button onclick="clearFilter()" class="btn btn-success clear">Clear filter</button>
+                                    <input type="hidden" name="action" value="myfilter">
+                                    <input type="hidden" name="type" value="<?php echo $typed; ?>">
+                                    <input type="hidden" name="page" value="<?php echo $paged; ?>">
+                                    <input type="hidden" name="city" value="<?php echo $post->post_name; ?>">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <script>
+                        function clearFilter(){
+                            jQuery('input').attr('checked',false);
+                        }
+                    </script>
+                    <div class="clearfix"> </div>
                 </div>
-                <script>
-                    function clearFilter(){
-                        jQuery('input').attr('checked',false);
-                    }
-                </script>
-                <div class="clearfix"> </div>
-            </div>
-        </form>
+            </form>
+        <?php endif; ?>
+
 
         <script>
             jQuery(function($){
@@ -156,7 +367,7 @@ if(empty($typed)){
                         },
                         success:function(data){
                             filter.find('button.apply').text('Apply filter'); // changing the button label back
-                            $('#response').html(data); // insert data
+                            window.location.href = '<?php echo get_permalink().$typed.'/'; ?>';
                         }
                     });
                     return false;
@@ -198,10 +409,78 @@ if(empty($typed)){
             <div id="response" class="box-sin">
                 <div class="col-md-9 single-box">
                     <?php
+                    if(isset($_SESSION['sessionFilterProject']['floor'])){
+                        $arrayFloor = explode('-', $_SESSION['sessionFilterProject']['floor']);
+
+                        if(count($arrayFloor) < 2){
+                            $arrayFloor[] = '1000';
+                        }
+                    }else{
+                        $arrayFloor = array();
+                    }
+
+                    if(isset($_SESSION['sessionFilterProject']['price'])){
+                        $arrayPrice = explode('-', $_SESSION['sessionFilterProject']['price']);
+
+                        if(count($arrayPrice) < 2){
+                            $arrayPrice[] = '100000000000000000000';
+                        }
+                    }else{
+                        $arrayPrice = array();
+                    }
+
+                    if(isset($_SESSION['sessionFilterProject']['bedroom'])){
+                        $arrayBedroom = explode('-', $_SESSION['sessionFilterProject']['bedroom']);
+
+                        if(count($arrayBedroom) < 2){
+                            $arrayBedroom[] = '10000';
+                        }
+                    }else{
+                        $arrayBedroom = array();
+                    }
+
+                    if(isset($_SESSION['sessionFilterProject']['area'])){
+                        $arrayArea = explode('-', $_SESSION['sessionFilterProject']['area']);
+
+                        if(count($arrayArea) < 2){
+                            $arrayArea[] = '10000000000000000';
+                        }
+                    }else{
+                        $arrayArea = array();
+                    }
+
+
+                    $arrayFilter = array(
+                        'relation' => 'AND', // Optional, defaults to "AND"
+                        array(
+                            'key'     => 'floor',
+                            'value'   => $arrayFloor,
+                            'type' => 'NUMERIC',
+                            'compare' => 'BETWEEN'
+                        ),
+                        array(
+                            'key'     => 'price',
+                            'value'   => $arrayPrice,
+                            'type' => 'CHAR',
+                            'compare' => 'BETWEEN'
+                        ),
+                        array(
+                            'key'     => 'bedroom',
+                            'value'   => $arrayBedroom,
+                            'type' => 'NUMERIC',
+                            'compare' => 'BETWEEN'
+                        ),
+                        array(
+                            'key'     => 'area',
+                            'value'   => $arrayArea,
+                            'type' => 'NUMERIC',
+                            'compare' => 'BETWEEN'
+                        )
+                    );
 
                     $args = array(
                         'post_type' => 'project',
-                        'posts_per_page' => DEFAULT_PAGE_SIZE,
+                        'posts_per_page' => 2,
                         'orderby' => 'menu_order',
                         'order' => 'ASC',
                         'meta_query' => array(
@@ -215,7 +494,8 @@ if(empty($typed)){
                                 'key'     => 'city',
                                 'value'   => $post->post_name,
                                 'compare' => '='
-                            )
+                            ),
+                            isset($_SESSION['sessionFilterProject']) ? $arrayFilter : ''
                         ),
                         'paged' => $paged,
                     );
@@ -278,7 +558,7 @@ if(empty($typed)){
                                 <p style="font-weight: normal">
                                     <?php echo (strlen ($community['caption']) > 40)? substr($community['caption'],0,40).'...' : $community['caption']; ?>
                                 </p>
-                                <a class="in-box openModal_<?php echo $community['id']; ?>">More Info</a>
+                                <a class="openModal_<?php echo $community['id']; ?>" style="font-size: 0.8em; margin: 0.3em 0em 0; color: #000;">More Info</a>
                             </div>
                             <div class="clearfix"> </div>
                         </div>

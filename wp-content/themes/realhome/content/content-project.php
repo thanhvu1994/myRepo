@@ -1,23 +1,23 @@
 <?php get_template_part( 'inc/page_banner'); ?>
 
 <?php
-    switch(get_field('type',$post->ID)){
-        case 'sell':
-            $type = 'buy';
-            break;
-        case 'rent':
-            $type = 'rent';
-            break;
-        case 'apartment':
-            $type = 'apartment';
-            break;
-        case 'hotel':
-            $type = 'hotel';
-            break;
-        default:
-            $type = 'sell';
-            break;
-    }
+switch(get_field('type',$post->ID)){
+    case 'sell':
+        $type = 'buy';
+        break;
+    case 'rent':
+        $type = 'rent';
+        break;
+    case 'apartment':
+        $type = 'apartment';
+        break;
+    case 'hotel':
+        $type = 'hotel';
+        break;
+    default:
+        $type = 'sell';
+        break;
+}
 ?>
 
 <?php $_SESSION['sessionProjectType'] = $type; ?>
@@ -79,7 +79,7 @@
             </div>
 
             <?php
-                $videos = explode(';',get_field('iframe_video',$post->ID));
+            $videos = explode(';',get_field('iframe_video',$post->ID));
             ?>
             <?php if(!empty($videos)): ?>
                 <?php foreach($videos as $key => $video) : ?>
@@ -98,7 +98,7 @@
             <div class="single-box-right right-immediate">
                 <h4>Featured Communities</h4>
                 <?php
-                    $communities = acf_photo_gallery('communitie',$post->ID);
+                $communities = acf_photo_gallery('communitie',$post->ID);
                 ?>
                 <?php foreach($communities as $community): ?>
                     <div class="single-box-img ">
@@ -112,7 +112,7 @@
                             <p style="font-weight: normal">
                                 <?php echo (strlen ($community['caption']) > 40)? substr($community['caption'],0,40).'...' : $community['caption']; ?>
                             </p>
-                            <a class="in-box openModal_<?php echo $community['id']; ?>">More Info</a>
+                            <a class="openModal_<?php echo $community['id']; ?>" style="font-size: 0.8em; margin: 0.3em 0em 0; color: #000;">More Info</a>
                         </div>
                         <div class="clearfix"> </div>
                     </div>
@@ -153,22 +153,22 @@
     </div>
 </div>
 
-    <!---->
-    <?php
-    $args = array(
-        'post_type' => 'project',
-        'posts_per_page' => 6,
-        'orderby' => 'rand',
-        'meta_key'		=> 'type',
-        'meta_value'	=> get_field('type',$post->ID),
-        'post__not_in' => array($post->ID)
-    );
+<!---->
+<?php
+$args = array(
+    'post_type' => 'project',
+    'posts_per_page' => 6,
+    'orderby' => 'rand',
+    'meta_key'		=> 'type',
+    'meta_value'	=> get_field('type',$post->ID),
+    'post__not_in' => array($post->ID)
+);
 
-    $projects = get_posts($args);
-    ?>
-    <div class="container">
-        <div class="future">
-            <?php if(count($projects) >= 2) : ?>
+$projects = get_posts($args);
+?>
+<div class="container">
+    <div class="future">
+        <?php if(count($projects) >= 2) : ?>
             <h3>Related Projects</h3>
             <div class="content-bottom-in">
 
@@ -218,6 +218,6 @@
                     });
                 </script>
             </div>
-            <?php endif; ?>
-        </div>
+        <?php endif; ?>
     </div>
+</div>

@@ -3858,10 +3858,10 @@ h3.typo1 {
 }
 @media(max-width:480px){
 .logo h1 {
-  font-size: 1.4em;
+  font-size: 1.7em;
 }
 	.logo img {
-		max-height: 40px;
+		max-height: 33px;
 	}
 .top-nav {
   margin-top: 1px;
@@ -4286,7 +4286,7 @@ h1.typo1 {
   padding-left: 10px;
 }
 .logo h1 {
-  font-size: 1.4em;
+  font-size: 1.7em;
 }
  .right-icons li a {
   font-size: 0.875em;
