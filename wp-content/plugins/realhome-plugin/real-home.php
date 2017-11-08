@@ -287,13 +287,13 @@ class Realhome_Widget extends WP_Widget {
             <div class="container">
                 <h3><?php echo $instance['title']; ?></h3>
                 <div class="project-top">
-                    <?php foreach($projects as $project): ?>
+                    <?php foreach($projects as $key => $project): ?>
                     <?php
                         $gallery = acf_photo_gallery('photo_gallery',$project->ID);
                         $ranImage = array_rand ( $gallery, 1);
                         $image = wp_get_attachment_image_src( get_post_thumbnail_id( $project->ID ), '275x206' );
                     ?>
-                    <div class="col-md-3 project-grid">
+                    <div class="col-md-3 project-grid" <?php echo ($key == 0)? 'style="margin-bottom: 0.9em;"' : ''; ?>>
                         <div class="project-grid-top custom-img">
                              <a href="<?php echo get_permalink($project->ID); ?>" class="mask">
                                 <img class="img-responsive zoom-img" src="<?php echo isset($image[0]) ? $image[0] : '' ?>" alt="<?php echo $gallery[$ranImage]['caption']; ?>" />
@@ -308,7 +308,7 @@ class Realhome_Widget extends WP_Widget {
                                      </div>
                                      <div class="clearfix"> </div>
                                  </div>
-                                 <p><?php echo get_field('location', $project->ID) ?></p>
+                                 <p><?php echo get_field('location', $project->ID); ?></p>
                                  <a href="<?php echo get_permalink($project->ID); ?>" class="hvr-sweep-to-right more">See Details</a>
                              </div>
                         </div>

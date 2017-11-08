@@ -235,11 +235,15 @@ if(empty($typed)){
                                 </div>
                                 <div class="  col-sm-5 middle-side">
                                     <h4>Project Detail</h4>
-                                    <p><span class="bath">Location </span>: <span class="two"><?php echo get_field('location'); ?></span></p>
-                                    <p><span class="bath1">Area </span>: <span class="two"><?php echo get_field('area'); ?> m<sup>2</sup></span></p>
-                                    <p><span class="bath2">Floors </span>: <span class="two"><?php echo get_field('floor'); ?></span></p>
-                                    <p><span class="bath3">Bedrooms </span>: <span class="two"><?php echo get_field('bedroom'); ?></span></p>
-                                    <p><span class="bath4">Price </span> : <span class="two"><?php echo get_field('price'); ?></span></p>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-condensed table-hover">
+                                            <tr><td>Address</td><td class="td-content"><?php echo get_field('location'); ?></td></tr>
+                                            <tr><td>Area</td><td class="td-content"><?php echo get_field('area'); ?></td></tr>
+                                            <tr><td>Floors</td><td class="td-content"><?php echo get_field('floor'); ?></td></tr>
+                                            <tr><td>Bedrooms</td><td class="td-content"><?php echo get_field('bedroom'); ?></td></tr>
+                                            <tr><td>Price</td><td class="td-content"><?php echo get_field('price'); ?></td></tr>
+                                        </table>
+                                    </div>
                                     <div class="   right-side">
                                         <a href="<?php echo get_permalink(get_page_by_title('contact')); ?>" class="hvr-sweep-to-right more">Contact Now</a>
                                     </div>
@@ -265,30 +269,49 @@ if(empty($typed)){
                     <?php foreach($communities as $community): ?>
                         <div class="single-box-img ">
                             <div class="box-img">
-                                <a href="#openModal_<?php echo $community['id']; ?>"><img class="img-responsive" src="<?php echo $community['full_image_url']; ?>" alt="<?php echo $community['title']; ?>"></a>
+                                <a class="openModal_<?php echo $community['id']; ?>"><img class="img-responsive" src="<?php echo $community['full_image_url']; ?>" alt="<?php echo $community['title']; ?>"></a>
                             </div>
                             <div class="box-text">
                                 <p>
-                                    <a href="#openModal_<?php echo $community['id']; ?>" ><?php echo $community['title']; ?></a>
+                                    <a class="openModal_<?php echo $community['id']; ?>" ><?php echo $community['title']; ?></a>
                                 </p>
                                 <p style="font-weight: normal">
                                     <?php echo (strlen ($community['caption']) > 40)? substr($community['caption'],0,40).'...' : $community['caption']; ?>
                                 </p>
-                                <a href="#openModal_<?php echo $community['id']; ?>" class="in-box">More Info</a>
+                                <a class="in-box openModal_<?php echo $community['id']; ?>">More Info</a>
                             </div>
                             <div class="clearfix"> </div>
                         </div>
 
                         <div id="openModal_<?php echo $community['id']; ?>" class="modalDialog">
-                            <div>
-                                <a href="#close" title="Close" class="close">X</a>
+                            <div class="modal_container">
                                 <h2><?php echo $community['title']; ?></h2>
                                 <img class="community-image" src="<?php echo $community['full_image_url']; ?>" alt="<?php echo $community['title']; ?>"/>
                                 <blockquote>
                                     <p><?php echo $community['caption']; ?></p>
                                 </blockquote>
+
                             </div>
                         </div>
+
+                        <script>
+                            $('.openModal_<?php echo $community['id']; ?>').click(function(){
+                                var id = $(this).attr('class');
+
+                                $('#' + id).css('opacity',1);
+                            });
+
+                            $(document).mouseup(function(e)
+                            {
+                                var container = $("#openModal_<?php echo $community['id']; ?>");
+
+                                // if the target of the click isn't the container nor a descendant of the container
+                                if (!container.is(e.target) && container.has(e.target).length === 0)
+                                {
+                                    container.css('opacity',0);
+                                }
+                            });
+                        </script>
                     <?php endforeach; ?>
                 </div>
             </div>
