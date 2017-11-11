@@ -1,23 +1,23 @@
 <?php get_template_part( 'inc/page_banner'); ?>
 
 <?php
-    switch(get_field('type',$post->ID)){
-        case 'sell':
-            $type = 'buy';
-            break;
-        case 'rent':
-            $type = 'rent';
-            break;
-        case 'apartment':
-            $type = 'apartment';
-            break;
-        case 'hotel':
-            $type = 'hotel';
-            break;
-        default:
-            $type = 'sell';
-            break;
-    }
+switch(get_field('type',$post->ID)){
+    case 'sell':
+        $type = 'buy';
+        break;
+    case 'rent':
+        $type = 'rent';
+        break;
+    case 'apartment':
+        $type = 'apartment';
+        break;
+    case 'hotel':
+        $type = 'hotel';
+        break;
+    default:
+        $type = 'sell';
+        break;
+}
 ?>
 
 <?php $_SESSION['sessionProjectType'] = $type; ?>
@@ -52,11 +52,15 @@
             <div class="buy-sin-single">
                 <div class="col-sm-5 middle-side immediate">
                     <h4>Project Detail</h4>
-                    <p><span class="bath">Address </span>: <span class="two"><?php echo get_field('location',$post->ID); ?></span></p>
-                    <p><span class="bath1">Area </span>: <span class="two"><?php echo get_field('area',$post->ID); ?> m<sup>2</sup></span></p>
-                    <p><span class="bath2">Floors </span>: <span class="two"><?php echo get_field('floor',$post->ID); ?></span></p>
-                    <p><span class="bath3">Bedrooms </span>: <span class="two"><?php echo get_field('bedroom',$post->ID); ?></span></p>
-                    <p><span class="bath4">Price </span> : <span class="two"><?php echo get_field('price',$post->ID); ?></span></p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-condensed table-hover">
+                            <tr><td>Address</td><td class="td-content"><?php echo get_field('location'); ?></td></tr>
+                            <tr><td>Area</td><td class="td-content"><?php echo get_field('area'); ?></td></tr>
+                            <tr><td>Floors</td><td class="td-content"><?php echo get_field('floor'); ?></td></tr>
+                            <tr><td>Bedrooms</td><td class="td-content"><?php echo get_field('bedroom'); ?></td></tr>
+                            <tr><td>Price</td><td class="td-content"><?php echo get_field('price'); ?></td></tr>
+                        </table>
+                    </div>
                     <div class="   right-side">
                         <a href="<?php echo get_permalink(get_page_by_title('contact')); ?>" class="hvr-sweep-to-right more" >Contact Now</a>
                     </div>
@@ -75,7 +79,7 @@
             </div>
 
             <?php
-                $videos = explode(';',get_field('iframe_video',$post->ID));
+            $videos = explode(';',get_field('iframe_video',$post->ID));
             ?>
             <?php if(!empty($videos)): ?>
                 <?php foreach($videos as $key => $video) : ?>
@@ -94,28 +98,27 @@
             <div class="single-box-right right-immediate">
                 <h4>Featured Communities</h4>
                 <?php
-                    $communities = acf_photo_gallery('communitie',$post->ID);
+                $communities = acf_photo_gallery('communitie',$post->ID);
                 ?>
                 <?php foreach($communities as $community): ?>
                     <div class="single-box-img ">
                         <div class="box-img">
-                            <a href="#openModal_<?php echo $community['id']; ?>"><img class="img-responsive" src="<?php echo $community['full_image_url']; ?>" alt="<?php echo $community['title']; ?>"></a>
+                            <a class="openModal_<?php echo $community['id']; ?>"><img class="img-responsive" src="<?php echo $community['full_image_url']; ?>" alt="<?php echo $community['title']; ?>"></a>
                         </div>
                         <div class="box-text">
                             <p>
-                                <a href="#openModal_<?php echo $community['id']; ?>" ><?php echo $community['title']; ?></a>
+                                <a class="openModal_<?php echo $community['id']; ?>" ><?php echo $community['title']; ?></a>
                             </p>
                             <p style="font-weight: normal">
                                 <?php echo (strlen ($community['caption']) > 40)? substr($community['caption'],0,40).'...' : $community['caption']; ?>
                             </p>
-                            <a href="#openModal_<?php echo $community['id']; ?>" class="in-box">More Info</a>
+                            <a class="openModal_<?php echo $community['id']; ?>" style="font-size: 0.8em; margin: 0.3em 0em 0; color: #000;">More Info</a>
                         </div>
                         <div class="clearfix"> </div>
                     </div>
 
                     <div id="openModal_<?php echo $community['id']; ?>" class="modalDialog">
-                        <div>
-                            <a href="#close" title="Close" class="close">X</a>
+                        <div class="modal_container">
                             <h2><?php echo $community['title']; ?></h2>
                             <img class="community-image" src="<?php echo $community['full_image_url']; ?>" alt="<?php echo $community['title']; ?>"/>
                             <blockquote>
@@ -124,6 +127,25 @@
 
                         </div>
                     </div>
+
+                    <script>
+                        $('.openModal_<?php echo $community['id']; ?>').click(function(){
+                            var id = $(this).attr('class');
+
+                            $('#' + id).css('opacity',1);
+                        });
+
+                        $(document).mouseup(function(e)
+                        {
+                            var container = $("#openModal_<?php echo $community['id']; ?>");
+
+                            // if the target of the click isn't the container nor a descendant of the container
+                            if (!container.is(e.target) && container.has(e.target).length === 0)
+                            {
+                                container.css('opacity',0);
+                            }
+                        });
+                    </script>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -131,22 +153,22 @@
     </div>
 </div>
 
-    <!---->
-    <?php
-    $args = array(
-        'post_type' => 'project',
-        'posts_per_page' => 6,
-        'orderby' => 'rand',
-        'meta_key'		=> 'type',
-        'meta_value'	=> get_field('type',$post->ID),
-        'post__not_in' => array($post->ID)
-    );
+<!---->
+<?php
+$args = array(
+    'post_type' => 'project',
+    'posts_per_page' => 6,
+    'orderby' => 'rand',
+    'meta_key'		=> 'type',
+    'meta_value'	=> get_field('type',$post->ID),
+    'post__not_in' => array($post->ID)
+);
 
-    $projects = get_posts($args);
-    ?>
-    <div class="container">
-        <div class="future">
-            <?php if(count($projects) >= 2) : ?>
+$projects = get_posts($args);
+?>
+<div class="container">
+    <div class="future">
+        <?php if(count($projects) >= 2) : ?>
             <h3>Related Projects</h3>
             <div class="content-bottom-in">
 
@@ -196,6 +218,6 @@
                     });
                 </script>
             </div>
-            <?php endif; ?>
-        </div>
+        <?php endif; ?>
     </div>
+</div>

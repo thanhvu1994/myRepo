@@ -83,8 +83,9 @@ class Realhome_Header_Widget extends WP_Widget {
             <div class="container">
                 <!--logo-->
                 <div class="logo">
-                    <img class="header-img" src="<?php echo $instance['media_uri'] ?>" alt="logo"/>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img class="header-img" src="<?php echo $instance['media_uri'] ?>" alt="logo" height=250/><span class="helper"></span></a>
                     <h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo $instance['title'] ?></a></h1>
+
                 </div>
                 <!--//logo-->
                 <div class="top-nav">

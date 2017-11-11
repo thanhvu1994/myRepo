@@ -36,12 +36,26 @@ h1,h2,h3,h4,h5,h6,label,p{
 }
 /*----*/
 .logo {
-  float: left;
+  	float: left;
+	height: 33px;      /* equals max image height */
+	width: 160px;
+	white-space: nowrap;
+	text-align: center; margin: 0em 0;
 }
 
 .logo img {
-	max-height: 45px;
+	background: #3A6F9A;
+	vertical-align: top;
+	max-height: 33px;
+	max-width: 160px;
 }
+
+.helper {
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+
 .top-nav{
 	float:right;
 	margin-top: 3px;
@@ -204,10 +218,12 @@ i.deal{
     margin: 0em 0 0;
     font-family: 'Montserrat-Regular';
     display: inline;
+	max-height: 33px;
 }
 .logo h1 a{
 	text-decoration: none;
 	color:#fff;
+
 }
 .right-icons li{
 	display: inline-block;
@@ -765,7 +781,7 @@ a.mask {
   	border: 1px solid #AEAEAE;
 }
 .col-md1 {
-  	padding: 1.5em;
+  	padding: 1em;
   	background: #fff;
 }
 .col-md3 {
@@ -1881,7 +1897,7 @@ font-family: 'Montserrat-Regular';
   padding: 0em 4em 0 0;
 }
 .right-immediate{
-	padding: 0;
+	padding: 20px 0px;
 }
 .buy-sin-single {
   padding: 1em 0 0;
@@ -3356,7 +3372,7 @@ span.four {
   	margin-top: 2em;
 }
 .project-grid {
-  	width: 50%;
+  	/*width: 50%;*/
   	float: left;
     margin-bottom: 2em;
 }
@@ -3842,10 +3858,10 @@ h3.typo1 {
 }
 @media(max-width:480px){
 .logo h1 {
-  font-size: 1.4em;
+  font-size: 1.7em;
 }
 	.logo img {
-		max-height: 40px;
+		max-height: 33px;
 	}
 .top-nav {
   margin-top: 1px;
@@ -3888,7 +3904,7 @@ h3.typo1 {
   padding: 2em 0 3em;
 }
 i.dolor {
-  width: 298px;
+  width: 250px;
   background-size: 300px;
 }
 .content-grid h3 {
@@ -3927,8 +3943,13 @@ p.para-in {
   font-size: 1em;
 }
 .bottom-in {
-  padding: 1em 0 6em;
+  padding: 2em 0 3em;
 }
+	.men-grid {
+		position: absolute;
+		top: 69%;
+		right: 10%;
+	}
 .content-bottom1 {
   padding: 2em 0;
 }
@@ -4265,7 +4286,7 @@ h1.typo1 {
   padding-left: 10px;
 }
 .logo h1 {
-  font-size: 1.4em;
+  font-size: 1.7em;
 }
  .right-icons li a {
   font-size: 0.875em;
@@ -5636,7 +5657,7 @@ p.vel{
 @media (max-width : 480px){
 	.modalDialog .community-image {
 		margin-bottom : 10px;
-		max-width: 100%;
+		width: 100%;
 	}
 	.modalDialog h2 {
 		text-align: center;
@@ -5997,4 +6018,78 @@ p.vel{
 .logo-footer {
 	max-height : 45px;
 	margin-right: 15px;
+}
+
+.single-box-img a {
+	cursor: pointer;
+}
+
+
+.td-content {
+	color: #a3a3a3;
+}
+
+.grid-city-full{
+	width: 1140px;
+	margin: 20px auto;
+	overflow: auto;
+	padding: 0 0 5em;
+}
+
+.grid-city-full h3{
+	font-size: 3em;
+	color: #000;
+	margin: 0 0 0.4em;
+	font-family: 'Montserrat-Regular';
+	text-align: center;
+}
+
+.grid-city-full h3:before, .grid-city-full h3:after{
+	width: 200px;
+	height: 1px;
+	display: inline-block;
+	vertical-align: middle;
+	content: "";
+	background: #000;
+	margin: 0 1%;
+}
+
+.grid-city-full ul {
+	list-style-type: none;
+	margin: 5px 20px;
+}
+
+.grid-city-full div {
+	width: 200px;
+	height: 200px;
+	-webkit-filter: brightness(50%);
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	-ms-transition: all 1s ease;
+	transition: all 1s ease;
+}
+
+.grid-city-full div:hover {
+	-webkit-filter: brightness(100%);
+}
+
+.shrink img:hover{
+	-webkit-transform: scale(0.8);
+	-ms-transform: scale(0.8);
+	transform: scale(0.8);
+	transition: 1s ease;
+}
+
+.grid-city-full li img {
+	float: left;
+	margin: 5px;
+	border: 5px solid #333;
+	-moz-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+.grid-city-full li img:hover {
+	border: 5px solid #F15123;
 }
