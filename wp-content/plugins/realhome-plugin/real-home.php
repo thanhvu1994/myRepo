@@ -293,7 +293,7 @@ class Realhome_Widget extends WP_Widget {
                         $ranImage = array_rand ( $gallery, 1);
                         $image = wp_get_attachment_image_src( get_post_thumbnail_id( $project->ID ), '275x206' );
                     ?>
-                    <div class="col-md-3 project-grid">
+                    <div class="col-md-3 col-sm-6 project-grid">
                         <div class="project-grid-top custom-img">
                              <a href="<?php echo get_permalink($project->ID); ?>" class="mask">
                                 <img class="img-responsive zoom-img" src="<?php echo isset($image[0]) ? $image[0] : '' ?>" alt="<?php echo $gallery[$ranImage]['caption']; ?>" />
