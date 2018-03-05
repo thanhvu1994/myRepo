@@ -32,8 +32,7 @@ class Category extends MY_Controller {
             }
         }
         if ($this->form_validation->run() == TRUE) {
-            $type_level = 1;
-            $this->categories->set_model(['type_level' => $type_level]);
+            $this->categories->set_model();
             redirect('admin/category/index', 'refresh');
         }
 
@@ -54,14 +53,8 @@ class Category extends MY_Controller {
         }
 
         if ($this->form_validation->run() == TRUE) {
-            if (!$this->upload->do_upload('image')) {
-                $data['error'] = $this->upload->display_errors();
-            } else {
-                $uploadData = $this->upload->data();
-                $image = '/uploads/banners/'. $uploadData['file_name'];
-                $this->categories->update_model($id);
-                redirect('admin/category/index', 'refresh');
-            }
+            $this->categories->update_model($id);
+            redirect('admin/category/index', 'refresh');
         }
 
         $this->load->view('admin/layouts/index', $data);
@@ -71,9 +64,6 @@ class Category extends MY_Controller {
         $model = $this->categories->get_model(['id' => $id]);
 
         if (count($model) > 0) {
-            if (file_exists(base_url($model->image))) {
-                unlink($model->get_image);
-            }
             $this->categories->delete_model($id);
             echo 1;
         } else {

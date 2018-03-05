@@ -46,7 +46,8 @@
                     <div class="col-sm-12">
                         <select class="form-control" name="parent_id">
                             <option> -- select an parent -- </option>
-                            <?php foreach ($dropdown_menu as $menu_id => $menu_name): 
+                            <?php
+                            foreach ($dropdown_menu as $menu_id => $menu_name): 
                                 $selected = ($model->parent_id == $menu_id) ? 'selected' : '';
                             ?>
                                 <option value="<?php echo $menu_id?>" <?php echo $selected?>><?php echo $menu_name?></option>

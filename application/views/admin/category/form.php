@@ -14,29 +14,53 @@
         <div class="white-box">
             <?php echo form_open_multipart($link_submit, ['class' => 'form-horizontal']); ?>
                 <div class="form-group">
-                    <label class="col-md-12">Banner Title</label>
+                    <label class="col-md-12">Tên danh mục</label>
                     <div class="col-md-12">
-                        <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->name : ''?>" name="name">
-                        <?php echo form_error('name'); ?>
+                        <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->category_name : ''?>" name="category_name">
+                        <?php echo form_error('category_name'); ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-12">Button Name</label>
+                    <label class="col-md-12">Tiêu đề</label>
                     <div class="col-md-12">
-                        <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->button_name : ''?>" name="button_name">
-                        <?php echo form_error('button_name'); ?>
+                        <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->title : ''?>" name="title">
+                        <?php echo form_error('title'); ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-12">Banner Url</label>
+                    <label class="col-md-12">Đường dẫn</label>
                     <div class="col-md-12">
-                        <input type="text" name="url" class="form-control" value="<?php echo (isset($model)) ? $model->url : ''?>">
+                        <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->url : ''?>" name="title">
                         <?php echo form_error('url'); ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12">Mô tả</label>
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="5" name="description"><?php echo (isset($model)) ? $model->description : ''?></textarea>
+                        <?php echo form_error('description'); ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-12">Parent</label>
+                    <div class="col-sm-12">
+                        <select class="form-control" name="parent_id">
+                            <option value="0"> -- Chọn lớp cha -- </option>
+                            <?php
+                            $id = isset($model) ? $model->id : 0;
+                            foreach ($this->categories->get_dropdown_category($id) as $category_id => $category_name): 
+                                $selected = ($model->parent_id == $category_id) ? 'selected' : '';
+                            ?>
+                                <option value="<?php echo $category_id?>" <?php echo $selected?>><?php echo $category_name?></option>
+                            <?php endforeach ?>
+                        </select>
+                        <?php echo form_error('parent_id'); ?>
                     </div>
                 </div>
 
                 <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
-                <a href="<?php echo base_url('admin/backmenus')?>" class="btn btn-inverse waves-effect waves-light">Cancel</a>
+                <a href="<?php echo base_url('admin/category')?>" class="btn btn-inverse waves-effect waves-light">Cancel</a>
             <?php echo form_close(); ?>
         </div>
     </div>
