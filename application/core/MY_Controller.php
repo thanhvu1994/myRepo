@@ -8,6 +8,7 @@ class MY_Controller extends CI_Controller {
         // load model admin
         $this->load->model('users');
         $this->load->model('menus');
+        $this->load->model('posts');
         // validate user
         if (!$this->users->check_logged()) {
             redirect('admin/login', 'refresh');
