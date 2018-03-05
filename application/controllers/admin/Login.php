@@ -14,7 +14,7 @@ class Login extends CI_Controller {
 
 	// Show login page
 	public function index() {
-		$data['content'] = 'admin/site/login';
+		$data['template'] = 'admin/site/login';
 
 		$this->form_validation->set_rules('username', 'Username', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');

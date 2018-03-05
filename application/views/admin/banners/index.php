@@ -14,7 +14,7 @@
         <div class="white-box">
             <div class="row m-b-30">
                 <div class="col-lg-2 col-sm-4 col-xs-12">
-                    <a href="<?php echo base_url('admin/backmenus/create')?>" class="btn btn-block btn-default">Create</a>
+                    <a href="<?php echo base_url('admin/banners/create')?>" class="btn btn-block btn-default">Create</a>
                 </div>
             </div>
             <div class="row">
@@ -23,25 +23,28 @@
                         <table id="example23" class="display nowrap" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>Menu Name</th>
-                                    <th>Parent</th>
-                                    <th>Show In Menu</th>
-                                    <th>Display Order</th>
+                                    <th>Banner Title</th>
+                                    <th>Button Name</th>
+                                    <th>Url</th>
+                                    <th>Image</th>
+                                    <th>Publish</th>
                                     <th>Created Date</th>
+                                    <th>Update Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($models as $model): ?>
                                     <tr id="tr-<?php echo $model->id?>">
-                                        <td><?php echo $model->menu_name ?></td>
-                                        <td><?php echo $model->get_parent_name() ?></td>
-                                        <td><?php echo $model->get_show_menu() ?></td>
-                                        <td><?php echo $model->display_order ?></td>
+                                        <td><?php echo $model->name ?></td>
+                                        <td><?php echo $model->button_name ?></td>
+                                        <td><?php echo $model->url ?></td>
+                                        <td><img src="<?php echo $model->get_image() ?>" alt="<?php echo $model->name ?>" width="100"></td>
+                                        <td><?php echo $model->get_publish() ?></td>
                                         <td><?php echo $model->get_created_date() ?></td>
+                                        <td><?php echo $model->get_update_date() ?></td>
                                         <td class="button-column">
-                                            <a href="javascript:void(0)" class="button-view" data-id="<?php echo $model->id?>"><i class="fa fa-eye"></i></a>
-                                            <a href="<?php echo base_url('admin/backmenus/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
+                                            <a href="<?php echo base_url('admin/banners/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)" class="button-delete" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
@@ -128,31 +131,15 @@
             if (confirm('Are you sure want to delete this item?')) {
                 var id = $(this).data('id');
                 $.ajax({
-                    url: '<?php echo base_url('admin/backmenus/delete')?>'+'/'+id,
+                    url: '<?php echo base_url('admin/banners/delete')?>'+'/'+id,
                     type: 'POST',
                     success: function (returndata) {
-                        $('#tr-'+id).remove();
+                        if (returndata == 1) {
+                            $('#tr-'+id).remove();
+                        }
                     }
                 });
             }
-        });
-
-        $('.button-view').click(function() {
-            var id = $(this).data('id');
-            $.ajax({
-                url: '<?php echo base_url('admin/backmenus/view')?>'+'/'+id,
-                type: 'POST',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (returndata) {
-                    if (returndata) {
-                        $.each( returndata, function( key, value ) {
-                            $('#'+key).val(value);
-                        });
-                    }
-                    $('#responsive-modal').modal();
-                },
-            });
         });
     });
 </script>

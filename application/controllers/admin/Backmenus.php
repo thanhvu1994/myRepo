@@ -9,7 +9,7 @@ class Backmenus extends MY_Controller {
 
     public function index()
     {
-        $data['content'] = 'admin/backmenus/index';
+        $data['template'] = 'admin/backmenus/index';
         $data['models'] = $this->menus->get_model();
 		$this->load->view('admin/layouts/index', $data);
     }
@@ -17,7 +17,7 @@ class Backmenus extends MY_Controller {
     public function create() {
         $data['title'] = 'Create a Backend Menu';
         $data['dropdown_menu'] = $this->menus->get_dropdown_menu();
-    	$data['content'] = 'admin/backmenus/form';
+    	$data['template'] = 'admin/backmenus/form';
         $data['link_submit'] = base_url('admin/backmenus/create');
 
         $rules = $this->menus->getRule();
@@ -29,6 +29,7 @@ class Backmenus extends MY_Controller {
 
         if ($this->form_validation->run() == TRUE) {
             $this->menus->set_model();
+            redirect('admin/backmenus/index', 'refresh');
         }
 		$this->load->view('admin/layouts/index', $data);
     }
@@ -57,7 +58,7 @@ class Backmenus extends MY_Controller {
     public function update($id) {
         $data['title'] = 'Update a Backend Menu';
         $data['dropdown_menu'] = $this->menus->get_dropdown_menu();
-        $data['content'] = 'admin/backmenus/form';
+        $data['template'] = 'admin/backmenus/form';
         $data['model'] = $this->menus->get_model(['id' => $id]);
         $data['link_submit'] = base_url('admin/backmenus/update/'.$id);
         $rules = $this->menus->getRule();

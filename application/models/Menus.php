@@ -3,14 +3,13 @@ class Menus extends CI_Model {
 
     public function __construct()
     {
-            $this->load->database();
-	    	$this->load->helper('url');
+	    $this->load->database();
+		$this->load->helper('url');
     }
 
     public function getRule() {
     	$rules = [
     		['menu_name', 'Menu Name', 'trim|required'],
-    		// ['menu_link', 'Menu Link', 'trim|required'],
     	];
 
     	return $rules;

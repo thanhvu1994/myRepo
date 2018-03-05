@@ -9,7 +9,7 @@ class Site extends MY_Controller {
 
     public function index()
     {
-        $data['content'] = 'admin/site/index';
+        $data['template'] = 'admin/site/index';
 		$this->load->view('admin/layouts/index', $data);
     }
 

@@ -15,6 +15,7 @@
     <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
     <!-- Menu CSS -->
     <link href="<?php echo base_url('themes/admin/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css')?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url('themes/admin/plugins/bower_components/dropify/dist/css/dropify.min.css')?>">
     <!-- animation CSS -->
     <link href="<?php echo base_url('themes/admin/css/animate.css')?>" rel="stylesheet">
     <!-- Custom CSS -->
