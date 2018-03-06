@@ -1,0 +1,7 @@
+ALTER TABLE  `ci_categories` ADD  `category_name_en` VARCHAR( 255 ) NOT NULL AFTER  `slug` ,
+ADD  `title_en` VARCHAR( 255 ) NOT NULL AFTER  `category_name_en` ,
+ADD  `description_en` TEXT NOT NULL AFTER  `title_en` ,
+ADD  `slug_en` VARCHAR( 255 ) NOT NULL AFTER  `description_en` ;
+
+ALTER TABLE `ci_partner` ADD `name_en` VARCHAR(255) NOT NULL AFTER `description`, ADD `description_en` TEXT NOT NULL AFTER `name_en`;
+ALTER TABLE  `ci_partner` CHANGE  `description`  `description` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ;

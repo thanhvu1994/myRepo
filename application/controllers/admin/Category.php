@@ -32,12 +32,36 @@ class Category extends MY_Controller {
             }
         }
         if ($this->form_validation->run() == TRUE) {
-            $type_level = 1;
-            $this->categories->set_model(['type_level' => $type_level]);
+            $this->categories->set_model();
             redirect('admin/category/index', 'refresh');
         }
 
 		$this->load->view('admin/layouts/index', $data);
+    }
+
+    public function view($id) {
+        if ($this->input->is_ajax_request()) {
+            $query = $this->db->get_where('categories', ['id' => $id]);
+
+            $model = $query->result('Categories');
+            if (count($model) > 0) {
+                $result['category_name'] = $model[0]->category_name;
+                $result['category_name_en'] = $model[0]->category_name_en;
+                $result['parent_id'] = $model[0]->get_parent_name();
+                $result['title'] = $model[0]->title;
+                $result['title_en'] = $model[0]->title_en;
+                $result['description'] = $model[0]->description;
+                $result['description_en'] = $model[0]->description_en;
+                $result['url'] = $model[0]->url;
+                $result['created_date'] = $model[0]->get_created_date();
+                $result['update_date'] = $model[0]->get_update_date();
+                echo json_encode($result);
+            } else {
+                echo json_encode([]);
+            }
+        } else {
+            echo json_encode([]);
+        }
     }
 
     public function update($id) {
@@ -54,14 +78,8 @@ class Category extends MY_Controller {
         }
 
         if ($this->form_validation->run() == TRUE) {
-            if (!$this->upload->do_upload('image')) {
-                $data['error'] = $this->upload->display_errors();
-            } else {
-                $uploadData = $this->upload->data();
-                $image = '/uploads/banners/'. $uploadData['file_name'];
-                $this->categories->update_model($id);
-                redirect('admin/category/index', 'refresh');
-            }
+            $this->categories->update_model($id);
+            redirect('admin/category/index', 'refresh');
         }
 
         $this->load->view('admin/layouts/index', $data);
@@ -71,9 +89,6 @@ class Category extends MY_Controller {
         $model = $this->categories->get_model(['id' => $id]);
 
         if (count($model) > 0) {
-            if (file_exists(base_url($model->image))) {
-                unlink($model->get_image);
-            }
             $this->categories->delete_model($id);
             echo 1;
         } else {

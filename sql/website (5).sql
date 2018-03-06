@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2018 at 05:38 PM
+-- Generation Time: Mar 05, 2018 at 06:43 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -30,14 +30,24 @@ USE `website`;
 
 DROP TABLE IF EXISTS `ci_banners`;
 CREATE TABLE IF NOT EXISTS `ci_banners` (
-  `id` int(11) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `button_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `status` tinyint(4) NOT NULL,
+  `publish` tinyint(4) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `update_date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `update_date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `ci_banners`
+--
+
+INSERT INTO `ci_banners` (`id`, `name`, `button_name`, `url`, `image`, `type`, `publish`, `created_date`, `update_date`) VALUES
+(1, 'Banner Title', 'Button Name', 'google.com', '/uploads/banners/login-register.jpg', '', 1, '2018-03-05 15:22:17', '2018-03-05 16:22:17');
 
 -- --------------------------------------------------------
 
@@ -59,7 +69,15 @@ CREATE TABLE IF NOT EXISTS `ci_categories` (
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `update_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `ci_categories`
+--
+
+INSERT INTO `ci_categories` (`id`, `parent_id`, `category_name`, `title`, `description`, `url`, `slug`, `type_level`, `thumb`, `created_date`, `update_date`) VALUES
+(1, 0, 'Tên danh mục', 'google.com', 'Mô tả', 'google.com', 'ten-danh-muc', 1, '', '2018-03-05 17:22:06', '2018-03-05 18:22:06'),
+(2, 1, 'test', '', '', '', 'test', 2, '', '2018-03-05 17:26:53', '2018-03-05 18:26:53');
 
 -- --------------------------------------------------------
 
@@ -168,7 +186,7 @@ CREATE TABLE IF NOT EXISTS `ci_menus` (
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `update_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `ci_menus`
@@ -176,7 +194,9 @@ CREATE TABLE IF NOT EXISTS `ci_menus` (
 
 INSERT INTO `ci_menus` (`id`, `parent_id`, `menu_name`, `menu_link`, `show_in_menu`, `display_order`, `icon`, `application_id`, `created_date`, `update_date`) VALUES
 (1, 0, 'Menu', '', 1, 1, 'linea-icon linea-basic fa-fw', 1, '2018-03-03 16:34:16', '2018-03-03 17:34:16'),
-(8, 1, 'Backmenus', 'admin/backmenus', 1, 2, '', 1, '2018-03-03 16:33:09', '2018-03-03 17:33:09');
+(8, 1, 'Backmenus', 'admin/backmenus', 1, 2, '', 1, '2018-03-03 16:33:09', '2018-03-03 17:33:09'),
+(9, 0, 'Banners', 'admin/banners', 1, 2, 'linea-icon linea-elaborate fa-fw', 1, '2018-03-05 14:15:30', '2018-03-05 15:15:30'),
+(10, 0, 'Danh mục sản phẩm', 'admin/category', 1, 3, 'linea-icon linea-basic fa-fw', 1, '2018-03-05 16:28:30', '2018-03-05 17:28:30');
 
 -- --------------------------------------------------------
 

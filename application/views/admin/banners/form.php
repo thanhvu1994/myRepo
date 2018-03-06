@@ -41,7 +41,7 @@
                         <?php if (isset($model)): ?>
                             <input type="file" name="image" class="dropify" data-default-file="<?php echo base_url($model->image) ?>" />
                         <?php else: ?>
-                            <input type="file" name="image" class="dropify" required />
+                            <input type="file" name="image" class="dropify" />
                         <?php endif ?>
                         <?php echo form_error('image'); ?>
                         <?php echo isset($error) ? $error : '' ?>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
-                <a href="<?php echo base_url('admin/backmenus')?>" class="btn btn-inverse waves-effect waves-light">Cancel</a>
+                <a href="<?php echo base_url('admin/banners')?>" class="btn btn-inverse waves-effect waves-light">Cancel</a>
             <?php echo form_close(); ?>
         </div>
     </div>
