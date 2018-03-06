@@ -32,13 +32,15 @@ class Partners extends MY_Controller {
             }
         }
 
-        if (!$this->upload->do_upload('logo')) {
-            $data['error'] = $this->upload->display_errors();
-        } else {
-            $uploadData = $this->upload->data();
-            $logo = '/uploads/partners/'. $uploadData['file_name'];
-            $this->partner->set_model($logo);
-            redirect('admin/partners/index', 'refresh');
+        if (isset($_POST) && !empty($_POST)) {
+            if (!$this->upload->do_upload('logo')) {
+                $data['error'] = $this->upload->display_errors();
+            } else {
+                $uploadData = $this->upload->data();
+                $logo = '/uploads/partners/'. $uploadData['file_name'];
+                $this->partner->set_model($logo);
+                redirect('admin/partners/index', 'refresh');
+            }
         }
 
 		$this->load->view('admin/layouts/index', $data);
