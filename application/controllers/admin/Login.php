@@ -47,9 +47,7 @@ class Login extends CI_Controller {
 					redirect('admin/site/index', 'refresh');
 				}
 			} else {
-				$data = array(
-					'error_message' => 'Invalid Username or Password'
-				);
+				$data['error_message'] = 'Invalid Username or Password';
 			}
 		}
 

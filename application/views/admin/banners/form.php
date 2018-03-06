@@ -41,7 +41,7 @@
                         <?php if (isset($model)): ?>
                             <input type="file" name="image" class="dropify" data-default-file="<?php echo base_url($model->image) ?>" />
                         <?php else: ?>
-                            <input type="file" name="image" class="dropify" required />
+                            <input type="file" name="image" class="dropify" />
                         <?php endif ?>
                         <?php echo form_error('image'); ?>
                         <?php echo isset($error) ? $error : '' ?>

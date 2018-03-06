@@ -8,7 +8,7 @@ class Banners extends MY_Controller {
         $this->load->model('banner');
 
         $config['upload_path']          = './uploads/banners';
-        $config['allowed_types']        = 'gif|jpg|png';
+        $config['allowed_types']        = 'jpg|png';
         $this->load->library('upload', $config);
     }
 
@@ -65,7 +65,7 @@ class Banners extends MY_Controller {
                 $uploadData = $this->upload->data();
                 $image = '/uploads/banners/'. $uploadData['file_name'];
                 $this->banner->update_model($id);
-                redirect('admin/backmenus/index', 'refresh');
+                redirect('admin/banners/index', 'refresh');
             }
         }
 

@@ -9,7 +9,8 @@ class Categories extends CI_Model {
 
     public function getRule() {
     	$rules = [
-    		['category_name', 'Category Name', 'trim|required'],
+    		['category_name', 'Danh mục', 'trim|required'],
+    		['category_name_en', 'Danh mục Eng', 'trim|required'],
     	];
 
     	return $rules;
@@ -30,6 +31,7 @@ class Categories extends CI_Model {
 	public function set_model()
 	{
 	    $slug = url_title(convert_accented_characters(strtolower($this->input->post('category_name')), 'dash', TRUE));
+	    $slug_en = url_title(convert_accented_characters(strtolower($this->input->post('category_name_en')), 'dash', TRUE));
 	    if ($this->input->post('parent_id') == 0) {
 	    	$type_level = 1;
 	    } else {
@@ -42,11 +44,15 @@ class Categories extends CI_Model {
 	    }
 	    $data = array(
 	        'category_name' => $this->input->post('category_name'),
+	        'category_name_en' => $this->input->post('category_name_en'),
 	        'parent_id' => $this->input->post('parent_id'),
 	        'title' => $this->input->post('title'),
-	        'description' => $this->input->post('title'),
-	        'url' => $this->input->post('title'),
+	        'title_en' => $this->input->post('title_en'),
+	        'description' => $this->input->post('description'),
+	        'description_en' => $this->input->post('description_en'),
+	        'url' => $this->input->post('url'),
 	        'slug' => $slug,
+	        'slug_en' => $slug_en,
 	        'type_level' => $type_level,
 	        'update_date' => date('Y-m-d H:i:s'),
 	    );
@@ -57,6 +63,7 @@ class Categories extends CI_Model {
 	public function update_model($id)
 	{
 	    $slug = url_title(convert_accented_characters(strtolower($this->input->post('category_name')), 'dash', TRUE));
+	    $slug_en = url_title(convert_accented_characters(strtolower($this->input->post('category_name_en')), 'dash', TRUE));
 	    if ($this->input->post('parent_id') == 0) {
 	    	$type_level = 1;
 	    } else {
@@ -69,11 +76,15 @@ class Categories extends CI_Model {
 	    }
 	    $data = array(
 	        'category_name' => $this->input->post('category_name'),
+	        'category_name_en' => $this->input->post('category_name_en'),
 	        'parent_id' => $this->input->post('parent_id'),
 	        'title' => $this->input->post('title'),
+	        'title_en' => $this->input->post('title_en'),
 	        'description' => $this->input->post('description'),
-	        'url' => $this->input->post('title'),
+	        'description_en' => $this->input->post('description_en'),
+	        'url' => $this->input->post('url'),
 	        'slug' => $slug,
+	        'slug_en' => $slug_en,
 	        'type_level' => $type_level,
 	        'update_date' => date('Y-m-d H:i:s'),
 	    );

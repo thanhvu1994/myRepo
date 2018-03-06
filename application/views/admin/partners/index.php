@@ -3,7 +3,7 @@
         <h4 class="page-title"><?php echo $title ?></h4>
     </div>
     <?php
-        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Backmenus'];
+        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Partners'];
         $this->load->view('admin/layouts/breadcrumbs', ['breadcrumb' => $breadcrumb]);
      ?>
     <!-- /.col-lg-12 -->
@@ -14,7 +14,7 @@
         <div class="white-box">
             <div class="row m-b-30">
                 <div class="col-lg-2 col-sm-4 col-xs-12">
-                    <a href="<?php echo base_url('admin/category/create')?>" class="btn btn-block btn-default">Thêm mới</a>
+                    <a href="<?php echo base_url('admin/partners/create')?>" class="btn btn-block btn-default">Thêm mới</a>
                 </div>
             </div>
             <div class="row">
@@ -23,8 +23,9 @@
                         <table id="example23" class="display nowrap" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>Tên danh mục</th>
-                                    <th>Danh mục cha</th>
+                                    <th>Tên đối tác</th>
+                                    <th>Logo</th>
+                                    <th>Publish</th>
                                     <th>Ngày tạo</th>
                                     <th>Ngày cập nhật</th>
                                     <th>Action</th>
@@ -33,13 +34,14 @@
                             <tbody>
                                 <?php foreach ($models as $model): ?>
                                     <tr id="tr-<?php echo $model->id?>">
-                                        <td><?php echo $model->category_name ?></td>
-                                        <td><?php echo $model->get_parent_name() ?></td>
+                                        <td><?php echo $model->name ?></td>
+                                        <td><img src="<?php echo $model->get_image() ?>" alt="<?php echo $model->name ?>" width="100"></td>
+                                        <td><?php echo $model->get_publish() ?></td>
                                         <td><?php echo $model->get_created_date() ?></td>
                                         <td><?php echo $model->get_update_date() ?></td>
                                         <td class="button-column">
                                             <a href="javascript:void(0)" class="button-view" data-id="<?php echo $model->id?>"><i class="fa fa-eye"></i></a>
-                                            <a href="<?php echo base_url('admin/category/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
+                                            <a href="<?php echo base_url('admin/partners/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)" class="button-delete" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
@@ -69,15 +71,9 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="vng">
                             <div class="form-group">
-                                <label for="menu_name" class="control-label col-md-3">Tên danh mục:</label>
+                                <label for="name" class="control-label col-md-3">Tên đối tác:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="category_name" disabled>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="menu_link" class="control-label col-md-3">Tiêu đề:</label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="title" disabled>
+                                    <input type="text" class="form-control" id="name" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -90,15 +86,9 @@
                         </div>
                         <div role="tabpanel" class="tab-pane" id="eng">
                             <div class="form-group">
-                                <label for="menu_name" class="control-label col-md-3">Tên danh mục:</label>
+                                <label for="name_en" class="control-label col-md-3">Tên đối tác:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="category_name_en" disabled>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="menu_link" class="control-label col-md-3">Tiêu đề:</label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="title_en" disabled>
+                                    <input type="text" class="form-control" id="name_en" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -111,15 +101,21 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="icon" class="control-label col-md-3">Logo:</label>
+                        <div class="col-md-8">
+                            <img src="" id="logo" width="100">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="icon" class="control-label col-md-3">Đường dẫn:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="url" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="parent_id" class="control-label col-md-3">Lớp cha:</label>
+                        <label for="show_in_menu" class="control-label col-md-3">Publish:</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="parent_id" disabled>
+                            <input type="text" class="form-control" id="publish" disabled>
                         </div>
                     </div>
                     <div class="form-group">
@@ -150,7 +146,7 @@
             if (confirm('Are you sure want to delete this item?')) {
                 var id = $(this).data('id');
                 $.ajax({
-                    url: '<?php echo base_url('admin/category/delete')?>'+'/'+id,
+                    url: '<?php echo base_url('admin/partners/delete')?>'+'/'+id,
                     type: 'POST',
                     success: function (returndata) {
                         if (returndata == 1) {
@@ -164,13 +160,17 @@
         $('.button-view').click(function() {
             var id = $(this).data('id');
             $.ajax({
-                url: '<?php echo base_url('admin/category/view')?>'+'/'+id,
+                url: '<?php echo base_url('admin/partners/view')?>'+'/'+id,
                 type: 'POST',
                 dataType: "json",
                 success: function (returndata) {
                     if (returndata) {
                         $.each( returndata, function( key, value ) {
-                            $('#'+key).val(value);
+                            if (key == 'logo') {
+                                $('#'+key).attr('src', value)
+                            } else {
+                                $('#'+key).val(value);
+                            }
                         });
                     }
                     $('#responsive-modal').modal();
