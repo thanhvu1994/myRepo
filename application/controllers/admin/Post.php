@@ -15,12 +15,12 @@ class Post extends MY_Controller {
     }
 
     public function create() {
-        $data['title'] = 'Create a Backend Menu';
-        $data['dropdown_menu'] = $this->menus->get_dropdown_menu();
-    	$data['content'] = 'admin/backmenus/form';
-        $data['link_submit'] = base_url('admin/backmenus/create');
+        $data['title'] = 'Create a Post';
+    	$data['template'] = 'admin/post/form';
+        $data['link_submit'] = base_url('admin/post/create');
+        $data['scenario'] = 'create';
 
-        $rules = $this->menus->getRule();
+        $rules = $this->posts->getRule();
         foreach ($rules as $rule) {
             if (count($rule) >= 3) {
                 $this->form_validation->set_rules($rule[0], $rule[1], $rule[2]);
@@ -28,7 +28,9 @@ class Post extends MY_Controller {
         }
 
         if ($this->form_validation->run() == TRUE) {
-            $this->menus->set_model();
+            $this->posts->set_model();
+
+            redirect('admin/post/index', 'refresh');
         }
 		$this->load->view('admin/layouts/index', $data);
     }
@@ -57,12 +59,13 @@ class Post extends MY_Controller {
     }
 
     public function update($id) {
-        $data['title'] = 'Update a Backend Menu';
-        $data['dropdown_menu'] = $this->menus->get_dropdown_menu();
-        $data['content'] = 'admin/backmenus/form';
-        $data['model'] = $this->menus->get_model(['id' => $id]);
-        $data['link_submit'] = base_url('admin/backmenus/update/'.$id);
-        $rules = $this->menus->getRule();
+        $data['title'] = 'Update a Post';
+        $data['template'] = 'admin/post/form';
+        $data['model'] = $this->posts->get_model(['id' => $id]);
+        $data['link_submit'] = base_url('admin/post/update/'.$id);
+        $data['scenario'] = 'update';
+
+        $rules = $this->posts->getRule();
         foreach ($rules as $rule) {
             if (count($rule) >= 3) {
                 $this->form_validation->set_rules($rule[0], $rule[1], $rule[2]);
@@ -70,18 +73,17 @@ class Post extends MY_Controller {
         }
 
         if ($this->form_validation->run() == TRUE) {
-            $this->menus->update_model($id);
-            redirect('admin/backmenus/index', 'refresh');
+            $this->posts->update_model($id);
+            redirect('admin/post/index', 'refresh');
         }
-
         $this->load->view('admin/layouts/index', $data);
     }
 
     public function delete($id) {
-        $model = $this->menus->get_model(['id' => $id]);
+        $model = $this->posts->get_model(['id' => $id]);
 
         if (count($model) > 0) {
-            $this->menus->delete_model($id);
+            $this->posts->delete_model($id);
         }
     }
 

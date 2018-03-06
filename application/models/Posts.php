@@ -9,8 +9,11 @@ class Posts extends CI_Model {
 
     public function getRule() {
     	$rules = [
-    		['menu_name', 'Menu Name', 'trim|required'],
-    		// ['menu_link', 'Menu Link', 'trim|required'],
+    		['title', 'Title', 'trim|required'],
+            ['description', 'Description', 'trim|required'],
+            ['short_content', 'Short Content', 'trim|required'],
+            ['content', 'Content', 'trim|required'],
+            ['featured_image', 'Featured Image', 'trim|required'],
     	];
 
     	return $rules;
@@ -30,41 +33,31 @@ class Posts extends CI_Model {
 
 	public function set_model()
 	{
-	    $display_order = $this->input->post('display_order') == "" ? 1 : $this->input->post('display_order');
-	    $show_in_menu = ($this->input->post('show_in_menu') == 'on') ? 1 : 0;
+        $data = array(
+            'title' => $this->input->post('title'),
+            'description' => $this->input->post('description'),
+            'short_content' => $this->input->post('short_content'),
+            'content' => $this->input->post('content'),
+            'featured_image' => $this->input->post('featured_image'),
+            'slug' => $this->input->post('slug'),
+        );
 
-	    $data = array(
-	        'menu_name' => $this->input->post('menu_name'),
-	        'menu_link' => $this->input->post('menu_link'),
-	        'parent_id' => $this->input->post('parent_id'),
-	        'icon' => $this->input->post('icon'),
-	        'show_in_menu' => $show_in_menu,
-	        'display_order' => $display_order,
-	        'application_id' => 1,
-	        'update_date' => date('Y-m-d H:i:s'),
-	    );
-
-	    return $this->db->insert('menus', $data);
+	    return $this->db->insert('posts', $data);
 	}
 
 	public function update_model($id)
 	{
-	    $display_order = $this->input->post('display_order') == "" ? 1 : $this->input->post('display_order');
-	    $show_in_menu = ($this->input->post('show_in_menu') == 'on') ? 1 : 0;
-
 	    $data = array(
-	        'menu_name' => $this->input->post('menu_name'),
-	        'menu_link' => $this->input->post('menu_link'),
-	        'parent_id' => $this->input->post('parent_id'),
-	        'icon' => $this->input->post('icon'),
-	        'show_in_menu' => $show_in_menu,
-	        'display_order' => $display_order,
-	        'application_id' => 1,
-	        'update_date' => date('Y-m-d H:i:s'),
+	        'title' => $this->input->post('title'),
+	        'description' => $this->input->post('description'),
+	        'short_content' => $this->input->post('short_content'),
+	        'content' => $this->input->post('content'),
+	        'featured_image' => $this->input->post('featured_image'),
+	        'slug' => $this->input->post('slug'),
 	    );
 
 	    $this->db->where('id', $id);
-        $this->db->update('menus', $data);
+        $this->db->update('posts', $data);
 	}
 
 	public function delete_model($id) {
