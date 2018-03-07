@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="white-box">
-                    <?php echo form_open($link_submit, ['class' => 'form-horizontal']); ?>
+                    <?php echo form_open_multipart($link_submit, ['class' => 'form-horizontal']); ?>
                         <div class="form-group">
                             <label class="col-md-12">Title</label>
                             <div class="col-md-12">
@@ -40,7 +40,9 @@
                         <div class="form-group">
                             <label class="col-md-12">Content</label>
                             <div class="col-md-12">
-                                <input type="text" class="form-control editor-full" value="<?php echo (isset($model)) ? $model->content : ''?>" name="content">
+                                <textarea class="form-control" name="content" id="editor-full" rows="10" cols="80">
+                                    <?php echo (isset($model)) ? $model->content : ''?>
+                                </textarea>
                                 <?php echo form_error('content'); ?>
                             </div>
                         </div>
@@ -48,8 +50,13 @@
                         <div class="form-group">
                             <label class="col-md-12">Featured Image</label>
                             <div class="col-md-12">
-                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->featured_image : ''?>" name="featured_image">
+                                <?php if (isset($model)): ?>
+                                    <input type="file" name="featured_image" class="dropify" data-default-file="<?php echo base_url($model->featured_image) ?>" />
+                                <?php else: ?>
+                                    <input type="file" name="featured_image" class="dropify" />
+                                <?php endif ?>
                                 <?php echo form_error('featured_image'); ?>
+                                <?php echo isset($error) ? $error : '' ?>
                             </div>
                         </div>
 
@@ -143,3 +150,13 @@
         <!-- /.right-sidebar -->
     <!-- /.container-fluid -->
     <footer class="footer text-center"> 2017 &copy; Agile Admin brought to you by wrappixel.com </footer>
+ <script>
+     // Replace the <textarea id="editor1"> with a CKEditor
+     // instance, using default configuration.
+     CKEDITOR.replace( 'editor-full', {
+         filebrowserBrowseUrl: "<?php echo base_url('themes/admin/plugins/ckfinder/ckfinder.html')?>",
+         filebrowserUploadUrl: "<?php echo base_url('themes/admin/plugins/ckfinder/core/connector/php/connector.php').'?command=QuickUpload&type=Files' ?>",
+         filebrowserWindowWidth: '1000',
+         filebrowserWindowHeight: '700'
+     } );
+ </script>

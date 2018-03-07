@@ -13,7 +13,6 @@ class Posts extends CI_Model {
             ['description', 'Description', 'trim|required'],
             ['short_content', 'Short Content', 'trim|required'],
             ['content', 'Content', 'trim|required'],
-            ['featured_image', 'Featured Image', 'trim|required'],
     	];
 
     	return $rules;
@@ -31,28 +30,28 @@ class Posts extends CI_Model {
 		}
 	}
 
-	public function set_model()
+	public function set_model($image)
 	{
         $data = array(
             'title' => $this->input->post('title'),
             'description' => $this->input->post('description'),
             'short_content' => $this->input->post('short_content'),
             'content' => $this->input->post('content'),
-            'featured_image' => $this->input->post('featured_image'),
+            'featured_image' => $image,
             'slug' => $this->input->post('slug'),
         );
 
 	    return $this->db->insert('posts', $data);
 	}
 
-	public function update_model($id)
+	public function update_model($id,$image)
 	{
 	    $data = array(
 	        'title' => $this->input->post('title'),
 	        'description' => $this->input->post('description'),
 	        'short_content' => $this->input->post('short_content'),
 	        'content' => $this->input->post('content'),
-	        'featured_image' => $this->input->post('featured_image'),
+	        'featured_image' => $image,
 	        'slug' => $this->input->post('slug'),
 	    );
 
