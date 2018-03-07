@@ -78,11 +78,11 @@ class Partner extends CI_Model {
 	}
 
 	public function get_image() {
-		// if (file_exists(base_url($this->logo))) {
+		if (is_file('./'.$this->logo)) {
 			return base_url($this->logo);
-		// }
+		}
 
-		// return '';
+		return '';
 	}
 
 	public function get_publish() {

@@ -82,10 +82,10 @@ class Banner extends CI_Model {
 	}
 
 	public function get_image() {
-		// if (file_exists(base_url($this->image))) {
+		if (is_file('./'.$this->image)) {
 			return base_url($this->image);
-		// }
+		}
 
-		// return '';
+		return '';
 	}
 }
