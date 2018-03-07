@@ -3,9 +3,9 @@
 <!-- load content page -->
 <body>
     <!-- Preloader -->
-    <div class="preloader">
+    <<!-- div class="preloader">
         <div class="cssload-speeding-wheel"></div>
-    </div>
+    </div> -->
     <div id="wrapper">
         <?php
             if ($this->router->fetch_class() != 'login') {
