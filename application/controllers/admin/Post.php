@@ -5,6 +5,9 @@ class Post extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
+        $config['upload_path']          = './uploads/posts';
+        $config['allowed_types']        = 'jpg|png';
+        $this->load->library('upload', $config);
     }
 
     public function index()
@@ -28,9 +31,14 @@ class Post extends MY_Controller {
         }
 
         if ($this->form_validation->run() == TRUE) {
-            $this->posts->set_model();
-
-            redirect('admin/post/index', 'refresh');
+            if (!$this->upload->do_upload('featured_image')) {
+                $data['error'] = $this->upload->display_errors();
+            } else {
+                $uploadData = $this->upload->data();
+                $image = '/uploads/posts/'. $uploadData['file_name'];
+                $this->posts->set_model($image);
+                redirect('admin/post/index', 'refresh');
+            }
         }
 		$this->load->view('admin/layouts/index', $data);
     }
@@ -73,9 +81,16 @@ class Post extends MY_Controller {
         }
 
         if ($this->form_validation->run() == TRUE) {
-            $this->posts->update_model($id);
-            redirect('admin/post/index', 'refresh');
+            if (!$this->upload->do_upload('featured_image')) {
+                $data['error'] = $this->upload->display_errors();
+            } else {
+                $uploadData = $this->upload->data();
+                $image = '/uploads/posts/'. $uploadData['file_name'];
+                $this->posts->update_model($id,$image);
+                redirect('admin/post/index', 'refresh');
+            }
         }
+
         $this->load->view('admin/layouts/index', $data);
     }
 

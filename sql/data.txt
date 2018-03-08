@@ -5,3 +5,16 @@ ADD  `slug_en` VARCHAR( 255 ) NOT NULL AFTER  `description_en` ;
 
 ALTER TABLE `ci_partner` ADD `name_en` VARCHAR(255) NOT NULL AFTER `description`, ADD `description_en` TEXT NOT NULL AFTER `name_en`;
 ALTER TABLE  `ci_partner` CHANGE  `description`  `description` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ;
+
+DROP TABLE IF EXISTS `ci_posts`;
+CREATE TABLE `ci_posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `short_content` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `content` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `featured_image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

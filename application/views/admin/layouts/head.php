@@ -31,7 +31,8 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
     <script type="text/javascript" src="<?php echo base_url('themes/admin/plugins/tinymce/tinymce.min.js')?>"></script>
-    <script>
+    <script type="text/javascript" src="<?php echo base_url('themes/admin/plugins/ckeditor/ckeditor.js')?>"></script>
+    <!--<script>
         tinymce.init({
             /* replace textarea having class .tinymce with tinymce editor */
             selector: ".editor-full",
@@ -90,5 +91,5 @@
                 ]}
             ]
         });
-    </script>
+    </script>-->
 </head>
