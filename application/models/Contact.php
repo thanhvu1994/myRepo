@@ -1,5 +1,5 @@
 <?php
-class Categories extends CI_Model {
+class Contact extends CI_Model {
 
     public function __construct()
     {
@@ -9,8 +9,7 @@ class Categories extends CI_Model {
 
     public function getRule() {
     	$rules = [
-    		['category_name', 'Danh mục', 'trim|required'],
-    		['category_name_en', 'Danh mục Eng', 'trim|required'],
+    		// ['category_name', 'Danh mục', 'trim|required'],
     	];
 
     	return $rules;
@@ -19,12 +18,12 @@ class Categories extends CI_Model {
 	public function get_model($conditions = [])
 	{
 		if (!empty($conditions)) {
-			$query = $this->db->get_where('categories', $conditions);
+			$query = $this->db->get_where('contact', $conditions);
 
-        	return $query->row();
+        	return $query->row('1', 'Contact');
 		} else {
-			$query = $this->db->query("SELECT * FROM ci_categories");
-			return $query->result('Categories');
+			$query = $this->db->query("SELECT * FROM ci_contact");
+			return $query->result('Contact');
 		}
 	}
 
@@ -93,38 +92,6 @@ class Categories extends CI_Model {
         $this->db->update('categories', $data);
 	}
 
-	public function rChilds($parent_id, &$items, $level, $id) {
-		$query = $this->db->query("SELECT * FROM ci_categories WHERE parent_id = ".$parent_id." AND id != ".$id);
-		$childs = $query->result('Categories');
-
-		if (count($childs) > 0) {
-			$str = '';
-			for ($i=0; $i < $level; $i++) {
-				$str .= '---';
-			}
-			$level++;
-			foreach ($childs as $child) {
-				$items[$child->id] = $str.$child->category_name;
-				$this->rChilds($child->id, $items, $level);
-			}
-		}
-	}
-
-	public function get_dropdown_category($id) {
-		$items = [];
-		$query = $this->db->query("SELECT * FROM ci_categories WHERE parent_id = 0 AND id != ".$id);
-		$parents = $query->result('Categories');
-		$level = 1;
-		if (count($parents) > 0) {
-			foreach ($parents as $row) {
-				$items[$row->id] = $row->category_name;
-				$this->rChilds($row->id, $items, $level, $id);
-			}
-		}
-
-		return $items;
-	}
-
 	public function delete_model($id) {
 		$this->db->where('id', $id);
   		$this->db->delete('categories');
@@ -142,17 +109,5 @@ class Categories extends CI_Model {
 
 	public function get_created_date() {
 		return date_format(date_create($this->created_date), 'd-m-Y');
-	}
-
-	public function get_update_date() {
-		return date_format(date_create($this->update_date), 'd-m-Y');
-	}
-
-	public function get_image() {
-		if (is_file('./'.$this->thumb)) {
-			return base_url($this->thumb);
-		}
-
-		return '';
 	}
 }
