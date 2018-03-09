@@ -16,32 +16,32 @@
                 <div class="form-group">
                     <label class="col-md-12">Banner Title</label>
                     <div class="col-md-12">
-                        <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->name : ''?>" name="name">
+                        <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->name : ''?>" name="Banner[name]">
                         <?php echo form_error('name'); ?>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-12">Button Name</label>
                     <div class="col-md-12">
-                        <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->button_name : ''?>" name="button_name">
+                        <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->button_name : ''?>" name="Banner[button_name]">
                         <?php echo form_error('button_name'); ?>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-12">Banner Url</label>
                     <div class="col-md-12">
-                        <input type="text" name="url" class="form-control" value="<?php echo (isset($model)) ? $model->url : ''?>">
+                        <input type="text" name="Banner[url]" class="form-control" value="<?php echo (isset($model)) ? $model->url : ''?>">
                         <?php echo form_error('url'); ?>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-12">File upload</label>
+                    <label class="col-md-12">Image Banner</label>
                     <div class="col-md-12">
                         <?php if (isset($model)): ?>
-                            <input type="file" name="image" class="dropify" data-default-file="<?php echo base_url($model->image) ?>" />
+                            <input type="file" name="Banner[image]" class="dropify" data-default-file="<?php echo base_url($model->image) ?>" />
                         <?php else: ?>
-                            <input type="file" name="image" class="dropify" />
+                            <input type="file" name="Banner[image]" class="dropify" />
                         <?php endif ?>
                         <?php echo form_error('image'); ?>
                         <?php echo isset($error) ? $error : '' ?>
@@ -52,7 +52,7 @@
                     <div class="col-sm-12">
                         <div class="checkbox checkbox-success">
                             <?php $checked = isset($model) && $model->publish == true ? 'checked' : '' ?>
-                            <input id="publish" name="publish" type="checkbox" value="1" <?php echo $checked ?>>
+                            <input id="publish" name="Banner[publish]" type="checkbox" value="1" <?php echo $checked ?>>
                             <label for="publish">Publish</label>
                         </div>
                     </div>

@@ -51,6 +51,9 @@ class System extends MY_Controller {
                                     $value = '/uploads/system/'. $uploadData['file_name'];
                                     $data_insert['key'] = $itemObject->name;
                                     $data_insert['value'] = $value;
+                                    if (is_file('.'.$old_file[$itemObject->name])) {
+                                        unlink('.'.$old_file[$itemObject->name]);
+                                    }
                                     $this->settings->set_model($data_insert);
                                 }
                             } else {

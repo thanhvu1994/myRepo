@@ -3,9 +3,9 @@
 <!-- load content page -->
 <body>
     <!-- Preloader -->
-    <<!-- div class="preloader">
+    <div class="preloader">
         <div class="cssload-speeding-wheel"></div>
-    </div> -->
+    </div>
     <div id="wrapper">
         <?php
             if ($this->router->fetch_class() != 'login') {
@@ -57,33 +57,6 @@
                                         <li><a href="javascript:void(0)" theme="purple-dark" class="purple-dark-theme">11</a></li>
                                         <li><a href="javascript:void(0)" theme="megna-dark" class="megna-dark-theme">12</a></li>
                                     </ul>
-                                    <ul class="m-t-20 chatonline">
-                                        <li><b>Chat option</b></li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/arijit.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/govinda.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/hritik.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/john.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/pawandeep.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -106,6 +79,7 @@
         <!--Wave Effects -->
         <script src="<?php echo base_url('themes/admin/js/waves.js')?>"></script>
         <!-- Custom Theme JavaScript -->
+        <script src="<?php echo base_url('themes/admin/js/jasny-bootstrap.js')?>"></script>
         <script src="<?php echo base_url('themes/admin/js/custom.min.js')?>"></script>
         <script src="<?php echo base_url('themes/admin/plugins/bower_components/datatables/jquery.dataTables.min.js')?>"></script>
         <!-- start - This is for export functionality only -->
@@ -119,6 +93,16 @@
         <!-- end - This is for export functionality only -->
         <script>
         $(document).ready(function() {
+            $('.dropify').dropify();
+            $.toast({
+                heading: 'Welcome to Agile admin',
+                text: 'Use the predefined ones, or specify a custom position object.',
+                position: 'top-right',
+                loaderBg: '#ff6849',
+                icon: 'info',
+                hideAfter: 3500,
+                stack: 6
+            });
             $('#myTable').DataTable();
             $(document).ready(function() {
                 var table = $('#example').DataTable({
@@ -169,8 +153,6 @@
         //     ],
         // });
         </script>
-        <!--Style Switcher -->
-        <script src="<?php echo base_url('themes/admin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js')?>"></script>
 
         <!-- jQuery -->
         <script src="<?php echo base_url('themes/admin/plugins/bower_components/waypoints/lib/jquery.waypoints.js')?>"></script>
@@ -182,27 +164,16 @@
             <!-- Custom Theme JavaScript -->
             <script src="<?php echo base_url('themes/admin/js/dashboard1.js')?>"></script>
         <?php endif ?>
-        
+
         <!-- Sparkline chart JavaScript -->
         <script src="<?php echo base_url('themes/admin/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js')?>"></script>
         <script src="<?php echo base_url('themes/admin/plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js')?>"></script>
         <script src="<?php echo base_url('themes/admin/plugins/bower_components/toast-master/js/jquery.toast.js')?>"></script>
         <!-- jQuery file upload -->
          <script src="<?php echo base_url('themes/admin/plugins/bower_components/dropify/dist/js/dropify.min.js')?>"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('.dropify').dropify();
-                // $.toast({
-                //     heading: 'Welcome to Agile admin',
-                //     text: 'Use the predefined ones, or specify a custom position object.',
-                //     position: 'top-right',
-                //     loaderBg: '#ff6849',
-                //     icon: 'info',
-                //     hideAfter: 3500,
-                //     stack: 6
-                // })
-            });
-        </script>
+
+         <!--Style Switcher -->
+        <script src="<?php echo base_url('themes/admin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js')?>"></script>
     </body>
 
 </html>

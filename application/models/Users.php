@@ -51,10 +51,26 @@ class Users extends CI_Model {
 	{
         $query = $this->db->get_where('users', array('username' => $username));
 
-        return $query->row();
+        return $query->row('1', 'Users');
 	}
 
 	function check_logged(){
 		return ($this->session->userdata('logged_in')) ? TRUE : FALSE;
+	}
+
+	public function get_avarta() {
+		if (is_file('./'.$this->avarta)) {
+			return base_url($this->avarta);
+		}
+
+		return '';
+	}
+
+	public function get_background() {
+		if (is_file('./'.$this->background)) {
+			return base_url($this->background);
+		}
+
+		return '';
 	}
 }
