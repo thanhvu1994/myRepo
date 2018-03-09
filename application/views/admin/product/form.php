@@ -108,6 +108,22 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-12">Product Images</label>
+                            <div class="col-md-12">
+                                <input type="file" name="product_image[]" class="dropify" multiple/>
+                                <?php if(isset($images) && !empty($images)): ?>
+                                    <?php foreach($images as $image): ?>
+                                        <div class="gallery">
+                                            <a target="_blank" href="<?php echo base_url($image->image); ?>">
+                                                <img style="max-height: 150px;" src="<?php echo base_url($image->image); ?>"/>
+                                            </a>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-md-12">Status</label>
                             <div class="col-md-12">
                                 <select class="form-control" name="status">

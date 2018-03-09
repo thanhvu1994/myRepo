@@ -5,7 +5,7 @@ class Product extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
-        $config['upload_path']          = './uploads/posts';
+        $config['upload_path']          = './uploads/products';
         $config['allowed_types']        = 'jpg|png';
         $this->load->library('upload', $config);
     }
@@ -33,7 +33,35 @@ class Product extends MY_Controller {
         }
 
         if ($this->form_validation->run() == TRUE) {
-            $this->products->set_model();
+            $id = $this->products->set_model();
+
+            if(isset($_FILES['product_image'])){
+                $arrFiles = $this->reArrayFiles($_FILES['product_image']);
+            }
+
+            if(!empty($arrFiles)){
+                $_FILES = $arrFiles;
+                foreach($_FILES as $key => $value){
+                    if (!$this->upload->do_upload($key)) {
+                        if(isset($data['error'])){
+                            $data['error'] .= $this->upload->display_errors();
+                        }else{
+                            $data['error'] = $this->upload->display_errors();
+                        }
+
+                    }else{
+                        $uploadData = $this->upload->data();
+                        $image = '/uploads/products/'. $uploadData['file_name'];
+
+                        $this->productImages->set_model(array(
+                            'product_id' => $id,
+                            'image' => $image,
+                            'created_date' => date('Y-m-d H:i:s')
+                        ));
+                    }
+                }
+            }
+
             redirect('admin/product/index', 'refresh');
         }
 		$this->load->view('admin/layouts/index', $data);
@@ -69,9 +97,11 @@ class Product extends MY_Controller {
     }
 
     public function update($id) {
+        $arrFiles = array();
         $data['title'] = 'Update a Product';
         $data['template'] = 'admin/product/form';
         $data['model'] = $this->products->get_model(['id' => $id]);
+        $data['images'] = $this->productImages->get_images($id);
         $data['link_submit'] = base_url('admin/product/update/'.$id);
         $data['scenario'] = 'update';
         $data['newCode'] = $this->products->generateCode();
@@ -85,6 +115,35 @@ class Product extends MY_Controller {
         }
 
         if ($this->form_validation->run() == TRUE) {
+            if(isset($_FILES['product_image'])){
+                $arrFiles = $this->reArrayFiles($_FILES['product_image']);
+            }
+
+            if(!empty($arrFiles)){
+                $this->productImages->delete_all_model($id);
+
+                $_FILES = $arrFiles;
+                foreach($_FILES as $key => $value){
+                    if (!$this->upload->do_upload($key)) {
+                        if(isset($data['error'])){
+                            $data['error'] .= $this->upload->display_errors();
+                        }else{
+                            $data['error'] = $this->upload->display_errors();
+                        }
+
+                    }else{
+                        $uploadData = $this->upload->data();
+                        $image = '/uploads/products/'. $uploadData['file_name'];
+
+                        $this->productImages->set_model(array(
+                            'product_id' => $id,
+                            'image' => $image,
+                            'created_date' => date('Y-m-d H:i:s')
+                        ));
+                    }
+                }
+            }
+
             $this->products->update_model($id);
             redirect('admin/product/index', 'refresh');
         }
@@ -96,8 +155,23 @@ class Product extends MY_Controller {
         $model = $this->products->get_model(['id' => $id]);
 
         if (count($model) > 0) {
+            $this->productImages->delete_all_model($id);
             $this->products->delete_model($id);
         }
     }
 
+    public function reArrayFiles(&$file_post) {
+
+        $file_ary = array();
+        $file_count = count($file_post['name']);
+        $file_keys = array_keys($file_post);
+
+        for ($i=0; $i<$file_count; $i++) {
+            foreach ($file_keys as $key) {
+                $file_ary[$i][$key] = $file_post[$key][$i];
+            }
+        }
+
+        return $file_ary;
+    }
 }
