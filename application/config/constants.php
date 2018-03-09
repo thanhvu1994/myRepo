@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+defined('STATUS_ACTIVE')  OR define('STATUS_ACTIVE', 1);
+defined('STATUS_INACTIVE')  OR define('STATUS_INACTIVE', 0);
 /*
 |--------------------------------------------------------------------------
 | Display Debug backtrace

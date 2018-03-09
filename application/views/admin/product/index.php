@@ -3,7 +3,7 @@
                 <h4 class="page-title">Data Table</h4>
      </div>
      <?php
-        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Posts'];
+        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Products'];
         $this->load->view('admin/layouts/breadcrumbs', ['breadcrumb' => $breadcrumb]);
      ?>
         <!-- /row -->
@@ -12,7 +12,7 @@
                 <div class="white-box">
                     <div class="row m-b-30">
                         <div class="col-lg-2 col-sm-4 col-xs-12">
-                            <a href="<?php echo base_url('admin/post/create')?>" class="btn btn-block btn-default">Create</a>
+                            <a href="<?php echo base_url('admin/product/create')?>" class="btn btn-block btn-default">Create</a>
                         </div>
                     </div>
                     <div class="row">
@@ -21,12 +21,15 @@
                                 <table id="example23" class="display nowrap" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
                                             <th>Title</th>
-                                            <th>Description</th>
-                                            <th>Short Content</th>
                                             <th>Content</th>
-                                            <th>Featured Image</th>
-                                            <th>Slug</th>
+                                            <th>Description</th>
+                                            <th>Meta Description</th>
+                                            <th>Price</th>
+                                            <th>Sale Price</th>
+                                            <th>Status</th>
                                             <th>Language</th>
                                             <th>Created Date</th>
                                             <th>Action</th>
@@ -35,17 +38,20 @@
                                     <tbody>
                                         <?php foreach ($models as $model): ?>
                                             <tr id="tr-<?php echo $model->id?>">
+                                                <td><?php echo $model->product_code; ?></td>
+                                                <td><?php echo $model->product_name; ?></td>
                                                 <td><?php echo $model->title; ?></td>
-                                                <td><?php echo $model->description; ?></td>
-                                                <td><?php echo $model->short_content; ?></td>
                                                 <td><?php echo $model->content; ?></td>
-                                                <td><?php echo $model->featured_image; ?></td>
-                                                <td><?php echo $model->slug; ?></td>
+                                                <td><?php echo $model->description; ?></td>
+                                                <td><?php echo $model->meta_description; ?></td>
+                                                <td><?php echo $model->price; ?></td>
+                                                <td><?php echo $model->sale_price; ?></td>
+                                                <td><?php echo $model->status; ?></td>
                                                 <td><?php echo ($model->language == 'vn') ? 'Tiếng Việt' : 'English'; ?></td>
                                                 <td><?php echo $model->get_created_date() ?></td>
                                                 <td class="button-column">
                                                     <a href="javascript:void(0)" class="button-view" data-id="<?php echo $model->id?>"><i class="fa fa-eye"></i></a>
-                                                    <a href="<?php echo base_url('admin/post/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
+                                                    <a href="<?php echo base_url('admin/product/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
                                                     <a href="javascript:void(0)" class="button-delete" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
@@ -146,21 +152,21 @@
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label for="menu_name" class="control-label col-md-3">Title:</label>
+                        <label for="menu_name" class="control-label col-md-3">Code:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="product_code" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="menu_link" class="control-label col-md-3">Name:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="product_name" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="display_order" class="control-label col-md-3">Title:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="title" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="menu_link" class="control-label col-md-3">Description:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="description" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="display_order" class="control-label col-md-3">Short Content:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="short_content" disabled>
                         </div>
                     </div>
                     <div class="form-group">
@@ -170,9 +176,27 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="parent_id" class="control-label col-md-3">Featured Image</label>
+                        <label for="icon" class="control-label col-md-3">Description:</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="featured_image" disabled>
+                            <input type="text" class="form-control" id="description" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="icon" class="control-label col-md-3">Meta Description:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="meta_description" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="icon" class="control-label col-md-3">Price:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="price" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="icon" class="control-label col-md-3">Sale Price:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="sale_price" disabled>
                         </div>
                     </div>
                     <div class="form-group">
@@ -185,6 +209,18 @@
                         <label for="show_in_menu" class="control-label col-md-3">Language:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="language" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="show_in_menu" class="control-label col-md-3">Feature:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="feature" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="show_in_menu" class="control-label col-md-3">Status:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="status" disabled>
                         </div>
                     </div>
                     <div class="form-group">
@@ -208,7 +244,7 @@
             if (confirm('Are you sure want to delete this item?')) {
                 var id = $(this).data('id');
                 $.ajax({
-                    url: '<?php echo base_url('admin/post/delete')?>'+'/'+id,
+                    url: '<?php echo base_url('admin/product/delete')?>'+'/'+id,
                     type: 'POST',
                     success: function (returndata) {
                         $('#tr-'+id).remove();
@@ -220,7 +256,7 @@
         $('.button-view').click(function() {
             var id = $(this).data('id');
             $.ajax({
-                url: '<?php echo base_url('admin/post/view')?>'+'/'+id,
+                url: '<?php echo base_url('admin/product/view')?>'+'/'+id,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

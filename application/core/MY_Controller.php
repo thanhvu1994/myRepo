@@ -9,6 +9,7 @@ class MY_Controller extends CI_Controller {
         $this->load->model('users');
         $this->load->model('menus');
         $this->load->model('posts');
+        $this->load->model('products');
         // validate user
         if (!$this->users->check_logged()) {
             redirect('admin/login', 'refresh');

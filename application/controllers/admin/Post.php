@@ -22,7 +22,6 @@ class Post extends MY_Controller {
     	$data['template'] = 'admin/post/form';
         $data['link_submit'] = base_url('admin/post/create');
         $data['scenario'] = 'create';
-
         $rules = $this->posts->getRule();
         foreach ($rules as $rule) {
             if (count($rule) >= 3) {
@@ -55,6 +54,7 @@ class Post extends MY_Controller {
                 $result['content'] = $model[0]->content;
                 $result['featured_image'] = $model[0]->featured_image;
                 $result['slug'] = $model[0]->slug;
+                $result['language'] = ($model[0]->language == 'vn')? 'Tiếng Việt': 'English';
                 $result['created_date'] = $model[0]->created_date;
 
                 echo json_encode($result);
@@ -84,6 +84,10 @@ class Post extends MY_Controller {
             if (!$this->upload->do_upload('featured_image')) {
                 $data['error'] = $this->upload->display_errors();
             } else {
+                $oldModel = $this->posts->get_model();
+                $path = '.'.$oldModel[0]->featured_image;
+                @unlink($path);
+
                 $uploadData = $this->upload->data();
                 $image = '/uploads/posts/'. $uploadData['file_name'];
                 $this->posts->update_model($id,$image);
@@ -101,5 +105,4 @@ class Post extends MY_Controller {
             $this->posts->delete_model($id);
         }
     }
-
 }

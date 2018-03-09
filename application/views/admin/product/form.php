@@ -14,6 +14,22 @@
                 <div class="white-box">
                     <?php echo form_open_multipart($link_submit, ['class' => 'form-horizontal']); ?>
                         <div class="form-group">
+                            <label class="col-md-12">Product Code</label>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->product_code : $newCode ;?>" name="product_code" readonly>
+                                <?php echo form_error('product_code'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-12">Product Name</label>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->product_name : ''?>" name="product_name">
+                                <?php echo form_error('product_name'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-md-12">Title</label>
                             <div class="col-md-12">
                                 <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->title : ''?>" name="title">
@@ -22,48 +38,49 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-12">Description</label>
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->description : ''?>" name="description">
-                                <?php echo form_error('description'); ?>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-12">Short Content</label>
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->short_content : ''?>" name="short_content">
-                                <?php echo form_error('short_content'); ?>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
                             <label class="col-md-12">Content</label>
                             <div class="col-md-12">
-                                <textarea class="form-control" name="content" id="editor-full" rows="10" cols="80">
-                                    <?php echo (isset($model)) ? $model->content : ''?>
-                                </textarea>
+                                <textarea class="form-control" name="content" id="editor-full" rows="10" cols="80"><?php echo (isset($model)) ? $model->content : ''?></textarea>
                                 <?php echo form_error('content'); ?>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-12">Featured Image</label>
+                            <label class="col-md-12">Description</label>
                             <div class="col-md-12">
-                                <?php if (isset($model)): ?>
-                                    <input type="file" name="featured_image" class="dropify" data-default-file="<?php echo base_url($model->featured_image) ?>" />
-                                <?php else: ?>
-                                    <input type="file" name="featured_image" class="dropify" />
-                                <?php endif ?>
-                                <?php echo form_error('featured_image'); ?>
-                                <?php echo isset($error) ? $error : '' ?>
+                                    <textarea class="form-control" name="description" rows="10" cols="80"><?php echo (isset($model)) ? $model->description : ''?></textarea>
+                                <?php echo form_error('description'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-12">Meta Description</label>
+                            <div class="col-md-12">
+                                    <textarea class="form-control" name="meta_description" rows="10" cols="80"><?php echo (isset($model)) ? $model->meta_description : ''?></textarea>
+                                <?php echo form_error('meta_description'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-12">Price</label>
+                            <div class="col-md-12">
+                                <input type="number" class="form-control" value="<?php echo (isset($model)) ? $model->price : ''?>" name="price">
+                                <?php echo form_error('price'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-12">Sale Price</label>
+                            <div class="col-md-12">
+                                <input type="number" class="form-control" value="<?php echo (isset($model)) ? $model->sale_price : ''?>" name="sale_price">
+                                <?php echo form_error('sale_price'); ?>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-12">Slug</label>
                             <div class="col-md-12">
-                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->slug : ''?>" name="slug" <?php echo ($scenario == "update")? 'readonly' : ''; ?>>
+                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->slug : $newSlug ?>" name="slug" <?php echo ($scenario == "update")? 'readonly' : ''; ?>>
                                 <?php echo form_error('slug'); ?>
                             </div>
                         </div>
@@ -79,8 +96,30 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label class="col-md-12">Feature</label>
+                            <div class="col-md-12">
+                                <select class="form-control" name="feature">
+                                    <option <?php echo (isset($model) && $model->feature == STATUS_ACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_ACTIVE; ?>">Active</option>
+                                    <option <?php echo (isset($model) && $model->feature == STATUS_INACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_ACTIVE; ?>">In-Active</option>
+                                </select>
+                                <?php echo form_error('feature'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-12">Status</label>
+                            <div class="col-md-12">
+                                <select class="form-control" name="status">
+                                    <option <?php echo (isset($model) && $model->status == STATUS_ACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_ACTIVE; ?>">Active</option>
+                                    <option <?php echo (isset($model) && $model->status == STATUS_INACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_ACTIVE; ?>">In-Active</option>
+                                </select>
+                                <?php echo form_error('status'); ?>
+                            </div>
+                        </div>
+
                         <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
-                        <a href="<?php echo base_url('admin/post')?>" class="btn btn-inverse waves-effect waves-light">Cancel</a>
+                        <a href="<?php echo base_url('admin/product')?>" class="btn btn-inverse waves-effect waves-light">Cancel</a>
                     <?php echo form_close(); ?>
                 </div>
             </div>
