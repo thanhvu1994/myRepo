@@ -61,53 +61,23 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#vng" aria-controls="vng" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-home"></i></span><span class="hidden-xs"> Tiếng việt</span></a></li>
-                    <li role="presentation" class=""><a href="#eng" aria-controls="eng" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Tiếng Anh</span></a></li>
-                </ul>
                 <form class="form-horizontal">
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="vng">
-                            <div class="form-group">
-                                <label for="menu_name" class="control-label col-md-3">Tên danh mục:</label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="category_name" disabled>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="menu_link" class="control-label col-md-3">Tiêu đề:</label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="title" disabled>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="display_order" class="control-label col-md-3">Mô tả:</label>
-                                <div class="col-md-8">
-                                    <textarea type="text" class="form-control" id="description" disabled></textarea>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label for="menu_name" class="control-label col-md-3">Tên danh mục:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="category_name" disabled>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="eng">
-                            <div class="form-group">
-                                <label for="menu_name" class="control-label col-md-3">Tên danh mục:</label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="category_name_en" disabled>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="menu_link" class="control-label col-md-3">Tiêu đề:</label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="title_en" disabled>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="display_order" class="control-label col-md-3">Mô tả:</label>
-                                <div class="col-md-8">
-                                    <textarea type="text" class="form-control" id="description_en" disabled></textarea>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="menu_link" class="control-label col-md-3">Tiêu đề:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="title" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="display_order" class="control-label col-md-3">Mô tả:</label>
+                        <div class="col-md-8">
+                            <textarea type="text" class="form-control" id="description" disabled></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -152,9 +122,12 @@
                 $.ajax({
                     url: '<?php echo base_url('admin/category/delete')?>'+'/'+id,
                     type: 'POST',
+                    dataType: "json",
                     success: function (returndata) {
-                        if (returndata == 1) {
-                            $('#tr-'+id).remove();
+                        if (returndata) {
+                            $.each( returndata, function( key, value ) {
+                                $('#tr-'+value).remove();
+                            });
                         }
                     }
                 });

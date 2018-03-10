@@ -9,6 +9,7 @@ class ContactOrder extends MY_Controller {
 
         $config['upload_path']          = './uploads/contact';
         $config['allowed_types']        = 'jpg|png|doc|docx|xlsx|xls';
+        $config['encrypt_name']         = TRUE;
         $this->load->library('upload', $config);
     }
 

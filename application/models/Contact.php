@@ -1,6 +1,12 @@
 <?php
 class Contact extends CI_Model {
 
+	public $arr_type = [
+		1 => 'Báo giá',
+		2 => 'Đặt hàng',
+		3 => 'Hỗ trợ',
+	];
+
     public function __construct()
     {
 	    $this->load->database();
@@ -27,69 +33,17 @@ class Contact extends CI_Model {
 		}
 	}
 
-	public function set_model()
+	public function set_model($data_insert)
 	{
-	    $slug = url_title(convert_accented_characters(strtolower($this->input->post('category_name')), 'dash', TRUE));
-	    $slug_en = url_title(convert_accented_characters(strtolower($this->input->post('category_name_en')), 'dash', TRUE));
-	    if ($this->input->post('parent_id') == 0) {
-	    	$type_level = 1;
-	    } else {
-	    	$parent = $this->get_model(['id' => $this->input->post('parent_id')]);
-	    	if (count($parent) > 0) {
-	    		$type_level = (int)$parent->type_level + 1;
-	    	} else {
-	    		$type_level = 1;
-	    	}
-	    }
-	    $data = array(
-	        'category_name' => $this->input->post('category_name'),
-	        'category_name_en' => $this->input->post('category_name_en'),
-	        'parent_id' => $this->input->post('parent_id'),
-	        'title' => $this->input->post('title'),
-	        'title_en' => $this->input->post('title_en'),
-	        'description' => $this->input->post('description'),
-	        'description_en' => $this->input->post('description_en'),
-	        'url' => $this->input->post('url'),
-	        'slug' => $slug,
-	        'slug_en' => $slug_en,
-	        'type_level' => $type_level,
-	        'update_date' => date('Y-m-d H:i:s'),
-	    );
+	    $data_insert['created_date'] = date('Y-m-d H:i:s');
 
-	    return $this->db->insert('categories', $data);
+	    return $this->db->insert('contact', $data_insert);
 	}
 
-	public function update_model($id)
+	public function update_model($id, $data_insert)
 	{
-	    $slug = url_title(convert_accented_characters(strtolower($this->input->post('category_name')), 'dash', TRUE));
-	    $slug_en = url_title(convert_accented_characters(strtolower($this->input->post('category_name_en')), 'dash', TRUE));
-	    if ($this->input->post('parent_id') == 0) {
-	    	$type_level = 1;
-	    } else {
-	    	$parent = $this->get_model(['id' => $this->input->post('parent_id')]);
-	    	if (count($parent) > 0) {
-	    		$type_level = (int)$parent->type_level + 1;
-	    	} else {
-	    		$type_level = 1;
-	    	}
-	    }
-	    $data = array(
-	        'category_name' => $this->input->post('category_name'),
-	        'category_name_en' => $this->input->post('category_name_en'),
-	        'parent_id' => $this->input->post('parent_id'),
-	        'title' => $this->input->post('title'),
-	        'title_en' => $this->input->post('title_en'),
-	        'description' => $this->input->post('description'),
-	        'description_en' => $this->input->post('description_en'),
-	        'url' => $this->input->post('url'),
-	        'slug' => $slug,
-	        'slug_en' => $slug_en,
-	        'type_level' => $type_level,
-	        'update_date' => date('Y-m-d H:i:s'),
-	    );
-
 	    $this->db->where('id', $id);
-        $this->db->update('categories', $data);
+        $this->db->update('contact', $data);
 	}
 
 	public function delete_model($id) {

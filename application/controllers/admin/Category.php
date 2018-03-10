@@ -9,6 +9,7 @@ class Category extends MY_Controller {
 
         $config['upload_path']          = './uploads/banners';
         $config['allowed_types']        = 'gif|jpg|png';
+        $config['encrypt_name']         = TRUE;
         $this->load->library('upload', $config);
     }
 
@@ -25,14 +26,9 @@ class Category extends MY_Controller {
     	$data['template'] = 'admin/category/form';
         $data['link_submit'] = base_url('admin/category/create');
 
-        $rules = $this->categories->getRule();
-        foreach ($rules as $rule) {
-            if (count($rule) >= 3) {
-                $this->form_validation->set_rules($rule[0], $rule[1], $rule[2]);
-            }
-        }
-        if ($this->form_validation->run() == TRUE) {
-            $this->categories->set_model();
+        if (isset($_POST['Categories'])) {
+            $data_insert = $_POST['Categories'];
+            $this->categories->set_model($data_insert);
             redirect('admin/category/index', 'refresh');
         }
 
@@ -46,12 +42,9 @@ class Category extends MY_Controller {
             $model = $query->result('Categories');
             if (count($model) > 0) {
                 $result['category_name'] = $model[0]->category_name;
-                $result['category_name_en'] = $model[0]->category_name_en;
                 $result['parent_id'] = $model[0]->get_parent_name();
                 $result['title'] = $model[0]->title;
-                $result['title_en'] = $model[0]->title_en;
                 $result['description'] = $model[0]->description;
-                $result['description_en'] = $model[0]->description_en;
                 $result['url'] = $model[0]->url;
                 $result['created_date'] = $model[0]->get_created_date();
                 $result['update_date'] = $model[0]->get_update_date();
@@ -77,8 +70,9 @@ class Category extends MY_Controller {
             }
         }
 
-        if ($this->form_validation->run() == TRUE) {
-            $this->categories->update_model($id);
+        if (isset($_POST['Categories'])) {
+            $data_update = $_POST['Categories'];
+            $this->categories->update_model($id, $data_update);
             redirect('admin/category/index', 'refresh');
         }
 
@@ -89,10 +83,31 @@ class Category extends MY_Controller {
         $model = $this->categories->get_model(['id' => $id]);
 
         if (count($model) > 0) {
-            $this->categories->delete_model($id);
-            echo 1;
-        } else {
-            echo 0;
+            $arr_id_del = $this->categories->delete_model($id);
+            echo json_encode($arr_id_del);
+        }
+    }
+
+    public function changeParent() {
+        if (!$this->input->is_ajax_request()) {
+           exit('No direct script access allowed');
+        }
+        if (isset($_POST['language'])) {
+            $language = $_POST['language'];
+            if (isset($_POST['id']) && !empty($_POST['id'])) {
+                $id = $_POST['id'];
+            } else {
+                $id = 0;
+            }
+            $categories = $this->categories->get_dropdown_category($id, $language);
+
+            $data = '<option value="0"> -- Chọn lớp cha -- </option>';
+            if (!empty($categories)) {
+                foreach ($categories as $category_id => $category_name) {
+                    $data .= '<option value="'.$category_id.'">'.$category_name.'</option>';
+                }
+            }
+            echo $data;
         }
     }
 

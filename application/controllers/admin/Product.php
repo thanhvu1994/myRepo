@@ -7,6 +7,7 @@ class Product extends MY_Controller {
         parent::__construct();
         $config['upload_path']          = './uploads/products';
         $config['allowed_types']        = 'jpg|png';
+        $config['encrypt_name']         = TRUE;
         $this->load->library('upload', $config);
     }
 
