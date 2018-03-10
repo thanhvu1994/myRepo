@@ -35,6 +35,16 @@ class Product extends MY_Controller {
         if ($this->form_validation->run() == TRUE) {
             $id = $this->products->set_model();
 
+            $attributes = $this->input->post('attributes');
+            $attribute_values = $this->input->post('attribute_values');
+
+            foreach($attributes as $key => $value){
+                if(!empty($value)){
+                    $productOptionId = $this->productOption->set_model($id,$value);
+                    $this->productOptionValue->set_model($id,$productOptionId,$attribute_values[$key]);
+                }
+            }
+
             if(isset($_FILES['product_image'])){
                 $arrFiles = $this->reArrayFiles($_FILES['product_image']);
             }
@@ -106,6 +116,12 @@ class Product extends MY_Controller {
         $data['scenario'] = 'update';
         $data['newCode'] = $this->products->generateCode();
         $data['newSlug'] = $this->products->generateSlug();
+        $data['attribute'] = $this->productOption->get_model($id);
+        $data['attribute_value'] = array();
+
+        foreach( $data['attribute'] as $key => $item){
+            $data['attribute_value'][$item->id] = $this->productOptionValue->get_model($item->id);
+        }
 
         $rules = $this->products->getRule();
         foreach ($rules as $rule) {
@@ -115,7 +131,24 @@ class Product extends MY_Controller {
         }
 
         if ($this->form_validation->run() == TRUE) {
-            if(isset($_FILES['product_image'])){
+            $attributes = $this->input->post('attributes');
+            $attribute_values = $this->input->post('attribute_values');
+
+            if(count($attributes) > 1){ // not empty
+                $this->productOption->delete_all_model($id);
+                $this->productOptionValue->delete_all_model($id);
+                foreach($attributes as $key => $value){
+                    if(!empty($value)){
+                        $productOptionId = $this->productOption->set_model($id,$value);
+                        $this->productOptionValue->set_model($id,$productOptionId,$attribute_values[$key]);
+                    }
+                }
+            }
+
+
+            if(isset($_FILES['product_image']['tmp_name']['0']) && empty($_FILES['product_image']['tmp_name']['0'])) {
+                $data['error'] = 'No upload';
+            }else{
                 $arrFiles = $this->reArrayFiles($_FILES['product_image']);
             }
 

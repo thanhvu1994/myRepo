@@ -61,6 +61,54 @@
                             </div>
                         </div>
 
+                    <div class="form-group attribute-container">
+                        <label class="col-md-12">Attributes <a href="javascript:void(0)" onClick="addAttribute()"><span class="glyphicon glyphicon-plus"></span></a></label>
+                        <div class="attribute-input default-item">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" value="" name="attributes[]">
+                                <?php echo form_error('attributes'); ?>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" value="" name="attribute_values[]">
+                                <?php echo form_error('attribute_values'); ?>
+                            </div>
+                        </div>
+
+                        <?php if(isset($attribute) && !empty($attribute)): ?>
+                            <?php foreach($attribute as $key => $item): ?>
+                                <div class="attribute-input">
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" value="<?php echo $item->name; ?>" name="attributes[]">
+                                        <?php echo form_error('attributes'); ?>
+                                    </div>
+                                    <?php if(isset($attribute_value) && !empty($attribute_value)): ?>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" value="<?php echo $attribute_value[$item->id][0]->name; ?>" name="attribute_values[]">
+                                            <?php echo form_error('attribute_values'); ?>
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" value="" name="attribute_values[]">
+                                            <?php echo form_error('attribute_values'); ?>
+                                        </div>
+                                    <?php endif; ?>
+
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="attribute-input">
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" value="" name="attributes[]">
+                                    <?php echo form_error('attributes'); ?>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" value="" name="attribute_values[]">
+                                    <?php echo form_error('attribute_values'); ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+
                         <div class="form-group">
                             <label class="col-md-12">Price</label>
                             <div class="col-md-12">
@@ -225,4 +273,8 @@
          filebrowserWindowWidth: '1000',
          filebrowserWindowHeight: '700'
      } );
+
+     function addAttribute(){
+         $('.attribute-input.default-item').clone().removeClass('default-item').appendTo( ".attribute-container" );
+     }
  </script>

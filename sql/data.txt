@@ -21,3 +21,10 @@ CREATE TABLE `ci_posts` (
 
 ALTER TABLE  `ci_users` ADD  `avarta` VARCHAR( 255 ) NOT NULL AFTER  `is_first_login` ;
 ALTER TABLE  `ci_users` ADD  `background` VARCHAR( 255 ) NOT NULL AFTER  `avarta` ;
+
+ALTER TABLE  `ci_product_option` ADD  `product_id` VARCHAR( 10 ) NOT NULL AFTER  `id` ;
+ALTER TABLE `ci_product_option_value` DROP COLUMN `value`;
+
+ALTER TABLE `ci_product_option_value`
+ADD COLUMN `product_id`  int(11) NOT NULL AFTER `id`;
+
