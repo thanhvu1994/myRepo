@@ -38,6 +38,14 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-12">Short Content</label>
+                            <div class="col-md-12">
+                                <textarea class="form-control" name="short_content" rows="10" cols="80"><?php echo (isset($model)) ? $model->short_content : ''?></textarea>
+                                <?php echo form_error('short_content'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-md-12">Content</label>
                             <div class="col-md-12">
                                 <textarea class="form-control" name="content" id="editor-full" rows="10" cols="80"><?php echo (isset($model)) ? $model->content : ''?></textarea>
@@ -48,7 +56,7 @@
                         <div class="form-group">
                             <label class="col-md-12">Description</label>
                             <div class="col-md-12">
-                                    <textarea class="form-control" name="description" rows="10" cols="80"><?php echo (isset($model)) ? $model->description : ''?></textarea>
+                                    <textarea class="form-control" name="description" id="editor-full-2" rows="10" cols="80"><?php echo (isset($model)) ? $model->description : ''?></textarea>
                                 <?php echo form_error('description'); ?>
                             </div>
                         </div>
@@ -149,7 +157,7 @@
                             <div class="col-md-12">
                                 <select class="form-control" name="feature">
                                     <option <?php echo (isset($model) && $model->feature == STATUS_ACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_ACTIVE; ?>">Active</option>
-                                    <option <?php echo (isset($model) && $model->feature == STATUS_INACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_ACTIVE; ?>">In-Active</option>
+                                    <option <?php echo (isset($model) && $model->feature == STATUS_INACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_INACTIVE; ?>">In-Active</option>
                                 </select>
                                 <?php echo form_error('feature'); ?>
                             </div>
@@ -176,7 +184,7 @@
                             <div class="col-md-12">
                                 <select class="form-control" name="status">
                                     <option <?php echo (isset($model) && $model->status == STATUS_ACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_ACTIVE; ?>">Active</option>
-                                    <option <?php echo (isset($model) && $model->status == STATUS_INACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_ACTIVE; ?>">In-Active</option>
+                                    <option <?php echo (isset($model) && $model->status == STATUS_INACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_INACTIVE; ?>">In-Active</option>
                                 </select>
                                 <?php echo form_error('status'); ?>
                             </div>
@@ -268,6 +276,13 @@
      // Replace the <textarea id="editor1"> with a CKEditor
      // instance, using default configuration.
      CKEDITOR.replace( 'editor-full', {
+         filebrowserBrowseUrl: "<?php echo base_url('themes/admin/plugins/ckfinder/ckfinder.html')?>",
+         filebrowserUploadUrl: "<?php echo base_url('themes/admin/plugins/ckfinder/core/connector/php/connector.php').'?command=QuickUpload&type=Files' ?>",
+         filebrowserWindowWidth: '1000',
+         filebrowserWindowHeight: '700'
+     } );
+
+     CKEDITOR.replace( 'editor-full-2', {
          filebrowserBrowseUrl: "<?php echo base_url('themes/admin/plugins/ckfinder/ckfinder.html')?>",
          filebrowserUploadUrl: "<?php echo base_url('themes/admin/plugins/ckfinder/core/connector/php/connector.php').'?command=QuickUpload&type=Files' ?>",
          filebrowserWindowWidth: '1000',

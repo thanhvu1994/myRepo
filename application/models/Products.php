@@ -39,6 +39,7 @@ class Products extends CI_Model {
             'product_code' => $this->input->post('product_code'),
             'product_name' => $this->input->post('product_name'),
             'title' => $this->input->post('title'),
+            'short_content' => $this->input->post('short_content'),
             'content' => $this->input->post('content'),
             'description' => $this->input->post('description'),
             'meta_description' => $this->input->post('meta_description'),
@@ -60,6 +61,7 @@ class Products extends CI_Model {
             'product_code' => $this->input->post('product_code'),
             'product_name' => $this->input->post('product_name'),
             'title' => $this->input->post('title'),
+            'short_content' => $this->input->post('short_content'),
             'content' => $this->input->post('content'),
             'description' => $this->input->post('description'),
             'meta_description' => $this->input->post('meta_description'),
@@ -103,5 +105,26 @@ class Products extends CI_Model {
             $maxid = $row->maxid;
         }
         return 'product-'.(str_pad($maxid+1, 4, '0', STR_PAD_LEFT));
+    }
+
+    public function getDataFE(){
+        $query = $this->db->query("SELECT * FROM ci_products WHERE status = '".STATUS_ACTIVE."' AND feature = '".STATUS_ACTIVE."'");
+        return $query->result('Products');
+    }
+
+    public function getFirstImage(){
+        $query = $this->db->query("SELECT * FROM ci_product_images WHERE product_id = '".$this->id."'");
+        $images = $query->result();
+
+        if(!empty($images)){
+            return base_url($images[0]->image);
+        }else{
+            return '#';
+        }
+    }
+
+    public function getProductBySlug($slug){
+        $query = $this->db->get_where('products', array('slug' => $slug) );
+        return $query->row();
     }
 }
