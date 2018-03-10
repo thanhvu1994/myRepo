@@ -1,12 +1,7 @@
 <div class="columns-container">
     <div id="columns" class="container" >
-
-        <div id="slider_row" class="row">
-        </div>
         <div class="row">
             <div id="center_column" class="center_column col-xs-12 col-sm-12">
-
-
                 <div itemscope itemtype="http://schema.org/Product">
                     <div class="primary_block row">
                         <div class="container">
