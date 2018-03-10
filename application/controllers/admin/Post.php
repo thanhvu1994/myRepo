@@ -30,14 +30,16 @@ class Post extends MY_Controller {
         }
 
         if ($this->form_validation->run() == TRUE) {
+            $image = '';
             if (!$this->upload->do_upload('featured_image')) {
                 $data['error'] = $this->upload->display_errors();
             } else {
                 $uploadData = $this->upload->data();
                 $image = '/uploads/posts/'. $uploadData['file_name'];
-                $this->posts->set_model($image);
-                redirect('admin/post/index', 'refresh');
             }
+
+            $this->posts->set_model($image);
+            redirect('admin/post/index', 'refresh');
         }
 		$this->load->view('admin/layouts/index', $data);
     }
