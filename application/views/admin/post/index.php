@@ -27,6 +27,7 @@
                                             <th>Content</th>
                                             <th>Featured Image</th>
                                             <th>Slug</th>
+                                            <th>Type</th>
                                             <th>Language</th>
                                             <th>Created Date</th>
                                             <th>Action</th>
@@ -41,6 +42,7 @@
                                                 <td><?php echo $model->content; ?></td>
                                                 <td><?php echo $model->featured_image; ?></td>
                                                 <td><?php echo $model->slug; ?></td>
+                                                <td><?php echo ucfirst($model->type); ?></td>
                                                 <td><?php echo ($model->language == 'vn') ? 'Tiếng Việt' : 'English'; ?></td>
                                                 <td><?php echo $model->get_created_date() ?></td>
                                                 <td class="button-column">
@@ -185,6 +187,12 @@
                         <label for="show_in_menu" class="control-label col-md-3">Language:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="language" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="show_in_menu" class="control-label col-md-3">Type:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="type" disabled>
                         </div>
                     </div>
                     <div class="form-group">

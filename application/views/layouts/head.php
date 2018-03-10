@@ -7,6 +7,7 @@
 		<link rel="shortcut icon" href="<?php echo base_url($this->settings->get_param('favicon')) ?>" type="image/x-icon"/>
 
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/global.css')?>" type="text/css" media="all" />
+		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/product.css')?>" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/fonts/stylesheet.css')?>" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/autoload/bootstrap.min.css')?>" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/autoload/highdpi.css')?>" type="text/css" media="all" />

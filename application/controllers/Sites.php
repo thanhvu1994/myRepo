@@ -54,11 +54,9 @@ class Sites extends Front_Controller {
     }
 
     public function product($slug){
-        $product = $this->products->getProductBySlug($slug);
-
         $data['template'] = 'sites/product';
-        $data['products'] = $this->products->getDataFE();
+        $data['product'] = $this->products->getProductBySlug($slug);
 
-        $this->load->view('sites/product', $data);
+        $this->load->view('layouts/index', $data);
     }
 }

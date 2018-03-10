@@ -57,6 +57,7 @@ class Post extends MY_Controller {
                 $result['content'] = $model[0]->content;
                 $result['featured_image'] = $model[0]->featured_image;
                 $result['slug'] = $model[0]->slug;
+                $result['type'] = ucfirst($model[0]->type);
                 $result['language'] = ($model[0]->language == 'vn')? 'Tiếng Việt': 'English';
                 $result['created_date'] = $model[0]->created_date;
 

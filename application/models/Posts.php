@@ -39,6 +39,7 @@ class Posts extends CI_Model {
             'content' => $this->input->post('content'),
             'featured_image' => $image,
             'slug' => $this->input->post('slug'),
+            'type' => $this->input->post('type'),
             'language' => $this->input->post('language'),
         );
 
@@ -54,6 +55,7 @@ class Posts extends CI_Model {
 	        'content' => $this->input->post('content'),
 	        'featured_image' => $image,
 	        'slug' => $this->input->post('slug'),
+            'type' => $this->input->post('type'),
             'language' => $this->input->post('language'),
 	    );
 
