@@ -36,6 +36,7 @@
     width:  100%;
     display:  block;
     height:  auto;
+    max-height: 550px
 }
 .flex-pauseplay span  {
     text-transform:  capitalize;
@@ -245,6 +246,10 @@ html[xmlns] .slides  {
     .flex-direction-nav .flex-next  {
         opacity:  1;
         right:  10px;
+    }
+
+    .flexslider .slides img  {
+        max-height: 300px;
     }
 
 }

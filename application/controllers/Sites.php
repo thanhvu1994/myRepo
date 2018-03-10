@@ -8,11 +8,15 @@ class Sites extends Front_Controller {
         parent::__construct();
         $this->load->model('partner');
         $this->load->model('products');
+        $this->load->model('banner');
     }
 
     public function index()
     {
         $data['template'] = 'sites/index';
+        $query = $this->db->query("SELECT * FROM ci_banners WHERE publish = 1");
+        $banners = $query->result('Banner');
+        $data['banners'] = $banners;
         $data['products'] = $this->products->getDataFE();
 
 		$this->load->view('layouts/index', $data);

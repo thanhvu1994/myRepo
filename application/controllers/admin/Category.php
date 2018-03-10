@@ -6,6 +6,7 @@ class Category extends MY_Controller {
     {
         parent::__construct();
         $this->load->model('categories');
+        $this->load->model('posts');
 
         $config['upload_path']          = './uploads/banners';
         $config['allowed_types']        = 'gif|jpg|png';
@@ -41,11 +42,19 @@ class Category extends MY_Controller {
 
             $model = $query->result('Categories');
             if (count($model) > 0) {
+                $url = explode('/', $model[0]->url);
+                $title = '';
+                if (isset($url[1])) {
+                    $post = $this->posts->get_model(['slug' => $url[1]]);
+                    if (count($post) > 0) {
+                        $title = 'Bài viết: '.$post->title;
+                    }
+                }
                 $result['category_name'] = $model[0]->category_name;
                 $result['parent_id'] = $model[0]->get_parent_name();
                 $result['title'] = $model[0]->title;
                 $result['description'] = $model[0]->description;
-                $result['url'] = $model[0]->url;
+                $result['url'] = $title;
                 $result['created_date'] = $model[0]->get_created_date();
                 $result['update_date'] = $model[0]->get_update_date();
                 echo json_encode($result);
@@ -110,5 +119,4 @@ class Category extends MY_Controller {
             echo $data;
         }
     }
-
 }

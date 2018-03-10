@@ -143,6 +143,15 @@
     </div>
 </div>
 
+<style>
+    .center-cropped-partner {
+        object-fit: none; /* Do not scale the image */
+        object-position: center; /* Center the image within the element */
+        height: 150px;
+        width: 150px;
+    }
+</style>
+
 <?php $partners = $this->partner->get_partner_fe();
 	if (count($partners) > 0) :?>
 		<div id="KhachHang" style="background: #bcbcbc;padding-bottom: 50px">
@@ -156,7 +165,7 @@
 		    				<?php foreach ($partners as $partner): ?>
 		    					<li class="htmlcontent-item-1" style="display: inline-block">
 			                        <a href="3-san-pham-tam-nhua-polycarbonate.html" class="item-link" onclick="return ! window.open(this.href);" title="<?php echo $partner->name ?>">
-			                            <img src="<?php echo $partner->get_image() ?>" class="item-img" title="<?php echo $partner->name ?>" alt="<?php echo $partner->name ?>" width="100"/>
+			                            <img src="<?php echo $partner->get_image() ?>" class="item-img center-cropped-partner" title="<?php echo $partner->name ?>" alt="<?php echo $partner->name ?>" width="100" height="100"/>
 			                        </a>
 			                    </li>
 		    				<?php endforeach ?>

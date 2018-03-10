@@ -94,15 +94,15 @@
         <script>
         $(document).ready(function() {
             $('.dropify').dropify();
-            $.toast({
-                heading: 'Welcome to Agile admin',
-                text: 'Use the predefined ones, or specify a custom position object.',
-                position: 'top-right',
-                loaderBg: '#ff6849',
-                icon: 'info',
-                hideAfter: 3500,
-                stack: 6
-            });
+            // $.toast({
+            //     heading: 'Welcome to Agile admin',
+            //     text: 'Use the predefined ones, or specify a custom position object.',
+            //     position: 'top-right',
+            //     loaderBg: '#ff6849',
+            //     icon: 'info',
+            //     hideAfter: 3500,
+            //     stack: 6
+            // });
             $('#myTable').DataTable();
             $(document).ready(function() {
                 var table = $('#example').DataTable({
