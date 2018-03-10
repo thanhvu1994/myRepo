@@ -11,6 +11,9 @@ class MY_Controller extends CI_Controller {
         $this->load->model('posts');
         $this->load->model('products');
         $this->load->model('productImages');
+        $this->load->model('productOption');
+        $this->load->model('productOptionValue');
+
         // validate user
         if (!$this->users->check_logged()) {
             redirect('admin/login', 'refresh');
