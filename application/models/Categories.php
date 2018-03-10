@@ -171,19 +171,38 @@ class Categories extends CI_Model {
 		return '';
 	}
 
-	public function get_menuFE() {
-		$results = [];
-		$query = $this->db->query("SELECT * FROM ci_categories WHERE parent_id = 0 ORDER BY display_order asc");
-		$models = $query->result('Categories');
+	public function rChildsFE($parent_id) {
+		$items = [];
+		$query = $this->db->query("SELECT * FROM ci_categories WHERE parent_id = ".$parent_id);
+		$childs = $query->result('Categories');
 
-		if (count($models)) {
-			foreach ($models as $model) {
-				$results[] = [
-					'name' => $model->category_name,
-					'url' => $model->url,
+		if (count($childs) > 0) {
+			foreach ($childs as $child) {
+				$items[$child->id] = [
+					'name' => $child->category_name,
+					'url' => $child->url,
+					'child' => $this->rChildsFE($child->id),
 				];
 			}
 		}
-		return $results;
+
+		return $items;
+	}
+
+	public function get_menuFE() {
+		$items = [];
+		$query = $this->db->query("SELECT * FROM ci_categories WHERE parent_id = 0 ORDER BY display_order asc");
+		$models = $query->result('Categories');
+		$level = 1;
+		if (count($models)) {
+			foreach ($models as $model) {
+				$items[$model->id] = [
+					'name' => $model->category_name,
+					'url' => $model->url,
+					'child' => $this->rChildsFE($model->id),
+				];
+			}
+		}
+		return $items;
 	}
 }

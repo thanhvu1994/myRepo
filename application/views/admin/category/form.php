@@ -35,7 +35,14 @@
                 <div class="form-group">
                     <label class="col-md-12">Đường dẫn</label>
                     <div class="col-md-12">
-                        <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->url : ''?>" name="Categories[url]">
+                        <?php $url = isset($model) ? $model->url : '';?>
+                        <select class="form-control" name="Categories[url]">
+                            <option value="0"> -- Chọn đường dẫn -- </option>
+                            <?php foreach ($this->posts->get_dropdown_posts() as $post_url => $title): 
+                                    $selected = ($url == $post_url) ? 'selected' : ''; ?>
+                                <option value="<?php echo $post_url?>" <?php echo $selected?>><?php echo $title?></option>
+                            <?php endforeach ?>
+                        </select>
                     </div>
                 </div>
 

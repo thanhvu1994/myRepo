@@ -8,11 +8,13 @@ class Sites extends Front_Controller {
         parent::__construct();
         $this->load->model('partner');
         $this->load->model('products');
+        $this->load->model('banner');
     }
 
     public function index()
     {
         $data['template'] = 'sites/index';
+        $data['banners'] = $this->banner->get_model();
         $data['products'] = $this->products->getDataFE();
 
 		$this->load->view('layouts/index', $data);

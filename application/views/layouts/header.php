@@ -152,7 +152,26 @@
 				                if (!empty($menus)) : ?>
 									<ul class="sf-menu clearfix menu-content">
 										<?php foreach ($menus as $menu): ?>
-											<li><a href="<?php echo base_url($menu['url']) ?>" title="<?php echo $menu['name'] ?>"><?php echo $menu['name'] ?></a></li>
+											<li><a href="<?php echo base_url($menu['url']) ?>" title="<?php echo $menu['name'] ?>"><?php echo $menu['name'] ?></a>
+												<?php if (!empty($menu['child'])):
+													echo '<ul>';
+													foreach ($menu['child'] as $childs) :?>
+															<li>
+																<a href="<?php echo base_url($childs['url']) ?>" title="<?php echo $childs['name'] ?>"><?php echo $childs['name'] ?></a>
+																<?php if (!empty($childs['child'])):
+																	echo '<ul>';
+																	foreach ($childs['child'] as $row) :?>
+																		<li>
+																			<a href="<?php echo base_url($row['url']) ?>" title="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></a>
+																		</li>
+																<?php endforeach;
+																echo '</ul>';
+																endif ?>
+															</li>
+												<?php endforeach;
+												echo '</ul>';
+												endif ?>
+											</li>
 										<?php endforeach ?>
 									</ul>
 							<?php endif; ?>

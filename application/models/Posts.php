@@ -73,4 +73,17 @@ class Posts extends CI_Model {
 	public function get_update_date() {
 		return date_format(date_create($this->update_date), 'd-m-Y');
 	}
+
+	public function get_dropdown_posts() {
+		$result = [];
+		$posts = $this->get_model();
+		if (count($posts) > 0) {
+			foreach ($posts as $post) {
+				$url = 'pages/'.$post->slug;
+				$result[$url] = $post->title;
+			}
+		}
+
+		return $result;
+	}
 }
