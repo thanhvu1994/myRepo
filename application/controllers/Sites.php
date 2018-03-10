@@ -7,11 +7,23 @@ class Sites extends Front_Controller {
     {
         parent::__construct();
         $this->load->model('partner');
+        $this->load->model('products');
     }
 
     public function index()
     {
         $data['template'] = 'sites/index';
+        $data['products'] = $this->products->getDataFE();
+
 		$this->load->view('layouts/index', $data);
+    }
+
+    public function product($slug){
+        $product = $this->products->getProductBySlug($slug);
+
+        $data['template'] = 'sites/product';
+        $data['products'] = $this->products->getDataFE();
+
+        $this->load->view('sites/product', $data);
     }
 }
