@@ -14,7 +14,9 @@ class Sites extends Front_Controller {
     public function index()
     {
         $data['template'] = 'sites/index';
-        $data['banners'] = $this->banner->get_model();
+        $query = $this->db->query("SELECT * FROM ci_banners WHERE publish = 1");
+        $banners = $query->result('Banner');
+        $data['banners'] = $banners;
         $data['products'] = $this->products->getDataFE();
 
 		$this->load->view('layouts/index', $data);

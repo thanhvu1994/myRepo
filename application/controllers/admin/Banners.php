@@ -101,7 +101,7 @@ class Banners extends MY_Controller {
 
         if (count($model) > 0) {
             if (is_file('.'.$model->image)) {
-                unlink('.'.$model->get_image);
+                unlink('.'.$model->image);
             }
             $this->banner->delete_model($id);
             echo 1;

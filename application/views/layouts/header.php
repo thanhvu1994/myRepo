@@ -5,10 +5,10 @@
 				<div class="row">
 					<nav>
 						<div id="contact-link">
-							<a href="contact-us.html" title="Contact Us">contact us</a>
+							<a href="<?php echo base_url('sites/contact') ?>" title="Contact Us">contact us</a>
 						</div>
 						<span class="shop-phone">
-							<i class="icon-phone"></i>Call us now: <strong>0938018130</strong>
+							<i class="icon-phone"></i> Call us now: <strong><?php echo $this->settings->get_param('companyCellPhone') ?></strong>
 						</span>
 					</nav>
 				</div>
@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div id="header_logo">
-                        <a href="<?php echo base_url('sites')?>" title="Nhựa Nam Việt">
+                        <a href="<?php echo base_url()?>" title="Nhựa Nam Việt">
                             <img class="logo img-responsive" src="<?php echo $this->settings->get_logoFE() ?>" alt="Nhựa Nam Việt" width="150"/>
                         </a>
                     </div>

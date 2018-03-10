@@ -107,10 +107,45 @@
 						                </a>
 						            </li>
 						    	<?php endif ?>
+						    	<?php if (!empty($googleplus)): ?>
+						    	<li class="google">
+					                <a target="_blank"  href="<?php echo $googleplus ?>">
+					                    <i class="icon-google-plus"></i>
+					                </a>
+					            </li>
+						    	<?php endif ?>
+						    	<?php if (!empty($instagram)): ?>
+					            <li class="instagram">
+					                <a target="_blank"  href="<?php echo $instagram ?>">
+					                    <i class="icon-instagram"></i>
+					                </a>
+					            </li>
+						    	<?php endif ?>
 						    	<?php if (!empty($youtube)): ?>
 		                        <li class="youtube">
 					                <a target="_blank"  href="<?php echo $youtube ?>">
 					                    <i class="icon-youtube"></i>
+					                </a>
+					            </li>
+						    	<?php endif ?>
+						    	<?php if (!empty($twitter)): ?>
+					            <li class="twitter">
+					                <a target="_blank"  href="<?php echo $twitter ?>">
+					                    <i class="icon-twitter"></i>
+					                </a>
+					            </li>
+						    	<?php endif ?>
+						    	<?php if (!empty($pinterest)): ?>
+					            <li class="pinterest">
+					                <a target="_blank"  href="<?php echo $pinterest ?>">
+					                    <i class="icon-pinterest"></i>
+					                </a>
+					            </li>
+						    	<?php endif ?>
+						    	<?php if (!empty($linkedin)): ?>
+					            <li class="linkedin">
+					                <a target="_blank"  href="<?php echo $linkedin ?>">
+					                    <i class="icon-linkedin"></i>
 					                </a>
 					            </li>
 						    	<?php endif ?>
@@ -124,27 +159,35 @@
 						            <hr>
 						        </div>
 						        <ul>
-		                        	<li>
-		                    			<a href="content/45-lien-he.html">
-		                    				<i class="icon-map-marker"></i>
-		                    				<?php echo $this->settings->get_param('companyAddress') ?>
-		                    			</a>
-		            				</li>
-		                            <li>
-					            		<i class="icon-phone"></i>
-					            		<a href="tel:<?php echo $this->settings->get_param('companyCellPhone') ?>"><span><?php echo $this->settings->get_param('companyCellPhone') ?></span></a>
-					            	</li>
-					                <li>
-					            		<i class="icon-home"></i>
-					            		<span><?php echo $this->settings->get_param('companyPhone') ?></span>
-					            	</li>
-		                        	<li>
-					            		<i class="icon-envelope-alt"></i>
-					            		<span>
-					            			<a href="mailto:<?php echo $this->settings->get_param('companyEmail') ?>"><?php echo $this->settings->get_param('companyEmail') ?>
-					            			</a>
-					            		</span>
-					            	</li>
+					            	<?php if (!empty($this->settings->get_param('companyAddress'))): ?>
+			                        	<li>
+			                    			<a href="content/45-lien-he.html">
+			                    				<i class="icon-map-marker"></i>
+			                    				<?php echo $this->settings->get_param('companyAddress') ?>
+			                    			</a>
+			            				</li>
+					            	<?php endif ?>
+					            	<?php if (!empty($this->settings->get_param('companyCellPhone'))): ?>
+			                            <li>
+						            		<i class="icon-phone"></i>
+						            		<a href="tel:<?php echo $this->settings->get_param('companyCellPhone') ?>"><span><?php echo $this->settings->get_param('companyCellPhone') ?></span></a>
+						            	</li>
+					            	<?php endif ?>
+					            	<?php if (!empty($this->settings->get_param('companyPhone'))): ?>
+						                <li>
+						            		<i class="icon-home"></i>
+						            		<span><?php echo $this->settings->get_param('companyPhone') ?></span>
+						            	</li>
+					            	<?php endif ?>
+					            	<?php if (!empty($this->settings->get_param('companyEmail'))): ?>
+					            		<li>
+						            		<i class="icon-envelope-alt"></i>
+						            		<span>
+						            			<a href="mailto:<?php echo $this->settings->get_param('companyEmail') ?>"><?php echo $this->settings->get_param('companyEmail') ?>
+						            			</a>
+						            		</span>
+						            	</li>
+					            	<?php endif ?>
 			                    </ul>
 						    </div>
 						</section>
