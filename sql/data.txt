@@ -31,4 +31,9 @@ ALTER TABLE `ci_product_option_value` DROP COLUMN `value`;
 ALTER TABLE `ci_product_option_value`
 ADD COLUMN `product_id`  int(11) NOT NULL AFTER `id`;
 
+ALTER TABLE  `ci_categories` CHANGE  `created_date`  `created_date` DATETIME ON UPDATE CURRENT_TIMESTAMP NOT NULL ;
+
+ALTER TABLE  `ci_categories` ADD  `language` TEXT NOT NULL AFTER  `display_order` ;
+ALTER TABLE  `ci_categories` CHANGE  `language`  `language` VARCHAR( 10 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ;
+
 

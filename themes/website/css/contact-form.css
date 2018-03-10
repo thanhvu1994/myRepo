@@ -56,3 +56,13 @@ font-weight: normal;
   @media (min-width: 992px) and (max-width: 1199px) {
     .contact-form-box div.uploader span.filename {
       width: 114px; } }
+
+  #border-add thead th{
+    text-align: center;
+  }
+  #border-add tbody td{
+    padding: 10px;
+  }
+  #border-add {
+    border: none;
+  }

@@ -10,17 +10,8 @@ class Partners extends MY_Controller {
 
         $config['upload_path']          = './uploads/partners';
         $config['allowed_types']        = 'jpg|png';
+        $config['encrypt_name']         = TRUE;
         $this->load->library('upload', $config);
-
-        $config_cut['image_library'] = 'gd2';
-        $config_cut['source_image'] = './uploads/partners';
-        $config_cut['create_thumb'] = TRUE;
-        $config_cut['maintain_ratio'] = TRUE;
-        $config_cut['width']         = 150;
-        $config_cut['height']       = 150;
-
-        $this->load->library('image_lib', $config_cut);
-        $this->image_lib->resize();
     }
 
     public function index()

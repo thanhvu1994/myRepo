@@ -8,6 +8,7 @@ class Site extends MY_Controller {
         $config['upload_path'] = './uploads/admin';
         $config['allowed_types'] = 'jpg|png';
         $config['overwrite']     = FALSE;
+        $config['encrypt_name']         = TRUE;
 
         $this->load->library('upload', $config);
     }

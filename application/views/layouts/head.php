@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/autoload/responsive-tables.css')?>" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/autoload/uniform.default.css')?>" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/js/jquery/plugins/fancybox/jquery.fancybox.css')?>" type="text/css" media="all" />
+		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/contact-form.css')?>" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/modules/blockbanner/blockbanner.css')?>" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/modules/blockcart/blockcart.css')?>" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/modules/blockcategories/blockcategories.css')?>" type="text/css" media="all" />
@@ -45,6 +46,7 @@
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/autoload/15-jquery.total-storage.min.js')?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/autoload/15-jquery.uniform-modified.js')?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/jquery/plugins/fancybox/jquery.fancybox.js')?>"></script>
+		<script type="text/javascript" src="<?php echo base_url('themes/website/js/contact-form.js')?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/products-comparison.js')?>"></script>
 		<!-- <script type="text/javascript" src="<?php echo base_url('themes/website/js/modules/blockcart/ajax-cart.js')?>"></script> -->
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/jquery/plugins/jquery.scrollTo.js')?>"></script>
