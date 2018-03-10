@@ -6,10 +6,21 @@ class Partners extends MY_Controller {
     {
         parent::__construct();
         $this->load->model('partner');
+        $this->load->library('image_lib');
 
         $config['upload_path']          = './uploads/partners';
         $config['allowed_types']        = 'jpg|png';
         $this->load->library('upload', $config);
+
+        $config_cut['image_library'] = 'gd2';
+        $config_cut['source_image'] = './uploads/partners';
+        $config_cut['create_thumb'] = TRUE;
+        $config_cut['maintain_ratio'] = TRUE;
+        $config_cut['width']         = 150;
+        $config_cut['height']       = 150;
+
+        $this->load->library('image_lib', $config_cut);
+        $this->image_lib->resize();
     }
 
     public function index()

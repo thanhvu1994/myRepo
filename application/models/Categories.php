@@ -155,4 +155,20 @@ class Categories extends CI_Model {
 
 		return '';
 	}
+
+	public function get_menuFE() {
+		$results = [];
+		$query = $this->db->query("SELECT * FROM ci_categories WHERE parent_id = 0 ORDER BY display_order asc");
+		$models = $query->result('Categories');
+
+		if (count($models)) {
+			foreach ($models as $model) {
+				$results[] = [
+					'name' => $model->category_name,
+					'url' => $model->url,
+				];
+			}
+		}
+		return $results;
+	}
 }

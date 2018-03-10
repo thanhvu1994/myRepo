@@ -21,3 +21,5 @@ CREATE TABLE `ci_posts` (
 
 ALTER TABLE  `ci_users` ADD  `avarta` VARCHAR( 255 ) NOT NULL AFTER  `is_first_login` ;
 ALTER TABLE  `ci_users` ADD  `background` VARCHAR( 255 ) NOT NULL AFTER  `avarta` ;
+
+ALTER TABLE  `ci_categories` ADD  `display_order` INT NOT NULL AFTER  `thumb` ;

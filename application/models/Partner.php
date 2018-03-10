@@ -92,4 +92,12 @@ class Partner extends CI_Model {
 
 		return 'No';
 	}
+
+	public function get_partner_fe() {
+		$query = $this->db->query("SELECT * FROM ci_partner WHERE publish = 1 ORDER BY created_date desc");
+
+		$models = $query->result('Partner');
+
+		return $models;
+	}
 }

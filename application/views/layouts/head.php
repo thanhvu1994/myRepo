@@ -2,6 +2,10 @@
 <html lang="en">
 
 	<head>
+		<title><?php echo $this->settings->get_param('defaultPageTitle') ?></title>
+		<link rel="icon" href="<?php echo base_url($this->settings->get_param('favicon')) ?>" type="image/x-icon"/>
+		<link rel="shortcut icon" href="<?php echo base_url($this->settings->get_param('favicon')) ?>" type="image/x-icon"/>
+
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/global.css')?>" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/fonts/stylesheet.css')?>" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/autoload/bootstrap.min.css')?>" type="text/css" media="all" />
@@ -57,3 +61,5 @@
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/modules/homeslider/js/homeslider.js')?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/jquery/plugins/flexslider/jquery.flexslider.js')?>"></script>
 	</head>
+	<body>
+		<div id="page">

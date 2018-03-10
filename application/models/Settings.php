@@ -111,11 +111,22 @@ class Settings extends CI_Model {
 		return 'No';
 	}
 
-	public function get_image() {
-		// if (file_exists(base_url($this->image))) {
-			return base_url($this->image);
-		// }
+	public function get_logoFE() {
+        $setting = $this->get_model(['key' => 'logoFE']);
+        if (count($setting) > 0) {
+            if (is_file('./'.$setting->value)) {
+                return base_url($setting->value);
+            }
+        }
 
-		// return '';
+		return '';
 	}
+
+    public function get_param($key) {
+        $setting = $this->get_model(['key' => $key]);
+        if (count($setting) > 0) {
+                return $setting->value;
+        }
+        return '';
+    }
 }

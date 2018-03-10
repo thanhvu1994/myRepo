@@ -1,5 +1,5 @@
 <?php
-class MY_Front_Controller extends CI_Controller {
+class Front_Controller extends CI_Controller {
 
     public function __construct()
     {
@@ -8,6 +8,7 @@ class MY_Front_Controller extends CI_Controller {
         // load model admin
         $this->load->model('users');
         $this->load->model('categories');
+        $this->load->model('settings');
         // validate user
         // if (!$this->users->check_logged()) {
         //     redirect('admin/login', 'refresh');
