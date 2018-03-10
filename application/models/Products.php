@@ -5,6 +5,8 @@ class Products extends CI_Model {
     {
         $this->load->database();
         $this->load->helper('url');
+        $this->load->model('productImages');
+        $this->load->model('productOption');
     }
 
     public function getRule() {
@@ -123,8 +125,22 @@ class Products extends CI_Model {
         }
     }
 
+    public function getImages(){
+        $query = $this->db->query("SELECT * FROM ci_product_images WHERE product_id = '".$this->id."'");
+        $images = $query->result('ProductImages');
+
+        return $images;
+    }
+
     public function getProductBySlug($slug){
         $query = $this->db->get_where('products', array('slug' => $slug) );
-        return $query->row();
+        return $query->row(0,'Products');
+    }
+
+    public function getAttributes(){
+        $query = $this->db->query("SELECT * FROM ci_product_option WHERE product_id = '".$this->id."'");
+        $attributes = $query->result('ProductOption');
+
+        return $attributes;
     }
 }

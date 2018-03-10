@@ -5,6 +5,7 @@ class ProductOption extends CI_Model {
     {
             $this->load->database();
 	    	$this->load->helper('url');
+            $this->load->model('productOptionValue');
     }
 
 	public function set_model($product_id, $name)
@@ -30,5 +31,12 @@ class ProductOption extends CI_Model {
     public function delete_all_model($product_id){
         $this->db->where('product_id', $product_id);
         $this->db->delete('product_option');
+    }
+
+    public function getAttributeValues(){
+        $query = $this->db->query("SELECT * FROM ci_product_option_value WHERE product_option_id = '".$this->id."'");
+        $attributeValues = $query->result('ProductOptionValue');
+
+        return $attributeValues;
     }
 }

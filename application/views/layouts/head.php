@@ -41,7 +41,8 @@
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/jquery/jquery-migrate-1.2.1.min.js')?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/jquery/plugins/jquery.easing.js')?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/tools.js')?>"></script>
-		<!-- <script type="text/javascript" src="<?php echo base_url('themes/website/js/global.js')?>"></script> -->
+        <script type="text/javascript" src="<?php /*echo base_url('themes/website/js/global.js')*/?>"></script>
+		<script type="text/javascript" src="<?php echo base_url('themes/website/js/product.js')?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/autoload/10-bootstrap.min.js')?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/autoload/15-jquery.total-storage.min.js')?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/autoload/15-jquery.uniform-modified.js')?>"></script>

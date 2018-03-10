@@ -42,7 +42,9 @@ class Product extends MY_Controller {
             foreach($attributes as $key => $value){
                 if(!empty($value)){
                     $productOptionId = $this->productOption->set_model($id,$value);
-                    $this->productOptionValue->set_model($id,$productOptionId,$attribute_values[$key]);
+                    if(!empty($attribute_values[$key])){
+                        $this->productOptionValue->set_model($id,$productOptionId,$attribute_values[$key]);
+                    }
                 }
             }
 
