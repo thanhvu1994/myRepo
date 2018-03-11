@@ -57,10 +57,11 @@ class Sites extends Front_Controller {
     }
 
     public function category($slug){
-        $data['product'] = $this->products->getProductBySlug($slug);
+        $data['category'] = $this->categories->getCategoryBySlug($slug);
+        $data['treeCategory'] = $this->categories->getCategoryFE();
 
-        if(isset($data['product'])){
-            $data['template'] = 'sites/product';
+        if(isset($data['category'])){
+            $data['template'] = 'sites/category';
         }else{
             $data['template'] = 'sites/index';
         }

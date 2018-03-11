@@ -79,6 +79,18 @@
                         </select>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="col-md-12">Kiểu Danh Mục</label>
+                    <div class="col-md-12">
+                        <select class="form-control" name="Categories[type]">
+                            <option <?php echo (isset($model) && $model->type == 'menu')? 'selected' : ''; ?> value="menu">Menu</option>
+                            <option <?php echo (isset($model) && $model->type == 'category')? 'selected' : ''; ?> value="category">Category</option>
+                        </select>
+                        <?php echo form_error('type'); ?>
+                    </div>
+                </div>
+
                 <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Lưu</button>
                 <a href="<?php echo base_url('admin/category')?>" class="btn btn-inverse waves-effect waves-light">Hủy</a>
             <?php echo form_close(); ?>
