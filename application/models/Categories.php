@@ -205,4 +205,9 @@ class Categories extends CI_Model {
 		}
 		return $items;
 	}
+
+    public function getDataFE(){
+        $query = $this->db->query("SELECT * FROM ci_categories ORDER BY display_order asc LIMIT 6");
+        return $query->result('Categories');
+    }
 }

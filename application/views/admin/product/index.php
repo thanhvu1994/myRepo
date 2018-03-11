@@ -21,18 +21,18 @@
                                 <table id="example23" class="display nowrap" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-                                            <th>Code</th>
-                                            <th>Name</th>
-                                            <th>Title</th>
-                                            <th>Content</th>
-                                            <th>Description</th>
-                                            <th>Meta Description</th>
-                                            <th>Price</th>
-                                            <th>Sale Price</th>
-                                            <th>Status</th>
-                                            <th>Language</th>
-                                            <th>Created Date</th>
-                                            <th>Action</th>
+                                            <th>Mã</th>
+                                            <th>Tên</th>
+                                            <th>Tiêu Đề</th>
+                                            <th>Nội dung</th>
+                                            <th>Mô tả</th>
+                                            <th>Giá Cũ</th>
+                                            <th>Giá Mới</th>
+                                            <th>Danh Mục</th>
+                                            <th>Trạng Thái</th>
+                                            <th>Ngôn ngữ</th>
+                                            <th>Ngày tạo</th>
+                                            <th>Hành động</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -43,10 +43,10 @@
                                                 <td><?php echo $model->title; ?></td>
                                                 <td><?php echo $model->content; ?></td>
                                                 <td><?php echo $model->description; ?></td>
-                                                <td><?php echo $model->meta_description; ?></td>
                                                 <td><?php echo $model->price; ?></td>
                                                 <td><?php echo $model->sale_price; ?></td>
-                                                <td><?php echo $model->status; ?></td>
+                                                <td><?php echo $model->getCategory(); ?></td>
+                                                <td><?php echo ($model->status == STATUS_ACTIVE) ? 'Hiện' : 'Ẩn'; ?></td>
                                                 <td><?php echo ($model->language == 'vn') ? 'Tiếng Việt' : 'English'; ?></td>
                                                 <td><?php echo $model->get_created_date() ?></td>
                                                 <td class="button-column">
@@ -152,79 +152,67 @@
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label for="menu_name" class="control-label col-md-3">Code:</label>
+                        <label for="menu_name" class="control-label col-md-3">Mã:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="product_code" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="menu_link" class="control-label col-md-3">Name:</label>
+                        <label for="menu_link" class="control-label col-md-3">Tên:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="product_name" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="display_order" class="control-label col-md-3">Title:</label>
+                        <label for="display_order" class="control-label col-md-3">Tiêu Đề:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="title" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="icon" class="control-label col-md-3">Content:</label>
+                        <label for="icon" class="control-label col-md-3">Nội Dung:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="content" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="icon" class="control-label col-md-3">Description:</label>
+                        <label for="icon" class="control-label col-md-3">Mô Tả:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="description" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="icon" class="control-label col-md-3">Meta Description:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="meta_description" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="icon" class="control-label col-md-3">Price:</label>
+                        <label for="icon" class="control-label col-md-3">Giá Cũ:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="price" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="icon" class="control-label col-md-3">Sale Price:</label>
+                        <label for="icon" class="control-label col-md-3">Giá Mới:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="sale_price" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="show_in_menu" class="control-label col-md-3">Slug:</label>
+                        <label for="icon" class="control-label col-md-3">Danh Mục:</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="slug" disabled>
+                            <input type="text" class="form-control" id="category" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="show_in_menu" class="control-label col-md-3">Language:</label>
+                        <label for="show_in_menu" class="control-label col-md-3">Ngôn Ngữ:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="language" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="show_in_menu" class="control-label col-md-3">Feature:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="feature" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="show_in_menu" class="control-label col-md-3">Status:</label>
+                        <label for="show_in_menu" class="control-label col-md-3">Trạng Thái:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="status" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="created_date" class="control-label col-md-3">Created Date:</label>
+                        <label for="created_date" class="control-label col-md-3">Ngày Tạo:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="created_date" disabled>
                         </div>

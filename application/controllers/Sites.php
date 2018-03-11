@@ -8,6 +8,7 @@ class Sites extends Front_Controller {
         parent::__construct();
         $this->load->model('partner');
         $this->load->model('products');
+        $this->load->model('categories');
         $this->load->model('banner');
     }
 
@@ -17,7 +18,7 @@ class Sites extends Front_Controller {
         $query = $this->db->query("SELECT * FROM ci_banners WHERE publish = 1");
         $banners = $query->result('Banner');
         $data['banners'] = $banners;
-        $data['products'] = $this->products->getDataFE();
+        $data['categories'] = $this->categories->getDataFE();
 
 		$this->load->view('layouts/index', $data);
     }
@@ -53,6 +54,18 @@ class Sites extends Front_Controller {
         }
         $data['template'] = 'sites/contact';
 		$this->load->view('layouts/index', $data);
+    }
+
+    public function category($slug){
+        $data['product'] = $this->products->getProductBySlug($slug);
+
+        if(isset($data['product'])){
+            $data['template'] = 'sites/product';
+        }else{
+            $data['template'] = 'sites/index';
+        }
+
+        $this->load->view('layouts/index', $data);
     }
 
     public function product($slug){

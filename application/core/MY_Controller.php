@@ -13,6 +13,8 @@ class MY_Controller extends CI_Controller {
         $this->load->model('productImages');
         $this->load->model('productOption');
         $this->load->model('productOptionValue');
+        $this->load->model('categories');
+        $this->load->model('productCategory');
 
         // validate user
         if (!$this->users->check_logged()) {

@@ -143,4 +143,19 @@ class Products extends CI_Model {
 
         return $attributes;
     }
+
+    public function getCategory(){
+        $query = $this->db->get_where('product_categories', array('product_id' => $this->id));
+        $productCategory = $query->row();
+
+        if ($productCategory) {
+            $query = $this->db->get_where('categories', array('id' => $productCategory->category_id));
+            $category = $query->row();
+            if($category){
+                return $category->category_name;
+            }
+        }
+
+        return '';
+    }
 }

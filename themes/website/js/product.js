@@ -202,6 +202,8 @@ $(document).ready(function(){
 		saveCustomization();
 	});
 
+	var contentOnly = false;
+
 	if (contentOnly == false)
 	{
 		if (!!$.prototype.fancybox)
@@ -706,7 +708,7 @@ function updatePrice()
 		$('.price-ecotax').show();
 	}
 
-	// Unit price are the price per piece, per Kg, per m²
+	// Unit price are the price per piece, per Kg, per mï¿½
 	// It doesn't modify the price, it's only for display
 	if (productUnitPriceRatio > 0)
 	{

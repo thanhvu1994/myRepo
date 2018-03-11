@@ -134,6 +134,20 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-12">Category</label>
+                            <div class="col-md-12">
+                                <select class="form-control" name="category">
+                                    <?php if(isset($categories)) : ?>
+                                        <?php foreach($categories as $id => $cate): ?>
+                                            <option value="<?php echo $id; ?>"><?php echo $cate; ?></option>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </select>
+                                <?php echo form_error('category'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-md-12">Slug</label>
                             <div class="col-md-12">
                                 <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->slug : $newSlug ?>" name="slug" <?php echo ($scenario == "update")? 'readonly' : ''; ?>>

@@ -15,16 +15,17 @@ class Product extends MY_Controller {
     {
         $data['template'] = 'admin/product/index';
         $data['models'] = $this->products->get_model();
-		$this->load->view('admin/layouts/index', $data);
+        $this->load->view('admin/layouts/index', $data);
     }
 
     public function create() {
         $data['title'] = 'Create a Product';
-    	$data['template'] = 'admin/product/form';
+        $data['template'] = 'admin/product/form';
         $data['link_submit'] = base_url('admin/product/create');
         $data['scenario'] = 'create';
         $data['newCode'] = $this->products->generateCode();
         $data['newSlug'] = $this->products->generateSlug();
+        $data['categories'] = $this->categories->get_dropdown_category(0);
 
         $rules = $this->products->getRule();
         foreach ($rules as $rule) {
@@ -35,6 +36,12 @@ class Product extends MY_Controller {
 
         if ($this->form_validation->run() == TRUE) {
             $id = $this->products->set_model();
+
+            $category = $this->input->post('category');
+
+            if(!empty($category)){
+                $this->productCategory->set_model($id,$category);
+            }
 
             $attributes = $this->input->post('attributes');
             $attribute_values = $this->input->post('attribute_values');
@@ -77,7 +84,7 @@ class Product extends MY_Controller {
 
             redirect('admin/product/index', 'refresh');
         }
-		$this->load->view('admin/layouts/index', $data);
+        $this->load->view('admin/layouts/index', $data);
     }
 
     public function view($id) {
@@ -91,12 +98,10 @@ class Product extends MY_Controller {
                 $result['title'] = $model[0]->title;
                 $result['content'] = $model[0]->content;
                 $result['description'] = $model[0]->description;
-                $result['meta_description'] = $model[0]->meta_description;
                 $result['price'] = $model[0]->price;
                 $result['sale_price'] = $model[0]->sale_price;
-                $result['slug'] = $model[0]->slug;
+                $result['category'] = $model[0]->getCategory();
                 $result['language'] = ($model[0]->language == 'vn')? 'Tiếng Việt': 'English';
-                $result['feature'] = ($model[0]->feature == STATUS_ACTIVE)? 'Active': 'In-Active';
                 $result['status'] = ($model[0]->status == STATUS_ACTIVE)? 'Active': 'In-Active';
                 $result['created_date'] = $model[0]->created_date;
 
@@ -121,6 +126,7 @@ class Product extends MY_Controller {
         $data['newSlug'] = $this->products->generateSlug();
         $data['attribute'] = $this->productOption->get_model($id);
         $data['attribute_value'] = array();
+        $data['categories'] = $this->categories->get_dropdown_category(0);
 
         foreach( $data['attribute'] as $key => $item){
             $data['attribute_value'][$item->id] = $this->productOptionValue->get_model($item->id);
@@ -134,6 +140,13 @@ class Product extends MY_Controller {
         }
 
         if ($this->form_validation->run() == TRUE) {
+            $category = $this->input->post('category');
+
+            if(!empty($category)){
+                $this->productCategory->delete_all_model($id);
+                $this->productCategory->set_model($id,$category);
+            }
+
             $attributes = $this->input->post('attributes');
             $attribute_values = $this->input->post('attribute_values');
 
