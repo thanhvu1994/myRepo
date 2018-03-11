@@ -24,7 +24,7 @@ class Categories extends CI_Model {
 		if (!empty($conditions)) {
 			$query = $this->db->get_where('categories', $conditions);
 
-        	return $query->row();
+        	return $query->row('1', 'Categories');
 		} else {
 			$query = $this->db->query("SELECT * FROM ci_categories ORDER BY language, display_order asc, category_name asc");
 			return $query->result('Categories');
@@ -123,10 +123,17 @@ class Categories extends CI_Model {
 	}
 
 	public function delete_model($id) {
-		$arr_id_del[$id] = $id;
-		$this->db->where('id', $id);
-  		$this->db->delete('categories');
-  		$this->delete_all_child($id, $arr_id_del);
+		$arr_id_del = [];
+		$model = $this->get_model(['id' => $id]);
+		if (count($model) > 0) {
+			if (is_file('./'.$model->thumb)) {
+				unlink('.'.$model->thumb);
+			}
+			$arr_id_del[$id] = $id;
+			$this->db->where('id', $id);
+	  		$this->db->delete('categories');
+	  		$this->delete_all_child($id, $arr_id_del);
+		}
 
   		return $arr_id_del;
 	}
@@ -137,6 +144,9 @@ class Categories extends CI_Model {
 
 		if (count($models) > 0) {
 			foreach ($models as $model) {
+				if (is_file('.'.$model->thumb)) {
+					unlink('.'.$model->thumb);
+				}
 				$arr_id_del[$model->id] = $model->id;
 				$this->db->where('id', $model->id);
         		$this->db->delete('categories');
@@ -164,7 +174,7 @@ class Categories extends CI_Model {
 	}
 
 	public function get_image() {
-		if (is_file('./'.$this->thumb)) {
+		if (is_file('.'.$this->thumb)) {
 			return base_url($this->thumb);
 		}
 

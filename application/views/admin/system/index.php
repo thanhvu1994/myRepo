@@ -2,13 +2,6 @@
     .custom-settings label{
         text-align: left !important;
     }
-    .del-img-setting {
-        position: absolute !important;
-        top: 0;
-        right: 22px;
-        font-size: 15px;
-        cursor: pointer;
-    }
 </style>
 <div class="row bg-title">
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">

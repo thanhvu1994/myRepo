@@ -8,7 +8,7 @@ class Category extends MY_Controller {
         $this->load->model('categories');
         $this->load->model('posts');
 
-        $config['upload_path']          = './uploads/banners';
+        $config['upload_path']          = './uploads/categories';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['encrypt_name']         = TRUE;
         $this->load->library('upload', $config);
@@ -29,6 +29,14 @@ class Category extends MY_Controller {
 
         if (isset($_POST['Categories'])) {
             $data_insert = $_POST['Categories'];
+            $thumb = '';
+            if (isset($_FILES['thumb']['name']) && $_FILES['thumb']['name'] != '') {
+                if ($this->upload->do_upload('thumb')) {
+                    $uploadData = $this->upload->data();
+                    $thumb = '/uploads/categories/'. $uploadData['file_name'];
+                }
+            }
+            $data_insert['thumb'] = $thumb;
             $this->categories->set_model($data_insert);
             redirect('admin/category/index', 'refresh');
         }
@@ -54,6 +62,7 @@ class Category extends MY_Controller {
                 $result['parent_id'] = $model[0]->get_parent_name();
                 $result['title'] = $model[0]->title;
                 $result['description'] = $model[0]->description;
+                $result['thumb'] = $model[0]->get_image();
                 $result['url'] = $title;
                 $result['created_date'] = $model[0]->get_created_date();
                 $result['update_date'] = $model[0]->get_update_date();
@@ -78,9 +87,25 @@ class Category extends MY_Controller {
                 $this->form_validation->set_rules($rule[0], $rule[1], $rule[2]);
             }
         }
-
+        $old_thumb = $model->thumb;
         if (isset($_POST['Categories'])) {
             $data_update = $_POST['Categories'];
+            if (isset($_POST['remove_img']) && $_POST['remove_img'] == true) {
+                if (is_file('.'.$old_thumb)) {
+                    unlink('.'.$old_thumb);
+                }
+                $data_update['thumb'] = '';
+            }
+            if (isset($_FILES['thumb']['name']) && $_FILES['thumb']['name'] != '') {
+                if ($this->upload->do_upload('thumb')) {
+                    $uploadData = $this->upload->data();
+                    if (is_file('.'.$old_thumb)) {
+                        unlink('.'.$old_thumb);
+                    }
+                    $thumb = '/uploads/categories/'. $uploadData['file_name'];
+                    $data_update['thumb'] = $thumb;
+                }
+            }
             $this->categories->update_model($id, $data_update);
             redirect('admin/category/index', 'refresh');
         }

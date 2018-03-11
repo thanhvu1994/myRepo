@@ -92,7 +92,9 @@ class Partners extends MY_Controller {
                     $data['error'] = $this->upload->display_errors();
                 } else {
                     $uploadData = $this->upload->data();
-                    unset($old_logo);
+                    if (is_file('.'.$old_logo)) {
+                        unlink('.'.$old_logo);
+                    }
                     $logo = '/uploads/partners/'. $uploadData['file_name'];
                     $this->partner->update_model($id, $logo);
                     redirect('admin/partners/index', 'refresh');

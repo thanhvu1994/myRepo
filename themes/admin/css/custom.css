@@ -35,3 +35,10 @@ div.desc {
 .attribute-input.default-item{
     display:none;
 }
+.del-img-setting {
+    position: absolute !important;
+    top: 0;
+    right: 22px;
+    font-size: 15px;
+    cursor: pointer;
+}
