@@ -36,4 +36,4 @@ ALTER TABLE  `ci_categories` CHANGE  `created_date`  `created_date` DATETIME ON 
 ALTER TABLE  `ci_categories` ADD  `language` TEXT NOT NULL AFTER  `display_order` ;
 ALTER TABLE  `ci_categories` CHANGE  `language`  `language` VARCHAR( 10 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ;
 
-
+ALTER TABLE  `ci_users` ADD  `birth_date` DATE NOT NULL AFTER  `gender` ;

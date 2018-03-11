@@ -59,7 +59,7 @@ class Login extends CI_Controller {
 		// Removing session data
 		$sess_array = [];
 		$this->session->unset_userdata('logged_in', $sess_array);
-		redirect('index.php/admin/login', 'refresh');
+		redirect('admin/login', 'refresh');
 	}
 
 	public function rememberMe($cookie) {

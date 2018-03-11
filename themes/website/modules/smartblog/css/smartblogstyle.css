@@ -578,9 +578,9 @@ fieldset.account_creation {
     margin: 10px;
     font-size: 18px;
 }
-.account_creation label{
+/*.account_creation label{
     width: 16%;
-}
+}*/
 .account_creation p.text{
     margin: 10px;
     padding-bottom: 10px;

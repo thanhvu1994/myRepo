@@ -73,4 +73,16 @@ class Users extends CI_Model {
 
 		return '';
 	}
+
+	public function set_model($data_insert)
+	{
+		$data_insert['full_name'] = $data_insert['last_name'] .' '. $data_insert['first_name'];
+		$data_insert['password_hash'] = md5($data_insert['password']);
+	    $data_insert['created_date'] = date('Y-m-d H:i:s');
+	    $data_insert['update_date'] = date('Y-m-d H:i:s');
+	    $data_insert['status'] = STATUS_ACTIVE;
+	    $data_insert['application_id'] = FE;
+
+	    return $this->db->insert('users', $data_insert);
+	}
 }
