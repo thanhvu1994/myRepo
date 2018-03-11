@@ -47,6 +47,29 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="col-sm-12">Hình ảnh</label>
+                    <div class="col-sm-12">
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                            <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+                            <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new">Chọn Tệp</span> <span class="fileinput-exists">Thay đổi</span>
+                            <input type="file" name="thumb">
+                            </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Xóa</a>
+                        </div>
+                        <?php if (isset($model)): ?>
+                            <div class="row">
+                                <div class="col-sm-3 m-t-10" id="thumb">
+                                    <div class="thumbnail">
+                                        <img src="<?php echo $model->get_image() ?>" width="100">
+                                        <span class="del-img-setting">x</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="checkbox" name="remove_img" id="remove_img" value="1" style="display: none">
+                        <?php endif ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="col-sm-12">Ngôn ngữ</label>
                     <div class="col-md-12">
                         <?php $language = isset($model) ? $model->language : 'vn';?>
@@ -98,6 +121,10 @@
                     $('#parent_id').html(returndata);
                 },
             });
+        });
+        $('.del-img-setting').click(function() {
+            $('#remove_img').prop('checked', true);
+            $('#thumb').empty();
         });
     });
 </script>

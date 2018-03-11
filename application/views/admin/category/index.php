@@ -87,6 +87,12 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="icon" class="control-label col-md-3">Hình ảnh:</label>
+                        <div class="col-md-8">
+                            <img src="" id="thumb" width="100">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="parent_id" class="control-label col-md-3">Lớp cha:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="parent_id" disabled>
@@ -143,7 +149,11 @@
                 success: function (returndata) {
                     if (returndata) {
                         $.each( returndata, function( key, value ) {
-                            $('#'+key).val(value);
+                            if (key == 'thumb') {
+                                $('#'+key).attr('src', value)
+                            } else {
+                                $('#'+key).val(value);
+                            }
                         });
                     }
                     $('#responsive-modal').modal();
