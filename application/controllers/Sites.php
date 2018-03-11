@@ -10,6 +10,7 @@ class Sites extends Front_Controller {
         $this->load->model('products');
         $this->load->model('categories');
         $this->load->model('banner');
+        $this->load->library('pagination');
     }
 
     public function index()
@@ -61,7 +62,29 @@ class Sites extends Front_Controller {
         $data['treeCategory'] = $this->categories->getCategoryFE();
 
         if($data['category']){
-            $data['products'] = $data['category']->getProducts();
+            $config['base_url'] = base_url('sites/category/'. $slug);
+            $config['total_rows'] = $data['category']->countProducts();
+            $config['per_page'] = 12;
+            $config['uri_segment'] = 4;
+            $config['use_page_numbers'] = TRUE;
+
+            $config["prev_tag_open"] = "<li id='pagination_previous_bottom' class='pagination_previous'>";
+            $config["prev_tag_close"] = "<li>";
+
+            $config["next_tag_open"] = "<li id='pagination_next_bottom' class='pagination_next'>";
+            $config["next_tag_open"] = "<li>";
+
+            $config["num_tag_open"] = "<li>";
+            $config["num_tag_close"] = "</li>";
+
+            $config["cur_tag_open"] = "<li><span>";
+            $config["cur_tag_close"] = "</span></li>";
+
+            $this->pagination->initialize($config);
+
+            $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+            $data['products'] = $data['category']->getProducts($config["per_page"], $page);
+            $data["links"] = $this->pagination->create_links();
         }else{
             $data['products'] = array();
         }

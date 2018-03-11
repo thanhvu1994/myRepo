@@ -264,8 +264,9 @@ class Categories extends CI_Model {
         return $query->row(0,'Categories');
     }
 
-    public function getProducts(){
+    public function getProducts($limit, $start){
         $products = array();
+        $this->db->limit($limit, $start);
         $query = $this->db->get_where('product_categories', array('category_id' => $this->id) );
         $productCategories = $query->result();
 
@@ -276,5 +277,11 @@ class Categories extends CI_Model {
             }
         }
         return $products;
+    }
+
+    public function countProducts() {
+        $this->db->where('category_id', $this->id);
+        $this->db->from('product_categories');
+        return $this->db->count_all_results();
     }
 }
