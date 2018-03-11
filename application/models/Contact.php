@@ -43,7 +43,7 @@ class Contact extends CI_Model {
 	public function update_model($id, $data_insert)
 	{
 	    $this->db->where('id', $id);
-        $this->db->update('contact', $data);
+        $this->db->update('contact', $data_insert);
 	}
 
 	public function delete_model($id) {

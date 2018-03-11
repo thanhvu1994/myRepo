@@ -115,9 +115,18 @@
 						</div> <!-- #layer_cart -->
 						<div class="layer_cart_overlay"></div>
 						<!-- /MODULE Block cart -->
-						<div class="header_user_info">
-							<a class="login" href="loginfd9a.html" rel="nofollow" title="Log in to your customer account">Đăng nhập</a>
-						</div>
+						<?php if (isset($this->session->userdata['logged_in_FE'])): ?>
+							<div class="header_user_info">
+								<a class="login" href="<?php echo base_url('sites/account') ?>" rel="nofollow" title="<?php echo $this->session->userdata['logged_in_FE']['full_name'] ?>"><?php echo $this->session->userdata['logged_in_FE']['full_name'] ?></a>
+							</div>
+							<div class="header_user_info">
+								<a class="login" href="<?php echo base_url('sites/logout') ?>" rel="nofollow" title="Log out">Đăng xuất</a>
+							</div>
+						<?php else: ?>
+							<div class="header_user_info">
+								<a class="login" href="<?php echo base_url('sites/login') ?>" rel="nofollow" title="Log in to your customer account">Đăng nhập</a>
+							</div>
+						<?php endif ?>
 					<!-- /Block usmodule NAV -->
                     </div>
                     <div id="search_block_top" class="clearfix">

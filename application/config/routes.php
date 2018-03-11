@@ -54,3 +54,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // $route['news'] = 'news';
 // $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'sites/index';
+$route['admin'] = 'admin/login';
