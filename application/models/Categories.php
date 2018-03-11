@@ -9,6 +9,7 @@ class Categories extends CI_Model {
     {
 	    $this->load->database();
 		$this->load->helper('url');
+		$this->load->model('products');
     }
 
     public function getRule() {
@@ -254,12 +255,26 @@ class Categories extends CI_Model {
     }
 
     public function getDataFE(){
-        $query = $this->db->query("SELECT * FROM ci_categories ORDER BY display_order asc LIMIT 6");
+        $query = $this->db->query("SELECT * FROM ci_categories WHERE type = 'category' ORDER BY display_order asc LIMIT 6");
         return $query->result('Categories');
     }
 
     public function getCategoryBySlug($slug){
         $query = $this->db->get_where('categories', array('slug' => $slug) );
         return $query->row(0,'Categories');
+    }
+
+    public function getProducts(){
+        $products = array();
+        $query = $this->db->get_where('product_categories', array('category_id' => $this->id) );
+        $productCategories = $query->result();
+
+        if(!empty($productCategories)){
+            foreach($productCategories as $productCategory){
+                $query1 = $this->db->get_where('products', array('id' => $productCategory->product_id));
+                $products[] = $query1->row(0,'Products');
+            }
+        }
+        return $products;
     }
 }

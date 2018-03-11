@@ -202,8 +202,6 @@ $(document).ready(function(){
 		saveCustomization();
 	});
 
-	var contentOnly = false;
-
 	if (contentOnly == false)
 	{
 		if (!!$.prototype.fancybox)

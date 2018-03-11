@@ -60,10 +60,17 @@ class Sites extends Front_Controller {
         $data['category'] = $this->categories->getCategoryBySlug($slug);
         $data['treeCategory'] = $this->categories->getCategoryFE();
 
+        if($data['category']){
+            $data['products'] = $data['category']->getProducts();
+        }else{
+            $data['products'] = array();
+        }
+
+
         if(isset($data['category'])){
             $data['template'] = 'sites/category';
         }else{
-            $data['template'] = 'sites/index';
+            redirect('sites/index', 'refresh');
         }
 
         $this->load->view('layouts/index', $data);
