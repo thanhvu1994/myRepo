@@ -85,75 +85,64 @@
                 <!-- Products list -->
                 <ul class="product_list grid row">
                     <?php foreach($products as $product): ?>
-                        <li class="ajax_block_product col-xs-12 col-sm-6 col-md-4 first-in-line last-line first-item-of-tablet-line first-item-of-mobile-line last-mobile-line">
+                        <li class="ajax_block_product col-xs-12 col-sm-6 col-md-4 first-item-of-tablet-line">
                             <div class="product-container" itemscope itemtype="http://schema.org/Product">
                                 <div class="left-block">
                                     <div class="product-image-container">
-                                        <a class="product_img_link"	href="http://namvietplastic.com/vn/35-tam-nhua-lay-sang-polycarbonate-dac-ruot.html" title="Tấm lấy sáng Polycarbonate  Nice Light" itemprop="url">
-                                            <img class="replace-2x img-responsive" src="http://namvietplastic.com/325-home_default/tam-nhua-lay-sang-polycarbonate-dac-ruot.jpg" alt="Tấm lấy sáng Polycarbonate  Nice Light" title="Tấm lấy sáng Polycarbonate  Nice Light"  width="270" height="270" itemprop="image" />
+                                        <a class="product_img_link"	href="<?php echo base_url('sites/product/'.$product->slug); ?>" title="<?php echo $product->title; ?>" itemprop="url">
+                                            <img class="replace-2x img-responsive center-cropped" src="<?php echo $product->getFirstImage(); ?>" alt="<?php echo $product->title; ?>"  width="270" height="270" itemprop="image" />
                                         </a>
                                         <div class="quick-view-wrapper-mobile">
-                                            <a class="quick-view-mobile" href="http://namvietplastic.com/vn/35-tam-nhua-lay-sang-polycarbonate-dac-ruot.html" rel="http://namvietplastic.com/vn/35-tam-nhua-lay-sang-polycarbonate-dac-ruot.html">
+                                            <a class="quick-view-mobile" href="<?php echo base_url('sites/product/'.$product->slug); ?>" rel="<?php echo base_url('sites/product/'.$product->slug); ?>">
                                                 <i class="icon-eye-open"></i>
                                             </a>
                                         </div>
-                                        <a class="quick-view" href="http://namvietplastic.com/vn/35-tam-nhua-lay-sang-polycarbonate-dac-ruot.html" rel="http://namvietplastic.com/vn/35-tam-nhua-lay-sang-polycarbonate-dac-ruot.html">
-                                            <span>Xem nhanh</span>
+                                        <a class="quick-view" href="<?php echo base_url('sites/product/'.$product->slug); ?>" rel="<?php echo base_url('sites/product/'.$product->slug); ?>">
+                                            <span>Quick View</span>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="right-block">
                                     <h5 itemprop="name">
-                                        <a class="product-name" href="http://namvietplastic.com/vn/35-tam-nhua-lay-sang-polycarbonate-dac-ruot.html" title="Tấm lấy sáng Polycarbonate  Nice Light" itemprop="url" >
-                                            Tấm lấy sáng Polycarbonate  Nice Light
+                                        <a class="product-name" href="<?php echo base_url('sites/product/'.$product->slug); ?>" title="<?php echo $product->title; ?>" itemprop="url" >
+                                            <?php echo $product->title; ?>
                                         </a>
                                     </h5>
 
                                     <p class="product-desc" itemprop="description">
-                                        Quy c&aacute;ch th&ocirc;ng dụng
-                                        Độ d&agrave;y: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Bề d&agrave;y tấm theo y&ecirc;u cầu của kh&aacute;ch h&agrave;ng
-                                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (từ 1mm đến 6mm).
-                                        Chiều rộng: &nbsp; &nbsp; &nbsp; &nbsp;1.22m; 1.52m
-                                        M&agrave;u sắc: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Sản phẩm tấm lấy s&aacute;ng polycarbonate gồm c&oacute; 6 m&agrave;u cơ bản:
-
-                                        ĐỘ TRUYỀN S&Aacute;NG
-
-                                        TH&Ocirc;NG SỐ KỸ THUẬT
+                                        <?php echo $product->description; ?>
                                     </p>
                                     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="content_price">&nbsp;
-
+                                        <?php echo $product->sale_price; ?>
                                     </div>
                                     <div class="button-container">
-                                        <a itemprop="url" class="button lnk_view btn btn-default" href="http://namvietplastic.com/vn/35-tam-nhua-lay-sang-polycarbonate-dac-ruot.html" title="Xem">
-                                            <span>Th&ecirc;m</span>
+                                        <a itemprop="url" class="button lnk_view btn btn-default" href="<?php echo base_url('sites/product/'.$product->slug); ?>" title="View">
+                                            <span>Add</span>
                                         </a>
                                     </div>
-                                    <div class="color-list-container"><ul class="color_to_pick_list clearfix">
-                                            <li>
-                                                <a href="http://namvietplastic.com/vn/35-tam-nhua-lay-sang-polycarbonate-dac-ruot.html#/-" id="color_65" class="color_pick" style="background:#ffffff;">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="http://namvietplastic.com/vn/35-tam-nhua-lay-sang-polycarbonate-dac-ruot.html#/-" id="color_67" class="color_pick" style="background:#c19a6b;">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="http://namvietplastic.com/vn/35-tam-nhua-lay-sang-polycarbonate-dac-ruot.html#/-" id="color_68" class="color_pick" style="background:#007aff;">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="http://namvietplastic.com/vn/35-tam-nhua-lay-sang-polycarbonate-dac-ruot.html#/-" id="color_69" class="color_pick" style="background:#00b326;">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="http://namvietplastic.com/vn/35-tam-nhua-lay-sang-polycarbonate-dac-ruot.html#/-" id="color_66" class="color_pick" style="background:#e2e0ff;">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="http://namvietplastic.com/vn/35-tam-nhua-lay-sang-polycarbonate-dac-ruot.html#/-" id="color_70" class="color_pick" style="background:#00cb9e;">
-                                                </a>
-                                            </li>
-                                        </ul></div>
+                                    <?php $attributes = $product->getAttributes(); ?>
+                                    <?php foreach($attributes as $attribute): ?>
+                                        <?php if($attribute->name == "Color" || $attribute->name == "color"): ?>
+                                            <div class="color-list-container">
+                                                <ul class="color_to_pick_list clearfix">
+                                                    <?php
+                                                        $attributeValues = $attribute->getAttributeValues();
+                                                        $values = array();
+                                                        if(!empty($attributeValues)){
+                                                            $values = explode(';', $attributeValues[0]->name);
+                                                        }
+                                                    ?>
+                                                    <?php foreach($values as $key => $value): ?>
+                                                        <?php ?>
+                                                            <li>
+                                                                <a href="<?php echo base_url('sites/product/'.$product->slug); ?>" id="color_<?php echo $key; ?>" class="color_pick" style="background:<?php echo $value; ?>;">
+                                                                </a>
+                                                            </li>
+                                                    <?php endforeach; ?>
+                                                </ul>
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
                                     <div class="product-flags">
                                     </div>
                                 </div>
@@ -176,6 +165,7 @@
                     <div class="bottom-pagination-content clearfix">
                         <!-- Pagination -->
                         <div id="pagination_bottom" class="pagination clearfix">
+                            <?php echo $links; ?>
                         </div>
                         <div class="product-count">
                         </div>
@@ -187,3 +177,22 @@
     </div><!-- #columns -->
 </div><!-- .columns-container -->
 <?php endif; ?>
+<style>
+    .center-cropped {
+        object-fit: none; /* Do not scale the image */
+        object-position: center; /* Center the image within the element */
+        height: 249px;
+        width: 249px;
+    }
+</style>
+<script>
+    jQuery(document).ready(function($) {
+        var heights = $("ul.product_list li.ajax_block_product").map(function() {
+                return $(this).height();
+            }).get(),
+
+            maxHeight = Math.max.apply(null, heights);
+
+        $("ul.product_list li.ajax_block_product").height(maxHeight);
+    });
+</script>
