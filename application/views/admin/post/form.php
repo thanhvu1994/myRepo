@@ -81,6 +81,14 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-12">Url</label>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->url : ''?>" name="url">
+                                <?php echo form_error('url'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-md-12">Language</label>
                             <div class="col-md-12">
                                 <select class="form-control" name="language">

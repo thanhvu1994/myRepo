@@ -40,6 +40,7 @@ class Posts extends CI_Model {
             'featured_image' => $image,
             'slug' => $this->input->post('slug'),
             'type' => $this->input->post('type'),
+            'url' => $this->input->post('url'),
             'language' => $this->input->post('language'),
         );
 
@@ -56,6 +57,7 @@ class Posts extends CI_Model {
 	        'featured_image' => $image,
 	        'slug' => $this->input->post('slug'),
             'type' => $this->input->post('type'),
+            'url' => $this->input->post('url'),
             'language' => $this->input->post('language'),
 	    );
 
@@ -88,4 +90,29 @@ class Posts extends CI_Model {
 
 		return $result;
 	}
+
+	public function getProjectsFE(){
+        $query = $this->db->query("SELECT * FROM ci_posts WHERE type = 'project'");
+        return $query->result('Posts');
+    }
+
+    public function getNews($limit, $start){
+        $this->db->limit($limit, $start);
+        $this->db->order_by('created_date desc');
+        $query = $this->db->get_where('posts', array('type' => 'new') );
+
+        return $query->result();
+    }
+
+    public function countNews(){
+        $this->db->where('type','new');
+        $this->db->from('posts');
+        return $this->db->count_all_results();
+    }
+
+    public function fb_comment_count()
+    {
+        $json = json_decode(file_get_contents('https://graph.facebook.com/?ids=' . base_url('sites/newDetail/'. $this->slug)));
+        return isset($json->url->comments) ? $json->url->comments : 0;
+    }
 }
