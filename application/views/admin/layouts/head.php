@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-    <title>Agile Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap</title>
+    <title><?php echo $this->settings->get_param('defaultPageTitle') ?></title>
+    <link rel="icon" href="<?php echo base_url($this->settings->get_param('favicon')) ?>" type="image/x-icon"/>
+    <link rel="shortcut icon" href="<?php echo base_url($this->settings->get_param('favicon')) ?>" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url('themes/admin/bootstrap/dist/css/bootstrap.min.css')?>" rel="stylesheet">

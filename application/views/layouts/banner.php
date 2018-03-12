@@ -12,7 +12,7 @@
     		<ul class="slides" id="homeslider" style="max-height:500px;">
     			<?php foreach ($banners as $banner): ?>
     				<li class="homeslider-container">
-						<a href="<?php echo $banner->url ?>" title="<?php echo $banner->name ?>">
+						<a href="<?php echo !empty($banner->url) ? $banner->url : 'javascript:void(0)'?>" title="<?php echo $banner->name ?>">
 							<img src="<?php echo $banner->get_image() ?>" width="1920" height="497" alt="<?php echo $banner->name ?>" class="center-cropped-banner"/>
 						</a>
 						<?php if (!empty($banner->name)): ?>

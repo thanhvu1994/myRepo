@@ -1,9 +1,9 @@
 <div class="row bg-title">
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <h4 class="page-title">Data Table</h4>
+        <h4 class="page-title"><?php echo $title ?></h4>
     </div>
     <?php
-        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Backmenus'];
+        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Quản lý menu'];
         $this->load->view('admin/layouts/breadcrumbs', ['breadcrumb' => $breadcrumb]);
      ?>
     <!-- /.col-lg-12 -->
@@ -14,7 +14,7 @@
         <div class="white-box">
             <div class="row m-b-30">
                 <div class="col-lg-2 col-sm-4 col-xs-12">
-                    <a href="<?php echo base_url('admin/backmenus/create')?>" class="btn btn-block btn-default">Create</a>
+                    <a href="<?php echo base_url('admin/backmenus/create')?>" class="btn btn-block btn-default">Thêm mới</a>
                 </div>
             </div>
             <div class="row">

@@ -171,7 +171,7 @@
                                 <div>
                                     <div style="padding: 15px 15px 30px 0;float: left">
                                         <p class="buttons_bottom_block no-print">
-                                            <a href="<?php echo base_url('sites/contact/'.$product->slug); ?>" title="" target="blank">
+                                            <a href="<?php echo base_url('sites/contact/dat-hang/'.$product->slug); ?>" title="" target="blank">
                                                 <button type="button" class="exclusive ps_product_addcart">
                                                     <span>Contact for Order</span>
                                                 </button>
@@ -180,7 +180,7 @@
                                     </div>
                                     <div style="padding: 15px 15px 30px 0;float: left">
                                         <p class="buttons_bottom_block no-print">
-                                            <a href="<?php echo base_url('sites/contact/'.$product->slug); ?>" title="" target="blank">
+                                            <a href="<?php echo base_url('sites/contact/bao-gia/'.$product->slug); ?>" title="" target="blank">
                                                 <button type="button" class="exclusive ps_product_addcart">
                                                     <span>Contact for Prices</span>
                                                 </button>

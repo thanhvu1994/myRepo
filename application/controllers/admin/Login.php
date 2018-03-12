@@ -10,6 +10,7 @@ class Login extends CI_Controller {
 		$this->load->helper('cookie');
 		// load model user admin
 		$this->load->model('users');
+		$this->load->model('settings');
 	}
 
 	// Show login page

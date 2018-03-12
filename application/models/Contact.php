@@ -7,6 +7,11 @@ class Contact extends CI_Model {
 		3 => 'Hỗ trợ',
 	];
 
+	public $arr_type_paymeny = [
+		1 => 'Tiền mặt',
+		2 => 'Chuyển khoản',
+	];
+
     public function __construct()
     {
 	    $this->load->database();
@@ -48,20 +53,26 @@ class Contact extends CI_Model {
 
 	public function delete_model($id) {
 		$this->db->where('id', $id);
-  		$this->db->delete('categories');
-	}
-
-	public function get_parent_name() {
-		$query = $this->db->get_where('categories', array('id' => $this->parent_id));
-
-		if ($query->row()) {
-			return $query->row()->category_name;
-		}
-
-    	return '';
+  		$this->db->delete('contact');
 	}
 
 	public function get_created_date() {
 		return date_format(date_create($this->created_date), 'd-m-Y');
+	}
+
+	public function get_type_payment() {
+		if (isset($this->arr_type_paymeny[$this->type_payment])) {
+			return $this->arr_type_paymeny[$this->type_payment];
+		}
+
+		return '';
+	}
+
+	public function getType() {
+		if (isset($this->arr_type[$this->type])) {
+			return $this->arr_type[$this->type];
+		}
+
+		return '';
 	}
 }

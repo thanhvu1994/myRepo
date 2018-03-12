@@ -28,15 +28,45 @@ class Sites extends Front_Controller {
 		$this->load->view('layouts/index', $data);
     }
 
-    public function contact($product_slug = '')
+    public function contact($type = '', $slug = '')
     {
     	$this->load->model('contact');
+        $this->load->model('contactPro');
+
     	$config['upload_path']          = './uploads/contact';
         $config['allowed_types']        = 'jpg|png|doc|docx|xlsx|xls';
         $config['overwrite']            = FALSE;
         $config['encrypt_name'] 		= TRUE;
 
         $this->load->library('upload', $config);
+
+        if (!empty($slug)) {
+            $data['is_product'] = true;
+            if ($type != 'bao-gia' && $type != 'dat-hang') {
+                redirect('sites/index', 'refresh');
+            }
+            $data['type'] = $type;
+            $product = $this->products->getProductBySlug($slug);
+            if (count($product) > 0) {
+                $attributes = $product->getAttributes();
+                $arr_color = [];
+                foreach ($attributes as $attribute) {
+                    if (strtolower($attribute->name) == 'color') {
+                        $colors = $attribute->getAttributeValues();
+                        if (isset($colors[0])) {
+                            $arr_color = array_merge($arr_color, explode(';', $colors[0]->name));
+                        }
+                    }
+                }
+                $arr_color = array_unique($arr_color);
+                $data['arr_color'] = $arr_color;
+                $data['product'] = $product;
+            } else {
+                redirect('sites/index', 'refresh');
+            }
+        } else {
+            $data['is_product'] = false;
+        }
 
         if (isset($_POST['Contact'])) {
         	$data_insert = $_POST['Contact'];
@@ -50,14 +80,23 @@ class Sites extends Front_Controller {
                 }
             }
             $data_insert['file'] = $file;
-            $this->contact->set_model($data_insert);
+            $data_insert['created_date'] = date('Y-m-d H:i:s');
+            $this->db->insert('contact', $data_insert);
+            $insert_id = $this->db->insert_id();
+            $data['status'] = 'Yêu cầu thành công!';
+            if (!empty($insert_id)) {
+                if (isset($_POST['ContactPro']) && isset($product)) {
+                    foreach ($_POST['ContactPro'] as $attr_contact_info_pro) {
+                        $data_insert = $attr_contact_info_pro;
+                        $data_insert['product_id'] = $product->id;
+                        $data_insert['contact_id'] = $insert_id;
+                        $this->contactPro->set_model($data_insert);
+                        $data['status'] = 'Yêu cầu thành công!';
+                    }
+                }
+            }
         }
-        if (!empty($product_slug)) {
-        	$data['is_product'] = true;
-            $product = $this->products->get_model(['slug' => $product_slug]);
-        } else {
-        	$data['is_product'] = false;
-        }
+
         $data['template'] = 'sites/contact';
 		$this->load->view('layouts/index', $data);
     }

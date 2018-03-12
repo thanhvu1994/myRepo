@@ -58,7 +58,7 @@
                                                 <div class="col-sm-6">
                                             <?php endif;?>
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label"><?php echo $dataObj->name ?></label>
+                                                <label class="col-sm-3 control-label"><?php echo $this->settings->getAttributeName($dataObj->name) ?></label>
                                             <?php $unit = '';
                                             if (isset($dataObj->unit) && $dataObj->unit != '')
                                                 $unit = ' ' . $dataObj->unit;
@@ -66,16 +66,20 @@
                                             $note = '';
                                             if (isset($dataObj->notes) && $dataObj->notes != '')
                                                 $note = '<div class="notes">' . $dataObj->notes . '</div>';
-                                            $htmlOptions = '';
+                                            $htmlOptions = $class= '';
                                             if (isset($dataObj->htmlOptions) && !empty($dataObj->htmlOptions)) {
                                                 foreach ($dataObj->htmlOptions as $key => $value) {
-                                                    $htmlOptions .= $key.'="'.$value.'" ';
+                                                    if ($key == 'class') {
+                                                        $class = $value;
+                                                    } else {
+                                                        $htmlOptions .= $key.'="'.$value.'" ';
+                                                    }
                                                 }
                                             }
                                             if ($dataObj->controlTyle == 'text'):
                                                 echo '<div class="col-sm-9"><input type="text" name="Settings['.$dataObj->name.']" class="form-control" '.$htmlOptions.' value="'.$this->settings->get_value_setting($dataObj->name).'">' . $unit . $note . '</div>';
                                             elseif ($dataObj->controlTyle == 'textarea'):
-                                                echo '<div class="col-sm-9"><textArea rows="3" name="Settings['.$dataObj->name.']" class="form-control" '.$htmlOptions.'>'.$this->settings->get_value_setting($dataObj->name).'</textArea>'. $note . '</div>';
+                                                echo '<div class="col-sm-9"><textArea rows="3" name="Settings['.$dataObj->name.']" class="form-control '.$class.'" '.$htmlOptions.'>'.$this->settings->get_value_setting($dataObj->name).'</textArea>'. $note . '</div>';
                                             elseif ($dataObj->controlTyle == 'file'):
                                                 echo '<div class="col-sm-9"><input type="file" name="Settings['.$dataObj->name.']">' . $unit . $note;
                                                 if (!empty($this->settings->get_value_setting($dataObj->name))) {
@@ -114,6 +118,7 @@
         </div>
     </div>
 </div>
+
 <!-- /.row -->
 <script>
     $(document).ready(function() {
@@ -128,6 +133,12 @@
                     }
                 });
             }
+        });
+        CKEDITOR.replace('editor-full', {
+            filebrowserBrowseUrl: "<?php echo base_url('themes/admin/plugins/ckfinder/ckfinder.html')?>",
+            filebrowserUploadUrl: "<?php echo base_url('themes/admin/plugins/ckfinder/core/connector/php/connector.php').'?command=QuickUpload&type=Files' ?>",
+            filebrowserWindowWidth: '1000',
+            filebrowserWindowHeight: '700'
         });
     });
 </script>

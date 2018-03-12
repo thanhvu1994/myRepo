@@ -19,7 +19,7 @@
                 <div class="col-md-12">
                     <div id="header_logo">
                         <a href="<?php echo base_url()?>" title="Nhựa Nam Việt">
-                            <img class="logo img-responsive" src="<?php echo $this->settings->get_logoFE() ?>" alt="Nhựa Nam Việt" width="150"/>
+                            <img class="logo img-responsive" src="<?php echo $this->settings->get_logoFE() ?>" alt="Nhựa Nam Việt" width="350"/>
                         </a>
                     </div>
                     <div class="ps_header_right">
@@ -161,17 +161,17 @@
 				                if (!empty($menus)) : ?>
 									<ul class="sf-menu clearfix menu-content">
 										<?php foreach ($menus as $menu): ?>
-											<li><a href="<?php echo base_url($menu['url']) ?>" title="<?php echo $menu['name'] ?>"><?php echo $menu['name'] ?></a>
+											<li><a href="<?php echo !empty($menu['url']) ? base_url($menu['url']) : 'javascript:void(0)' ?>" title="<?php echo $menu['name'] ?>"><?php echo $menu['name'] ?></a>
 												<?php if (!empty($menu['child'])):
 													echo '<ul>';
 													foreach ($menu['child'] as $childs) :?>
 															<li>
-																<a href="<?php echo base_url($childs['url']) ?>" title="<?php echo $childs['name'] ?>"><?php echo $childs['name'] ?></a>
+																<a href="<?php echo !empty($childs['url']) ? base_url($childs['url']) : 'javascript:void(0)' ?>" title="<?php echo $childs['name'] ?>"><?php echo $childs['name'] ?></a>
 																<?php if (!empty($childs['child'])):
 																	echo '<ul>';
 																	foreach ($childs['child'] as $row) :?>
 																		<li>
-																			<a href="<?php echo base_url($row['url']) ?>" title="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></a>
+																			<a href="<?php echo !empty($row['url']) ? base_url($row['url']) : 'javascript:void(0)' ?>" title="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></a>
 																		</li>
 																<?php endforeach;
 																echo '</ul>';

@@ -31,9 +31,7 @@ class Partner extends CI_Model {
 	{
 	    $data = array(
 	        'name' => $this->input->post('name'),
-	        'name_en' => $this->input->post('name_en'),
 	        'description' => $this->input->post('description'),
-	        'description_en' => $this->input->post('description_en'),
 	        'url' => $this->input->post('url'),
 	        'logo' => $logo,
 	        'publish' => $this->input->post('publish'),
@@ -47,9 +45,7 @@ class Partner extends CI_Model {
 	{
 	    $data = array(
 	        'name' => $this->input->post('name'),
-	        'name_en' => $this->input->post('name_en'),
 	        'description' => $this->input->post('description'),
-	        'description_en' => $this->input->post('description_en'),
 	        'url' => $this->input->post('url'),
 	        'publish' => $this->input->post('publish'),
 	        'update_date' => date('Y-m-d H:i:s'),
