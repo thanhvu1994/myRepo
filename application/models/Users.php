@@ -85,4 +85,13 @@ class Users extends CI_Model {
 
 	    return $this->db->insert('users', $data_insert);
 	}
+
+	public function update_model($id, $data_insert)
+	{
+		$data_insert['full_name'] = $data_insert['last_name'] .' '. $data_insert['first_name'];
+		$data_insert['password_hash'] = md5($data_insert['password']);
+		$data_insert['update_date'] = date('Y-m-d H:i:s');
+	    $this->db->where('id', $id);
+        $this->db->update('users', $data_insert);
+	}
 }

@@ -14,12 +14,13 @@
 								<div class="form-group">
 									<label for="email">Địa chỉ e-mail</label>
 									<input class="form-control" type="text" id="email" name="Users[email]" value="" required />
+									<span style="color: red;display: none" id="error-email">Email không hợp lệ</span>
 								</div>
 								<div class="form-group">
 									<label for="passwd">Mật khẩu</label>
 									<span><input class="form-control" type="password" name="Users[password]" value="" required/></span>
 								</div>
-								<p class="lost_password form-group"><a href="password-recovery.html" title="Khôi phục mật khẩu bị quên" rel="nofollow">Quên mật khẩu?</a></p>
+								<p class="lost_password form-group"><a href="<?php echo base_url('sites/forgot') ?>" title="Khôi phục mật khẩu bị quên" rel="nofollow">Quên mật khẩu?</a></p>
 								<p class="submit">
 									<input type="hidden" class="hidden" name="back" value="" />						<button type="submit" id="SubmitLogin" name="SubmitLogin" class="button btn btn-default button-medium">
 										<span>

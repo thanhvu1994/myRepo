@@ -24,7 +24,7 @@ class Sites extends Front_Controller {
 		$this->load->view('layouts/index', $data);
     }
 
-    public function contact($product = '')
+    public function contact($product_slug = '')
     {
     	$this->load->model('contact');
     	$config['upload_path']          = './uploads/contact';
@@ -48,8 +48,9 @@ class Sites extends Front_Controller {
             $data_insert['file'] = $file;
             $this->contact->set_model($data_insert);
         }
-        if (!empty($product)) {
+        if (!empty($product_slug)) {
         	$data['is_product'] = true;
+            $product = $this->products->get_model(['slug' => $product_slug]);
         } else {
         	$data['is_product'] = false;
         }
@@ -163,23 +164,49 @@ class Sites extends Front_Controller {
 
     public function infomation() {
         if(!isset($this->session->userdata['logged_in_FE'])){
-            redirect('sites', 'refresh');
+            redirect('sites/login', 'refresh');
         }
         $info_login_fe = $this->session->userdata['logged_in_FE'];
         $query = $this->db->get_where('users', array('email' => $info_login_fe['email'], 'application_id' => FE));
         $user = $query->row('1', 'Users');
         if (count($user)) {
             $date = DateTime::createFromFormat("Y-m-d", $user->birth_date);
-            // if (isset($_POST['Users'])) {
-            //     $data_update = $_POST['Users'];
-            //     if (md5($data_update['password']) == $user->password_hash) {
+            if (isset($_POST['Users'])) {
+                $data_update = $_POST['Users'];
+                if (md5($data_update['password']) == $user->password_hash) {
+                    if (isset($_POST['days']) && $_POST['months'] && $_POST['years']) {
+                        $birth_date = $_POST['years'].'-'.$_POST['months'].'-'.$_POST['days'];
+                        $data_update['birth_date'] = date_format(date_create($birth_date), 'Y-m-d');
+                    }
 
-            //     } else {
-            //         $data['wrong_password'] = 'Sai mật khẩu';
-            //         $info = $data_update;
-            //         $info['info'] = true;
-            //     }
-            // } else {
+                    if (isset($data_update['new_password']) && !empty($data_update['new_password'])) {
+                        $data_update['password'] = $data_update['new_password'];
+                    }
+
+                    if (isset($data_update['new_password']) && isset($data_update['confirm_password'])) {
+                        unset($data_update['new_password']);
+                        unset($data_update['confirm_password']);
+                    }
+
+                    $this->users->update_model($user->id, $data_update);
+                    $session_data = array(
+                        'full_name' => $data_update['last_name'] .' '. $data_update['first_name'],
+                        'email' => $data_update['email'],
+                    );
+                    // Add user data in session
+                    $this->session->set_userdata('logged_in_FE', $session_data);
+                    redirect('sites/account', 'refresh');
+                } else {
+                    $data['wrong_password'] = 'Sai mật khẩu';
+                    $info = $data_update;
+                    $info['info'] = true;
+                    if (isset($_POST['days']) && $_POST['months'] && $_POST['years']) {
+                        $info['days'] = $_POST['days'];
+                        $info['months'] = $_POST['months'];
+                        $info['info'] = $_POST['years'];
+                    }
+                }
+            } else {
                 $info = [
                     'gender' => $user->gender,
                     'last_name' => $user->last_name,
@@ -190,7 +217,7 @@ class Sites extends Front_Controller {
                     'years' => $date->format("Y"),
                     'info' => true,
                 ];
-            // }
+            }
 
             $data['info'] = $info;
         }
@@ -199,6 +226,9 @@ class Sites extends Front_Controller {
     }
 
     public function address($id = '') {
+        if(!isset($this->session->userdata['logged_in_FE'])){
+            redirect('sites/login', 'refresh');
+        }
         $this->load->model('billingAddress');
         $data['template'] = 'sites/address';
 
@@ -223,6 +253,9 @@ class Sites extends Front_Controller {
     }
 
     public function addresses() {
+        if(!isset($this->session->userdata['logged_in_FE'])){
+            redirect('sites/login', 'refresh');
+        }
         $this->load->model('billingAddress');
         $data['template'] = 'sites/addresses';
         $info_login_fe = $this->session->userdata['logged_in_FE'];
@@ -237,8 +270,45 @@ class Sites extends Front_Controller {
     }
 
     public function delete($id) {
-        $this->load->model('billingAddress');
-        $this->billingAddress->delete_model($id);
+        if(!isset($this->session->userdata['logged_in_FE'])){
+            redirect('sites/login', 'refresh');
+        }
+        $info_login_fe = $this->session->userdata['logged_in_FE'];
+        $query_user = $this->db->get_where('users', array('email' => $info_login_fe['email'], 'application_id' => FE));
+        $user = $query_user->row('1', 'Users');
+        if (count($user) > 0) {
+            $query = $this->db->query("SELECT * FROM ci_billing_address WHERE user_id = ".$user->id. " AND id = ".$id);
+            $billings = $query->row();
+            if (count($billings) > 0) {
+                $this->load->model('billingAddress');
+                $this->billingAddress->delete_model($id);
+            }
+        }
+
         redirect('sites/addresses', 'refresh');
+    }
+
+    public function forgot() {
+        $this->load->library('email');
+        $data['template'] = 'sites/forgot';
+
+        if (isset($_POST['email'])) {
+            // $this->email->from('lucjfer0407@gmail.com', 'Lucjfer');
+            // $this->email->to($_POST['email']);
+            // $this->email->subject('Email Test');
+            // $this->email->message('Testing the email class.');
+
+            // $this->email->send();
+            redirect('sites/login', 'refresh');
+        }
+        $this->load->view('layouts/index', $data);
+    }
+
+    public function order() {
+        if(!isset($this->session->userdata['logged_in_FE'])){
+            redirect('sites/login', 'refresh');
+        }
+        $data['template'] = 'sites/order';
+        $this->load->view('layouts/index', $data);
     }
 }

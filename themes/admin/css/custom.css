@@ -42,3 +42,6 @@ div.desc {
     font-size: 15px;
     cursor: pointer;
 }
+body{
+    font-family: 'Source Sans Pro' !important;
+}

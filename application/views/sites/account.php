@@ -17,7 +17,7 @@
                                 </li>
                             <?php endif ?>
                             <li>
-                                <a href="http://namvietplastic.com/vn/order-history" title="đặt hàng">
+                                <a href="<?php echo base_url('sites/order') ?>" title="đặt hàng">
                                     <span><i class="icon-list-ol"></i>Lịch sử và chi tiết của đơn đặt hàng</span>
                                 </a>
                             </li>

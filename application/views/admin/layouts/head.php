@@ -9,6 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
     <title>Agile Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url('themes/admin/bootstrap/dist/css/bootstrap.min.css')?>" rel="stylesheet">
     <link href="<?php echo base_url('themes/admin/plugins/bower_components/datatables/jquery.dataTables.min.css')?>" rel="stylesheet" type="text/css" />

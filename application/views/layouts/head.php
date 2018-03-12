@@ -65,6 +65,10 @@
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/modules/blocktopmenu/js/blocktopmenu.js')?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/modules/homeslider/js/homeslider.js')?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/jquery/plugins/flexslider/jquery.flexslider.js')?>"></script>
+
+		<script type="text/javascript">
+			var contentOnly = false;
+		</script>
 	</head>
 	<body>
 		<div id="page">
