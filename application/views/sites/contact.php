@@ -1,26 +1,44 @@
+<style type="text/css">
+	.notify{
+	    border: 1px solid;
+	    padding: 10px;
+	    text-align: center;
+	    background-color: #093a95;
+	    color: #fff;
+	}
+</style>
 <div class="columns-container" id="contact">
     <div id="columns" class="container" >
 		<div id="slider_row" class="row"></div>
 		<div class="row">
 			<div id="center_column" class="center_column col-xs-12 col-sm-12">
 				<h1 class="page-heading bottom-indent">Dịch vụ Khách hàng - contact us</h1>
+				<?php if (isset($status)): ?>
+					<p class="notify"><?php echo isset($status) ? $status : '' ?></p>
+				<?php endif ?>
 				<form action="" method="post" class="contact-form-box" enctype="multipart/form-data">
     				<fieldset>
 			            <div class="clearfix">
 			                <div class="col-xs-12 col-md-12">
 			                    <div class="form-group selector1">
 			                        <label for="id_contact" class="page-subheading" style="float: left">Tiêu đề tin nhắn *</label>
-			                        <?php if ($is_product): ?>
-	                                    <select id="id_contact" class="form-control" name="Contact[type]" required>
-	                            			<option value="">-- Chọn --</option>
-	                                        <option value="1" >Báo giá</option>
-	                                        <option value="2" >Đặt hàng</option>
-	                                	</select>
+			                        <?php if ($is_product):
+			                        	if ($type == 'dat-hang') :?>
+		                                    <select id="id_contact" class="form-control" name="Contact[type]" required>
+		                            			<option value="">-- Chọn --</option>
+		                                        <option value="1" selected>Đặt hàng</option>
+		                                	</select>
+	                                	<?php else: ?>
+											<select id="id_contact" class="form-control" name="Contact[type]" required>
+		                            			<option value="">-- Chọn --</option>
+		                                        <option value="2" selected>Báo giá</option>
+		                                	</select>
+	                                	<?php endif; ?>
 			                        <?php else: ?>
 										<select id="id_contact" class="form-control" name="Contact[type]" required>
 	                            			<option value="">-- Chọn --</option>
-	                                        <option value="1" >Báo giá</option>
-	                                        <option value="2" >Đặt hàng</option>
+	                                        <option value="1" >Đặt hàng</option>
+	                                        <option value="2" >Báo giá</option>
 	                                        <option value="3" >Hỗ trợ</option>
 	                                	</select>
 			                        <?php endif; ?>
@@ -68,59 +86,61 @@
 			                	<?php if ($is_product): ?>
 	                                <div class="form-group selector1">
 	                            		<label style="float: left"> Mã sản phẩm</label>
-	                                    <input class="form-control grey" type="text" name="id_order" id="id_order" value="" />
+	                                    <input class="form-control grey" type="text" value="<?php echo $product->product_name.' - '.$product->product_code ?>" disabled/>
 	                                </div>
 
 	                                <table id="border-add" border="1">
 						                <thead>
 						                    <tr>
-						                        <th> Màu sắc<i class=" icon-question-sign" />
-						                        	<span class="ps_property iq-color"> Trắng sữa (White)<br>
-														 Trắng trong (Clear)<br>
-														 Nâu đồng (Bronze)<br>
-														 Xanh dương (Blue)<br>
-														 Xanh lá (Green)<br>
-														 Xanh ngọc lam (Green Blue)
-													</span>
+						                        <th> Màu sắc
+						                        	<?php if (isset($arr_color) && !empty($arr_color)): ?>
+						                        		<i class=" icon-question-sign" />
+							                        	<span class="ps_property iq-color">
+							                        		<?php echo implode('<br>', $arr_color) ?>
+														</span>
+						                        	<?php endif ?>
 												</th>
-						                        <th>Độ dày <i class=" icon-question-sign" />
-						                        	<span class="ps_property iq-thickness">1.6mm<br>
-														2mm<br>
-														3mm<br>
-														4mm<br>
-														5mm<br>
-														6mm<br>
-													</span>
+						                        <th>Độ dày
+						                        	<?php if (isset($arr_thick) && !empty($arr_thick)): ?>
+							                        	<i class="icon-question-sign" />
+							                        	<span class="ps_property iq-thickness">
+														</span>
+						                        	<?php endif ?>
 												</th>
-						                        <th>Chiều rộng / khổ <i class=" icon-question-sign" />
-						                        	<span class="ps_property iq-width">1.22m<br>
-														1.52m
-													</span>
+						                        <th>Chiều rộng / khổ
+						                        	<?php if (isset($arr_width) && !empty($arr_width)): ?>
+							                        	<i class="icon-question-sign" />
+							                        	<span class="ps_property iq-width"></span>
+						                        	<?php endif ?>
 												</th>
-						                        <th>Chiều dài <i class=" icon-question-sign" />
-						                        	<span class="ps_property iq-length"></span>
+						                        <th>Chiều dài
+						                        	<?php if (isset($arr_length) && !empty($arr_length)): ?>
+							                        	<i class="icon-question-sign" />
+							                        	<span class="ps_property iq-length"></span>
+						                        	<?php endif ?>
 						                        </th>
-						                        <th>Số lượng <i class=" icon-question-sign" />
-						                        	<span class="ps_property iq-number"></span>
+						                        <th>Số lượng
+						                        	<!-- <i class="icon-question-sign" /> -->
+						                        	<!-- <span class="ps_property iq-number"></span> -->
 						                        </th>
 						                    </tr>
 						                </thead>
 						                <tbody>
 						                    <tr>
 						                        <td>
-						                            <input class="form-control grey" type="text" name="ContactPro[][color]" placeholder=""/>
+						                            <input class="form-control grey" type="text" name="ContactPro[0][color]" placeholder=""/>
 						                        </td>
 						                        <td>
-						                            <input class="form-control grey" type="text" name="ContactPro[][thickness]" placeholder=""/>
+						                            <input class="form-control grey" type="text" name="ContactPro[0][thickness]" placeholder=""/>
 						                        </td>
 						                        <td>
-						                            <input class="form-control grey" type="text" name="ContactPro[][width]" placeholder=""/>
+						                            <input class="form-control grey" type="text" name="ContactPro[0][width]" placeholder=""/>
 						                        </td>
 						                        <td>
-						                            <input class="form-control grey" type="text" name="ContactPro[][length]" placeholder=""/>
+						                            <input class="form-control grey" type="text" name="ContactPro[0][length]" placeholder=""/>
 						                        </td>
 						                        <td>
-						                            <input class="form-control grey" type="text" name="ContactPro[][number]" placeholder=""/>
+						                            <input class="form-control grey" type="text" name="ContactPro[0][quantity]" placeholder=""/>
 						                        </td>
 						                    </tr>
 						                </tbody>
@@ -129,30 +149,30 @@
 						            <h3 class="page-subheading">Lưu ý:</h3>
 						            <p> Khách hàng có thể đặt hàng ngoài quy cách phổ thông (đặt hàng ngoại khổ) đối với số lượng sản phẩm có giá trị trên 20 triệu đồng.</p>
 				                	<button type="button" class="btn btn-default button-small">
-				                		<a style="color: white" href="content/19-chinh-sach-hang-ngoai-khod27a.html?content_only=1" class="iframe" rel="nofollow"> Chính sách đặt hàng ngoại khổ</a>
+				                		<a style="color: white" href="" class="iframe" rel="nofollow"> Chính sách đặt hàng ngoại khổ</a>
 				                	</button>
 						            <h3 class="page-subheading"> Thông tin thanh toán</h3>
 						        	<p class="form-group">
 						                <label>Hình thức thanh toán:</label>
-						                <input class="form-control grey" type="radio" id="payment" name="payment" value="1" /> Tiền mặt
-						                <input class="form-control grey" type="radio" id="payment" name="payment" value="0" /> Chuyển khoản
+						                <input class="form-control grey" type="radio" id="payment" name="Contact[type_payment]" value="1" checked/> Tiền mặt
+						                <input class="form-control grey" type="radio" id="payment" name="Contact[type_payment]" value="2" /> Chuyển khoản
 						            </p>
 						            <h3 class="page-subheading">Thông tin giao hàng</h3>
 						            <p class="form-group">
 						                <label for="delivery_address" style="float: left">Địa điểm giao hàng *</label>
-						                <input class="form-control grey" type="text" id="delivery_address" name="delivery_address" value="" />
+						                <input class="form-control grey" type="text" id="delivery_address" name="Contact[shipping_address]" value="" />
 						            </p>
 						            <p class="form-group">
 						                <label for="invoicer" style="float: left"> Họ tên người nhận hàng</label>
-						                <input class="form-control grey" type="text" id="invoicer" name="invoicer" value="" />
+						                <input class="form-control grey" type="text" id="invoicer" name="Contact[shipping_name]" value="" />
 						            </p>
 						            <p class="form-group">
 						                <label for="invoicer_phone" style="float: left">Điện thoại người nhận hàng * </label>
-						                <input class="form-control grey" type="text" id="invoicer_phone" name="invoicer_phone" value="" />
+						                <input class="form-control grey" type="text" id="invoicer_phone" name="Contact[shipping_phone]" value="" />
 						            </p>
 						            <p class="form-group">
 						                <label for="sale_employee" style="float: left">Nhân viên kinh doanh liên hệ (nếu có)</label>
-						                <input class="form-control grey" type="text" id="sale_employee" name="sale_employee" value="" />
+						                <input class="form-control grey" type="text" id="sale_employee" name="Contact[business_man]" value="" />
 						            </p>
 			                	<?php endif ?>
                                 <p class="form-group">
@@ -186,6 +206,7 @@
 
 <script>
     $(document).ready(function () {
+    	$('#id_contact').trigger( "change" );
     	$('.contact-form-box').submit(function() {
     		if (!isEmail($('#email').val())) {
     			$('#error-email').show();
@@ -195,9 +216,9 @@
     	});
 
         $("#add_row").click(function () {
-            var n = $("#center_column > form > fieldset > div.clearfix > div> table > tbody > tr").length + 1;
+            var n = $("#center_column > form > fieldset > div.clearfix > div> table > tbody > tr").length;
             $("#center_column > form > fieldset > div.clearfix > div > table > tbody").
-                    append("<tr><td><input class='form-control grey' type='text' name='ContactPro[][color]'/></td><td><input class='form-control grey' type='text' name='ContactPro[][thickness]'/></td><td><input class='form-control grey' type='text' name='ContactPro[][width]'/></td><td><input class='form-control grey' type='text' name='ContactPro[][length]'/></td><td><input class='form-control grey' type='text' name='ContactPro[][number]'/></td></tr>");
+                    append("<tr><td><input class='form-control grey' type='text' name='ContactPro["+n+"][color]'/></td><td><input class='form-control grey' type='text' name='ContactPro["+n+"][thickness]'/></td><td><input class='form-control grey' type='text' name='ContactPro["+n+"][width]'/></td><td><input class='form-control grey' type='text' name='ContactPro["+n+"][length]'/></td><td><input class='form-control grey' type='text' name='ContactPro["+n+"][quantity]'/></td></tr>");
         });
         if (!!$.prototype.fancybox)
             $("a.iframe").fancybox({

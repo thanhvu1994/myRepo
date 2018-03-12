@@ -32,7 +32,7 @@ if (typeof $.uniform.defaults !== 'undefined')
 }
 
 $(document).ready(function(){
-	$(document).on('change', 'select[name=id_contact]', function(){
+	$(document).on('change', 'select[id=id_contact]', function(){
 		showElemFromSelect('id_contact', 'desc_contact')
 	});
 
