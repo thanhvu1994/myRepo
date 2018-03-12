@@ -55,7 +55,7 @@
                             <input type="file" name="thumb">
                             </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Xóa</a>
                         </div>
-                        <?php if (isset($model)): ?>
+                        <?php if (isset($model) && is_file('.'.$model->thumb)): ?>
                             <div class="row">
                                 <div class="col-sm-3 m-t-10" id="thumb">
                                     <div class="thumbnail">
@@ -66,6 +66,17 @@
                             </div>
                             <input type="checkbox" name="remove_img" id="remove_img" value="1" style="display: none">
                         <?php endif ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-12">Kiểu Danh Mục</label>
+                    <div class="col-md-12">
+                        <select class="form-control" name="Categories[type]" id="type_category">
+                            <option <?php echo (isset($model) && $model->type == 'menu')? 'selected' : ''; ?> value="menu">Menu</option>
+                            <option <?php echo (isset($model) && $model->type == 'category')? 'selected' : ''; ?> value="category">Category</option>
+                        </select>
+                        <?php echo form_error('type'); ?>
                     </div>
                 </div>
 
@@ -103,17 +114,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="col-md-12">Kiểu Danh Mục</label>
-                    <div class="col-md-12">
-                        <select class="form-control" name="Categories[type]">
-                            <option <?php echo (isset($model) && $model->type == 'menu')? 'selected' : ''; ?> value="menu">Menu</option>
-                            <option <?php echo (isset($model) && $model->type == 'category')? 'selected' : ''; ?> value="category">Category</option>
-                        </select>
-                        <?php echo form_error('type'); ?>
-                    </div>
-                </div>
-
                 <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Lưu</button>
                 <a href="<?php echo base_url('admin/category')?>" class="btn btn-inverse waves-effect waves-light">Hủy</a>
             <?php echo form_close(); ?>
@@ -123,17 +123,18 @@
 
 <script>
     $(document).ready(function() {
-        $('#language').change(function() {
-            var id = '<?php echo isset($model) ? $model->id : 0 ?>'
+        $('#language, #type_category').change(function() {
+            var id = '<?php echo isset($model) ? $model->id : 0 ?>';
             $.ajax({
                 url: '<?php echo base_url('admin/category/changeParent')?>',
                 type: 'POST',
-                data: {language: $(this).val(), id: id},
+                data: {language: $('#language').val(), id: id, type: $('#type_category').val()},
                 success: function (returndata) {
                     $('#parent_id').html(returndata);
                 },
             });
         });
+
         $('.del-img-setting').click(function() {
             $('#remove_img').prop('checked', true);
             $('#thumb').empty();

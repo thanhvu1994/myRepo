@@ -89,9 +89,9 @@ class Categories extends CI_Model {
 		}
 	}
 
-	public function rChilds($parent_id, &$items, $level, $id) {
+	public function rChilds($parent_id, &$items, $level, $id, $type, $language) {
 		if ($level <= 1) {
-			$query = $this->db->query("SELECT * FROM ci_categories WHERE parent_id = ".$parent_id." AND id != ".$id);
+			$query = $this->db->query("SELECT * FROM ci_categories WHERE language = '".$language."' AND parent_id = ".$parent_id." AND id != ".$id.' AND type = "'.$type.'"');
 			$childs = $query->result('Categories');
 
 			if (count($childs) > 0) {
@@ -102,21 +102,21 @@ class Categories extends CI_Model {
 				$level++;
 				foreach ($childs as $child) {
 					$items[$child->id] = $str.$child->category_name;
-					$this->rChilds($child->id, $items, $level, $id);
+					$this->rChilds($child->id, $items, $level, $id, $type, $language);
 				}
 			}
 		}
 	}
 
-	public function get_dropdown_category($id, $language = 'vn') {
+	public function get_dropdown_category($id, $type = 'menu', $language = 'vn') {
 		$items = [];
-		$query = $this->db->query('SELECT * FROM ci_categories WHERE language = "'.$language.'" AND parent_id = 0 AND id != '.$id);
+		$query = $this->db->query('SELECT * FROM ci_categories WHERE language = "'.$language.'" AND parent_id = 0 AND id != '.$id.' AND type = "'.$type.'"');
 		$parents = $query->result('Categories');
 		$level = 1;
 		if (count($parents) > 0) {
 			foreach ($parents as $row) {
 				$items[$row->id] = $row->category_name;
-				$this->rChilds($row->id, $items, $level, $id);
+				$this->rChilds($row->id, $items, $level, $id, $type, $language);
 			}
 		}
 
@@ -283,5 +283,10 @@ class Categories extends CI_Model {
         $this->db->where('category_id', $this->id);
         $this->db->from('product_categories');
         return $this->db->count_all_results();
+    }
+
+    public function getMenuProductFooter() {
+    	$query = $this->db->query("SELECT * FROM ci_categories WHERE type = 'category' ORDER BY display_order asc LIMIT 6");
+        return $query->result('Categories');
     }
 }

@@ -126,14 +126,15 @@ class Category extends MY_Controller {
         if (!$this->input->is_ajax_request()) {
            exit('No direct script access allowed');
         }
-        if (isset($_POST['language'])) {
+        if (isset($_POST['language']) && isset($_POST['type'])) {
             $language = $_POST['language'];
+            $type = $_POST['type'];
             if (isset($_POST['id']) && !empty($_POST['id'])) {
                 $id = $_POST['id'];
             } else {
                 $id = 0;
             }
-            $categories = $this->categories->get_dropdown_category($id, $language);
+            $categories = $this->categories->get_dropdown_category($id, $type, $language);
 
             $data = '<option value="0"> -- Chọn lớp cha -- </option>';
             if (!empty($categories)) {

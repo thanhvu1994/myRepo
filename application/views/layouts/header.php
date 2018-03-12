@@ -19,7 +19,7 @@
                 <div class="col-md-12">
                     <div id="header_logo">
                         <a href="<?php echo base_url()?>" title="Nhựa Nam Việt">
-                            <img class="logo img-responsive" src="<?php echo $this->settings->get_logoFE() ?>" alt="Nhựa Nam Việt" width="150"/>
+                            <img class="logo img-responsive" src="<?php echo $this->settings->get_logoFE() ?>" alt="Nhựa Nam Việt" width="350"/>
                         </a>
                     </div>
                     <div class="ps_header_right">

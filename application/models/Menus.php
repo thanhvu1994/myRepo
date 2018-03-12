@@ -90,7 +90,7 @@ class Menus extends CI_Model {
 
 	public function get_dropdown_menu() {
 		$items = [];
-		$query = $this->db->query("SELECT * FROM ci_menus WHERE parent_id = 0");
+		$query = $this->db->query("SELECT * FROM ci_menus WHERE parent_id = 0 ORDER BY menu_name asc");
 		$parents = $query->result('Menus');
 		$level = 1;
 		if (count($parents) > 0) {
@@ -104,7 +104,7 @@ class Menus extends CI_Model {
 	}
 
 	public function get_childs($parent, &$items) {
-		$query = $this->db->query("SELECT * FROM ci_menus WHERE show_in_menu = 1 AND parent_id = ".$parent->id);
+		$query = $this->db->query("SELECT * FROM ci_menus WHERE show_in_menu = 1 AND parent_id = ".$parent->id."  ORDER BY display_order asc, menu_name asc");
 		$childs = $query->result('Menus');
 
 		if (count($childs) > 0) {
@@ -125,7 +125,7 @@ class Menus extends CI_Model {
 
 	public function show_menus() {
 		$items = [];
-		$query = $this->db->query("SELECT * FROM ci_menus WHERE parent_id = 0 AND show_in_menu = 1");
+		$query = $this->db->query("SELECT * FROM ci_menus WHERE parent_id = 0 AND show_in_menu = 1 ORDER BY display_order asc, menu_name asc");
 		$parents = $query->result('Menus');
 
 		if (count($parents) > 0) {

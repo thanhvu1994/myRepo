@@ -15,6 +15,7 @@ class MY_Controller extends CI_Controller {
         $this->load->model('productOptionValue');
         $this->load->model('categories');
         $this->load->model('productCategory');
+        $this->load->model('settings');
 
         // validate user
         if (!$this->users->check_logged()) {

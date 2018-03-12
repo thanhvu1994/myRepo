@@ -15,16 +15,17 @@ class Settings extends CI_Model {
             'items' => [
             	['name' => 'logoFE', 'controlTyle' => 'file', 'notes' => '', 'unit' => '', 'htmlOptions' => [], 'rules' => ''],
                 ['name' => 'favicon', 'controlTyle' => 'file', 'notes' => '', 'unit' => '', 'htmlOptions' => [], 'rules' => ''],
-                ['name' => 'logoBE', 'controlTyle' => 'file', 'notes' => '', 'unit' => '', 'htmlOptions' => [], 'rules' => ''],
+                // ['name' => 'logoBE', 'controlTyle' => 'file', 'notes' => '', 'unit' => '', 'htmlOptions' => [], 'rules' => ''],
                 ['name' => 'defaultPageTitle', 'controlTyle' => 'text', 'notes' => '', 'unit' => '', 'htmlOptions' => ['maxlength' => 80], 'rules' => 'required'],
+                ['name' => 'introduce', 'controlTyle' => 'textarea', 'notes' => '', 'unit' => '', 'htmlOptions' => ['class' => 'editor-full', 'id' => 'editor-full'], 'rules' => ''],
                 ['name' => 'copyrightOnFooter', 'controlTyle' => 'textarea', 'notes' => '', 'unit' => '', 'htmlOptions' => ['class' => 'editor-full'], 'rules' => ''],
                 ['name' => 'googleAnalytics', 'controlTyle' => 'textarea', 'notes' => '', 'unit' => '', 'htmlOptions' => ['cols' => 77, 'rows' => 4], 'rules' => ''],
             ],
         ],
         "socialsetting" => [
-            'label' => 'Social Network',
+            'label' => 'Mạng xã hội',
             'htmlOptions' => [],
-            'icon' => '<i class="social_share"></i>',
+            'icon' => '<i class="glyphicon glyphicon-star-empty"></i>',
             'items' => [
                 ['name' => 'facebook', 'controlTyle' => 'text', 'notes' => '', 'unit' => '', 'htmlOptions' => ['maxlength' => 80], 'rules' => ''],
                 ['name' => 'googleplus', 'controlTyle' => 'text', 'notes' => '', 'unit' => '', 'htmlOptions' => ['maxlength' => 80], 'rules' => ''],
@@ -36,7 +37,7 @@ class Settings extends CI_Model {
             ]
         ],
         "contactsetting" => [
-            'label' => 'Contact',
+            'label' => 'Liên lạc',
             'htmlOptions' => [],
             'icon' => '<span class="glyphicon glyphicon-search"></span>',
             'items' => [
@@ -49,6 +50,29 @@ class Settings extends CI_Model {
             ],
         ],
     ];
+
+    public function getAttributeName($field) {
+        $attrbute_name = [
+            'logoFE' => 'Logo Trang Web',
+            'favicon' => 'Favicon',
+            'logoBE' => 'Logo Trang Admin',
+            'defaultPageTitle' => 'Tiêu đề trang web',
+            'copyrightOnFooter' => 'Bản quyền trang web',
+            'googleAnalytics' => 'Google Analytics',
+            'companyAddress' => 'Địa chỉ công ty',
+            'companyAddress_en' => 'Địa chỉ công ty (tiếng anh)',
+            'companyCellPhone' => 'Điện thoại di động',
+            'companyPhone' => 'Điện thoại công ty',
+            'companyEmail' => 'Địa chỉ Email',
+            'introduce' => 'Sơ lược công ty'
+        ];
+
+        if (isset($attrbute_name[$field])) {
+            return $attrbute_name[$field];
+        }
+
+        return ucfirst($field);
+    }
 
     public function getRule() {
     	$rules = [
@@ -103,24 +127,27 @@ class Settings extends CI_Model {
 		return date_format(date_create($this->update_date), 'd-m-Y');
 	}
 
-	public function get_publish() {
-		if ($this->publish) {
-			return 'Yes';
-		}
-
-		return 'No';
-	}
-
 	public function get_logoFE() {
         $setting = $this->get_model(['key' => 'logoFE']);
         if (count($setting) > 0) {
-            if (is_file('./'.$setting->value)) {
+            if (is_file('.'.$setting->value)) {
                 return base_url($setting->value);
             }
         }
 
 		return '';
 	}
+
+    public function get_logoBE() {
+        $setting = $this->get_model(['key' => 'logoBE']);
+        if (count($setting) > 0) {
+            if (is_file('.'.$setting->value)) {
+                return base_url($setting->value);
+            }
+        }
+
+        return base_url('/themes/admin/plugins/images/agileadmin-text-dark.png');
+    }
 
     public function get_param($key) {
         $setting = $this->get_model(['key' => $key]);

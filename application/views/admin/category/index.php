@@ -25,6 +25,7 @@
                                 <tr>
                                     <th>Tên danh mục</th>
                                     <th>Danh mục cha</th>
+                                    <th>Loại</th>
                                     <th>Ngày tạo</th>
                                     <th>Ngày cập nhật</th>
                                     <th>Action</th>
@@ -35,6 +36,7 @@
                                     <tr id="tr-<?php echo $model->id?>">
                                         <td><?php echo $model->category_name ?></td>
                                         <td><?php echo $model->get_parent_name() ?></td>
+                                        <td><?php echo ucfirst($model->type) ?></td>
                                         <td><?php echo $model->get_created_date() ?></td>
                                         <td><?php echo $model->get_update_date() ?></td>
                                         <td class="button-column">

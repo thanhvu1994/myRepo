@@ -16,14 +16,14 @@ class Banners extends MY_Controller {
 
     public function index()
     {
-        $data['title'] = 'Management Banner';
+        $data['title'] = 'Quản lý Slider';
         $data['template'] = 'admin/banners/index';
         $data['models'] = $this->banner->get_model();
 		$this->load->view('admin/layouts/index', $data);
     }
 
     public function create() {
-        $data['title'] = 'Create a Banner';
+        $data['title'] = 'Tạo Slider';
     	$data['template'] = 'admin/banners/form';
         $data['link_submit'] = base_url('admin/banners/create');
 
@@ -36,6 +36,7 @@ class Banners extends MY_Controller {
 
         if (isset($_POST['Banner'])) {
             $data_insert = $_POST['Banner'];
+            $image = '';
             if (isset($_FILES['Banner']['name']) && !empty($_FILES['Banner']['name'])) {
                 $files = $_FILES;
                 $_FILES['image']['name'] = $files['Banner']['name']['image'];
@@ -59,7 +60,7 @@ class Banners extends MY_Controller {
     }
 
     public function update($id) {
-        $data['title'] = 'Update a Banner';
+        $data['title'] = 'Update Slider';
         $data['template'] = 'admin/banners/form';
         $model = $this->banner->get_model(['id' => $id]);
         $data['model'] = $model;

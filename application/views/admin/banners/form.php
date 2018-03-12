@@ -3,7 +3,7 @@
         <h4 class="page-title"><?php echo $title ?></h4>
     </div>
     <?php
-        $breadcrumb = [base_url('admin/site') => 'Dashboard', base_url('admin/banners') => 'Banners', 'active' => $title];
+        $breadcrumb = [base_url('admin/site') => 'Dashboard', base_url('admin/banners') => 'Quản lý Slider', 'active' => $title];
         $this->load->view('admin/layouts/breadcrumbs', ['breadcrumb' => $breadcrumb]);
      ?>
     <!-- /.col-lg-12 -->
@@ -14,21 +14,21 @@
         <div class="white-box">
             <?php echo form_open_multipart($link_submit, ['class' => 'form-horizontal']); ?>
                 <div class="form-group">
-                    <label class="col-md-12">Banner Title</label>
+                    <label class="col-md-12">Tiêu đề Slider</label>
                     <div class="col-md-12">
                         <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->name : ''?>" name="Banner[name]">
                         <?php echo form_error('name'); ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-12">Button Name</label>
+                    <label class="col-md-12">Tên nút Slider</label>
                     <div class="col-md-12">
                         <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->button_name : ''?>" name="Banner[button_name]">
                         <?php echo form_error('button_name'); ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-12">Banner Url</label>
+                    <label class="col-md-12">Đường dẫn</label>
                     <div class="col-md-12">
                         <input type="text" name="Banner[url]" class="form-control" value="<?php echo (isset($model)) ? $model->url : ''?>">
                         <?php echo form_error('url'); ?>
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-12">Image Banner</label>
+                    <label class="col-md-12">Hình ảnh</label>
                     <div class="col-md-12">
                         <?php if (isset($model)): ?>
                             <input type="file" name="Banner[image]" class="dropify" data-default-file="<?php echo base_url($model->image) ?>" />
@@ -53,12 +53,12 @@
                         <div class="checkbox checkbox-success">
                             <?php $checked = isset($model) && $model->publish == true ? 'checked' : '' ?>
                             <input id="publish" name="Banner[publish]" type="checkbox" value="1" <?php echo $checked ?>>
-                            <label for="publish">Publish</label>
+                            <label for="publish">Hiển thị</label>
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
-                <a href="<?php echo base_url('admin/banners')?>" class="btn btn-inverse waves-effect waves-light">Cancel</a>
+                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Lưu</button>
+                <a href="<?php echo base_url('admin/banners')?>" class="btn btn-inverse waves-effect waves-light">Hủy</a>
             <?php echo form_close(); ?>
         </div>
     </div>

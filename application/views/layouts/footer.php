@@ -13,38 +13,19 @@
 						        </div>
 						    </div>
 							<div class="block_content">
-			                    <ul class="product_images clearfix">
-			                        <li>
-			                            <a href="12-tam-lop-lay-sang-polycarbonate.html" title="">
-			                                Tấm lấy sáng Polycarbonate
-			                            </a>
-			                        </li>
-			                        <li>
-			                            <a href="13-mai-che-lay-sang.html" title="">
-			                                Mái che lấy sáng
-			                            </a>
-			                        </li>
-			                        <li>
-			                            <a href="14-ton-nhua-lay-sang-polycarbonate-nicelight.html" title="">
-			                                Tôn nhựa lấy sáng Polycarbonate
-			                            </a>
-			                        </li>
-			                        <li>
-			                            <a href="15-phu-kien-nep-nhua-PC.html" title="">
-			                                Phụ kiện
-			                            </a>
-			                        </li>
-			                        <li>
-			                            <a href="16-huong-dan-lap-dat-mai-che-lay-sang.html" title="">
-			                                Dịch vụ tư vấn & lắp đặt
-			                            </a>
-			                        </li>
-			                        <li>
-			                            <a href="17-Polycarbonate-dinh-hinh-lay-sang.html" title="">
-			                                Sản phẩm PC định hình
-			                            </a>
-			                        </li>
-			                    </ul>
+								<?php 
+								$menuFooter = $this->categories->getMenuProductFooter();
+								if (count($menuFooter) > 0): 
+									echo '<ul class="product_images clearfix">';
+									foreach ($menuFooter as $menu) :?>
+				                        <li>
+				                            <a href="<?php echo base_url($menu->url) ?>" title="<?php echo $menu->category_name ?>">
+				                                <?php echo ucfirst($menu->category_name) ?>
+				                            </a>
+				                        </li>
+				                    <?php endforeach;
+				                    echo '</ul>';
+								 endif ?>
 		            		</div>
 						</div>
 						<!-- /MODULE Block new products -->

@@ -1,9 +1,9 @@
 <div class="row bg-title">
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <h4 class="page-title">Data Table</h4>
+        <h4 class="page-title"><?php echo $title ?></h4>
     </div>
     <?php
-        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Backmenus'];
+        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => $title];
         $this->load->view('admin/layouts/breadcrumbs', ['breadcrumb' => $breadcrumb]);
      ?>
     <!-- /.col-lg-12 -->
@@ -14,7 +14,7 @@
         <div class="white-box">
             <div class="row m-b-30">
                 <div class="col-lg-2 col-sm-4 col-xs-12">
-                    <a href="<?php echo base_url('admin/banners/create')?>" class="btn btn-block btn-default">Create</a>
+                    <a href="<?php echo base_url('admin/banners/create')?>" class="btn btn-block btn-default">Thêm mới</a>
                 </div>
             </div>
             <div class="row">
@@ -23,13 +23,13 @@
                         <table id="example23" class="display nowrap" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>Banner Title</th>
-                                    <th>Button Name</th>
-                                    <th>Url</th>
-                                    <th>Image</th>
-                                    <th>Publish</th>
-                                    <th>Created Date</th>
-                                    <th>Update Date</th>
+                                    <th>Tiêu đề Slider</th>
+                                    <th>Tên nút Slider</th>
+                                    <th>Đường dẫn</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Hiển thị</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Ngày cập nhật</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
