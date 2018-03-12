@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2018 at 06:07 PM
+-- Generation Time: Mar 12, 2018 at 05:01 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -19,8 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `website`
 --
-CREATE DATABASE IF NOT EXISTS `website` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `website`;
+
 
 -- --------------------------------------------------------
 
@@ -40,15 +39,16 @@ CREATE TABLE IF NOT EXISTS `ci_banners` (
   `created_date` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   `update_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `ci_banners`
 --
 
 INSERT INTO `ci_banners` (`id`, `name`, `button_name`, `url`, `image`, `type`, `publish`, `created_date`, `update_date`) VALUES
-(1, 'Title', 'Button Name', 'google.com', '/uploads/banners/login-register.jpg', '', 1, '2018-03-11 01:05:37', '2018-03-09 17:17:12'),
-(2, 'Title 2', 'Button Name 2', 'google.com', '/uploads/banners/350d15c512f63a53b45a83362d3873ca.jpg', '', 1, '2018-03-11 01:32:49', '2018-03-10 19:32:49');
+(1, 'TÔN NHỰA LẤY SÁNG', '', '', '/uploads/banners/83f46fb22237bd7c1994aa6debad6bc2.jpg', '', 1, '2018-03-12 16:37:43', '2018-03-12 10:37:43'),
+(2, '', 'Button Name 2', 'google.com', '/uploads/banners/f350222dca4b7a784f4adbde5df82479.jpg', '', 1, '2018-03-12 16:45:01', '2018-03-12 10:45:01'),
+(3, 'CÔNG TRÌNH NHÀ KÍNH NÔNG NGHIỆP', 'Đặt hàng Online', '', '/uploads/banners/1e202c9943ba4b5f6dc9deea62c5355e.jpg', '', 1, '2018-03-12 16:38:57', '2018-03-12 10:38:57');
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `ci_billing_address` (
   `created_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -97,26 +97,42 @@ CREATE TABLE IF NOT EXISTS `ci_categories` (
   `thumb` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `display_order` int(11) NOT NULL,
   `language` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `created_date` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `ci_categories`
 --
 
-INSERT INTO `ci_categories` (`id`, `parent_id`, `category_name`, `title`, `description`, `url`, `slug`, `type_level`, `thumb`, `display_order`, `language`, `created_date`, `update_date`) VALUES
-(3, 0, 'Trang chủ', '', '', 'sites/index', '', 1, '', 1, 'vn', '2018-03-10 23:37:24', '2018-03-10 17:37:24'),
-(4, 0, 'Giới thiệu', '', '', 'sites/index', 'gioi-thieu', 1, '', 2, 'vn', '2018-03-10 23:11:56', '2018-03-10 09:19:09'),
-(5, 0, 'Sản phẩm', '', '', 'sites/index', 'san-pham', 1, '', 3, 'vn', '2018-03-10 23:11:56', '2018-03-10 09:19:21'),
-(6, 0, 'Catelogue', '', '', 'sites/index', 'catelogue', 1, '', 4, 'vn', '2018-03-10 23:11:57', '2018-03-10 09:19:36'),
-(7, 0, 'Chính sách khách hàng', '', '', 'sites/index', 'chinh-sach-khach-hang', 1, '', 5, 'vn', '2018-03-10 23:11:58', '2018-03-10 09:19:57'),
-(8, 0, 'Tin tức', '', '', 'sites/index', 'tin-tuc', 1, '', 6, 'vn', '2018-03-10 23:11:58', '2018-03-10 09:20:05'),
-(9, 0, 'Tuyển dụng', '', '', 'sites/index', 'tuyen-dung', 1, '', 7, 'vn', '2018-03-10 23:11:58', '2018-03-10 09:20:19'),
-(10, 0, 'Liên hệ', '', '', 'sites/index', 'lien-he', 1, '', 8, 'vn', '2018-03-10 23:12:00', '2018-03-10 09:20:31'),
-(23, 4, 'Quan hệ hợp tác', '', '', 'pages/test-1', 'quan-he-hop-tac', 2, '', 0, 'vn', '2018-03-10 18:16:41', '2018-03-10 18:16:41'),
-(24, 23, 'test', '', '', 'pages/Test 123456', '', 3, '/uploads/categories/a44e63bdebec0921b5e5a8755d8febd2.jpg', 0, 'vn', '2018-03-11 14:21:50', '2018-03-11 08:21:50');
+INSERT INTO `ci_categories` (`id`, `parent_id`, `category_name`, `title`, `description`, `url`, `slug`, `type_level`, `thumb`, `display_order`, `language`, `type`, `created_date`, `update_date`) VALUES
+(3, 0, 'Trang chủ', '', '', 'sites/index', '', 1, '', 1, 'vn', 'menu', '2018-03-12 14:47:55', '2018-03-10 17:37:24'),
+(4, 0, 'Giới thiệu', '', '', 'sites/index', 'gioi-thieu', 1, '', 2, 'vn', 'menu', '2018-03-12 14:47:57', '2018-03-10 09:19:09'),
+(5, 0, 'Sản phẩm', '', '', 'sites/index', 'san-pham', 1, '', 3, 'vn', 'menu', '2018-03-12 14:48:03', '2018-03-10 09:19:21'),
+(6, 0, 'Catelogue', '', '', 'sites/index', 'catelogue', 1, '', 4, 'vn', 'menu', '2018-03-12 14:47:57', '2018-03-10 09:19:36'),
+(7, 0, 'Chính sách khách hàng', '', '', 'sites/index', 'chinh-sach-khach-hang', 1, '', 5, 'vn', 'menu', '2018-03-12 14:47:58', '2018-03-10 09:19:57'),
+(8, 0, 'Tin tức', '', '', 'sites/index', 'tin-tuc', 1, '', 6, 'vn', 'menu', '2018-03-12 14:47:58', '2018-03-10 09:20:05'),
+(9, 0, 'Tuyển dụng', '', '', 'sites/index', 'tuyen-dung', 1, '', 7, 'vn', 'menu', '2018-03-12 14:48:01', '2018-03-10 09:20:19'),
+(10, 0, 'Liên hệ', '', '', 'sites/index', 'lien-he', 1, '', 8, 'vn', 'menu', '2018-03-12 14:47:59', '2018-03-10 09:20:31'),
+(23, 4, 'Quan hệ hợp tác', '', '', 'pages/test-1', 'quan-he-hop-tac', 2, '', 0, 'vn', 'menu', '2018-03-12 14:47:59', '2018-03-10 18:16:41'),
+(24, 23, 'test', '', '', 'pages/Test 123456', '', 3, '/uploads/categories/a44e63bdebec0921b5e5a8755d8febd2.jpg', 0, 'vn', 'menu', '2018-03-12 14:48:01', '2018-03-11 08:21:50'),
+(25, 31, 'Tấm lợp lấy sáng POLYCARBONATE', 'TẤM LỢP LẤY SÁNG POLYCARBONATE', 'Tấm nhựa Polycarbonate được sử dụng làm tấm lợp lấy sáng cho các công trình xây dựng... Sản xuất từ nhựa nguyên sinh của Bayer (Đức), có lớp phủ chống tia UV', '0', '', 2, '/uploads/categories/6b1c7719a3c81edce3530bf15ce4cf30.png', 0, 'vn', 'category', '2018-03-12 11:02:51', '2018-03-12 11:06:49'),
+(26, 31, 'Tôn nhựa lấy sáng', 'TÔN NHỰA LẤY SÁNG', 'Tôn nhựa lấy sáng Polycarbonate Nicelight được định hình thành dạng nhiều dạng sóng khác nhau, tương thích với tất cả các loại tôn kẽm trên thị trường.', '0', '', 2, '/uploads/categories/880cf5f8297a22f0cb455fad0771597c.png', 0, 'vn', 'category', '2018-03-12 11:03:42', '2018-03-12 11:07:04'),
+(27, 31, 'Mái che CANOFIX', 'MÁI CHE CANOFIX', 'Mái che lấy sáng Canofix nhập khẩu từ Hàn Quốc, kiểu dáng sang trọng, tinh tế, nhiều màu sắc để lựa chọn. Dễ dàng thi công và lắp đặt cho mọi công trình', '0', '', 2, '/uploads/categories/32e5783fdaa22ff7dbdb2c6ce8ea8d4e.png', 0, 'vn', 'category', '2018-03-12 11:04:33', '2018-03-12 11:09:55'),
+(28, 31, 'Phụ kiện', 'PHỤ KIỆN', 'Cung cấp đa dạng phụ kiện khác nhau như nẹp nhựa chữ H, U, khung mái che Canofix trợ giúp cho việc lắp đặt, bảo trì, bảo dưỡng tấm lấy sáng Polycarbonate', '0', 'phU-kiEn', 2, '/uploads/categories/04d4f3aa91d087ad25970520c0a444a5.png', 0, 'vn', 'category', '2018-03-12 11:06:10', '2018-03-12 11:06:10'),
+(29, 31, 'Sản phẩm PC định hình', 'SẢN PHẨM PC ĐỊNH HÌNH', 'Đây là dạng tấm nhựa Polycarbonate được định hình thành khối 3D (khối kim tự tháp, khối bán cầu,…), sử dụng phổ biến trong các công trình mái lấy sáng, giếng trời', '0', 'sAn-phAm-pc-DjInh-hInh', 2, '/uploads/categories/a2948e9e03564c55af3f7bdd8c2f8be7.png', 0, 'vn', 'category', '2018-03-12 11:10:31', '2018-03-12 11:10:31'),
+(30, 31, 'Dịch vụ tư vấn & lắp đặt', 'DỊCH VỤ TƯ VẤN & LẮP ĐẶT', 'Công ty chúng tôi nhận tư vấn, thi công các công trình lắp đặt mái che lấy sáng sử dụng tấm polycarbonate trong các công trình công nghiệp và dân dụng', '0', '', 2, '/uploads/categories/a3d4ced996c29fb7ab6f648ab799cbe3.png', 0, 'vn', 'category', '2018-03-12 11:13:42', '2018-03-12 11:14:06'),
+(31, 0, 'Sản phẩm', 'Sản phẩm', '', '0', 'san-pham', 1, '', 0, 'vn', 'category', '2018-03-12 11:35:36', '2018-03-12 11:35:36'),
+(32, 5, 'Tấm lấy sáng Polycarbonate', 'Tấm lấy sáng Polycarbonate', '', '0', 'tam-lay-sang-polycarbonate', 2, '', 0, 'vn', 'menu', '2018-03-12 11:49:24', '2018-03-12 11:49:24'),
+(33, 5, 'Mái che lấy sáng', 'Mái che lấy sáng', '', '0', 'mai-che-lay-sang', 2, '', 0, 'vn', 'menu', '2018-03-12 11:49:37', '2018-03-12 11:49:37'),
+(34, 5, 'Tôn nhựa lấy sáng Polycarbonate', 'Tôn nhựa lấy sáng Polycarbonate', '', '0', 'ton-nhua-lay-sang-polycarbonate', 2, '', 0, 'vn', 'menu', '2018-03-12 11:49:57', '2018-03-12 11:49:57'),
+(35, 5, 'Phụ kiện', 'Phụ kiện', '', '0', 'phu-kien', 2, '', 0, 'vn', 'menu', '2018-03-12 11:50:09', '2018-03-12 11:50:09'),
+(36, 5, 'Dịch vụ tư vấn & lắp đặt', 'Dịch vụ tư vấn & lắp đặt', '', '0', 'dich-vu-tu-van-lap-djat', 2, '', 0, 'vn', 'menu', '2018-03-12 11:50:19', '2018-03-12 11:50:19'),
+(37, 5, 'Sản phẩm PC định hình', 'Sản phẩm PC định hình', '', '0', 'san-pham-pc-djinh-hinh', 2, '', 0, 'vn', 'menu', '2018-03-12 11:50:27', '2018-03-12 11:50:27'),
+(38, 32, 'Tấm lợp lấy sáng Polycarbonate đặc ruột 	', 'Tấm lợp lấy sáng Polycarbonate đặc ruột 	', '', '0', 'tam-lop-lay-sang-polycarbonate-djac-ruot', 3, '', 0, 'vn', 'menu', '2018-03-12 11:50:59', '2018-03-12 11:50:59'),
+(39, 32, 'Tấm lấy sáng Polycarbonate rỗng 	', 'Tấm lấy sáng Polycarbonate rỗng 	', '', '0', 'tam-lay-sang-polycarbonate-rong', 3, '', 0, 'vn', 'menu', '2018-03-12 11:51:17', '2018-03-12 11:51:17');
 
 -- --------------------------------------------------------
 
@@ -160,15 +176,7 @@ CREATE TABLE IF NOT EXISTS `ci_contact` (
   `comment` text COLLATE utf8_unicode_ci NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `ci_contact`
---
-
-INSERT INTO `ci_contact` (`id`, `customer_name`, `company_name`, `tax_code`, `address`, `phone`, `cell_phone`, `email`, `type`, `type_payment`, `shipping_address`, `shipping_name`, `shipping_phone`, `business_man`, `file`, `comment`, `created_date`) VALUES
-(1, 'customer name', 'company_name', 'TAX001', 'address', 113, 114, 'email@gmai.com', 1, 1, 'shipping address', 'shipping name', 113, '', '', 'comment', '2018-03-08 15:48:58'),
-(2, '1', '', '', '1', 1131, 113, 'lucjfer0407@gmail.com', 0, 0, '', '', 0, '', '/uploads/contact/ee8f716f236ee81a7bd21c295ff936f2.jpg', 'ghi chú', '2018-03-10 07:38:37');
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -180,15 +188,15 @@ DROP TABLE IF EXISTS `ci_contact_info_product`;
 CREATE TABLE IF NOT EXISTS `ci_contact_info_product` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `product_id` bigint(20) NOT NULL,
-  `color_id` bigint(20) NOT NULL,
-  `thin_id` bigint(20) NOT NULL,
-  `width_id` bigint(20) NOT NULL,
-  `height_id` bigint(20) NOT NULL,
+  `color` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `thickness` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `width` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `length` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `quantity` int(11) NOT NULL,
-  `contact_Id` bigint(20) NOT NULL,
-  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `contact_id` bigint(20) NOT NULL,
+  `created_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -281,7 +289,7 @@ CREATE TABLE IF NOT EXISTS `ci_menus` (
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `update_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `ci_menus`
@@ -289,15 +297,16 @@ CREATE TABLE IF NOT EXISTS `ci_menus` (
 
 INSERT INTO `ci_menus` (`id`, `parent_id`, `menu_name`, `menu_link`, `show_in_menu`, `display_order`, `icon`, `application_id`, `created_date`, `update_date`) VALUES
 (1, 0, 'Menu', '', 1, 1, 'linea-icon linea-basic fa-fw', 1, '2018-03-03 16:34:16', '2018-03-03 17:34:16'),
-(8, 1, 'Backmenus', 'admin/backmenus', 1, 2, '', 1, '2018-03-03 16:33:09', '2018-03-03 17:33:09'),
-(9, 11, 'Banners', 'admin/banners', 1, 2, 'linea-icon linea-elaborate fa-fw', 1, '2018-03-06 15:36:57', '2018-03-06 16:36:57'),
+(8, 1, 'Backend Menu', 'admin/backmenus', 1, 2, 'linea-icon linea-basic fa-fw', 1, '2018-03-12 08:08:32', '2018-03-12 09:07:35'),
+(9, 11, 'Quản lý Slider', 'admin/banners', 1, 2, 'linea-icon linea-elaborate fa-fw', 1, '2018-03-12 09:51:31', '2018-03-12 10:51:31'),
 (10, 0, 'Danh mục sản phẩm', 'admin/category', 1, 3, 'linea-icon linea-basic fa-fw', 1, '2018-03-05 16:28:30', '2018-03-05 17:28:30'),
-(11, 0, 'Quản lý trang chủ', '', 1, 3, '', 1, '2018-03-06 14:42:32', '2018-03-06 15:42:32'),
-(12, 11, 'Đối tác', 'admin/partners', 1, 3, '', 1, '2018-03-06 14:43:26', '2018-03-06 15:43:26'),
-(13, 0, 'Chỉnh sửa website', 'admin/system', 1, 5, '', 1, '2018-03-07 13:33:50', '2018-03-07 14:33:50'),
-(14, 0, 'Quản lý sản phầm', '', 1, 1, '', 1, '2018-03-07 16:42:49', '2018-03-07 17:42:49'),
-(15, 14, 'Màu sắc', 'admin/color', 1, 1, '', 1, '2018-03-07 16:43:40', '2018-03-07 17:43:40'),
-(16, 14, 'Liên hệ', 'admin/contactOrder', 1, 10, '', 1, '2018-03-08 15:40:43', '2018-03-08 16:40:43');
+(11, 0, 'Quản lý trang chủ', '', 1, 3, 'linea-icon linea-basic fa-fw', 1, '2018-03-12 08:08:28', '2018-03-06 15:42:32'),
+(12, 11, 'Đối tác', 'admin/partners', 1, 3, 'linea-icon linea-basic fa-fw', 1, '2018-03-12 08:08:29', '2018-03-06 15:43:26'),
+(13, 0, 'Chỉnh sửa website', 'admin/system', 1, 5, 'linea-icon linea-basic fa-fw', 1, '2018-03-12 08:08:29', '2018-03-07 14:33:50'),
+(14, 0, 'Quản lý sản phầm', '', 1, 1, 'linea-icon linea-basic fa-fw', 1, '2018-03-12 08:08:31', '2018-03-07 17:42:49'),
+(16, 14, 'Liên hệ', 'admin/contactOrder', 1, 10, 'linea-icon linea-basic fa-fw', 1, '2018-03-12 08:08:30', '2018-03-08 16:40:43'),
+(17, 11, 'Tin tức', 'admin/post', 1, 3, '', 1, '2018-03-12 11:05:21', '2018-03-12 12:05:21'),
+(18, 14, 'Sản phẩm', 'admin/product', 1, 1, '', 1, '2018-03-12 11:07:46', '2018-03-12 12:07:46');
 
 -- --------------------------------------------------------
 
@@ -393,24 +402,24 @@ CREATE TABLE IF NOT EXISTS `ci_partner` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `name_en` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
   `logo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `publish` tinyint(1) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `update_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `ci_partner`
 --
 
-INSERT INTO `ci_partner` (`id`, `name`, `description`, `name_en`, `description_en`, `logo`, `url`, `publish`, `created_date`, `update_date`) VALUES
-(1, 'đối tác 1', 'mô tả', 'client', 'desc', '/uploads/partners/bl31.jpg', 'google.com', 1, '2018-03-09 16:20:42', '2018-03-09 17:20:42'),
-(2, 'client 2', '', 'client 2', '', '/uploads/partners/studio4.jpg', 'google.com', 1, '2018-03-10 09:04:17', '2018-03-10 10:04:17'),
-(3, 'client 3', '', 'client 3', '', '/uploads/partners/studio11.jpg', 'google.com', 1, '2018-03-10 09:04:34', '2018-03-10 10:04:34');
+INSERT INTO `ci_partner` (`id`, `name`, `description`, `logo`, `url`, `publish`, `created_date`, `update_date`) VALUES
+(1, 'đối tác 3', 'mô tả', '/uploads/partners/fff5bdef6b5662ea856b305ee3be3b21.png', '', 1, '2018-03-12 10:39:50', '2018-03-12 11:39:50'),
+(2, 'Client 1', '', '/uploads/partners/57298b3a9599c93aa27163668bb9609f.png', '', 1, '2018-03-12 10:44:53', '2018-03-12 11:37:27'),
+(3, 'client 2', '', '/uploads/partners/f850726b50782640f34b5856e08eb0b6.png', '', 1, '2018-03-12 10:39:35', '2018-03-12 11:39:35'),
+(4, 'Client 4', '', '/uploads/partners/4d4139ecfff209560bfcbe3a62efcf1f.png', '', 1, '2018-03-12 10:40:03', '2018-03-12 11:40:03'),
+(5, 'Client 5', '', '/uploads/partners/c99e91cbab3c4446d1ba67192ddc6089.png', '', 1, '2018-03-12 10:40:19', '2018-03-12 11:40:19');
 
 -- --------------------------------------------------------
 
@@ -438,9 +447,9 @@ CREATE TABLE IF NOT EXISTS `ci_posts` (
 --
 
 INSERT INTO `ci_posts` (`id`, `title`, `description`, `short_content`, `content`, `featured_image`, `slug`, `type`, `language`, `created_date`) VALUES
-(1, 'Test 1', 'Description Test 123', 'Des test 1', '<p>Content Test 1</p>', '/uploads/posts/41.jpg', 'test-1', 'page', 'en', '2018-03-05 23:57:22'),
-(2, 'Test 123456', 'Test 123456', 'Test 123456', 'Test 123456', 'Test 123456', 'Test 123456', 'page', 'en', '2018-03-06 23:40:18'),
-(3, 'Test 123123', 'Test 123123', 'Test 123123', '<p>Test 123123</p>', '/uploads/posts/7.jpg', 'test-7', 'page', 'en', '2018-03-08 00:39:20');
+(1, 'Test 1', 'Description Test 123', 'Des test 1', '<p>Content Test 1</p>', '/uploads/posts/41.jpg', 'test-1', 'new', 'vn', '2018-03-05 23:57:22'),
+(2, 'Test 123456', 'Test 123456', 'Test 123456', 'Test 123456', 'Test 123456', 'Test 123456', 'new', 'vn', '2018-03-06 23:40:18'),
+(3, 'Test 123123', 'Test 123123', 'Test 123123', '<p>Test 123123</p>', '/uploads/posts/7.jpg', 'test-7', 'new', 'vn', '2018-03-08 00:39:20');
 
 -- --------------------------------------------------------
 
@@ -645,31 +654,32 @@ CREATE TABLE IF NOT EXISTS `ci_settings` (
   `value` text COLLATE utf8_unicode_ci NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=307 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=477 ;
 
 --
 -- Dumping data for table `ci_settings`
 --
 
 INSERT INTO `ci_settings` (`id`, `key`, `value`, `created_date`) VALUES
-(289, 'logoFE', '/uploads/system/landscape6.jpg', '2018-03-10 09:02:08'),
-(290, 'favicon', '/uploads/system/chair2.jpg', '2018-03-10 09:02:08'),
-(291, 'logoBE', '/uploads/system/bl5.jpg', '2018-03-10 09:02:08'),
-(292, 'defaultPageTitle', 'Lucjfer', '2018-03-10 09:02:08'),
-(293, 'copyrightOnFooter', 'Copyright 2014 - 2018 www.namvietplastic.com', '2018-03-10 09:02:08'),
-(294, 'googleAnalytics', 'googleAnalytics', '2018-03-10 09:02:08'),
-(295, 'facebook', 'https://www.facebook.com/', '2018-03-10 09:02:08'),
-(296, 'googleplus', 'https://google.com/', '2018-03-10 09:02:08'),
-(297, 'twitter', '', '2018-03-10 09:02:09'),
-(298, 'youtube', 'https://youtube.com/', '2018-03-10 09:02:09'),
-(299, 'instagram', '', '2018-03-10 09:02:09'),
-(300, 'pinterest', '', '2018-03-10 09:02:09'),
-(301, 'linkedin', '', '2018-03-10 09:02:09'),
-(302, 'companyAddress', 'tp hcm', '2018-03-10 09:02:09'),
-(303, 'companyAddress_en', '', '2018-03-10 09:02:09'),
-(304, 'companyCellPhone', '0162706224', '2018-03-10 09:02:09'),
-(305, 'companyPhone', '08.0000000', '2018-03-10 09:02:10'),
-(306, 'companyEmail', 'lucjfer0407@gmail.com', '2018-03-10 09:02:10');
+(458, 'logoFE', '/uploads/system/5a66c966cba05e93a5d827ce2ba132a9.jpg', '2018-03-12 09:53:57'),
+(459, 'favicon', '/uploads/system/chair2.jpg', '2018-03-12 09:53:57'),
+(460, 'logoBE', '', '2018-03-12 09:55:24'),
+(461, 'defaultPageTitle', 'Lucjfer', '2018-03-12 09:53:57'),
+(462, 'introduce', '<p>C&ocirc;ng ty TNHH TM - DV - SX Nhựa Nam Việt l&agrave; nh&agrave; sản xuất v&agrave; ph&acirc;n phối c&aacute;c sản phẩm từ nhựa Polycarbonate như: T&ocirc;n nhựa lấy s&aacute;ng Polycarbonate - Tấm lợp lấy s&aacute;ng Polycarbonate - Tấm lợp định h&igrave;nh... ti&ecirc;u chuẩn quốc tế h&agrave;ng đầu Việt Nam. Được th&agrave;nh lập năm 2011 với tư c&aacute;ch ph&aacute;p nh&acirc;n l&agrave; C&ocirc;ng ty TNHH TM - DV - SX Nhựa Nam Việt, c&oacute; trụ sở l&agrave;m việc tại 362 Điện Bi&ecirc;n Phủ, phường 17, quận B&igrave;nh Thạnh, TP. Hồ Ch&iacute; Minh.</p>\r\n', '2018-03-12 09:53:57'),
+(463, 'copyrightOnFooter', 'Copyright 2014 - 2018 www.namvietplastic.com', '2018-03-12 09:53:57'),
+(464, 'googleAnalytics', 'googleAnalytics', '2018-03-12 09:53:57'),
+(465, 'facebook', 'https://www.facebook.com/', '2018-03-12 09:53:57'),
+(466, 'googleplus', 'https://google.com/', '2018-03-12 09:53:57'),
+(467, 'twitter', '', '2018-03-12 09:53:57'),
+(468, 'youtube', 'https://youtube.com/', '2018-03-12 09:53:58'),
+(469, 'instagram', '', '2018-03-12 09:53:58'),
+(470, 'pinterest', '', '2018-03-12 09:53:58'),
+(471, 'linkedin', '', '2018-03-12 09:53:58'),
+(472, 'companyAddress', 'tp hcm', '2018-03-12 09:53:58'),
+(473, 'companyAddress_en', '', '2018-03-12 09:53:58'),
+(474, 'companyCellPhone', '0162706224', '2018-03-12 09:53:58'),
+(475, 'companyPhone', '08.0000000', '2018-03-12 09:53:58'),
+(476, 'companyEmail', 'lucjfer0407@gmail.com', '2018-03-12 09:53:58');
 
 -- --------------------------------------------------------
 
@@ -707,8 +717,8 @@ CREATE TABLE IF NOT EXISTS `ci_users` (
 --
 
 INSERT INTO `ci_users` (`id`, `role_id`, `application_id`, `username`, `email`, `password`, `password_hash`, `first_name`, `last_name`, `full_name`, `phone`, `gender`, `birth_date`, `verify_code`, `is_first_login`, `avarta`, `background`, `status`, `created_date`, `update_date`) VALUES
-(1, 1, 1, 'admin', 'lucjfer0407@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Lucjer', 'Devil', 'Lucjer Devil', '115', 'Nam', '0000-00-00', '', 0, '/uploads/admin/studio2.jpg', '/uploads/admin/landscape3.jpg', 1, '2018-03-09 16:03:50', '0000-00-00 00:00:00'),
-(2, 0, 2, '', 'lucjfer0407@gmail.com', '12345', '827ccb0eea8a706c4c34a16891f84e7b', 'ho', 'ten', 'ho ten', '', 'Nam', '2018-01-01', '', 0, '', '', 0, '2018-03-11 12:59:10', '2018-03-11 11:10:31');
+(1, 1, 1, 'admin', 'lucjfer0407@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Lucjer', 'Devil', 'Lucjer Devil', '115', 'Nam', '0000-00-00', '', 0, '/uploads/admin/257fae197f0739d58db77577b679f25b.png', '/uploads/admin/landscape3.jpg', 1, '2018-03-12 08:04:03', '0000-00-00 00:00:00'),
+(2, 0, 2, '', 'lucjfer0407@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ho', 'ten Ten', 'ten Ten ho', '', 'Nam', '2018-01-01', '', 0, '', '', 0, '2018-03-12 06:33:49', '2018-03-12 07:33:49');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
