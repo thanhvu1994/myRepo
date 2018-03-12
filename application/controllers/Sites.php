@@ -11,6 +11,8 @@ class Sites extends Front_Controller {
         $this->load->model('categories');
         $this->load->model('banner');
         $this->load->model('users');
+        $this->load->model('posts');
+        $this->load->database();
         $this->load->library('pagination');
     }
 
@@ -21,6 +23,7 @@ class Sites extends Front_Controller {
         $banners = $query->result('Banner');
         $data['banners'] = $banners;
         $data['categories'] = $this->categories->getDataFE();
+        $data['projects'] = $this->posts->getProjectsFE();
 
 		$this->load->view('layouts/index', $data);
     }
@@ -333,5 +336,49 @@ class Sites extends Front_Controller {
         }
         $data['template'] = 'sites/order';
         $this->load->view('layouts/index', $data);
+    }
+
+    public function news(){
+        $data['template'] = 'sites/news';
+
+        $config['base_url'] = base_url('sites/news');
+        $config['total_rows'] = $this->posts->countNews();
+        $config['per_page'] = 5;
+        $config['uri_segment'] = 3;
+        $config['use_page_numbers'] = TRUE;
+
+        $config["prev_tag_open"] = "<li id='pagination_previous_bottom' class='pagination_previous'>";
+        $config["prev_tag_close"] = "<li>";
+
+        $config["next_tag_open"] = "<li id='pagination_next_bottom' class='pagination_next'>";
+        $config["next_tag_open"] = "<li>";
+
+        $config["num_tag_open"] = "<li>";
+        $config["num_tag_close"] = "</li>";
+
+        $config["cur_tag_open"] = "<li><span>";
+        $config["cur_tag_close"] = "</span></li>";
+
+        $this->pagination->initialize($config);
+
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $data['news'] = $this->posts->getNews($config["per_page"], $page);
+        $data["links"] = $this->pagination->create_links();
+
+        $this->load->view('layouts/index', $data);
+    }
+
+    public function newDetail($slug){
+        $data['template'] = 'sites/newDetail';
+        $data['new'] = $this->posts->get_model(array('slug' => $slug));
+
+        if($data['new']){
+            $this->db->where('id', $data['new']->id);
+            $this->db->update('posts', array('views' => $data['new']->views + 1));
+
+            $this->load->view('layouts/index', $data);
+        }else{
+            redirect('sites/index', 'refresh');
+        }
     }
 }

@@ -42,7 +42,7 @@
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/jquery/jquery-migrate-1.2.1.min.js')?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/jquery/plugins/jquery.easing.js')?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/tools.js')?>"></script>
-        <!-- <script type="text/javascript" src="<?php echo base_url('themes/website/js/global.js')?>"></script> -->
+        <script type="text/javascript" src="<?php echo base_url('themes/website/js/global.js')?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/product.js')?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/autoload/10-bootstrap.min.js')?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('themes/website/js/autoload/15-jquery.total-storage.min.js')?>"></script>
@@ -69,6 +69,51 @@
 		<script type="text/javascript">
 			var contentOnly = false;
 		</script>
+        <script type="text/javascript">
+            var CUSTOMIZE_TEXTFIELD = 1;
+            var FancyboxI18nClose = 'đ&oacute;ng';
+            var FancyboxI18nNext = 'Tiếp';
+            var FancyboxI18nPrev = 'Về trước';
+            var ajax_allowed = true;
+            var ajaxsearch = true;
+            var baseDir = 'http://namvietplastic.com/';
+            var baseUri = 'http://namvietplastic.com/';
+            var blocksearch_type = 'top';
+            var comparator_max_item = 3;
+            var comparedProductsIds = [];
+            var contentOnly = false;
+            var customizationIdMessage = 'Tùy biến';
+            var delete_txt = 'Xóa';
+            var displayList = false;
+            var freeProductTranslation = 'Miễn phí!';
+            var freeShippingTranslation = 'Miễn phí vận chuyển!';
+            var generated_date = 1520761692;
+            var id_lang = 2;
+            var img_dir = 'http://namvietplastic.com/themes/default-bootstrap/img/';
+            var instantsearch = false;
+            var isGuest = 0;
+            var isLogged = 1;
+            var max_item = 'Bạn không thể thêm nhiều hơn 3 sản phẩm để so sánh';
+            var min_item = 'Xin vui lòng chọn ít nhất một sản phẩm';
+            var page_name = 'category';
+            var priceDisplayMethod = 0;
+            var priceDisplayPrecision = 2;
+            var quickView = true;
+            var removingLinkText = 'bỏ sản phẩm này từ giỏ hàng';
+            var roundMode = 2;
+            var search_url = 'http://namvietplastic.com/vn/search';
+            var static_token = '9484a9d90328732a68a516fd6bb77a2f';
+            var token = '8895b744db9860748466b57f29829dcb';
+            var usingSecureMode = false;
+        </script>
 	</head>
 	<body>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.12';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
 		<div id="page">
