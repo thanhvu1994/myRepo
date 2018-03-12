@@ -28,7 +28,7 @@
                                                 <ul>
                                                     <?php foreach($cate['child'] as $childCate): ?>
                                                     <li>
-                                                        <a href="<?php echo base_url('sites/category/'.$childCate['slug']); ?>" title="<?php echo $childCate['title']; ?>">
+                                                        <a href="<?php echo base_url('sites/category/'.$childCate['slug']); ?>" <?php echo ($cate['slug'] == $category->slug)? 'class="selected"': ''; ?> title="<?php echo $childCate['title']; ?>">
                                                             <?php echo $childCate['title']; ?>
                                                         </a>
                                                     </li>
