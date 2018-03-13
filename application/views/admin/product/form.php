@@ -38,6 +38,14 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-12">Short Content</label>
+                            <div class="col-md-12">
+                                <textarea class="form-control" name="short_content" rows="10" cols="80"><?php echo (isset($model)) ? $model->short_content : ''?></textarea>
+                                <?php echo form_error('short_content'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-md-12">Content</label>
                             <div class="col-md-12">
                                 <textarea class="form-control" name="content" id="editor-full" rows="10" cols="80"><?php echo (isset($model)) ? $model->content : ''?></textarea>
@@ -48,7 +56,7 @@
                         <div class="form-group">
                             <label class="col-md-12">Description</label>
                             <div class="col-md-12">
-                                    <textarea class="form-control" name="description" rows="10" cols="80"><?php echo (isset($model)) ? $model->description : ''?></textarea>
+                                    <textarea class="form-control" name="description" id="editor-full-2" rows="10" cols="80"><?php echo (isset($model)) ? $model->description : ''?></textarea>
                                 <?php echo form_error('description'); ?>
                             </div>
                         </div>
@@ -60,6 +68,54 @@
                                 <?php echo form_error('meta_description'); ?>
                             </div>
                         </div>
+
+                    <div class="form-group attribute-container">
+                        <label class="col-md-12">Attributes <a href="javascript:void(0)" onClick="addAttribute()"><span class="glyphicon glyphicon-plus"></span></a></label>
+                        <div class="attribute-input default-item">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" value="" name="attributes[]">
+                                <?php echo form_error('attributes'); ?>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" value="" name="attribute_values[]">
+                                <?php echo form_error('attribute_values'); ?>
+                            </div>
+                        </div>
+
+                        <?php if(isset($attribute) && !empty($attribute)): ?>
+                            <?php foreach($attribute as $key => $item): ?>
+                                <div class="attribute-input">
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" value="<?php echo $item->name; ?>" name="attributes[]">
+                                        <?php echo form_error('attributes'); ?>
+                                    </div>
+                                    <?php if(isset($attribute_value) && !empty($attribute_value)): ?>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" value="<?php echo $attribute_value[$item->id][0]->name; ?>" name="attribute_values[]">
+                                            <?php echo form_error('attribute_values'); ?>
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" value="" name="attribute_values[]">
+                                            <?php echo form_error('attribute_values'); ?>
+                                        </div>
+                                    <?php endif; ?>
+
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="attribute-input">
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" value="" name="attributes[]">
+                                    <?php echo form_error('attributes'); ?>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" value="" name="attribute_values[]">
+                                    <?php echo form_error('attribute_values'); ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
 
                         <div class="form-group">
                             <label class="col-md-12">Price</label>
@@ -74,6 +130,20 @@
                             <div class="col-md-12">
                                 <input type="number" class="form-control" value="<?php echo (isset($model)) ? $model->sale_price : ''?>" name="sale_price">
                                 <?php echo form_error('sale_price'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-12">Category</label>
+                            <div class="col-md-12">
+                                <select class="form-control" name="category">
+                                    <?php if(isset($categories)) : ?>
+                                        <?php foreach($categories as $id => $cate): ?>
+                                            <option value="<?php echo $id; ?>"><?php echo $cate; ?></option>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </select>
+                                <?php echo form_error('category'); ?>
                             </div>
                         </div>
 
@@ -101,9 +171,25 @@
                             <div class="col-md-12">
                                 <select class="form-control" name="feature">
                                     <option <?php echo (isset($model) && $model->feature == STATUS_ACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_ACTIVE; ?>">Active</option>
-                                    <option <?php echo (isset($model) && $model->feature == STATUS_INACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_ACTIVE; ?>">In-Active</option>
+                                    <option <?php echo (isset($model) && $model->feature == STATUS_INACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_INACTIVE; ?>">In-Active</option>
                                 </select>
                                 <?php echo form_error('feature'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-12">Product Images</label>
+                            <div class="col-md-12">
+                                <input type="file" name="product_image[]" class="dropify" multiple/>
+                                <?php if(isset($images) && !empty($images)): ?>
+                                    <?php foreach($images as $image): ?>
+                                        <div class="gallery">
+                                            <a target="_blank" href="<?php echo base_url($image->image); ?>">
+                                                <img style="max-height: 150px;" src="<?php echo base_url($image->image); ?>"/>
+                                            </a>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -112,7 +198,7 @@
                             <div class="col-md-12">
                                 <select class="form-control" name="status">
                                     <option <?php echo (isset($model) && $model->status == STATUS_ACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_ACTIVE; ?>">Active</option>
-                                    <option <?php echo (isset($model) && $model->status == STATUS_INACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_ACTIVE; ?>">In-Active</option>
+                                    <option <?php echo (isset($model) && $model->status == STATUS_INACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_INACTIVE; ?>">In-Active</option>
                                 </select>
                                 <?php echo form_error('status'); ?>
                             </div>
@@ -209,4 +295,15 @@
          filebrowserWindowWidth: '1000',
          filebrowserWindowHeight: '700'
      } );
+
+     CKEDITOR.replace( 'editor-full-2', {
+         filebrowserBrowseUrl: "<?php echo base_url('themes/admin/plugins/ckfinder/ckfinder.html')?>",
+         filebrowserUploadUrl: "<?php echo base_url('themes/admin/plugins/ckfinder/core/connector/php/connector.php').'?command=QuickUpload&type=Files' ?>",
+         filebrowserWindowWidth: '1000',
+         filebrowserWindowHeight: '700'
+     } );
+
+     function addAttribute(){
+         $('.attribute-input.default-item').clone().removeClass('default-item').appendTo( ".attribute-container" );
+     }
  </script>

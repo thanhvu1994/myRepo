@@ -7,6 +7,7 @@ class Post extends MY_Controller {
         parent::__construct();
         $config['upload_path']          = './uploads/posts';
         $config['allowed_types']        = 'jpg|png';
+        $config['encrypt_name']         = TRUE;
         $this->load->library('upload', $config);
     }
 
@@ -30,14 +31,16 @@ class Post extends MY_Controller {
         }
 
         if ($this->form_validation->run() == TRUE) {
+            $image = '';
             if (!$this->upload->do_upload('featured_image')) {
                 $data['error'] = $this->upload->display_errors();
             } else {
                 $uploadData = $this->upload->data();
                 $image = '/uploads/posts/'. $uploadData['file_name'];
-                $this->posts->set_model($image);
-                redirect('admin/post/index', 'refresh');
             }
+
+            $this->posts->set_model($image);
+            redirect('admin/post/index', 'refresh');
         }
 		$this->load->view('admin/layouts/index', $data);
     }
@@ -54,6 +57,7 @@ class Post extends MY_Controller {
                 $result['content'] = $model[0]->content;
                 $result['featured_image'] = $model[0]->featured_image;
                 $result['slug'] = $model[0]->slug;
+                $result['type'] = ucfirst($model[0]->type);
                 $result['language'] = ($model[0]->language == 'vn')? 'Tiếng Việt': 'English';
                 $result['created_date'] = $model[0]->created_date;
 

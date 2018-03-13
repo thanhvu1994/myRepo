@@ -37,6 +37,7 @@
                                                 <td><?php echo $model->description; ?></td>
                                                 <td><?php echo $model->short_content; ?></td>
                                                 <td><?php echo $model->featured_image; ?></td>
+                                                <td><?php echo ucfirst($model->type); ?></td>
                                                 <td><?php echo ($model->language == 'vn') ? 'Tiếng Việt' : 'English'; ?></td>
                                                 <td><?php echo $model->get_created_date() ?></td>
                                                 <td class="button-column">
@@ -181,6 +182,12 @@
                         <label for="show_in_menu" class="control-label col-md-3">Ngôn Ngữ:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="language" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="show_in_menu" class="control-label col-md-3">Loại:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="type" disabled>
                         </div>
                     </div>
                     <div class="form-group">

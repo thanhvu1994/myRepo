@@ -9,7 +9,6 @@ class Banner extends CI_Model {
 
     public function getRule() {
     	$rules = [
-    		// ['image', 'Image', 'trim|required'],
     	];
 
     	return $rules;
@@ -27,37 +26,20 @@ class Banner extends CI_Model {
 		}
 	}
 
-	public function set_model($image)
+	public function set_model($data_insert)
 	{
-	    $publish = $this->input->post('publish');
+	    $data_insert['created_date'] = date('Y-m-d H:i:s');
+	    $data_insert['update_date'] = date('Y-m-d H:i:s');
 
-	    $data = array(
-	        'name' => $this->input->post('name'),
-	        'button_name' => $this->input->post('button_name'),
-	        'url' => $this->input->post('url'),
-	        'image' => $image,
-	        'publish' => $publish,
-	        'update_date' => date('Y-m-d H:i:s'),
-	    );
-
-	    return $this->db->insert('banners', $data);
+	    return $this->db->insert('banners', $data_insert);
 	}
 
-	public function update_model($id, $image)
+	public function update_model($id, $data_insert)
 	{
-	    $publish = $this->input->post('publish');
-
-	    $data = array(
-	        'name' => $this->input->post('name'),
-	        'button_name' => $this->input->post('button_name'),
-	        'url' => $this->input->post('url'),
-	        'image' => $image,
-	        'publish' => $publish,
-	        'update_date' => date('Y-m-d H:i:s'),
-	    );
+	    $data_insert['update_date'] = date('Y-m-d H:i:s');
 
 	    $this->db->where('id', $id);
-        $this->db->update('banners', $data);
+        $this->db->update('banners', $data_insert);
 	}
 
 	public function delete_model($id) {

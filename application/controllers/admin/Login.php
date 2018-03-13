@@ -10,6 +10,7 @@ class Login extends CI_Controller {
 		$this->load->helper('cookie');
 		// load model user admin
 		$this->load->model('users');
+		$this->load->model('settings');
 	}
 
 	// Show login page
@@ -59,7 +60,7 @@ class Login extends CI_Controller {
 		// Removing session data
 		$sess_array = [];
 		$this->session->unset_userdata('logged_in', $sess_array);
-		redirect('index.php/admin/login', 'refresh');
+		redirect('admin/login', 'refresh');
 	}
 
 	public function rememberMe($cookie) {

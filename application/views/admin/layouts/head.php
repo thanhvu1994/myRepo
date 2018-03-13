@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-    <title>Agile Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap</title>
+    <title><?php echo $this->settings->get_param('defaultPageTitle') ?></title>
+    <link rel="icon" href="<?php echo base_url($this->settings->get_param('favicon')) ?>" type="image/x-icon"/>
+    <link rel="shortcut icon" href="<?php echo base_url($this->settings->get_param('favicon')) ?>" type="image/x-icon"/>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url('themes/admin/bootstrap/dist/css/bootstrap.min.css')?>" rel="stylesheet">
     <link href="<?php echo base_url('themes/admin/plugins/bower_components/datatables/jquery.dataTables.min.css')?>" rel="stylesheet" type="text/css" />
@@ -23,6 +25,8 @@
     <link href="<?php echo base_url('themes/admin/css/custom.css')?>" rel="stylesheet">
     <!-- color CSS -->
     <link href="<?php echo base_url('themes/admin/css/colors/default.css')?>" id="theme" rel="stylesheet">
+    <!-- morris CSS -->
+    <link href="<?php echo base_url('themes/admin/plugins/bower_components/morrisjs/morris.css')?>" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -6,9 +6,11 @@ class Partners extends MY_Controller {
     {
         parent::__construct();
         $this->load->model('partner');
+        $this->load->library('image_lib');
 
         $config['upload_path']          = './uploads/partners';
         $config['allowed_types']        = 'jpg|png';
+        $config['encrypt_name']         = TRUE;
         $this->load->library('upload', $config);
     }
 
@@ -53,9 +55,7 @@ class Partners extends MY_Controller {
             $model = $query->result('Partner');
             if (count($model) > 0) {
                 $result['name'] = $model[0]->name;
-                $result['name_en'] = $model[0]->name_en;
                 $result['description'] = $model[0]->description;
-                $result['description_en'] = $model[0]->description_en;
                 $result['url'] = $model[0]->url;
                 $result['logo'] = base_url($model[0]->logo);
                 $result['publish'] = $model[0]->get_publish();
@@ -74,7 +74,7 @@ class Partners extends MY_Controller {
         $data['title'] = 'Chỉnh sửa đối tác';
         $data['template'] = 'admin/partners/form';
         $model = $this->partner->get_model(['id' => $id]);
-        $old_logo = base_url($model->logo);
+        $old_logo = $model->logo;
         $data['model'] = $model;
         $data['link_submit'] = base_url('admin/partners/update/'.$id);
         $rules = $this->partner->getRule();
@@ -90,7 +90,9 @@ class Partners extends MY_Controller {
                     $data['error'] = $this->upload->display_errors();
                 } else {
                     $uploadData = $this->upload->data();
-                    unset($old_logo);
+                    if (is_file('.'.$old_logo)) {
+                        unlink('.'.$old_logo);
+                    }
                     $logo = '/uploads/partners/'. $uploadData['file_name'];
                     $this->partner->update_model($id, $logo);
                     redirect('admin/partners/index', 'refresh');

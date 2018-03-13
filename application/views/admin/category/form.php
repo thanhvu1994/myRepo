@@ -12,84 +12,105 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="white-box">
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#vng" aria-controls="vng" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-home"></i></span><span class="hidden-xs"> Tiếng việt</span></a></li>
-                <li role="presentation" class=""><a href="#eng" aria-controls="eng" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Tiếng Anh</span></a></li>
-            </ul>
             <!-- Tab panes -->
             <?php echo form_open_multipart($link_submit, ['class' => 'form-horizontal']); ?>
-                <div class="tab-content">
-                    <?php echo validation_errors(); ?>
-                    <div role="tabpanel" class="tab-pane active" id="vng">
-                        <div class="form-group">
-                            <label class="col-md-12">Tên danh mục</label>
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->category_name : ''?>" name="category_name" required>
-                                <?php echo form_error('category_name'); ?>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-12">Tiêu đề</label>
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->title : ''?>" name="title">
-                                <?php echo form_error('title'); ?>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-12">Mô tả</label>
-                            <div class="col-md-12">
-                                <textarea class="form-control" rows="5" name="description"><?php echo (isset($model)) ? $model->description : ''?></textarea>
-                                <?php echo form_error('description'); ?>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
+                <div class="form-group">
+                    <label class="col-md-12">Tên danh mục</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->category_name : ''?>" name="Categories[category_name]" required>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="eng">
-                        <div class="form-group">
-                            <label class="col-md-12">Tên danh mục</label>
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->category_name_en : ''?>" name="category_name_en">
-                                <?php echo form_error('category_name_en'); ?>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-12">Tiêu đề</label>
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->title_en : ''?>" name="title_en">
-                                <?php echo form_error('title_en'); ?>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-12">Mô tả</label>
-                            <div class="col-md-12">
-                                <textarea class="form-control" rows="5" name="description_en"><?php echo (isset($model)) ? $model->description_en : ''?></textarea>
-                                <?php echo form_error('description_en'); ?>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12">Tiêu đề</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->title : ''?>" name="Categories[title]">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12">Mô tả</label>
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="5" name="Categories[description]"><?php echo (isset($model)) ? $model->description : ''?></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-12">Đường dẫn</label>
                     <div class="col-md-12">
-                        <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->url : ''?>" name="url">
-                        <?php echo form_error('url'); ?>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-12">Parent</label>
-                    <div class="col-sm-12">
-                        <select class="form-control" name="parent_id">
-                            <option value="0"> -- Chọn lớp cha -- </option>
-                            <?php
-                            $id = isset($model) ? $model->id : 0;
-                            foreach ($this->categories->get_dropdown_category($id) as $category_id => $category_name): 
-                                $selected = ($model->parent_id == $category_id) ? 'selected' : '';
-                            ?>
-                                <option value="<?php echo $category_id?>" <?php echo $selected?>><?php echo $category_name?></option>
+                        <?php $url = isset($model) ? $model->url : '';?>
+                        <select class="form-control" name="Categories[url]">
+                            <option value="0"> -- Chọn đường dẫn -- </option>
+                            <?php foreach ($this->posts->get_dropdown_posts() as $post_url => $title): 
+                                    $selected = ($url == $post_url) ? 'selected' : ''; ?>
+                                <option value="<?php echo $post_url?>" <?php echo $selected?>><?php echo $title?></option>
                             <?php endforeach ?>
                         </select>
-                        <?php echo form_error('parent_id'); ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-12">Hình ảnh</label>
+                    <div class="col-sm-12">
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                            <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+                            <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new">Chọn Tệp</span> <span class="fileinput-exists">Thay đổi</span>
+                            <input type="file" name="thumb">
+                            </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Xóa</a>
+                        </div>
+                        <?php if (isset($model) && is_file('.'.$model->thumb)): ?>
+                            <div class="row">
+                                <div class="col-sm-3 m-t-10" id="thumb">
+                                    <div class="thumbnail">
+                                        <img src="<?php echo $model->get_image() ?>" width="100">
+                                        <span class="del-img-setting">x</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="checkbox" name="remove_img" id="remove_img" value="1" style="display: none">
+                        <?php endif ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-12">Kiểu Danh Mục</label>
+                    <div class="col-md-12">
+                        <select class="form-control" name="Categories[type]" id="type_category">
+                            <option <?php echo (isset($model) && $model->type == 'menu')? 'selected' : ''; ?> value="menu">Menu</option>
+                            <option <?php echo (isset($model) && $model->type == 'category')? 'selected' : ''; ?> value="category">Category</option>
+                        </select>
+                        <?php echo form_error('type'); ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-12">Ngôn ngữ</label>
+                    <div class="col-md-12">
+                        <?php $language = isset($model) ? $model->language : 'vn';?>
+                        <select class="form-control" name="Categories[language]" id="language">
+                            <?php foreach ($this->categories->language as $key => $value): 
+                                    $selected = ($language == $key) ? 'selected' : ''; ?>
+                                <option value="<?php echo $key?>" <?php echo $selected?>><?php echo $value?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-12">Lớp cha</label>
+                    <div class="col-sm-12">
+                        <?php
+                            $id = isset($model) ? $model->id : 0;
+                            $parent_id = isset($model) ? $model->parent_id : 0;
+                            $categories = $this->categories->get_dropdown_category($id);
+                        ?>
+                        <select class="form-control" name="Categories[parent_id]" id="parent_id">
+                            <option value="0"> -- Chọn lớp cha -- </option>
+                            <?php
+                            if (!empty($categories)) :
+                                foreach ($categories as $category_id => $category_name):
+                                    $selected = ($parent_id == $category_id) ? 'selected' : ''; ?>
+                                    <option value="<?php echo $category_id?>" <?php echo $selected?>><?php echo $category_name?></option>
+                                <?php endforeach;
+                            endif; ?>
+                        </select>
                     </div>
                 </div>
 
@@ -99,3 +120,24 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#language, #type_category').change(function() {
+            var id = '<?php echo isset($model) ? $model->id : 0 ?>';
+            $.ajax({
+                url: '<?php echo base_url('admin/category/changeParent')?>',
+                type: 'POST',
+                data: {language: $('#language').val(), id: id, type: $('#type_category').val()},
+                success: function (returndata) {
+                    $('#parent_id').html(returndata);
+                },
+            });
+        });
+
+        $('.del-img-setting').click(function() {
+            $('#remove_img').prop('checked', true);
+            $('#thumb').empty();
+        });
+    });
+</script>

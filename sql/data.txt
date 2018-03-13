@@ -18,3 +18,22 @@ CREATE TABLE `ci_posts` (
   `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+ALTER TABLE  `ci_users` ADD  `avarta` VARCHAR( 255 ) NOT NULL AFTER  `is_first_login` ;
+ALTER TABLE  `ci_users` ADD  `background` VARCHAR( 255 ) NOT NULL AFTER  `avarta` ;
+
+
+ALTER TABLE  `ci_categories` ADD  `display_order` INT NOT NULL AFTER  `thumb` ;
+
+ALTER TABLE  `ci_product_option` ADD  `product_id` VARCHAR( 10 ) NOT NULL AFTER  `id` ;
+ALTER TABLE `ci_product_option_value` DROP COLUMN `value`;
+
+ALTER TABLE `ci_product_option_value`
+ADD COLUMN `product_id`  int(11) NOT NULL AFTER `id`;
+
+ALTER TABLE  `ci_categories` CHANGE  `created_date`  `created_date` DATETIME ON UPDATE CURRENT_TIMESTAMP NOT NULL ;
+
+ALTER TABLE  `ci_categories` ADD  `language` TEXT NOT NULL AFTER  `display_order` ;
+ALTER TABLE  `ci_categories` CHANGE  `language`  `language` VARCHAR( 10 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ;
+
+ALTER TABLE  `ci_users` ADD  `birth_date` DATE NOT NULL AFTER  `gender` ;

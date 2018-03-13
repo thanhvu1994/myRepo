@@ -2,6 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 defined('STATUS_ACTIVE')  OR define('STATUS_ACTIVE', 1);
 defined('STATUS_INACTIVE')  OR define('STATUS_INACTIVE', 0);
+defined('STATUS_TEMP')  OR define('STATUS_TEMP', -1);
+defined('BE')  OR define('BE', 1);
+defined('FE')  OR define('FE', 2);
 /*
 |--------------------------------------------------------------------------
 | Display Debug backtrace

@@ -9,6 +9,7 @@ class Backmenus extends MY_Controller {
 
     public function index()
     {
+        $data['title'] = 'Quản lý menu';
         $data['template'] = 'admin/backmenus/index';
         $data['models'] = $this->menus->get_model();
 		$this->load->view('admin/layouts/index', $data);

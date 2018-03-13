@@ -3,7 +3,7 @@
         <h4 class="page-title"><?php echo $title ?></h4>
     </div>
     <?php
-        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Partners'];
+        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Quản lý đối tác'];
         $this->load->view('admin/layouts/breadcrumbs', ['breadcrumb' => $breadcrumb]);
      ?>
     <!-- /.col-lg-12 -->
@@ -63,43 +63,19 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#vng" aria-controls="vng" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-home"></i></span><span class="hidden-xs"> Tiếng việt</span></a></li>
-                    <li role="presentation" class=""><a href="#eng" aria-controls="eng" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Tiếng Anh</span></a></li>
-                </ul>
                 <form class="form-horizontal">
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="vng">
-                            <div class="form-group">
-                                <label for="name" class="control-label col-md-3">Tên đối tác:</label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="name" disabled>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="display_order" class="control-label col-md-3">Mô tả:</label>
-                                <div class="col-md-8">
-                                    <textarea type="text" class="form-control" id="description" disabled></textarea>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="eng">
-                            <div class="form-group">
-                                <label for="name_en" class="control-label col-md-3">Tên đối tác:</label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="name_en" disabled>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="display_order" class="control-label col-md-3">Mô tả:</label>
-                                <div class="col-md-8">
-                                    <textarea type="text" class="form-control" id="description_en" disabled></textarea>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label for="name" class="control-label col-md-3">Tên đối tác:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="name" disabled>
                         </div>
                     </div>
+                    <!-- <div class="form-group">
+                        <label for="display_order" class="control-label col-md-3">Mô tả:</label>
+                        <div class="col-md-8">
+                            <textarea type="text" class="form-control" id="description" disabled></textarea>
+                        </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="icon" class="control-label col-md-3">Logo:</label>
                         <div class="col-md-8">

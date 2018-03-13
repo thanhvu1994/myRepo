@@ -29,7 +29,7 @@
                         <tbody>
                             <tr>
                                 <th>Loại:</th>
-                                <td>TSP1080</td>
+                                <td><?php echo $model->getType() ?></td>
                             </tr>
                             <tr>
                                 <th>Tên khách hàng:</th>
@@ -70,7 +70,7 @@
                         <tbody class="m-t-30">
                             <tr>
                                 <th>Hình thức thanh toán:</th>
-                                <td>Ing Shoe Bag</td>
+                                <td><?php echo $model->get_type_payment() ?></td>
                             </tr>
                             <tr>
                                 <th>Địa điểm giao hàng:</th>
@@ -86,7 +86,11 @@
                             </tr>
                             <tr>
                                 <th>Tập tin đính kèm:</th>
-                                <td></td>
+                                <td>
+                                    <?php if (!empty($model->file)): ?>
+                                        <a href="<?php echo base_url($model->file) ?>"> Tải về</a>
+                                    <?php endif ?>
+                                </td>
                             </tr>
                             <tr>
                                 <th>Ghi chú:</th>
@@ -107,16 +111,22 @@
                                     <th>Chiều rộng/khổ</th>
                                     <th>Chiều dài</th>
                                     <th>Số lượng</th>
+                                    <th>Ngày yêu cầu</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Đặt hàng</td>
-                                    <td>dasd</td>
-                                    <td>dasd</td>
-                                    <td>dasd</td>
-                                    <td>san pham</td>
-                                </tr>
+                                <?php if (count($products) > 0): 
+                                foreach ($products as $product) :?>
+                                    <tr>
+                                        <td><?php echo $product->color ?></td>
+                                        <td><?php echo $product->thickness ?></td>
+                                        <td><?php echo $product->width ?></td>
+                                        <td><?php echo $product->length ?></td>
+                                        <td><?php echo $product->quantity ?></td>
+                                        <td><?php echo $product->get_created_date() ?></td>
+                                    </tr>
+                                <?php endforeach;
+                                endif ?>
                             </tbody>
                         </table>
                     </div>
