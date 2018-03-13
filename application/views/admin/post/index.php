@@ -21,16 +21,13 @@
                                 <table id="example23" class="display nowrap" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-                                            <th>Title</th>
-                                            <th>Description</th>
-                                            <th>Short Content</th>
-                                            <th>Content</th>
-                                            <th>Featured Image</th>
-                                            <th>Slug</th>
-                                            <th>Type</th>
-                                            <th>Language</th>
-                                            <th>Created Date</th>
-                                            <th>Action</th>
+                                            <th>Tiêu Đề</th>
+                                            <th>Miêu Tả</th>
+                                            <th>Nội Dung Ngắn</th>
+                                            <th>Ảnh Đại Diện</th>
+                                            <th>Ngôn Ngữ</th>
+                                            <th>Ngày tạo</th>
+                                            <th>Hành Động</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -39,9 +36,7 @@
                                                 <td><?php echo $model->title; ?></td>
                                                 <td><?php echo $model->description; ?></td>
                                                 <td><?php echo $model->short_content; ?></td>
-                                                <td><?php echo $model->content; ?></td>
                                                 <td><?php echo $model->featured_image; ?></td>
-                                                <td><?php echo $model->slug; ?></td>
                                                 <td><?php echo ucfirst($model->type); ?></td>
                                                 <td><?php echo ($model->language == 'vn') ? 'Tiếng Việt' : 'English'; ?></td>
                                                 <td><?php echo $model->get_created_date() ?></td>
@@ -148,31 +143,31 @@
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label for="menu_name" class="control-label col-md-3">Title:</label>
+                        <label for="menu_name" class="control-label col-md-3">Tiêu Đề:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="title" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="menu_link" class="control-label col-md-3">Description:</label>
+                        <label for="menu_link" class="control-label col-md-3">Miêu Tả:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="description" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="display_order" class="control-label col-md-3">Short Content:</label>
+                        <label for="display_order" class="control-label col-md-3">Nội Dung Ngắn:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="short_content" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="icon" class="control-label col-md-3">Content:</label>
+                        <label for="icon" class="control-label col-md-3">Nội Dung:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="content" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="parent_id" class="control-label col-md-3">Featured Image</label>
+                        <label for="parent_id" class="control-label col-md-3">Ảnh Đại Diện:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="featured_image" disabled>
                         </div>
@@ -184,19 +179,19 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="show_in_menu" class="control-label col-md-3">Language:</label>
+                        <label for="show_in_menu" class="control-label col-md-3">Ngôn Ngữ:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="language" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="show_in_menu" class="control-label col-md-3">Type:</label>
+                        <label for="show_in_menu" class="control-label col-md-3">Loại:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="type" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="created_date" class="control-label col-md-3">Created Date:</label>
+                        <label for="created_date" class="control-label col-md-3">Ngày tạo:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="created_date" disabled>
                         </div>

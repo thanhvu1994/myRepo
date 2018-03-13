@@ -34,12 +34,8 @@
                                             </h4>
                                         </div>
                                         <div class="modal-body">
-                                            <a href="<?php echo $project->url; ?>" class="item-link" onclick="return ! window.open(this.href);" title="<?php echo $project->title; ?>">
-                                                <div class="item-html">
-                                                    <?php echo $project->content; ?>
-                                                    <p><a href="<?php echo $project->url; ?>">Xem chi tiết</a></p>
-                                                </div>
-                                            </a>
+                                            <?php echo $project->content; ?>
+                                            <p><a href="<?php echo $project->url; ?>">Xem chi tiết</a></p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close

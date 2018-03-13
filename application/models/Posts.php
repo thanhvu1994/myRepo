@@ -79,7 +79,7 @@ class Posts extends CI_Model {
 	}
 
 	public function get_dropdown_posts() {
-		$result = [];
+		$result = ['sites/news' => 'News'];
 		$posts = $this->get_model();
 		if (count($posts) > 0) {
 			foreach ($posts as $post) {

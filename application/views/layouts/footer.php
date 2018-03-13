@@ -19,7 +19,7 @@
 									echo '<ul class="product_images clearfix">';
 									foreach ($menuFooter as $menu) :?>
 				                        <li>
-				                            <a href="<?php echo base_url($menu->url) ?>" title="<?php echo $menu->category_name ?>">
+				                            <a href="<?php echo base_url('sites/category/'. $menu->slug) ?>" title="<?php echo $menu->category_name ?>">
 				                                <?php echo ucfirst($menu->category_name) ?>
 				                            </a>
 				                        </li>
@@ -37,31 +37,13 @@
 					        </div>
 		    				<div class="block_content">
 		                    	<ul class="product_images clearfix">
-		                            <li style="float: none">
-		                            	<a href="content/57-ton-lay-sang-mai-nha-may.html" title="Tôn nhựa lấy sáng mái - Thép không gỉ Long An">
-		                                Tôn nhựa lấy sáng mái - Thép không gỉ Long An
-		                            	</a>
-		                        	</li>
-		                        	<li style="float: none">
-			                            <a href="content/56-ton-nhua-lay-sang-mai-ton-vach-polycarbonate.html" title="Tôn nhựa lấy sáng mái - Tôn vách polycarbonate">
-			                                Tôn nhựa lấy sáng mái - Tôn vách polycarbonate
-			                            </a>
-			                        </li>
-		                            <li style="float: none">
-				                        <a href="content/54-bang-mau-polycarbonate.html" title="Bảng màu sản phẩm">
-				                            Bảng màu sản phẩm
-				                        </a>
-				                    </li>
-		                            <li style="float: none">
-		                            	<a href="content/53-tuyen-dung-nhan-vien-ke-toan-kho.html" title="Tuyển dụng Nhân viên Kế Toán Kho">
-			                                Tuyển dụng Nhân viên Kế Toán Kho
-			                            </a>
-			                        </li>
-		                            <li style="float: none">
-			                            <a href="content/52-tuyen-dung-nhan-vien-thu-kho-quan-ly-kho.html" title="Tuyển dụng Nhân viên Thủ Kho - Quản Lý Kho">
-			                                Tuyển dụng Nhân viên Thủ Kho - Quản Lý Kho
-			                            </a>
-			                        </li>
+                                    <?php foreach($news as $new): ?>
+                                        <li style="float: none">
+                                            <a href="<?php echo base_url('sites/newDetail'. $new->slug); ?>" title="<?php echo $new->title; ?>">
+                                                <?php echo $new->title; ?>
+                                            </a>
+                                        </li>
+                                    <?php endforeach; ?>
 		                        </ul>
 		            		</div>
 						</div>
