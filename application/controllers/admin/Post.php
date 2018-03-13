@@ -81,10 +81,13 @@ class Post extends MY_Controller {
         }
 
         if ($this->form_validation->run() == TRUE) {
+            $oldModel = $this->posts->get_model(array('id' => $id));
             if (!$this->upload->do_upload('featured_image')) {
                 $data['error'] = $this->upload->display_errors();
+
+                $this->posts->update_model($id,$oldModel[0]->featured_image);
+                redirect('admin/post/index', 'refresh');
             } else {
-                $oldModel = $this->posts->get_model();
                 $path = '.'.$oldModel[0]->featured_image;
                 @unlink($path);
 
