@@ -24,6 +24,7 @@ class Sites extends Front_Controller {
         $data['banners'] = $banners;
         $data['categories'] = $this->categories->getDataFE();
         $data['projects'] = $this->posts->getProjectsFE();
+        $data['news'] = $this->posts->getNews(6,0);
 
 		$this->load->view('layouts/index', $data);
     }

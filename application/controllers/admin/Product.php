@@ -25,7 +25,7 @@ class Product extends MY_Controller {
         $data['scenario'] = 'create';
         $data['newCode'] = $this->products->generateCode();
         $data['newSlug'] = $this->products->generateSlug();
-        $data['categories'] = $this->categories->get_dropdown_category(0);
+        $data['categories'] = $this->categories->get_dropdown_category(0, 'category');
 
         $rules = $this->products->getRule();
         foreach ($rules as $rule) {
@@ -126,7 +126,7 @@ class Product extends MY_Controller {
         $data['newSlug'] = $this->products->generateSlug();
         $data['attribute'] = $this->productOption->get_model($id);
         $data['attribute_value'] = array();
-        $data['categories'] = $this->categories->get_dropdown_category(0);
+        $data['categories'] = $this->categories->get_dropdown_category(0, 'category');
 
         foreach( $data['attribute'] as $key => $item){
             $data['attribute_value'][$item->id] = $this->productOptionValue->get_model($item->id);

@@ -8380,3 +8380,7 @@ div.uploader input {
 #block_top_menu > ul > li.sf-search.noBack{
     display: none;
 }
+.modal-body img{
+    object-fit: cover;
+    width: 100%;
+}

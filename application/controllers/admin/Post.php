@@ -89,10 +89,10 @@ class Post extends MY_Controller {
             if (!$this->upload->do_upload('featured_image')) {
                 $data['error'] = $this->upload->display_errors();
 
-                $this->posts->update_model($id,$oldModel[0]->featured_image);
+                $this->posts->update_model($id,$oldModel->featured_image);
                 redirect('admin/post/index', 'refresh');
             } else {
-                $path = '.'.$oldModel[0]->featured_image;
+                $path = '.'.$oldModel->featured_image;
                 @unlink($path);
 
                 $uploadData = $this->upload->data();
