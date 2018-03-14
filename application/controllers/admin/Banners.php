@@ -60,7 +60,7 @@ class Banners extends MY_Controller {
     }
 
     public function update($id) {
-        $data['title'] = 'Update Slider';
+        $data['title'] = 'Chỉnh sửa Slider';
         $data['template'] = 'admin/banners/form';
         $model = $this->banner->get_model(['id' => $id]);
         $data['model'] = $model;
@@ -109,6 +109,38 @@ class Banners extends MY_Controller {
         } else {
             echo 0;
         }
+    }
+
+    public function ajaxPublish() {
+        if (!$this->input->is_ajax_request()) {
+            exit('No direct script access allowed');
+        }
+
+        $id = $this->input->post('id');
+        $publish = $this->input->post('publish');
+        $model = $this->banner->get_model(['id' => $id]);
+
+        if (count($model) > 0) {
+            $data_update['publish'] = $publish;
+            $this->db->where('id', $id);
+            $this->db->update('banners', $data_update);
+        }
+    }
+
+    public function bulkDelete() {
+        $deleteItems = isset($_POST['select']) ? $_POST['select'] : [];
+
+        if (!empty($deleteItems)) {
+            $query = $this->db->query("SELECT * FROM ci_banners WHERE id in(".implode(',', $deleteItems).")");
+            $models = $query->result('Banner');
+            foreach ($models as $model) {
+                if (is_file('.'.$model->image)) {
+                    unlink('.'.$model->image);
+                }
+                $this->banner->delete_model($model->id);
+            }
+        }
+        redirect('admin/banners/index', 'refresh');
     }
 
 }

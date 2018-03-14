@@ -9,48 +9,54 @@
     <!-- /.col-lg-12 -->
 </div>
 <!-- /row -->
+
 <div class="row">
     <div class="col-sm-12">
         <div class="white-box">
             <div class="row m-b-30">
-                <div class="col-lg-2 col-sm-4 col-xs-12">
-                    <a href="<?php echo base_url('admin/banners/create')?>" class="btn btn-block btn-default">Thêm mới</a>
+                <div class="col-xs-12">
+                    <a href="<?php echo base_url('admin/banners/create')?>" class="btn btn-create"><i class="fa fa-plus"></i> Thêm mới</a>
+                    <btn data-href="<?php echo base_url('admin/banners/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</btn>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12">
                     <div class="table-responsive">
-                        <table id="example23" class="display nowrap" cellspacing="0" width="100%">
-                            <thead>
-                                <tr>
-                                    <th>Tiêu đề Slider</th>
-                                    <th>Tên nút Slider</th>
-                                    <th>Đường dẫn</th>
-                                    <th>Hình ảnh</th>
-                                    <th>Hiển thị</th>
-                                    <th>Ngày tạo</th>
-                                    <th>Ngày cập nhật</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($models as $model): ?>
-                                    <tr id="tr-<?php echo $model->id?>">
-                                        <td><?php echo $model->name ?></td>
-                                        <td><?php echo $model->button_name ?></td>
-                                        <td><?php echo $model->url ?></td>
-                                        <td><img src="<?php echo $model->get_image() ?>" alt="<?php echo $model->name ?>" width="100"></td>
-                                        <td><?php echo $model->get_publish() ?></td>
-                                        <td><?php echo $model->get_created_date() ?></td>
-                                        <td><?php echo $model->get_update_date() ?></td>
-                                        <td class="button-column">
-                                            <a href="<?php echo base_url('admin/banners/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)" class="button-delete" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
-                                        </td>
+                        <form enctype="multipart/form-data" id="index_grid-bulk" action="" method="post">
+                            <table id="example23" class="display nowrap" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th class="no-sort text-center"><input type="checkbox" name="" id="select_all"></th>
+                                        <th>Tiêu đề Slider</th>
+                                        <th>Tên nút Slider</th>
+                                        <th>Đường dẫn</th>
+                                        <th>Hình ảnh</th>
+                                        <th>Hiển thị</th>
+                                        <th>Ngày cập nhật</th>
+                                        <th>Action</th>
                                     </tr>
-                                <?php endforeach ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($models as $model): ?>
+                                        <tr id="tr-<?php echo $model->id?>">
+                                            <td class="text-center check-element"><input type="checkbox" name="select[]" value="<?php echo $model->id ?>"></td>
+                                            <td><?php echo $model->name ?></td>
+                                            <td><?php echo $model->button_name ?></td>
+                                            <td><?php echo $model->url ?></td>
+                                            <td><img src="<?php echo $model->get_image() ?>" alt="<?php echo $model->name ?>" width="100"></td>
+                                            <td><?php $checked = $model->publish ? 'checked' : '' ?>
+                                                <input type="checkbox" <?php echo $checked ?> class="js-switch publish-ajax" data-color="#13dafe" data-id="<?php echo $model->id ?>" value="1"/>
+                                            </td>
+                                            <td><?php echo $model->get_update_date() ?></td>
+                                            <td class="button-column">
+                                                <a " href="<?php echo base_url('admin/banners/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
+                                                <a href="javascript:void(0)" class="button-delete" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -59,74 +65,20 @@
 </div>
 <!-- /.row -->
 
-<div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="menu_name" class="control-label col-md-3">Menu Name:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="menu_name" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="menu_link" class="control-label col-md-3">Menu Link:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="menu_link" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="display_order" class="control-label col-md-3">Display Order:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="display_order" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="icon" class="control-label col-md-3">Icon:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="icon" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="parent_id" class="control-label col-md-3">Parent:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="parent_id" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="show_in_menu" class="control-label col-md-3">Show in menu:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="show_in_menu" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="created_date" class="control-label col-md-3">Created Date:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="created_date" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="update_date" class="control-label col-md-3">Update Date:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="update_date" disabled>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
     $(document).ready(function() {
         $('#example23').DataTable();
+
+        $('#select_all').change(function() {
+            var checkboxes = $(this).closest('table').find(':checkbox');
+            checkboxes.prop('checked', $(this).is(':checked'));
+        });
+        $("input[type='checkbox'].check-element").change(function(){
+            var a = $("input[type='checkbox'].check-element");
+            if(a.length == a.filter(":checked").length){
+                alert('all checked');
+            }
+        });
         $('.button-delete').click(function() {
             if (confirm('Are you sure want to delete this item?')) {
                 var id = $(this).data('id');
@@ -139,6 +91,40 @@
                         }
                     }
                 });
+            }
+        });
+        $('.publish-ajax').on('change', function() {
+            var id = $(this).data('id');
+            var publish;
+            if ($(this).is(':checked')) {
+                publish = 1;
+            } else {
+                publish = 0;
+            }
+
+            $.ajax({
+                url: '<?php echo base_url('admin/banners/ajaxPublish')?>',
+                type: 'POST',
+                data: {id: id, publish: publish},
+                success: function (returndata) {
+                }
+            });
+        });
+        $('.bulk-delete').click(function() {
+            var atLeastOneIsChecked = $('input[name=\"select[]\"]:checked').length > 0;
+            var actionUrl = $('.bulk-delete').data('href');
+            if (!atLeastOneIsChecked)
+            {
+                alert('Chọn ít nhất 1 dữ liệu bạn muốn xóa.');
+            }
+            else if (window.confirm('Bạn có chắc muốn xóa những dữ liệu đã chọn?'))
+            {
+                var formObj = $('.table-responsive').find('form');
+                if (formObj)
+                {
+                    document.getElementById(formObj.attr('id')).action = actionUrl;
+                    document.getElementById(formObj.attr('id')).submit();
+                }
             }
         });
     });

@@ -14,7 +14,7 @@ class Products extends CI_Model {
             ['product_code', 'Product Code', 'trim|required'],
             ['product_name', 'Product Name', 'trim|required'],
             ['title', 'Title', 'trim|required'],
-            ['slug', 'Slug', 'trim|required'],
+            // ['slug', 'Slug', 'trim|required'],
             ['description', 'Description', 'trim|required'],
             ['meta_description', 'Meta Description', 'trim|required'],
             ['content', 'Content', 'trim|required'],

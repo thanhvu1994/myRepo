@@ -23,18 +23,18 @@
                                     <th>Tên công ty</th>
                                     <th>Mã số thuế</th>
                                     <th>Tên sản phẩm</th>
-                                    <th>Created Date</th>
+                                    <th>Ngày tạo</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($models as $model): ?>
                                     <tr id="tr-<?php echo $model->id?>">
-                                        <td>Đặt hàng</td>
+                                        <td><?php echo $model->getType() ?></td>
                                         <td><?php echo $model->customer_name ?></td>
                                         <td><?php echo $model->company_name ?></td>
                                         <td><?php echo $model->tax_code ?></td>
-                                        <td>san pham</td>
+                                        <td><?php echo $model->getProductName() ?></td>
                                         <td><?php echo $model->get_created_date() ?></td>
                                         <td class="button-column">
                                             <a href="<?php echo base_url('admin/contactOrder/view/'.$model->id)?>"><i class="fa fa-eye"></i></a>

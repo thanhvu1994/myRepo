@@ -13,13 +13,14 @@ class Product extends MY_Controller {
 
     public function index()
     {
+        $data['title'] = 'Quản lý sản phẩm';
         $data['template'] = 'admin/product/index';
         $data['models'] = $this->products->get_model();
         $this->load->view('admin/layouts/index', $data);
     }
 
     public function create() {
-        $data['title'] = 'Create a Product';
+        $data['title'] = 'Tạo sản phẩm';
         $data['template'] = 'admin/product/form';
         $data['link_submit'] = base_url('admin/product/create');
         $data['scenario'] = 'create';
@@ -116,7 +117,7 @@ class Product extends MY_Controller {
 
     public function update($id) {
         $arrFiles = array();
-        $data['title'] = 'Update a Product';
+        $data['title'] = 'Chỉnh sửa sản phẩm';
         $data['template'] = 'admin/product/form';
         $data['model'] = $this->products->get_model(['id' => $id]);
         $data['images'] = $this->productImages->get_images($id);
@@ -222,5 +223,35 @@ class Product extends MY_Controller {
         }
 
         return $file_ary;
+    }
+
+    public function ajaxPublish() {
+        if (!$this->input->is_ajax_request()) {
+            exit('No direct script access allowed');
+        }
+
+        $id = $this->input->post('id');
+        $publish = $this->input->post('publish');
+        $model = $this->products->get_model(['id' => $id]);
+
+        if (count($model) > 0) {
+            $data_update['status'] = $publish;
+            $this->db->where('id', $id);
+            $this->db->update('products', $data_update);
+        }
+    }
+
+    public function bulkDelete() {
+        $deleteItems = isset($_POST['select']) ? $_POST['select'] : [];
+
+        if (!empty($deleteItems)) {
+            $query = $this->db->query("SELECT * FROM ci_products WHERE id in(".implode(',', $deleteItems).")");
+            $models = $query->result('Products');
+            foreach ($models as $model) {
+                $this->productImages->delete_all_model($model->id);
+                $this->products->delete_model($model->id);
+            }
+        }
+        redirect('admin/product/index', 'refresh');
     }
 }

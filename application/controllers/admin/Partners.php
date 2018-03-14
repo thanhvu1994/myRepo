@@ -116,4 +116,36 @@ class Partners extends MY_Controller {
             echo 0;
         }
     }
+
+    public function ajaxPublish() {
+        if (!$this->input->is_ajax_request()) {
+            exit('No direct script access allowed');
+        }
+
+        $id = $this->input->post('id');
+        $publish = $this->input->post('publish');
+        $model = $this->partner->get_model(['id' => $id]);
+
+        if (count($model) > 0) {
+            $data_update['publish'] = $publish;
+            $this->db->where('id', $id);
+            $this->db->update('partner', $data_update);
+        }
+    }
+
+    public function bulkDelete() {
+        $deleteItems = isset($_POST['select']) ? $_POST['select'] : [];
+
+        if (!empty($deleteItems)) {
+            $query = $this->db->query("SELECT * FROM ci_partner WHERE id in(".implode(',', $deleteItems).")");
+            $models = $query->result('Partner');
+            foreach ($models as $model) {
+                if (is_file('.'.$model->logo)) {
+                    unlink('.'.$model->logo);
+                }
+                $this->partner->delete_model($model->id);
+            }
+        }
+        redirect('admin/partners/index', 'refresh');
+    }
 }

@@ -1,10 +1,6 @@
 <?php
 class Categories extends CI_Model {
 
-	public $language = [
-		'vn' => 'Tiếng Việt',
-		'en' => 'Tiếng Anh',
-	];
     public function __construct()
     {
 	    $this->load->database();
@@ -27,7 +23,7 @@ class Categories extends CI_Model {
 
         	return $query->row('1', 'Categories');
 		} else {
-			$query = $this->db->query("SELECT * FROM ci_categories ORDER BY language, display_order asc, category_name asc");
+			$query = $this->db->query("SELECT * FROM ci_categories ORDER BY display_order asc, category_name asc");
 			return $query->result('Categories');
 		}
 	}
@@ -72,26 +68,11 @@ class Categories extends CI_Model {
 
 	    $this->db->where('id', $id);
         $this->db->update('categories', $data_insert);
-        $this->update_all_language($id, $data_insert['language']);
 	}
 
-	public function update_all_language($id, $language) {
-		$query = $this->db->query("SELECT * FROM ci_categories WHERE parent_id = ".$id);
-		$models =  $query->result('Categories');
-
-		if (count($models) > 0) {
-			$data_update['language'] = $language;
-			foreach ($models as $model) {
-				$this->db->where('id', $model->id);
-        		$this->db->update('categories', $data_update);
-        		$this->update_all_language($model->id, $language);
-			}
-		}
-	}
-
-	public function rChilds($parent_id, &$items, $level, $id, $type, $language) {
+	public function rChilds($parent_id, &$items, $level, $id, $type) {
 		if ($level <= 1) {
-			$query = $this->db->query("SELECT * FROM ci_categories WHERE language = '".$language."' AND parent_id = ".$parent_id." AND id != ".$id.' AND type = "'.$type.'"');
+			$query = $this->db->query("SELECT * FROM ci_categories WHERE parent_id = ".$parent_id." AND id != ".$id.' AND type = "'.$type.'"');
 			$childs = $query->result('Categories');
 
 			if (count($childs) > 0) {
@@ -102,21 +83,21 @@ class Categories extends CI_Model {
 				$level++;
 				foreach ($childs as $child) {
 					$items[$child->id] = $str.$child->category_name;
-					$this->rChilds($child->id, $items, $level, $id, $type, $language);
+					$this->rChilds($child->id, $items, $level, $id, $type);
 				}
 			}
 		}
 	}
 
-	public function get_dropdown_category($id, $type = 'menu', $language = 'vn') {
+	public function get_dropdown_category($id, $type = 'menu') {
 		$items = [];
-		$query = $this->db->query('SELECT * FROM ci_categories WHERE language = "'.$language.'" AND parent_id = 0 AND id != '.$id.' AND type = "'.$type.'"');
+		$query = $this->db->query('SELECT * FROM ci_categories WHERE parent_id = 0 AND id != '.$id.' AND type = "'.$type.'"');
 		$parents = $query->result('Categories');
 		$level = 1;
 		if (count($parents) > 0) {
 			foreach ($parents as $row) {
 				$items[$row->id] = $row->category_name;
-				$this->rChilds($row->id, $items, $level, $id, $type, $language);
+				$this->rChilds($row->id, $items, $level, $id, $type);
 			}
 		}
 

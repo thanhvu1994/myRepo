@@ -28,6 +28,9 @@ class Banner extends CI_Model {
 
 	public function set_model($data_insert)
 	{
+		if (!isset($data_insert['publish'])) {
+	    	$data_insert['publish'] = 0;
+	    }
 	    $data_insert['created_date'] = date('Y-m-d H:i:s');
 	    $data_insert['update_date'] = date('Y-m-d H:i:s');
 
@@ -37,7 +40,9 @@ class Banner extends CI_Model {
 	public function update_model($id, $data_insert)
 	{
 	    $data_insert['update_date'] = date('Y-m-d H:i:s');
-
+	    if (!isset($data_insert['publish'])) {
+	    	$data_insert['publish'] = 0;
+	    }
 	    $this->db->where('id', $id);
         $this->db->update('banners', $data_insert);
 	}

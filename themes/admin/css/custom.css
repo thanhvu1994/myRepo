@@ -2,9 +2,10 @@
 	padding: 5px 8px 5px 8px;
     margin-right: 5px;
     border-radius: 3px;
-    border: solid 1px #231f1f;
+    border: solid 1px gray;
     font-size: 16px;
-    background-color: #eaeaea;
+    background-color: red;
+    color: #fff;
 }
 
 div.gallery {
@@ -47,4 +48,8 @@ body, h1, h2, h3, h4, h5, h6{
 }
 .no-sort:after {
      display:none !important;
+}
+.btn-create{
+    background-color: #13dafe;
+    color: #fff;
 }

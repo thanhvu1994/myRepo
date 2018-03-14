@@ -126,15 +126,14 @@ class Category extends MY_Controller {
         if (!$this->input->is_ajax_request()) {
            exit('No direct script access allowed');
         }
-        if (isset($_POST['language']) && isset($_POST['type'])) {
-            $language = $_POST['language'];
+        if (isset($_POST['type'])) {
             $type = $_POST['type'];
             if (isset($_POST['id']) && !empty($_POST['id'])) {
                 $id = $_POST['id'];
             } else {
                 $id = 0;
             }
-            $categories = $this->categories->get_dropdown_category($id, $type, $language);
+            $categories = $this->categories->get_dropdown_category($id, $type);
 
             $data = '<option value="0"> -- Chọn lớp cha -- </option>';
             if (!empty($categories)) {
@@ -144,5 +143,18 @@ class Category extends MY_Controller {
             }
             echo $data;
         }
+    }
+
+    public function bulkDelete() {
+        $deleteItems = isset($_POST['select']) ? $_POST['select'] : [];
+
+        if (!empty($deleteItems)) {
+            $query = $this->db->query("SELECT * FROM ci_categories WHERE id in(".implode(',', $deleteItems).")");
+            $models = $query->result('Categories');
+            foreach ($models as $model) {
+                $this->categories->delete_model($model->id);
+            }
+        }
+        redirect('admin/category/index', 'refresh');
     }
 }

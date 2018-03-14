@@ -49,17 +49,26 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-12">
-                        <div class="checkbox checkbox-success">
-                            <?php $checked = isset($model) && $model->publish == true ? 'checked' : '' ?>
-                            <input id="publish" name="Banner[publish]" type="checkbox" value="1" <?php echo $checked ?>>
-                            <label for="publish">Hiển thị</label>
-                        </div>
+                    <label for="publish" class="col-md-12">Hiển thị</label>
+                    <div class="col-md-12">
+                        <?php $checked = isset($model) && $model->publish == true ? 'checked' : '' ?>
+                        <input type="checkbox" <?php echo $checked ?> class="js-switch publish-ajax" data-color="#13dafe" value="1" id="publish" name="Banner[publish]"/>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Lưu</button>
-                <a href="<?php echo base_url('admin/banners')?>" class="btn btn-inverse waves-effect waves-light">Hủy</a>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Lưu</button>
+                    <a href="<?php echo base_url('admin/banners')?>" class="btn btn-inverse waves-effect waves-light">Hủy</a>
+                </div>
             <?php echo form_close(); ?>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var drEvent = $('.dropify').dropify();
+        drEvent.on('dropify.beforeClear', function(event, element){
+            return confirm("Bạn có chắc chắn muốn xóa hình này ?");
+        });
+    })
+</script>

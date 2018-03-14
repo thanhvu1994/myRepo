@@ -75,4 +75,13 @@ class Contact extends CI_Model {
 
 		return '';
 	}
+
+	public function getProductName() {
+		$products = $this->contactPro->getAll($this->id);
+        if (isset($products[0])) {
+            return $products[0]->getProductName();
+        }
+
+        return '';
+	}
 }
