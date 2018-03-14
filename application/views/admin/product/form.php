@@ -73,7 +73,7 @@
                         <label class="col-md-12">Attributes <a href="javascript:void(0)" onClick="addAttribute()"><span class="glyphicon glyphicon-plus"></span></a></label>
                         <div class="attribute-input default-item">
                             <div class="col-md-4">
-                                <input type="text" class="form-control" value="" name="attributes[]">
+                                <input type="text" class="form-control att-input" value="" name="attributes[]" list="options">
                                 <?php echo form_error('attributes'); ?>
                             </div>
                             <div class="col-md-8">
@@ -86,7 +86,7 @@
                             <?php foreach($attribute as $key => $item): ?>
                                 <div class="attribute-input">
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control" value="<?php echo $item->name; ?>" name="attributes[]">
+                                        <input type="text" class="form-control att-input" value="<?php echo $item->name; ?>" name="attributes[]" list="options">
                                         <?php echo form_error('attributes'); ?>
                                     </div>
                                     <?php if(isset($attribute_value) && !empty($attribute_value)): ?>
@@ -100,13 +100,12 @@
                                             <?php echo form_error('attribute_values'); ?>
                                         </div>
                                     <?php endif; ?>
-
                                 </div>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <div class="attribute-input">
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" value="" name="attributes[]">
+                                    <input type="text" class="form-control att-input" value="" name="attributes[]" list="options">
                                     <?php echo form_error('attributes'); ?>
                                 </div>
                                 <div class="col-md-8">
@@ -115,6 +114,19 @@
                                 </div>
                             </div>
                         <?php endif; ?>
+
+                        <datalist id="options">
+                            <option value="Color">Màu Sắc</option>
+                            <option value="Size">Kích Cỡ</option>
+                            <option value="Material">Chất Liệu</option>
+                        </datalist>
+                        <script>
+                            $('.att-input').change(function(){
+                                if($(this).closest('input').val() === 'Color'){
+                                    $(this).closest('input').asColorPicker();
+                                }
+                            });
+                        </script>
                     </div>
 
                         <div class="form-group">

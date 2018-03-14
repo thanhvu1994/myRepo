@@ -23,14 +23,14 @@
                                         <tr>
                                             <th>Mã</th>
                                             <th>Tên</th>
-                                            <th>Tiêu Đề</th>
+                                            <!--<th>Tiêu Đề</th>
                                             <th>Nội dung</th>
                                             <th>Mô tả</th>
                                             <th>Giá Cũ</th>
                                             <th>Giá Mới</th>
-                                            <th>Danh Mục</th>
+                                            <th>Danh Mục</th>-->
                                             <th>Trạng Thái</th>
-                                            <th>Ngôn ngữ</th>
+                                            <!--<th>Ngôn ngữ</th>-->
                                             <th>Ngày tạo</th>
                                             <th>Hành động</th>
                                         </tr>
@@ -40,17 +40,17 @@
                                             <tr id="tr-<?php echo $model->id?>">
                                                 <td><?php echo $model->product_code; ?></td>
                                                 <td><?php echo $model->product_name; ?></td>
-                                                <td><?php echo $model->title; ?></td>
-                                                <td><?php echo $model->content; ?></td>
-                                                <td><?php echo $model->description; ?></td>
-                                                <td><?php echo $model->price; ?></td>
-                                                <td><?php echo $model->sale_price; ?></td>
-                                                <td><?php echo $model->getCategory(); ?></td>
+                                                <!--<td><?php /*echo $model->title; */?></td>
+                                                <td><?php /*echo $model->content; */?></td>
+                                                <td><?php /*echo $model->description; */?></td>
+                                                <td><?php /*echo $model->price; */?></td>
+                                                <td><?php /*echo $model->sale_price; */?></td>
+                                                <td><?php /*echo $model->getCategory(); */?></td>-->
                                                 <td><?php echo ($model->status == STATUS_ACTIVE) ? 'Hiện' : 'Ẩn'; ?></td>
-                                                <td><?php echo ($model->language == 'vn') ? 'Tiếng Việt' : 'English'; ?></td>
+                                                <!--<td><?php /*echo ($model->language == 'vn') ? 'Tiếng Việt' : 'English'; */?></td>-->
                                                 <td><?php echo $model->get_created_date() ?></td>
                                                 <td class="button-column">
-                                                    <a href="javascript:void(0)" class="button-view" data-id="<?php echo $model->id?>"><i class="fa fa-eye"></i></a>
+                                                    <!--<a href="javascript:void(0)" class="button-view" data-id="<?php /*echo $model->id*/?>"><i class="fa fa-eye"></i></a>-->
                                                     <a href="<?php echo base_url('admin/product/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
                                                     <a href="javascript:void(0)" class="button-delete" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
                                                 </td>
