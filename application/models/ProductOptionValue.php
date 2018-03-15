@@ -28,4 +28,15 @@ class ProductOptionValue extends CI_Model {
         $this->db->where('product_id', $product_id);
         $this->db->delete('product_option_value');
     }
+
+    public function getAttributeName($id){
+        $query = $this->db->get_where('product_option', array('id' => $id) );
+
+        $option =  $query->row(0,'ProductOption');
+        if($option){
+            return $option->name;
+        }else{
+            return '';
+        }
+    }
 }

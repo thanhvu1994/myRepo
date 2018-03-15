@@ -12,6 +12,7 @@ class Sites extends Front_Controller {
         $this->load->model('banner');
         $this->load->model('users');
         $this->load->model('posts');
+        $this->load->model('news');
         $this->load->database();
         $this->load->library('pagination');
     }
@@ -19,12 +20,8 @@ class Sites extends Front_Controller {
     public function index()
     {
         $data['template'] = 'sites/index';
-        $query = $this->db->query("SELECT * FROM ci_banners WHERE publish = 1");
-        $banners = $query->result('Banner');
-        $data['banners'] = $banners;
         $data['categories'] = $this->categories->getDataFE();
         $data['projects'] = $this->posts->getProjectsFE();
-        $data['news'] = $this->posts->getNews(6,0);
 
 		$this->load->view('layouts/index', $data);
     }
@@ -402,7 +399,7 @@ class Sites extends Front_Controller {
         $this->pagination->initialize($config);
 
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $data['news'] = $this->posts->getNews($config["per_page"], $page);
+        $data['news'] = $this->news->getNews($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
 
         $this->load->view('layouts/index', $data);
@@ -410,11 +407,11 @@ class Sites extends Front_Controller {
 
     public function newDetail($slug){
         $data['template'] = 'sites/newDetail';
-        $data['new'] = $this->posts->get_model(array('slug' => $slug));
+        $data['new'] = $this->news->get_model(array('slug' => $slug));
 
         if($data['new']){
             $this->db->where('id', $data['new']->id);
-            $this->db->update('posts', array('views' => $data['new']->views + 1));
+            $this->db->update('news', array('views' => $data['new']->views + 1));
 
             $this->load->view('layouts/index', $data);
         }else{

@@ -91,6 +91,8 @@
         <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
         <script src="<?php echo base_url('themes/admin/plugins/bower_components/switchery/dist/switchery.min.js')?>"></script>
+        <script src="<?php echo base_url('themes/admin/plugins/bower_components/colorpicker/bootstrap-colorpicker.js')?>"></script>
+        <link rel="stylesheet" href="<?php echo base_url('themes/admin/plugins/bower_components/colorpicker/colorpicker.css')?>">
 
         <!-- end - This is for export functionality only -->
         <script>

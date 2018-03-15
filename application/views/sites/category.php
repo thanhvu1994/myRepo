@@ -75,7 +75,7 @@
                                     <p class="product-desc" itemprop="description">
                                         <?php echo $product->description; ?>
                                     </p>
-                                    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="content_price">&nbsp;
+                                    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="content_price" style="display: none;">&nbsp;
                                         <?php echo $product->sale_price; ?>
                                     </div>
                                     <div class="button-container">
@@ -88,17 +88,11 @@
                                         <?php if($attribute->name == "Color" || $attribute->name == "color"): ?>
                                             <div class="color-list-container">
                                                 <ul class="color_to_pick_list clearfix">
-                                                    <?php
-                                                        $attributeValues = $attribute->getAttributeValues();
-                                                        $values = array();
-                                                        if(!empty($attributeValues)){
-                                                            $values = explode(';', $attributeValues[0]->name);
-                                                        }
-                                                    ?>
-                                                    <?php foreach($values as $key => $value): ?>
+                                                    <?php $attributeValues = $attribute->getAttributeValues(); ?>
+                                                    <?php foreach($attributeValues as $key => $value): ?>
                                                         <?php ?>
                                                             <li>
-                                                                <a href="<?php echo base_url('sites/product/'.$product->slug); ?>" id="color_<?php echo $key; ?>" class="color_pick" style="background:<?php echo $value; ?>;">
+                                                                <a href="<?php echo base_url('sites/product/'.$product->slug); ?>" id="color_<?php echo $key; ?>" class="color_pick" style="background:<?php echo $value->name; ?>;">
                                                                 </a>
                                                             </li>
                                                     <?php endforeach; ?>
@@ -142,7 +136,6 @@
 <?php endif; ?>
 <style>
     .center-cropped {
-        object-fit: none; /* Do not scale the image */
         object-position: center; /* Center the image within the element */
         height: 249px;
         width: 249px;

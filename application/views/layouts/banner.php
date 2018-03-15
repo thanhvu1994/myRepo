@@ -8,6 +8,10 @@
 </style>
 <div id="top_column"><!-- Module HomeSlider -->
     <div id="homepage-slider" class="flexslider">
+        <?php
+            $query = $this->db->query("SELECT * FROM ci_banners WHERE publish = 1");
+            $banners = $query->result('Banner');
+        ?>
     	<?php if (count($banners) > 0): ?>
     		<ul class="slides" id="homeslider" style="max-height:500px;">
     			<?php foreach ($banners as $banner): ?>

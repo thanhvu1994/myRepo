@@ -25,7 +25,6 @@ class Product extends MY_Controller {
         $data['link_submit'] = base_url('admin/product/create');
         $data['scenario'] = 'create';
         $data['newCode'] = $this->products->generateCode();
-        $data['newSlug'] = $this->products->generateSlug();
         $data['categories'] = $this->categories->get_dropdown_category(0, 'category');
 
         $rules = $this->products->getRule();
@@ -44,14 +43,17 @@ class Product extends MY_Controller {
                 $this->productCategory->set_model($id,$category);
             }
 
-            $attributes = $this->input->post('attributes');
-            $attribute_values = $this->input->post('attribute_values');
+            $attributes = array_filter($this->input->post('attributes'));
+            $attribute_values = array_filter($this->input->post('attribute_values'));
 
-            foreach($attributes as $key => $value){
-                if(!empty($value)){
-                    $productOptionId = $this->productOption->set_model($id,$value);
-                    if(!empty($attribute_values[$key])){
-                        $this->productOptionValue->set_model($id,$productOptionId,$attribute_values[$key]);
+            $arrAttributes = $this->reArrayAttributes($attributes, $attribute_values);
+
+            foreach($arrAttributes as $att => $attvals){
+                if(!empty($attvals)){
+                    $productOptionId = $this->productOption->set_model($id,$att);
+
+                    foreach($attvals as $attval){
+                        $this->productOptionValue->set_model($id,$productOptionId,$attval);
                     }
                 }
             }
@@ -148,20 +150,25 @@ class Product extends MY_Controller {
                 $this->productCategory->set_model($id,$category);
             }
 
-            $attributes = $this->input->post('attributes');
-            $attribute_values = $this->input->post('attribute_values');
+            $attributes = array_filter($this->input->post('attributes'));
+            $attribute_values = array_filter($this->input->post('attribute_values'));
 
-            if(count($attributes) > 1){ // not empty
+            $arrAttributes = $this->reArrayAttributes($attributes, $attribute_values);
+
+            if(count($attributes) > 1 && count($attribute_values) > 1) {
                 $this->productOption->delete_all_model($id);
                 $this->productOptionValue->delete_all_model($id);
-                foreach($attributes as $key => $value){
-                    if(!empty($value)){
-                        $productOptionId = $this->productOption->set_model($id,$value);
-                        $this->productOptionValue->set_model($id,$productOptionId,$attribute_values[$key]);
+
+                foreach ($arrAttributes as $att => $attvals) {
+                    if (!empty($attvals)) {
+                        $productOptionId = $this->productOption->set_model($id, $att);
+
+                        foreach ($attvals as $attval) {
+                            $this->productOptionValue->set_model($id, $productOptionId, $attval);
+                        }
                     }
                 }
             }
-
 
             if(isset($_FILES['product_image']['tmp_name']['0']) && empty($_FILES['product_image']['tmp_name']['0'])) {
                 $data['error'] = 'No upload';
@@ -208,6 +215,18 @@ class Product extends MY_Controller {
             $this->productImages->delete_all_model($id);
             $this->products->delete_model($id);
         }
+    }
+
+    public function reArrayAttributes($arrAtt, $arAttVal) {
+        $arrAttributes = array();
+
+        foreach($arrAtt as $key => $value){
+            if(isset($arAttVal[$key])){
+                $arrAttributes[$value][] = $arAttVal[$key];
+            }
+        }
+
+        return $arrAttributes;
     }
 
     public function reArrayFiles(&$file_post) {

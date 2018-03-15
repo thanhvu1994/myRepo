@@ -37,6 +37,7 @@
 					        </div>
 		    				<div class="block_content">
 		                    	<ul class="product_images clearfix">
+                                    <?php $news = $this->posts->getNews(6,0); ?>
                                     <?php foreach($news as $new): ?>
                                         <li style="float: none">
                                             <a href="<?php echo base_url('sites/newDetail'. $new->slug); ?>" title="<?php echo $new->title; ?>">

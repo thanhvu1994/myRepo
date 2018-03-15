@@ -28,7 +28,7 @@ class Products extends CI_Model {
         if (!empty($conditions)) {
             $query = $this->db->get_where('products', $conditions);
 
-            return $query->row();
+            return $query->row(0,'Products');
         } else {
             $query = $this->db->query("SELECT * FROM ci_products");
             return $query->result('Products');
@@ -41,14 +41,13 @@ class Products extends CI_Model {
             'product_code' => $this->input->post('product_code'),
             'product_name' => $this->input->post('product_name'),
             'title' => $this->input->post('title'),
-            'short_content' => $this->input->post('short_content'),
             'content' => $this->input->post('content'),
             'description' => $this->input->post('description'),
             'meta_description' => $this->input->post('meta_description'),
             'price' => $this->input->post('price'),
             'sale_price' => $this->input->post('sale_price'),
-            'slug' => $this->input->post('slug'),
-            'feature' => $this->input->post('feature'),
+            'slug' => $this->products->generateSlug($this->input->post('product_name')),
+            'feature' => STATUS_ACTIVE,
             'status' => $this->input->post('status'),
         );
         $this->db->insert('products', $data);
@@ -63,14 +62,11 @@ class Products extends CI_Model {
             'product_code' => $this->input->post('product_code'),
             'product_name' => $this->input->post('product_name'),
             'title' => $this->input->post('title'),
-            'short_content' => $this->input->post('short_content'),
             'content' => $this->input->post('content'),
             'description' => $this->input->post('description'),
             'meta_description' => $this->input->post('meta_description'),
             'price' => $this->input->post('price'),
             'sale_price' => $this->input->post('sale_price'),
-            'slug' => $this->input->post('slug'),
-            'feature' => $this->input->post('feature'),
             'status' => $this->input->post('status'),
         );
 
@@ -100,13 +96,37 @@ class Products extends CI_Model {
         return 'P'.date('dmY').(str_pad($maxid+1, 4, '0', STR_PAD_LEFT));
     }
 
-    public function generateSlug(){
+    public function generateSlug($text){
+        $text = $this->stripUnicode($text);
         $maxid = 0;
         $row = $this->db->query('SELECT MAX(id) AS `maxid` FROM `ci_products`')->row();
         if ($row) {
             $maxid = $row->maxid;
         }
-        return 'product-'.(str_pad($maxid+1, 4, '0', STR_PAD_LEFT));
+
+        // replace non letter or digits by -
+        $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+
+        // transliterate
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+        // remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // remove duplicate -
+        $text = preg_replace('~-+~', '-', $text);
+
+        // lowercase
+        $text = strtolower($text);
+
+        if (empty($text)) {
+            return 'n-a';
+        }
+
+        return $text.'-'.$maxid;
     }
 
     public function getDataFE(){
@@ -121,7 +141,7 @@ class Products extends CI_Model {
         if(!empty($images)){
             return base_url($images[0]->image);
         }else{
-            return '#';
+            return base_url('/uploads/products/no_image.png');
         }
     }
 
@@ -157,5 +177,20 @@ class Products extends CI_Model {
         }
 
         return '';
+    }
+
+    function stripUnicode($str){
+        if(!$str) return false;
+        $unicode = array(
+            'a'=>'á|à|ả|ã|ạ|ă|ắ|ặ|ằ|ẳ|ẵ|â|ấ|ầ|ẩ|ẫ|ậ',
+            'd'=>'đ',
+            'e'=>'é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ',
+            'i'=>'í|ì|ỉ|ĩ|ị',
+            'o'=>'ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ',
+            'u'=>'ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự',
+            'y'=>'ý|ỳ|ỷ|ỹ|ỵ',
+        );
+        foreach($unicode as $nonUnicode=>$uni) $str = preg_replace("/($uni)/i",$nonUnicode,$str);
+        return $str;
     }
 }

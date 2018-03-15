@@ -16,15 +16,7 @@
                             <a title="" style="display:none" itemprop="url" href="#"></a>
                         </div>
                         <div itemprop="articleBody">
-                            <div id="lipsum" class="articleContent">
-                                <a id="post_images" href="<?php echo $new->url; ?>"><img class="center-cropped-new" src="<?php echo base_url($new->featured_image); ?>" alt="<?php echo $new->title; ?>"></a>
-                            </div>
-                            <div class="sdsarticle-des">
                                 <?php echo $new->content; ?>
-                            </div>
-                        </div>
-
-                        <div class="sdsarticleBottom">
                         </div>
                     </div>
 

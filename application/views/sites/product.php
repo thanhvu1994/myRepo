@@ -17,7 +17,7 @@
                             <div id="views_block" class="clearfix ">
                                 <span class="view_scroll_spacer">
                                 <a id="view_scroll_left" class="" title="Back" href="javascript:{}">
-                                    Back
+                                    Trước
                                 </a>
                                 </span>
                                 <div id="thumbs_list">
@@ -33,7 +33,7 @@
                                     </ul>
                                 </div> <!-- end thumbs_list -->
                                 <a id="view_scroll_right" title="Next" href="javascript:{}">
-                                    Next
+                                    Sau
                                 </a>
                             </div> <!-- end views-block -->
                             <!-- end thumbnails -->
@@ -61,12 +61,12 @@
                             <ul class="nav nav-tabs" role="tablist">
                                 <li role="presentation" class="active">
                                     <a href="#home" role="tab" data-toggle="tab">
-                                        Detail
+                                        Chi Tiết
                                     </a>
                                 </li>
                                 <li role="presentation" >
                                     <a href="#profile" role="tab" data-toggle="tab">
-                                        Description
+                                        Mô Tả
                                     </a>
                                 </li>
                             </ul>
@@ -122,7 +122,23 @@
                                     <fieldset class="attribute_fieldset">
                                             <?php $attributes = $product->getAttributes(); ?>
                                             <?php foreach($attributes as $key => $item): ?>
-                                                <label class="attribute_label" ><?php echo $item->name; ?></label>
+                                                <?php
+                                                    switch($item->name){
+                                                        case 'Color':
+                                                            $title = 'Màu Sắc';
+                                                            break;
+                                                        case 'Size':
+                                                            $title = 'Kích Thước';
+                                                            break;
+                                                        case 'Material':
+                                                            $title = 'Chất Liệu';
+                                                            break;
+                                                        default:
+                                                            $title = $item->name;
+                                                            break;
+                                                    }
+                                                ?>
+                                                <label class="attribute_label" ><?php echo $title; ?></label>
                                                 <div class="attribute_list">
                                                 <?php if($item->name == "color" || $item->name == "Color"): ?>
                                                     <ul id="color_to_pick_list" class="clearfix">
@@ -173,7 +189,7 @@
                                         <p class="buttons_bottom_block no-print">
                                             <a href="<?php echo base_url('sites/contact/dat-hang/'.$product->slug); ?>" title="" target="blank">
                                                 <button type="button" class="exclusive ps_product_addcart">
-                                                    <span>Contact for Order</span>
+                                                    <span>Liên Hệ Đặt Hàng</span>
                                                 </button>
                                             </a>
                                         </p>
@@ -182,7 +198,7 @@
                                         <p class="buttons_bottom_block no-print">
                                             <a href="<?php echo base_url('sites/contact/bao-gia/'.$product->slug); ?>" title="" target="blank">
                                                 <button type="button" class="exclusive ps_product_addcart">
-                                                    <span>Contact for Prices</span>
+                                                    <span>Liên Hệ Bảng Giá</span>
                                                 </button>
                                             </a>
                                         </p>
@@ -194,19 +210,19 @@
                             </form>
 
                             <p class="socialsharing_product list-inline no-print">
-                                <button type="button" class="btn btn-default btn-twitter" onclick="socialsharing_twitter_click('T%e1%ba%a5m%20l%e1%ba%a5y%20s%c3%a1ng%20Polycarbonate%20%c4%91%e1%ba%b7c%20Nice%20Light%20http_/namvietplastic.com/vn/35-tam-nhua-lay-sang-polycarbonate-dac-ruot.html');">
+                                <button type="button" class="btn btn-default btn-twitter" onclick="socialsharing_twitter_click('<?php echo $this->settings->get_param('defaultPageTitle').' Sản Phẩm : '.$product->title; ?>')">
                                     <i class="icon-twitter"></i> Tweet
                                     <!-- <img src="http://namvietplastic.com/modules/socialsharing/img/twitter.gif" alt="Tweet" /> -->
                                 </button>
-                                <button type="button" class="btn btn-default btn-facebook" onclick="socialsharing_facebook_click();">
+                                <button type="button" class="btn btn-default btn-facebook" onclick="socialsharing_facebook_click('<?php echo $this->settings->get_param('defaultPageTitle').' Sản Phẩm : '.$product->title; ?>');">
                                     <i class="icon-facebook"></i> Share
                                     <!-- <img src="http://namvietplastic.com/modules/socialsharing/img/facebook.gif" alt="Facebook Like" /> -->
                                 </button>
-                                <button type="button" class="btn btn-default btn-google-plus" onclick="socialsharing_google_click();">
+                                <button type="button" class="btn btn-default btn-google-plus" onclick="socialsharing_google_click('<?php echo $this->settings->get_param('defaultPageTitle').' Sản Phẩm : '.$product->title; ?>');">
                                     <i class="icon-google-plus"></i> Google+
                                     <!-- <img src="http://namvietplastic.com/modules/socialsharing/img/google.gif" alt="Google Plus" /> -->
                                 </button>
-                                <button type="button" class="btn btn-default btn-pinterest" onclick="socialsharing_pinterest_click('../325-thickbox_default/tam-nhua-lay-sang-polycarbonate-dac-ruot.jpg');">
+                                <button type="button" class="btn btn-default btn-pinterest" onclick="socialsharing_pinterest_click('<?php echo $product->getFirstImage(); ?>');">
                                     <i class="icon-pinterest"></i> Pinterest
                                     <!-- <img src="http://namvietplastic.com/modules/socialsharing/img/pinterest.gif" alt="Pinterest" /> -->
                                 </button>

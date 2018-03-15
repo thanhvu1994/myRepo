@@ -16,7 +16,7 @@
                     <?php echo form_open_multipart($link_submit, ['class' => 'form-horizontal']); ?>
                     <div class="col-sm-6 col-xs-12">
                         <div class="form-group">
-                            <label class="col-md-12">Product Code</label>
+                            <label class="col-md-12">Mã Sản Phẩm</label>
                             <div class="col-md-12">
                                 <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->product_code : $newCode ;?>" name="product_code" readonly>
                                 <?php echo form_error('product_code'); ?>
@@ -24,15 +24,15 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-12">Product Name</label>
+                            <label class="col-md-12">Tên Sản Phẩm</label>
                             <div class="col-md-12">
                                 <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->product_name : ''?>" name="product_name">
                                 <?php echo form_error('product_name'); ?>
                             </div>
                         </div>
 
-                        <!-- <div class="form-group">
-                            <label class="col-md-12">Price</label>
+                        <div class="form-group">
+                            <label class="col-md-12">Giá</label>
                             <div class="col-md-12">
                                 <input type="number" class="form-control" value="<?php echo (isset($model)) ? $model->price : ''?>" name="price">
                                 <?php echo form_error('price'); ?>
@@ -40,15 +40,15 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-12">Sale Price</label>
+                            <label class="col-md-12">Giá Khuyến Mãi</label>
                             <div class="col-md-12">
                                 <input type="number" class="form-control" value="<?php echo (isset($model)) ? $model->sale_price : ''?>" name="sale_price">
                                 <?php echo form_error('sale_price'); ?>
                             </div>
-                        </div> -->
+                        </div>
 
                         <div class="form-group">
-                            <label class="col-md-12">Category</label>
+                            <label class="col-md-12">Danh Mục</label>
                             <div class="col-md-12">
                                 <select class="form-control" name="category">
                                     <?php if(isset($categories)) : ?>
@@ -61,16 +61,16 @@
                             </div>
                         </div>
 
-                        <!-- <div class="form-group">
+                        <!--<div class="form-group">
                             <label class="col-md-12">Status</label>
                             <div class="col-md-12">
                                 <select class="form-control" name="status">
-                                    <option <?php echo (isset($model) && $model->status == STATUS_ACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_ACTIVE; ?>">Active</option>
-                                    <option <?php echo (isset($model) && $model->status == STATUS_INACTIVE)? 'selected' : ''; ?> value="<?php echo STATUS_INACTIVE; ?>">In-Active</option>
+                                    <option <?php /*echo (isset($model) && $model->status == STATUS_ACTIVE)? 'selected' : ''; */?> value="<?php /*echo STATUS_ACTIVE; */?>">Active</option>
+                                    <option <?php /*echo (isset($model) && $model->status == STATUS_INACTIVE)? 'selected' : ''; */?> value="<?php /*echo STATUS_INACTIVE; */?>">In-Active</option>
                                 </select>
-                                <?php echo form_error('status'); ?>
+                                <?php /*echo form_error('status'); */?>
                             </div>
-                        </div> -->
+                        </div>-->
 
                         <div class="form-group">
                             <label for="publish" class="col-md-12">Hiển thị</label>
@@ -108,24 +108,24 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label class="col-md-12">Short Content</label>
                             <div class="col-md-12">
-                                <textarea class="form-control" name="short_content" rows="5" cols="80"><?php echo (isset($model)) ? $model->short_content : ''?></textarea>
-                                <?php echo form_error('short_content'); ?>
+                                <textarea class="form-control" name="short_content" rows="5" cols="80"><?php /*echo (isset($model)) ? $model->short_content : ''*/?></textarea>
+                                <?php /*echo form_error('short_content'); */?>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label class="col-md-12">Description</label>
+                            <label class="col-md-12">Mô Tả</label>
                             <div class="col-md-12">
                                     <textarea class="form-control" name="description" id="editor-full-2" rows="10" cols="80"><?php echo (isset($model)) ? $model->description : ''?></textarea>
                                 <?php echo form_error('description'); ?>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12">Content</label>
+                            <label class="col-md-12">Nội Dung</label>
                             <div class="col-md-12">
                                 <textarea class="form-control" name="content" id="editor-full" rows="10" cols="80"><?php echo (isset($model)) ? $model->content : ''?></textarea>
                                 <?php echo form_error('content'); ?>
@@ -134,49 +134,45 @@
                     </div>
                     <div class="col-xs-12">
                         <div class="form-group attribute-container">
-                            <label class="col-md-12">Attributes <a href="javascript:void(0)" onClick="addAttribute()"><span class="glyphicon glyphicon-plus"></span></a></label>
+                            <label class="col-md-12">Thuộc tính <a href="javascript:void(0)" onClick="addAttribute()"><span class="glyphicon glyphicon-plus"></span></a></label>
                             <div class="attribute-input default-item">
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control att-input" value="" name="attributes[]" list="options">
-                                    <?php echo form_error('attributes'); ?>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" value="" name="attribute_values[]">
-                                    <?php echo form_error('attribute_values'); ?>
-                                </div>
-                            </div>
-
-                            <?php if(isset($attribute) && !empty($attribute)): ?>
-                                <?php foreach($attribute as $key => $item): ?>
-                                    <div class="attribute-input">
-                                        <div class="col-md-4">
-                                            <input type="text" class="form-control att-input" value="<?php echo $item->name; ?>" name="attributes[]" list="options">
-                                            <?php echo form_error('attributes'); ?>
-                                        </div>
-                                        <?php if(isset($attribute_value) && !empty($attribute_value)): ?>
-                                            <div class="col-md-8">
-                                                <input type="text" class="form-control" value="<?php echo $attribute_value[$item->id][0]->name; ?>" name="attribute_values[]">
-                                                <?php echo form_error('attribute_values'); ?>
-                                            </div>
-                                        <?php else: ?>
-                                            <div class="col-md-8">
-                                                <input type="text" class="form-control" value="" name="attribute_values[]">
-                                                <?php echo form_error('attribute_values'); ?>
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
-                                <?php endforeach; ?>
-                            <?php else: ?>
-                                <div class="attribute-input">
+                                <div class="row">
                                     <div class="col-md-4">
                                         <input type="text" class="form-control att-input" value="" name="attributes[]" list="options">
                                         <?php echo form_error('attributes'); ?>
                                     </div>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" value="" name="attribute_values[]">
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control att-value-input" value="" name="attribute_values[]">
                                         <?php echo form_error('attribute_values'); ?>
                                     </div>
                                 </div>
+                            </div>
+
+                            <?php if(isset($attribute_value) && !empty($attribute_value)): ?>
+                                <?php foreach($attribute_value as $att => $attVals): ?>
+                                    <?php foreach($attVals as $attVal): ?>
+                                        <div class="attribute-input">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control att-input" value="<?php echo $attVal->getAttributeName($att); ?>" name="attributes[]" list="options">
+                                                    <?php echo form_error('attributes'); ?>
+                                                </div>
+
+                                                <?php if($attVal->getAttributeName($att) == 'Color'): ?>
+                                                    <div class="col-md-2">
+                                                        <input type="color" class="form-control att-value-input" value="<?php echo $attVal->name; ?>" name="attribute_values[]">
+                                                        <?php echo form_error('attribute_values'); ?>
+                                                    </div>
+                                                <?php else: ?>
+                                                    <div class="col-md-2">
+                                                        <input type="text" class="form-control att-value-input" value="<?php echo $attVal->name; ?>" name="attribute_values[]">
+                                                        <?php echo form_error('attribute_values'); ?>
+                                                    </div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php endforeach; ?>
                             <?php endif; ?>
 
                             <datalist id="options">
@@ -184,18 +180,11 @@
                                 <option value="Size">Kích Cỡ</option>
                                 <option value="Material">Chất Liệu</option>
                             </datalist>
-                            <script>
-                                $('.att-input').change(function(){
-                                    if($(this).closest('input').val() === 'Color'){
-                                        $(this).closest('input').asColorPicker();
-                                    }
-                                });
-                            </script>
                         </div>
                     </div>
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label class="col-md-12">Product Images</label>
+                            <label class="col-md-12">Hình Ảnh</label>
                             <div class="col-md-12">
                                 <input type="file" name="product_image[]" class="dropify" multiple/>
                                 <?php if(isset($images) && !empty($images)): ?>
@@ -242,4 +231,17 @@
      function addAttribute(){
          $('.attribute-input.default-item').clone().removeClass('default-item').appendTo( ".attribute-container" );
      }
+     
+     $(document).ready(function() {
+        var drEvent = $('.dropify').dropify();
+             drEvent.on('dropify.beforeClear', function(event, element){
+                 return confirm("Bạn có chắc chắn muốn xóa hình này ?");
+             });
+     });
+
+     $('body').on('change', '.att-input', function (){
+         if($(this).val() === 'Color'){
+             $(this).parent().parent().find('.att-value-input').attr('type','color');
+         }
+     });
  </script>
