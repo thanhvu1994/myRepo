@@ -13,6 +13,7 @@ class Post extends MY_Controller {
 
     public function index()
     {
+        $data['title'] = 'Quản Lý Trang Tĩnh';
         $data['template'] = 'admin/post/index';
         $data['models'] = $this->posts->get_model();
 		$this->load->view('admin/layouts/index', $data);

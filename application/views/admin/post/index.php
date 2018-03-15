@@ -1,9 +1,9 @@
  <div class="row bg-title">
      <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                <h4 class="page-title">Data Table</h4>
+                <h4 class="page-title"><?php echo $title; ?></h4>
      </div>
      <?php
-        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Posts'];
+        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Trang Tĩnh'];
         $this->load->view('admin/layouts/breadcrumbs', ['breadcrumb' => $breadcrumb]);
      ?>
         <!-- /row -->
@@ -11,10 +11,8 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="row m-b-30">
-                        <div class="col-lg-2 col-sm-4 col-xs-12">
-                            <a href="<?php echo base_url('admin/post/create')?>" class="btn btn-create"><i class="fa fa-plus"></i> Thêm mới</a>
-                            <btn data-href="<?php echo base_url('admin/post/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</btn>
-                        </div>
+                        <a href="<?php echo base_url('admin/post/create')?>" class="btn btn-create"><i class="fa fa-plus"></i> Thêm mới</a>
+                        <btn data-href="<?php echo base_url('admin/post/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</btn>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">

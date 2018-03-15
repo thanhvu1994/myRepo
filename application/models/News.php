@@ -133,7 +133,7 @@ class News extends CI_Model {
         $text = strtolower($text);
 
         if (empty($text)) {
-            return 'n-a';
+            return 'tin-tuc-'.$maxid;
         }
 
         return $text.'-'.$maxid;

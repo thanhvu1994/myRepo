@@ -126,7 +126,6 @@ class Product extends MY_Controller {
         $data['link_submit'] = base_url('admin/product/update/'.$id);
         $data['scenario'] = 'update';
         $data['newCode'] = $this->products->generateCode();
-        $data['newSlug'] = $this->products->generateSlug();
         $data['attribute'] = $this->productOption->get_model($id);
         $data['attribute_value'] = array();
         $data['categories'] = $this->categories->get_dropdown_category(0, 'category');

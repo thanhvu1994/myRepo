@@ -2,7 +2,8 @@
 <html lang="en">
 
 	<head>
-		<title><?php echo $this->settings->get_param('defaultPageTitle') ?></title>
+		<title><?php echo (isset($title))? $title.' - '.$this->settings->get_param('defaultPageTitle') : $this->settings->get_param('defaultPageTitle'); ?></title>
+        <meta name="description" content="<?php echo (isset($description))? $description.' - '.$this->settings->get_param('defaultPageTitle') : $this->settings->get_param('defaultPageTitle'); ?>">
 		<link rel="icon" href="<?php echo base_url($this->settings->get_param('favicon')) ?>" type="image/x-icon"/>
 		<link rel="shortcut icon" href="<?php echo base_url($this->settings->get_param('favicon')) ?>" type="image/x-icon"/>
 		<meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.6, initial-scale=1.0" />

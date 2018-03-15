@@ -12,6 +12,7 @@ class Sites extends Front_Controller {
         $this->load->model('banner');
         $this->load->model('users');
         $this->load->model('posts');
+        $this->load->model('projects');
         $this->load->model('news');
         $this->load->database();
         $this->load->library('pagination');
@@ -19,15 +20,20 @@ class Sites extends Front_Controller {
 
     public function index()
     {
+        $data['title'] = 'Trang Chủ';
+        $data['description'] = 'Trang Chủ';
         $data['template'] = 'sites/index';
         $data['categories'] = $this->categories->getDataFE();
-        $data['projects'] = $this->posts->getProjectsFE();
+        $data['projects'] = $this->projects->getProjectsFE();
 
 		$this->load->view('layouts/index', $data);
     }
 
     public function contact($type = '', $slug = '')
     {
+        $data['title'] = 'Liên Hệ';
+        $data['description'] = 'Liên Hệ';
+
     	$this->load->model('contact');
         $this->load->model('contactPro');
 
@@ -133,6 +139,8 @@ class Sites extends Front_Controller {
 
 
         if(isset($data['category'])){
+            $data['title'] = $data['category']->title;
+            $data['description'] = $data['category']->description;
             $data['template'] = 'sites/category';
         }else{
             redirect('sites/index', 'refresh');
@@ -145,6 +153,8 @@ class Sites extends Front_Controller {
         $data['product'] = $this->products->getProductBySlug($slug);
 
         if(isset($data['product'])){
+            $data['title'] = $data['product']->title;
+            $data['description'] = $data['product']->description;
             $data['template'] = 'sites/product';
         }else{
             $data['template'] = 'sites/index';
@@ -154,6 +164,8 @@ class Sites extends Front_Controller {
     }
 
     public function login() {
+        $data['title'] = 'Đăng Nhập';
+        $data['description'] = 'Đăng Nhập';
         $data['template'] = 'sites/login';
 
         if(isset($this->session->userdata['logged_in_FE'])){
@@ -187,6 +199,8 @@ class Sites extends Front_Controller {
     }
 
     public function register() {
+        $data['title'] = 'Đăng Ký';
+        $data['description'] = 'Đăng Ký';
         $data['template'] = 'sites/register';
 
         if (isset($_POST['Users'])) {
@@ -216,6 +230,8 @@ class Sites extends Front_Controller {
         $query = $this->db->get_where('users', array('email' => $info_login_fe['email'], 'application_id' => FE));
         $user = $query->row('1', 'Users');
         if (count($user) > 0) {
+            $data['title'] = 'Tài Khoản :'.$user->full_name;
+            $data['description'] = 'Tài Khoản :'.$user->full_name;
             $data['user_id'] = $user->id;
         } else {
             $data['user_id'] = 0;
@@ -376,6 +392,9 @@ class Sites extends Front_Controller {
     }
 
     public function news(){
+        $data['title'] = 'Tin Tức';
+        $data['description'] = 'Tin Tức';
+
         $data['template'] = 'sites/news';
 
         $config['base_url'] = base_url('sites/news');
@@ -410,6 +429,9 @@ class Sites extends Front_Controller {
         $data['new'] = $this->news->get_model(array('slug' => $slug));
 
         if($data['new']){
+            $data['title'] = $data['new']->title;
+            $data['description'] = $data['new']->description;
+
             $this->db->where('id', $data['new']->id);
             $this->db->update('news', array('views' => $data['new']->views + 1));
 

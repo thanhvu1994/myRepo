@@ -3,7 +3,7 @@
                 <h4 class="page-title"><?php echo $title; ?></h4>
      </div>
      <?php
-        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Posts'];
+        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Tin Tức'];
         $this->load->view('admin/layouts/breadcrumbs', ['breadcrumb' => $breadcrumb]);
      ?>
         <!-- /row -->
@@ -33,7 +33,7 @@
                                             <tr id="tr-<?php echo $model->id?>">
                                                 <td class="text-center check-element"><input type="checkbox" name="select[]" value="<?php echo $model->id ?>"></td>
                                                 <td><?php echo $model->title; ?></td>
-                                                <td><?php echo $model->short_content; ?></td>
+                                                <td><?php echo substr($model->short_content, 0, 50); ?></td>
                                                 <td><?php echo $model->get_created_date() ?></td>
                                                 <td class="button-column">
                                                     <a href="<?php echo base_url('admin/newController/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>

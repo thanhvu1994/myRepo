@@ -1,7 +1,7 @@
 			<!-- Footer -->
 			<div class="footer-container" >
 		        <div class="ps_block_title">
-		            C&Ocirc;NG TY TNHH TM DV SX NHỰA NAM VIỆT
+                    <?php echo $this->settings->get_param('defaultPageTitle') ?>
 		        </div>
 				<footer id="footer"  class="container">
 					<div class="row"><!-- MODULE Block new products -->
@@ -37,10 +37,10 @@
 					        </div>
 		    				<div class="block_content">
 		                    	<ul class="product_images clearfix">
-                                    <?php $news = $this->posts->getNews(6,0); ?>
+                                    <?php $news = $this->news->getNews(6,0); ?>
                                     <?php foreach($news as $new): ?>
                                         <li style="float: none">
-                                            <a href="<?php echo base_url('sites/newDetail'. $new->slug); ?>" title="<?php echo $new->title; ?>">
+                                            <a href="<?php echo base_url('sites/newDetail/'. $new->slug); ?>" title="<?php echo $new->title; ?>">
                                                 <?php echo $new->title; ?>
                                             </a>
                                         </li>
