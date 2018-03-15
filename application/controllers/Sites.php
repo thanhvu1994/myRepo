@@ -379,7 +379,7 @@ class Sites extends Front_Controller {
         $data['template'] = 'sites/news';
 
         $config['base_url'] = base_url('sites/news');
-        $config['total_rows'] = $this->posts->countNews();
+        $config['total_rows'] = $this->news->countNews();
         $config['per_page'] = 5;
         $config['uri_segment'] = 3;
         $config['use_page_numbers'] = TRUE;

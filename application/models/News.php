@@ -96,8 +96,7 @@ class News extends CI_Model {
     }
 
     public function countNews(){
-        $this->db->where('type','new');
-        $this->db->from('posts');
+        $this->db->from('news');
         return $this->db->count_all_results();
     }
 

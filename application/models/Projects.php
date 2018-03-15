@@ -1,5 +1,5 @@
 <?php
-class Posts extends CI_Model {
+class Projects extends CI_Model {
 
     public function __construct()
     {
@@ -21,12 +21,12 @@ class Posts extends CI_Model {
 	public function get_model($conditions = [])
 	{
 		if (!empty($conditions)) {
-			$query = $this->db->get_where('posts', $conditions);
+			$query = $this->db->get_where('projects', $conditions);
 
         	return $query->row();
 		} else {
-			$query = $this->db->query("SELECT * FROM ci_posts");
-			return $query->result('Posts');
+			$query = $this->db->query("SELECT * FROM ci_projects");
+			return $query->result('Projects');
 		}
 	}
 
@@ -39,10 +39,11 @@ class Posts extends CI_Model {
             'content' => $this->input->post('content'),
             'featured_image' => $image,
             'slug' => $this->generateSlug($this->input->post('title')),
+            'url' => $this->input->post('url'),
             'language' => 'vn',
         );
 
-	    return $this->db->insert('posts', $data);
+	    return $this->db->insert('projects', $data);
 	}
 
 	public function update_model($id,$image)
@@ -53,16 +54,17 @@ class Posts extends CI_Model {
 	        'short_content' => $this->input->post('short_content'),
 	        'content' => $this->input->post('content'),
 	        'featured_image' => $image,
+            'url' => $this->input->post('url'),
             'language' => 'vn',
 	    );
 
 	    $this->db->where('id', $id);
-        $this->db->update('posts', $data);
+        $this->db->update('projects', $data);
 	}
 
 	public function delete_model($id) {
 		$this->db->where('id', $id);
-  		$this->db->delete('posts');
+  		$this->db->delete('projects');
 	}
 
 	public function get_created_date() {
@@ -74,7 +76,7 @@ class Posts extends CI_Model {
 	}
 
 	public function get_dropdown_posts() {
-		$result = ['sites/news' => 'news'];
+		$result = ['sites/news' => 'NewController'];
 		$posts = $this->get_model();
 		if (count($posts) > 0) {
 			foreach ($posts as $post) {
@@ -87,27 +89,8 @@ class Posts extends CI_Model {
 	}
 
 	public function getProjectsFE(){
-        $query = $this->db->query("SELECT * FROM ci_posts WHERE type = 'project'");
-        return $query->result('Posts');
-    }
-
-    public function getNews($limit, $start){
-        $this->db->limit($limit, $start);
-        $this->db->order_by('created_date desc');
-        $query = $this->db->get_where('posts', array() );
-
-        return $query->result();
-    }
-
-    public function countNews(){
-        $this->db->from('posts');
-        return $this->db->count_all_results();
-    }
-
-    public function fb_comment_count()
-    {
-        $json = json_decode(file_get_contents('https://graph.facebook.com/?ids=' . base_url('sites/newDetail/'. $this->slug)));
-        return isset($json->url->comments) ? $json->url->comments : 0;
+        $query = $this->db->query("SELECT * FROM ci_projects");
+        return $query->result('Projects');
     }
 
     public function generateSlug($text){

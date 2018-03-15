@@ -26,7 +26,7 @@ class Uri implements UriInterface
         'ftp' => 21,
         'gopher' => 70,
         'nntp' => 119,
-        'news' => 119,
+        'NewController' => 119,
         'telnet' => 23,
         'tn3270' => 23,
         'imap' => 143,

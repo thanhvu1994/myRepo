@@ -14,33 +14,33 @@
                 <div class="white-box">
                     <?php echo form_open_multipart($link_submit, ['class' => 'form-horizontal']); ?>
                         <div class="form-group">
-                            <label class="col-md-12">Title</label>
+                            <label class="col-md-12">Tiêu Đề <span class="required">*</span></label>
                             <div class="col-md-12">
-                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->title : ''?>" name="title">
+                                <input required type="text" class="form-control" value="<?php echo (isset($model)) ? $model->title : ''?>" name="title">
                                 <?php echo form_error('title'); ?>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-12">Description</label>
+                            <label class="col-md-12">Mô Tả <span class="required">*</span></label>
                             <div class="col-md-12">
-                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->description : ''?>" name="description">
+                                <input required type="text" class="form-control" value="<?php echo (isset($model)) ? $model->description : ''?>" name="description">
                                 <?php echo form_error('description'); ?>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-12">Short Content</label>
+                            <label class="col-md-12">Nội Dung Rút Gọn <span class="required">*</span></label>
                             <div class="col-md-12">
-                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->short_content : ''?>" name="short_content">
+                                <input required type="text" class="form-control" value="<?php echo (isset($model)) ? $model->short_content : ''?>" name="short_content">
                                 <?php echo form_error('short_content'); ?>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-12">Content</label>
+                            <label class="col-md-12">Nội Dung <span class="required">*</span></label>
                             <div class="col-md-12">
-                                <textarea class="form-control" name="content" id="editor-full" rows="10" cols="80">
+                                <textarea required class="form-control" name="content" id="editor-full" rows="40" cols="80">
                                     <?php echo (isset($model)) ? $model->content : ''?>
                                 </textarea>
                                 <?php echo form_error('content'); ?>
@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-12">Featured Image</label>
+                            <label class="col-md-12">Hình Ảnh</label>
                             <div class="col-md-12">
                                 <?php if (isset($model)): ?>
                                     <input type="file" name="featured_image" class="dropify" data-default-file="<?php echo base_url($model->featured_image) ?>" />
@@ -60,44 +60,16 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-md-12">Slug</label>
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->slug : ''?>" name="slug" <?php echo ($scenario == "update")? 'readonly' : ''; ?>>
-                                <?php echo form_error('slug'); ?>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-12">Type</label>
-                            <div class="col-md-12">
-                                <select class="form-control" name="type">
-                                    <option <?php echo (isset($model) && $model->type == 'project')? 'selected' : ''; ?> value="project">Project</option>
-                                    <option <?php echo (isset($model) && $model->type == 'new')? 'selected' : ''; ?> value="new">New</option>
-                                    <option <?php echo (isset($model) && $model->type == 'page')? 'selected' : ''; ?> value="page">Page</option>
-                                </select>
-                                <?php echo form_error('type'); ?>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-12">Url</label>
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->url : ''?>" name="url">
-                                <?php echo form_error('url'); ?>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label class="col-md-12">Language</label>
                             <div class="col-md-12">
                                 <select class="form-control" name="language">
-                                    <option <?php echo (isset($model) && $model->language == 'en')? 'selected' : ''; ?> value="en">English</option>
-                                    <option <?php echo (isset($model) && $model->language == 'vn')? 'selected' : ''; ?> value="vn">Tiếng Việt</option>
+                                    <option <?php /*echo (isset($model) && $model->language == 'en')? 'selected' : ''; */?> value="en">English</option>
+                                    <option <?php /*echo (isset($model) && $model->language == 'vn')? 'selected' : ''; */?> value="vn">Tiếng Việt</option>
                                 </select>
-                                <?php echo form_error('slug'); ?>
+                                <?php /*echo form_error('slug'); */?>
                             </div>
-                        </div>
+                        </div>-->
 
                         <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                         <a href="<?php echo base_url('admin/post')?>" class="btn btn-inverse waves-effect waves-light">Cancel</a>
@@ -190,4 +162,11 @@
          filebrowserWindowWidth: '1000',
          filebrowserWindowHeight: '700'
      } );
+
+     $(document).ready(function() {
+         var drEvent = $('.dropify').dropify();
+         drEvent.on('dropify.beforeClear', function(event, element){
+             return confirm("Bạn có chắc chắn muốn xóa hình này ?");
+         });
+     });
  </script>

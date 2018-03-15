@@ -193,4 +193,17 @@ class Products extends CI_Model {
         foreach($unicode as $nonUnicode=>$uni) $str = preg_replace("/($uni)/i",$nonUnicode,$str);
         return $str;
     }
+
+    public function getListData() {
+        $result = [];
+        $posts = $this->get_model();
+        if (count($posts) > 0) {
+            foreach ($posts as $post) {
+                $url = 'product/'.$post->slug;
+                $result[$url] = $post->title;
+            }
+        }
+
+        return $result;
+    }
 }

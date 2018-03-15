@@ -1,6 +1,6 @@
  <div class="row bg-title">
      <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                <h4 class="page-title">Data Table</h4>
+                <h4 class="page-title"><?php echo $title; ?></h4>
      </div>
      <?php
         $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Posts'];
@@ -12,8 +12,8 @@
                 <div class="white-box">
                     <div class="row m-b-30">
                         <div class="col-lg-2 col-sm-4 col-xs-12">
-                            <a href="<?php echo base_url('admin/post/create')?>" class="btn btn-create"><i class="fa fa-plus"></i> Thêm mới</a>
-                            <btn data-href="<?php echo base_url('admin/post/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</btn>
+                            <a href="<?php echo base_url('admin/project/create')?>" class="btn btn-create"><i class="fa fa-plus"></i> Thêm mới</a>
+                            <btn data-href="<?php echo base_url('admin/project/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</btn>
                         </div>
                     </div>
                     <div class="row">
@@ -38,7 +38,7 @@
                                                 <td><?php echo $model->short_content; ?></td>
                                                 <td><?php echo $model->get_created_date() ?></td>
                                                 <td class="button-column">
-                                                    <a href="<?php echo base_url('admin/post/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
+                                                    <a href="<?php echo base_url('admin/project/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
                                                     <a href="javascript:void(0)" class="button-delete" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
@@ -132,7 +132,7 @@
             if (confirm('Are you sure want to delete this item?')) {
                 var id = $(this).data('id');
                 $.ajax({
-                    url: '<?php echo base_url('admin/post/delete')?>'+'/'+id,
+                    url: '<?php echo base_url('admin/project/delete')?>'+'/'+id,
                     type: 'POST',
                     success: function (returndata) {
                         $('#tr-'+id).remove();
@@ -144,7 +144,7 @@
         $('.button-view').click(function() {
             var id = $(this).data('id');
             $.ajax({
-                url: '<?php echo base_url('admin/post/view')?>'+'/'+id,
+                url: '<?php echo base_url('admin/project/view')?>'+'/'+id,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
