@@ -3,7 +3,7 @@
                 <h4 class="page-title"><?php echo $title ?></h4>
             </div>
             <?php
-                $breadcrumb = [base_url('admin/site') => 'Dashboard', base_url('admin/post') => 'Posts', 'active' => $title];
+                $breadcrumb = [base_url('admin/site') => 'Dashboard', base_url('admin/post') => 'Tin Tức', 'active' => $title];
                 $this->load->view('admin/layouts/breadcrumbs', ['breadcrumb' => $breadcrumb]);
              ?>
             <!-- /.col-lg-12 -->
