@@ -53,13 +53,13 @@
         });
 
         $('.btn-refresh').click(function() {
-            alert($('#search-category').val());
+
         });
         $('.button-delete').click(function() {
             if (confirm('Are you sure want to delete this item?')) {
                 var id = $(this).data('id');
                 $.ajax({
-                    url: '<?php echo base_url('admin/category/delete')?>'+'/'+id,
+                    url: '<?php echo base_url('admin/menu/delete')?>'+'/'+id,
                     type: 'POST',
                     dataType: "json",
                     success: function (returndata) {

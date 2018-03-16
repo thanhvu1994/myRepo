@@ -75,13 +75,13 @@ class Posts extends CI_Model {
 
 	public function get_dropdown_posts() {
 		$result = ['sites/news' => 'news'];
-		$posts = $this->get_model();
-		if (count($posts) > 0) {
-			foreach ($posts as $post) {
-				$url = 'pages/'.$post->slug;
-				$result[$url] = $post->title;
-			}
-		}
+//		$posts = $this->get_model();
+//		if (count($posts) > 0) {
+//			foreach ($posts as $post) {
+//				$url = 'sites/news/'.$post->slug;
+//				$result[$url] = $post->title;
+//			}
+//		}
 
 		return $result;
 	}

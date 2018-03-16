@@ -3,7 +3,7 @@
         <h4 class="page-title"><?php echo $title ?></h4>
     </div>
     <?php
-        $breadcrumb = [base_url('admin/site') => 'Dashboard', base_url('admin/category') => 'Danh mục', 'active' => $title];
+        $breadcrumb = [base_url('admin/site') => 'Dashboard', base_url('admin/menu') => 'Menu', 'active' => $title];
         $this->load->view('admin/layouts/breadcrumbs', ['breadcrumb' => $breadcrumb]);
      ?>
     <!-- /.col-lg-12 -->
@@ -54,7 +54,7 @@
                             <?php
                                 $id = isset($model) ? $model->id : 0;
                                 $parent_id = isset($model) ? $model->parent_id : 0;
-                                $categories = $this->categories->get_dropdown_category($id, 'category');
+                                $categories = $this->categories->get_dropdown_category($id, 'menu');
                             ?>
                             <select class="form-control" name="Categories[parent_id]" id="parent_id">
                                 <option value="0"> -- Chọn lớp cha -- </option>
@@ -83,22 +83,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12">
-                    <div class="form-group">
-                        <label class="col-md-12">Hình ảnh</label>
-                        <div class="col-md-12">
-                            <?php if (isset($model) && $model->thumb != ''): ?>
-                                <input type="file" name="thumb" class="dropify" data-default-file="<?php echo base_url($model->thumb) ?>" />
-                            <?php else: ?>
-                                <input type="file" name="thumb" class="dropify" />
-                            <?php endif ?>
-                            <input type="checkbox" value="1" name="remove_img" id="rm-img" style="display: none">
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="col-xs-12">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="col-md-12">Hình ảnh</label>-->
+<!--                        <div class="col-md-12">-->
+<!--                            --><?php //if (isset($model) && $model->thumb != ''): ?>
+<!--                                <input type="file" name="thumb" class="dropify" data-default-file="--><?php //echo base_url($model->thumb) ?><!--" />-->
+<!--                            --><?php //else: ?>
+<!--                                <input type="file" name="thumb" class="dropify" />-->
+<!--                            --><?php //endif ?>
+<!--                            <input type="checkbox" value="1" name="remove_img" id="rm-img" style="display: none">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <div class="col-xs-12 text-center">
                     <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Lưu</button>
-                    <a href="<?php echo base_url('admin/category')?>" class="btn btn-inverse waves-effect waves-light">Hủy</a>
+                    <a href="<?php echo base_url('admin/menu')?>" class="btn btn-inverse waves-effect waves-light">Hủy</a>
                 </div>
             <?php echo form_close(); ?>
             </div>

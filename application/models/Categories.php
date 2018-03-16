@@ -270,4 +270,35 @@ class Categories extends CI_Model {
     	$query = $this->db->query("SELECT * FROM ci_categories WHERE type = 'category' ORDER BY display_order asc LIMIT 6");
         return $query->result('Categories');
     }
+
+    public function getTableCategory($level = 0) {
+        $str = '';
+        for ($i=0; $i < $level; $i++) {
+            $str .= '---';
+        }
+        $url = 'admin/category';
+        if ($this->type == 'menu') {
+            $url = 'admin/menu';
+        }
+        echo '<tr id="tr-'.$this->id.'">
+                <td class="text-center check-element"><input type="checkbox" name="select[]" value="'.$this->id.'"></td>
+                <td>'.$str.' '.$this->category_name.'</td>
+                <td>'.$this->get_parent_name().'</td>
+                <td>'.$this->get_update_date().'</td>
+                <td class="button-column">
+                    <a href="'.base_url($url.'/update/'.$this->id).'"><i class="fa fa-edit"></i></a>
+                    <a href="javascript:void(0)" class="button-delete" title="Delete" data-id="'.$this->id.'"><i class="fa fa-trash-o"></i></a>
+                </td>
+            </tr>';
+
+        $query = $this->db->query("SELECT * FROM ci_categories WHERE parent_id = ".$this->id." AND type = '".$this->type."' ORDER BY display_order asc, category_name asc");
+        $categories =  $query->result('Categories');
+
+        if (count($categories) > 0) {
+            $level++;
+            foreach ($categories as $child) {
+                $child->getTableCategory($level);
+            }
+        }
+    }
 }

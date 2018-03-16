@@ -1,6 +1,6 @@
 <?php
 
-class Category extends MY_Controller {
+class Menu extends MY_Controller {
 
     public function __construct()
     {
@@ -16,17 +16,17 @@ class Category extends MY_Controller {
 
     public function index()
     {
-        $data['title'] = 'Quản lý danh mục';
-        $data['template'] = 'admin/category/index';
-        $query = $this->db->query("SELECT * FROM ci_categories WHERE parent_id = 0 AND type = 'category' ORDER BY display_order asc, category_name asc");
+        $data['title'] = 'Quản lý Menu';
+        $data['template'] = 'admin/menu/index';
+        $query = $this->db->query("SELECT * FROM ci_categories WHERE parent_id = 0 AND type = 'menu' ORDER BY display_order asc, category_name asc");
         $categories =  $query->result('Categories');
         $data['models'] = $categories;
-		$this->load->view('admin/layouts/index', $data);
+        $this->load->view('admin/layouts/index', $data);
     }
 
     public function create() {
-        $data['title'] = 'Tạo danh mục';
-    	$data['template'] = 'admin/category/form';
+        $data['title'] = 'Tạo Menu';
+        $data['template'] = 'admin/menu/form';
         $data['link_submit'] = base_url('admin/category/create');
 
         if (isset($_POST['Categories'])) {
@@ -43,43 +43,12 @@ class Category extends MY_Controller {
             redirect('admin/category/index', 'refresh');
         }
 
-		$this->load->view('admin/layouts/index', $data);
-    }
-
-    public function view($id) {
-        if ($this->input->is_ajax_request()) {
-            $query = $this->db->get_where('categories', ['id' => $id]);
-
-            $model = $query->result('Categories');
-            if (count($model) > 0) {
-                $url = explode('/', $model[0]->url);
-                $title = '';
-                if (isset($url[1])) {
-                    $post = $this->posts->get_model(['slug' => $url[1]]);
-                    if (count($post) > 0) {
-                        $title = 'Bài viết: '.$post->title;
-                    }
-                }
-                $result['category_name'] = $model[0]->category_name;
-                $result['parent_id'] = $model[0]->get_parent_name();
-                $result['title'] = $model[0]->title;
-                $result['description'] = $model[0]->description;
-                $result['thumb'] = $model[0]->get_image();
-                $result['url'] = $title;
-                $result['created_date'] = $model[0]->get_created_date();
-                $result['update_date'] = $model[0]->get_update_date();
-                echo json_encode($result);
-            } else {
-                echo json_encode([]);
-            }
-        } else {
-            echo json_encode([]);
-        }
+        $this->load->view('admin/layouts/index', $data);
     }
 
     public function update($id) {
-        $data['title'] = 'Chỉnh sửa danh mục';
-        $data['template'] = 'admin/category/form';
+        $data['title'] = 'Chỉnh sửa Menu';
+        $data['template'] = 'admin/menu/form';
         $model = $this->categories->get_model(['id' => $id]);
         $data['model'] = $model;
         $data['link_submit'] = base_url('admin/category/update/'.$id);
@@ -123,29 +92,6 @@ class Category extends MY_Controller {
         if (count($model) > 0) {
             $arr_id_del = $this->categories->delete_model($id);
             echo json_encode($arr_id_del);
-        }
-    }
-
-    public function changeParent() {
-        if (!$this->input->is_ajax_request()) {
-           exit('No direct script access allowed');
-        }
-        if (isset($_POST['type'])) {
-            $type = $_POST['type'];
-            if (isset($_POST['id']) && !empty($_POST['id'])) {
-                $id = $_POST['id'];
-            } else {
-                $id = 0;
-            }
-            $categories = $this->categories->get_dropdown_category($id, $type);
-
-            $data = '<option value="0"> -- Chọn lớp cha -- </option>';
-            if (!empty($categories)) {
-                foreach ($categories as $category_id => $category_name) {
-                    $data .= '<option value="'.$category_id.'">'.$category_name.'</option>';
-                }
-            }
-            echo $data;
         }
     }
 
