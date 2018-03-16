@@ -74,14 +74,26 @@ class Posts extends CI_Model {
 	}
 
 	public function get_dropdown_posts() {
-		$result = ['sites/news' => 'news'];
-//		$posts = $this->get_model();
-//		if (count($posts) > 0) {
-//			foreach ($posts as $post) {
-//				$url = 'sites/news/'.$post->slug;
-//				$result[$url] = $post->title;
-//			}
-//		}
+        $result = ['sites/news' => 'Tổng hợp Tin tức'];
+
+        $this->load->model('products');
+        $query = $this->db->query("SELECT * FROM ci_categories WHERE type = 'category' ORDER BY display_order asc, category_name asc");
+        $categories =  $query->result('Categories');
+
+        if (count($categories) > 0) {
+            foreach ($categories as $category) {
+                $url = 'sites/category/'.$category->slug;
+                $result[$url] = 'Danh mục: '.$category->category_name;
+            }
+        }
+
+		$posts = $this->get_model();
+		if (count($posts) > 0) {
+			foreach ($posts as $post) {
+				$url = 'sites/news/'.$post->slug;
+				$result[$url] = 'Bài viết: '.$post->title;
+			}
+		}
 
 		return $result;
 	}

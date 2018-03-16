@@ -22,14 +22,14 @@
                             <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->category_name : ''?>" name="Categories[category_name]" required>
                         </div>
                     </div>
-
+                    <?php /*
                     <div class="form-group">
                         <label class="col-md-12">Đường dẫn</label>
                         <div class="col-md-12">
                             <?php $url = isset($model) ? $model->url : '';?>
                             <select class="form-control" name="Categories[url]">
                                 <option value="0"> -- Chọn đường dẫn -- </option>
-                                <?php foreach ($this->posts->get_dropdown_posts() as $post_url => $title): 
+                                <?php foreach ($this->posts->get_dropdown_posts() as $post_url => $title):
                                         $selected = ($url == $post_url) ? 'selected' : ''; ?>
                                     <option value="<?php echo $post_url?>" <?php echo $selected?>><?php echo $title?></option>
                                 <?php endforeach ?>
@@ -37,16 +37,16 @@
                         </div>
                     </div>
 
-<!--                    <div class="form-group">-->
-<!--                        <label class="col-md-12">Kiểu Danh Mục</label>-->
-<!--                        <div class="col-md-12">-->
-<!--                            <select class="form-control" name="Categories[type]" id="type_category">-->
-<!--                                <option --><?php //echo (isset($model) && $model->type == 'menu')? 'selected' : ''; ?><!-- value="menu">Menu</option>-->
-<!--                                <option --><?php //echo (isset($model) && $model->type == 'category')? 'selected' : ''; ?><!-- value="category">Category</option>-->
-<!--                            </select>-->
-<!--                            --><?php //echo form_error('type'); ?>
-<!--                        </div>-->
-<!--                    </div>-->
+                    <div class="form-group">
+                        <label class="col-md-12">Kiểu Danh Mục</label>
+                        <div class="col-md-12">
+                            <select class="form-control" name="Categories[type]" id="type_category">
+                                <option <?php echo (isset($model) && $model->type == 'menu')? 'selected' : ''; ?> value="menu">Menu</option>
+                                <option <?php echo (isset($model) && $model->type == 'category')? 'selected' : ''; ?> value="category">Category</option>
+                            </select>
+                            <?php echo form_error('type'); ?>
+                        </div>
+                    </div>*/?>
 
                     <div class="form-group">
                         <label class="col-sm-12">Lớp cha</label>
