@@ -75,21 +75,30 @@ class Banners extends MY_Controller {
 
         if (isset($_POST['Banner'])) {
             $data_insert = $_POST['Banner'];
-            if (isset($_FILES['Banner']['name']) && !empty($_FILES['Banner']['name'])) {
-                $files = $_FILES;
-                $_FILES['image']['name'] = $files['Banner']['name']['image'];
-                $_FILES['image']['type'] = $files['Banner']['type']['image'];
-                $_FILES['image']['tmp_name'] = $files['Banner']['tmp_name']['image'];
-                $_FILES['image']['error'] = $files['Banner']['error']['image'];
-                $_FILES['image']['size'] = $files['Banner']['size']['image'];
-                if (!$this->upload->do_upload('image')) {
-                    $data['error'] = $this->upload->display_errors();
-                } else {
-                    $uploadData = $this->upload->data();
-                    $image = '/uploads/banners/'. $uploadData['file_name'];
+
+            if (isset($_POST['remove_img']) && $_POST['remove_img'] == true) {
+                if (is_file('.'.$image)) {
+                    unlink('.'.$image);
+                }
+                $data_insert['image'] = '';
+            } else {
+                if (isset($_FILES['Banner']['name']) && !empty($_FILES['Banner']['name'])) {
+                    $files = $_FILES;
+                    $_FILES['image']['name'] = $files['Banner']['name']['image'];
+                    $_FILES['image']['type'] = $files['Banner']['type']['image'];
+                    $_FILES['image']['tmp_name'] = $files['Banner']['tmp_name']['image'];
+                    $_FILES['image']['error'] = $files['Banner']['error']['image'];
+                    $_FILES['image']['size'] = $files['Banner']['size']['image'];
+                    if (!$this->upload->do_upload('image')) {
+                        $data['error'] = $this->upload->display_errors();
+                    } else {
+                        $uploadData = $this->upload->data();
+                        $image = '/uploads/banners/'. $uploadData['file_name'];
+                        $data_insert['image'] = $image;
+                    }
                 }
             }
-            $data_insert['image'] = $image;
+
             $this->banner->update_model($id, $data_insert);
             redirect('admin/banners/index', 'refresh');
         }

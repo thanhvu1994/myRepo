@@ -80,16 +80,22 @@
                                                 echo '<div class="col-sm-9"><input type="text" name="Settings['.$dataObj->name.']" class="form-control" '.$htmlOptions.' value="'.$this->settings->get_value_setting($dataObj->name).'">' . $unit . $note . '</div>';
                                             elseif ($dataObj->controlTyle == 'textarea'):
                                                 echo '<div class="col-sm-9"><textArea rows="3" name="Settings['.$dataObj->name.']" class="form-control '.$class.'" '.$htmlOptions.'>'.$this->settings->get_value_setting($dataObj->name).'</textArea>'. $note . '</div>';
-                                            elseif ($dataObj->controlTyle == 'file'): ?>
-                                                <div class="col-md-9">
-                                                    <?php if (is_file('./'.$this->settings->get_value_setting($dataObj->name))) { ?>
-                                                    <input type="file" name="Settings[<?php echo $dataObj->name?>]" class="dropify dropify-<?php echo $dataObj->name?>" data-default-file="<?php echo base_url($this->settings->get_value_setting($dataObj->name)) ?>" />
-                                                    <?php } else {?>
-                                                    <input type="file" name="Settings[<?php echo $dataObj->name?>]" class="dropify dropify-<?php echo $dataObj->name?>" />
-                                                    <?php }?>
-                                                    <input type="checkbox" value="1" name="remove_img_<?php echo $dataObj->name?>" id="rm-img-<?php echo $dataObj->name?>" style="display: none">
-                                                </div>
-                                            <?php endif;
+                                            elseif ($dataObj->controlTyle == 'file'):
+                                                echo '<div class="col-sm-9"><input type="file" name="Settings['.$dataObj->name.']">' . $unit . $note;
+                                                if (!empty($this->settings->get_value_setting($dataObj->name))) {
+                                                    if (is_file('./'.$this->settings->get_value_setting($dataObj->name))) {
+                                                        echo '<div class="col-sm-3 m-t-10" id="'.$dataObj->name.'">';
+                                                        echo '<div class="thumbnail">
+                                                                <img src="'.base_url($this->settings->get_value_setting($dataObj->name)).'" width="100">
+                                                                <span class="del-img-setting" data-key="'.$dataObj->name.'">x</span>
+                                                            </div>';
+                                                        echo '</div>';
+                                                    }
+                                                    echo '</div>';
+                                                } else {
+                                                    echo '</div>';
+                                                }
+                                            endif;
                                             echo '</div>';
                                             $i++;
                                         endforeach;
@@ -116,23 +122,6 @@
 <!-- /.row -->
 <script>
     $(document).ready(function() {
-        var drEvent_logo = $('.dropify-logoFE').dropify();
-        var drEvent_favicon = $('.dropify-favicon').dropify();
-
-        drEvent_logo.on('dropify.beforeClear', function(event, element){
-            if (confirm("Bạn có chắc chắn muốn xóa hình này ?")) {
-                $('#rm-img-logoFE').prop('checked', true);
-                return true;
-            }
-            return false;
-        });
-        drEvent_favicon.on('dropify.beforeClear', function(event, element){
-            if (confirm("Bạn có chắc chắn muốn xóa hình này ?")) {
-                $('#rm-img-favicon').prop('checked', true);
-                return true;
-            }
-            return false;
-        });
         $('.del-img-setting').click(function() {
             if (confirm('Are you sure want to delete this image?')) {
                 var key = $(this).data('key');

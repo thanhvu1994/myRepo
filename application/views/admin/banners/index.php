@@ -43,7 +43,11 @@
                                             <td><?php echo $model->name ?></td>
                                             <td><?php echo $model->button_name ?></td>
                                             <td><?php echo $model->url ?></td>
-                                            <td><img src="<?php echo $model->get_image() ?>" alt="<?php echo $model->name ?>" width="100"></td>
+                                            <td>
+                                                <?php if (isset($model) && $model->image != ''): ?>
+                                                    <img src="<?php echo $model->get_image() ?>" alt="<?php echo $model->name ?>" width="100">
+                                                <?php endif ?>
+                                            </td>
                                             <td><?php $checked = $model->publish ? 'checked' : '' ?>
                                                 <input type="checkbox" <?php echo $checked ?> class="js-switch publish-ajax" data-color="#13dafe" data-id="<?php echo $model->id ?>" value="1"/>
                                             </td>

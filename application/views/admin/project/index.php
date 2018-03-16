@@ -11,10 +11,8 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="row m-b-30">
-                        <div class="col-lg-2 col-sm-4 col-xs-12">
-                            <a href="<?php echo base_url('admin/project/create')?>" class="btn btn-create"><i class="fa fa-plus"></i> Thêm mới</a>
-                            <btn data-href="<?php echo base_url('admin/project/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</btn>
-                        </div>
+                        <a href="<?php echo base_url('admin/project/create')?>" class="btn btn-create"><i class="fa fa-plus"></i> Thêm mới</a>
+                        <button data-href="<?php echo base_url('admin/project/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</button>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">

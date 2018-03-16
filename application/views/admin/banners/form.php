@@ -38,13 +38,14 @@
                 <div class="form-group">
                     <label class="col-md-12">Hình ảnh</label>
                     <div class="col-md-12">
-                        <?php if (isset($model)): ?>
+                        <?php if (isset($model) && $model->image != ''): ?>
                             <input type="file" name="Banner[image]" class="dropify" data-default-file="<?php echo base_url($model->image) ?>" />
                         <?php else: ?>
                             <input type="file" name="Banner[image]" class="dropify" />
                         <?php endif ?>
                         <?php echo form_error('image'); ?>
                         <?php echo isset($error) ? $error : '' ?>
+                        <input type="checkbox" value="1" name="remove_img" id="rm-img" style="display: none">
                     </div>
                 </div>
 
@@ -68,7 +69,11 @@
     $(document).ready(function() {
         var drEvent = $('.dropify').dropify();
         drEvent.on('dropify.beforeClear', function(event, element){
-            return confirm("Bạn có chắc chắn muốn xóa hình này ?");
+            if(confirm("Bạn có chắc chắn muốn xóa hình này ?")) {
+                $('#rm-img').prop('checked', true);
+                return true;
+            }
+            return false;
         });
     })
 </script>
