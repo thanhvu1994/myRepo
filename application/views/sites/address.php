@@ -75,7 +75,7 @@
 				</div>
 				<ul class="footer_links clearfix">
 					<li>
-						<a class="btn btn-defaul button button-small" href="http://namvietplastic.com/vn/addresses">
+						<a class="btn btn-defaul button button-small" href="<?php echo base_url('/sites/addresses')?>">
 							<span> Quay trở lại địa chỉ của bạn</span>
 						</a>
 					</li>

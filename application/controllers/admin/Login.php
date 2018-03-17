@@ -22,7 +22,7 @@ class Login extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE) {
 			if(isset($this->session->userdata['logged_in'])){
-				redirect('admin/site/index', 'refresh');
+				redirect('admin/system', 'refresh');
 			}
 		} else {
 			$info = array(
@@ -45,7 +45,7 @@ class Login extends CI_Controller {
 					if ($remember) {
 
 					}
-					redirect('admin/site/index', 'refresh');
+					redirect('admin/system', 'refresh');
 				}
 			} else {
 				$data['error_message'] = 'Invalid Username or Password';

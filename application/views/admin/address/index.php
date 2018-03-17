@@ -3,7 +3,7 @@
         <h4 class="page-title"><?php echo $title ?></h4>
     </div>
     <?php
-        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => $title];
+        $breadcrumb = [base_url('admin/site') => 'Dashboard', base_url('admin/user') => 'Quản lý người dùng', 'active' => $title];
         $this->load->view('admin/layouts/breadcrumbs', ['breadcrumb' => $breadcrumb]);
      ?>
     <!-- /.col-lg-12 -->
@@ -15,7 +15,7 @@
         <div class="white-box">
             <div class="row m-b-30">
                 <div class="col-xs-12">
-                    <button data-href="<?php echo base_url('admin/user/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</button>
+                    <button data-href="<?php echo base_url('admin/address/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</button>
                 </div>
             </div>
             <div class="row">
@@ -26,10 +26,11 @@
                                 <thead>
                                     <tr>
                                         <th class="no-sort text-center"><input type="checkbox" name="" id="select_all"></th>
-                                        <th>Tên đầy đủ</th>
-                                        <th>Email</th>
-                                        <th>Giới tính</th>
-                                        <th>Ngày tạo</th>
+                                        <th>Tên địa chỉ</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Điện thoại bàn</th>
+                                        <th>Điện thoại di dộng</th>
+                                        <th>Ngày cập nhật</th>
                                         <th>Hành động</th>
                                     </tr>
                                 </thead>
@@ -37,13 +38,14 @@
                                     <?php foreach ($models as $model): ?>
                                         <tr id="tr-<?php echo $model->id?>">
                                             <td class="text-center check-element"><input type="checkbox" name="select[]" value="<?php echo $model->id ?>"></td>
-                                            <td><?php echo ucwords($model->full_name) ?></td>
-                                            <td><?php echo $model->email ?></td>
-                                            <td><?php echo $model->gender ?></td>
-                                            <td><?php echo $model->get_created_date() ?></td>
+                                            <td><?php echo $model->title ?></td>
+                                            <td><?php echo ucwords($model->getFullName()) ?></td>
+                                            <td><?php echo $model->phone ?></td>
+                                            <td><?php echo $model->cell_phone ?></td>
+                                            <td><?php echo $model->get_update_date() ?></td>
                                             <td class="button-column">
-                                                <a class="btn btn-danger" href="<?php echo base_url('admin/user/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
-                                                <a class="btn btn-danger button-delete" href="javascript:void(0)" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
+                                                <a class="btn btn-danger" href="<?php echo base_url('admin/address/view/'.$model->id)?>" title="Xem"><i class="fa fa-eye"></i></a>
+                                                <a class="btn btn-danger button-delete" href="javascript:void(0)" title="Xóa" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach ?>
@@ -76,7 +78,7 @@
             if (confirm('Are you sure want to delete this item?')) {
                 var id = $(this).data('id');
                 $.ajax({
-                    url: '<?php echo base_url('admin/user/delete')?>'+'/'+id,
+                    url: '<?php echo base_url('admin/address/delete')?>'+'/'+id,
                     type: 'POST',
                     success: function (returndata) {
                         if (returndata == 1) {

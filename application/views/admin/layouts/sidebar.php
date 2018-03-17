@@ -23,12 +23,12 @@
                 <!-- /input-group -->
             </li>
             <li class="nav-small-cap m-t-10">--- Main Menu</li>
-            <li><a href="<?php echo base_url('admin/site')?>" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>
+<!--            <li><a href="--><?php //echo base_url('admin/site')?><!--" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>-->
 
             <?php foreach ($this->menus->show_menus() as $menu_id => $menu): ?>
                 <li>
                     <a href="<?php echo !empty($menu['menu_link']) ? base_url($menu['menu_link']) : 'javascript:void(0)'?>" class="waves-effect"><i class="<?php echo $menu['menu_icon'] ?>" data-icon="v"></i> 
-                        <span class="hide-menu"><?php echo $menu['menu_name'] ?>
+                        <span class="hide-menu"> <?php echo $menu['menu_name'] ?>
                             <?php if (!empty($menu['childs'])): ?>
                                 <span class="fa arrow"></span>
                             <?php endif ?>
@@ -37,7 +37,7 @@
                     <?php if (!empty($menu['childs'])): ?>
                         <ul class="nav nav-second-level">
                             <?php foreach ($menu['childs'] as $child_id => $child): ?>
-                                <li><a href="<?php echo !empty($child['menu_link']) ? base_url($child['menu_link']) : 'javascript:void(0)'?>"><?php echo $child['menu_name'] ?></a></li>
+                                <li><a href=" <?php echo !empty($child['menu_link']) ? base_url($child['menu_link']) : 'javascript:void(0)'?>"><?php echo $child['menu_name'] ?></a></li>
                             <?php endforeach ?>
                         </ul>
                     <?php endif ?>

@@ -12,12 +12,19 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="white-box">
+            <div class="row m-b-30">
+                <div class="col-xs-12">
+                    <button data-href="<?php echo base_url('admin/contactOrder/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</button>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-sm-12">
                     <div class="table-responsive">
-                        <table id="example23" class="display nowrap" cellspacing="0" width="100%">
+                        <form enctype="multipart/form-data" id="index_grid-bulk" action="" method="post">
+                            <table id="example23" class="display nowrap" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
+                                    <th class="no-sort text-center"><input type="checkbox" name="" id="select_all"></th>
                                     <th>Loại</th>
                                     <th>Tên khách hàng</th>
                                     <th>Tên công ty</th>
@@ -30,6 +37,7 @@
                             <tbody>
                                 <?php foreach ($models as $model): ?>
                                     <tr id="tr-<?php echo $model->id?>">
+                                        <td class="text-center check-element"><input type="checkbox" name="select[]" value="<?php echo $model->id ?>"></td>
                                         <td><?php echo $model->getType() ?></td>
                                         <td><?php echo $model->customer_name ?></td>
                                         <td><?php echo $model->company_name ?></td>
@@ -37,13 +45,14 @@
                                         <td><?php echo $model->getProductName() ?></td>
                                         <td><?php echo $model->get_created_date() ?></td>
                                         <td class="button-column">
-                                            <a class="btn btn-danger" href="<?php echo base_url('admin/contactOrder/view/'.$model->id)?>"><i class="fa fa-eye"></i></a>
-                                            <a class="btn btn-danger button-delete" href="javascript:void(0)" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
+                                            <a class="btn btn-danger" href="<?php echo base_url('admin/contactOrder/view/'.$model->id)?>" title="Xem"><i class="fa fa-eye"></i></a>
+                                            <a class="btn btn-danger button-delete" href="javascript:void(0)" title="Xóa" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
                             </tbody>
                         </table>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -132,6 +141,24 @@
                         }
                     }
                 });
+            }
+        });
+
+        $('.bulk-delete').click(function() {
+            var atLeastOneIsChecked = $('input[name=\"select[]\"]:checked').length > 0;
+            var actionUrl = $('.bulk-delete').data('href');
+            if (!atLeastOneIsChecked)
+            {
+                alert('Chọn ít nhất 1 dữ liệu bạn muốn xóa.');
+            }
+            else if (window.confirm('Bạn có chắc muốn xóa những dữ liệu đã chọn?'))
+            {
+                var formObj = $('.table-responsive').find('form');
+                if (formObj)
+                {
+                    document.getElementById(formObj.attr('id')).action = actionUrl;
+                    document.getElementById(formObj.attr('id')).submit();
+                }
             }
         });
     });

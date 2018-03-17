@@ -16,7 +16,7 @@
             <div class="row m-b-30">
                 <div class="col-xs-12">
                     <a href="<?php echo base_url('admin/banners/create')?>" class="btn btn-create"><i class="fa fa-plus"></i> Thêm mới</a>
-                    <btn data-href="<?php echo base_url('admin/banners/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</btn>
+                    <button data-href="<?php echo base_url('admin/banners/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</button>
                 </div>
             </div>
             <div class="row">
@@ -33,7 +33,7 @@
                                         <th>Hình ảnh</th>
                                         <th>Hiển thị</th>
                                         <th>Ngày cập nhật</th>
-                                        <th>Action</th>
+                                        <th>Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -53,8 +53,8 @@
                                             </td>
                                             <td><?php echo $model->get_update_date() ?></td>
                                             <td class="button-column">
-                                                <a class="btn btn-danger" href="<?php echo base_url('admin/banners/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
-                                                <a class="btn btn-danger" href="javascript:void(0)" class="button-delete" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
+                                                <a class="btn btn-danger" href="<?php echo base_url('admin/banners/update/'.$model->id)?>" title="Cập nhật"><i class="fa fa-edit"></i></a>
+                                                <a class="btn btn-danger" href="javascript:void(0)" class="button-delete" title="Xóa" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach ?>

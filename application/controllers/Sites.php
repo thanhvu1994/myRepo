@@ -313,6 +313,13 @@ class Sites extends Front_Controller {
 
         if (isset($_POST['BillingAddress'])) {
             $data_insert = $_POST['BillingAddress'];
+
+            $info_login_fe = $this->session->userdata['logged_in_FE'];
+            $query = $this->db->get_where('users', array('email' => $info_login_fe['email'], 'application_id' => FE));
+            $user = $query->row('1', 'Users');
+            if (count($user) > 0) {
+                $data_insert['user_id'] = $user->id;
+            }
             if (!empty($id)) {
                 $this->billingAddress->update_model($id, $data_insert);
             } else {

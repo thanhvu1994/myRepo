@@ -53,4 +53,18 @@ class BillingAddress extends CI_Model {
 	public function get_update_date() {
 		return date_format(date_create($this->update_date), 'd-m-Y');
 	}
+
+	public function getUserName() {
+        $query = $this->db->get_where('users', ['id' => $this->user_id]);
+        $user = $query->row('1', 'Users');
+        if (count($user) > 0) {
+            return $user->full_name;
+        }
+
+        return '';
+    }
+
+    public function getFullName() {
+        return $this->last_name .' '. $this->first_name;
+    }
 }
