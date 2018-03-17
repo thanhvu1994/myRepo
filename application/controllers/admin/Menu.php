@@ -39,8 +39,9 @@ class Menu extends MY_Controller {
                 }
             }
             $data_insert['thumb'] = $thumb;
+            $data_update['type'] = 'menu';
             $this->categories->set_model($data_insert);
-            redirect('admin/category/index', 'refresh');
+            redirect('admin/menu/index', 'refresh');
         }
 
         $this->load->view('admin/layouts/index', $data);
@@ -79,8 +80,9 @@ class Menu extends MY_Controller {
                     $data_update['thumb'] = '';
                 }
             }
+            $data_update['type'] = 'menu';
             $this->categories->update_model($id, $data_update);
-            redirect('admin/category/index', 'refresh');
+            redirect('admin/menu/index', 'refresh');
         }
 
         $this->load->view('admin/layouts/index', $data);

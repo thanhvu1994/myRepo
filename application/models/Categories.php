@@ -286,8 +286,8 @@ class Categories extends CI_Model {
                 <td>'.$this->get_parent_name().'</td>
                 <td>'.$this->get_update_date().'</td>
                 <td class="button-column">
-                    <a href="'.base_url($url.'/update/'.$this->id).'"><i class="fa fa-edit"></i></a>
-                    <a href="javascript:void(0)" class="button-delete" title="Delete" data-id="'.$this->id.'"><i class="fa fa-trash-o"></i></a>
+                    <a class="btn btn-danger" href="'.base_url($url.'/update/'.$this->id).'"><i class="fa fa-edit"></i></a>
+                    <a class="btn btn-danger button-delete" href="javascript:void(0)" title="Delete" data-id="'.$this->id.'"><i class="fa fa-trash-o"></i></a>
                 </td>
             </tr>';
 

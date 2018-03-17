@@ -36,8 +36,8 @@
                                                 <td><?php echo $model->short_content; ?></td>
                                                 <td><?php echo $model->get_created_date() ?></td>
                                                 <td class="button-column">
-                                                    <a href="<?php echo base_url('admin/project/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
-                                                    <a href="javascript:void(0)" class="button-delete" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
+                                                    <a class="btn btn-danger" href="<?php echo base_url('admin/project/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
+                                                    <a class="btn btn-danger button-delete" href="javascript:void(0)" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
                                         <?php endforeach ?>

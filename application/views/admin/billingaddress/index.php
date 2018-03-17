@@ -15,8 +15,7 @@
         <div class="white-box">
             <div class="row m-b-30">
                 <div class="col-xs-12">
-                    <a href="<?php echo base_url('admin/banners/create')?>" class="btn btn-create"><i class="fa fa-plus"></i> Thêm mới</a>
-                    <btn data-href="<?php echo base_url('admin/banners/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</btn>
+                    <button data-href="<?php echo base_url('admin/user/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</button>
                 </div>
             </div>
             <div class="row">
@@ -27,34 +26,24 @@
                                 <thead>
                                     <tr>
                                         <th class="no-sort text-center"><input type="checkbox" name="" id="select_all"></th>
-                                        <th>Tiêu đề Slider</th>
-                                        <th>Tên nút Slider</th>
-                                        <th>Đường dẫn</th>
-                                        <th>Hình ảnh</th>
-                                        <th>Hiển thị</th>
-                                        <th>Ngày cập nhật</th>
-                                        <th>Action</th>
+                                        <th>Tên đầy đủ</th>
+                                        <th>Email</th>
+                                        <th>Giới tính</th>
+                                        <th>Ngày tạo</th>
+                                        <th>Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($models as $model): ?>
                                         <tr id="tr-<?php echo $model->id?>">
                                             <td class="text-center check-element"><input type="checkbox" name="select[]" value="<?php echo $model->id ?>"></td>
-                                            <td><?php echo $model->name ?></td>
-                                            <td><?php echo $model->button_name ?></td>
-                                            <td><?php echo $model->url ?></td>
-                                            <td>
-                                                <?php if (isset($model) && $model->image != ''): ?>
-                                                    <img src="<?php echo $model->get_image() ?>" alt="<?php echo $model->name ?>" width="100">
-                                                <?php endif ?>
-                                            </td>
-                                            <td><?php $checked = $model->publish ? 'checked' : '' ?>
-                                                <input type="checkbox" <?php echo $checked ?> class="js-switch publish-ajax" data-color="#13dafe" data-id="<?php echo $model->id ?>" value="1"/>
-                                            </td>
-                                            <td><?php echo $model->get_update_date() ?></td>
+                                            <td><?php echo ucwords($model->full_name) ?></td>
+                                            <td><?php echo $model->email ?></td>
+                                            <td><?php echo $model->gender ?></td>
+                                            <td><?php echo $model->get_created_date() ?></td>
                                             <td class="button-column">
-                                                <a class="btn btn-danger" href="<?php echo base_url('admin/banners/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
-                                                <a class="btn btn-danger" href="javascript:void(0)" class="button-delete" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
+                                                <a class="btn btn-danger" href="<?php echo base_url('admin/user/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
+                                                <a class="btn btn-danger button-delete" href="javascript:void(0)" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach ?>
@@ -87,7 +76,7 @@
             if (confirm('Are you sure want to delete this item?')) {
                 var id = $(this).data('id');
                 $.ajax({
-                    url: '<?php echo base_url('admin/banners/delete')?>'+'/'+id,
+                    url: '<?php echo base_url('admin/user/delete')?>'+'/'+id,
                     type: 'POST',
                     success: function (returndata) {
                         if (returndata == 1) {
@@ -97,23 +86,7 @@
                 });
             }
         });
-        $('.publish-ajax').on('change', function() {
-            var id = $(this).data('id');
-            var publish;
-            if ($(this).is(':checked')) {
-                publish = 1;
-            } else {
-                publish = 0;
-            }
 
-            $.ajax({
-                url: '<?php echo base_url('admin/banners/ajaxPublish')?>',
-                type: 'POST',
-                data: {id: id, publish: publish},
-                success: function (returndata) {
-                }
-            });
-        });
         $('.bulk-delete').click(function() {
             var atLeastOneIsChecked = $('input[name=\"select[]\"]:checked').length > 0;
             var actionUrl = $('.bulk-delete').data('href');

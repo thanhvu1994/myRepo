@@ -1,11 +1,6 @@
 .button-column a{
 	padding: 5px 8px 5px 8px;
     margin-right: 5px;
-    border-radius: 3px;
-    border: solid 1px gray;
-    font-size: 16px;
-    background-color: red;
-    color: #fff;
 }
 
 div.gallery {

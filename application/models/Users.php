@@ -94,4 +94,20 @@ class Users extends CI_Model {
 	    $this->db->where('id', $id);
         $this->db->update('users', $data_insert);
 	}
+
+    public function get_created_date() {
+        return date_format(date_create($this->created_date), 'd-m-Y');
+    }
+
+    public function get_model($conditions = [])
+    {
+        if (!empty($conditions)) {
+            $query = $this->db->get_where('users', $conditions);
+
+            return $query->row();
+        } else {
+            $query = $this->db->query("SELECT * FROM ci_users");
+            return $query->result('Users');
+        }
+    }
 }

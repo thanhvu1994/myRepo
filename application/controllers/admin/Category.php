@@ -39,6 +39,7 @@ class Category extends MY_Controller {
                 }
             }
             $data_insert['thumb'] = $thumb;
+            $data_insert['type'] = 'category';
             $this->categories->set_model($data_insert);
             redirect('admin/category/index', 'refresh');
         }
@@ -110,6 +111,7 @@ class Category extends MY_Controller {
                     $data_update['thumb'] = '';
                 }
             }
+            $data_update['type'] = 'category';
             $this->categories->update_model($id, $data_update);
             redirect('admin/category/index', 'refresh');
         }

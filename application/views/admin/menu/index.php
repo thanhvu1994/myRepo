@@ -15,7 +15,6 @@
             <div class="row m-b-30">
                 <a href="<?php echo base_url('admin/category/create')?>" class="btn btn-create"><i class="fa fa-plus"></i> Thêm mới</a>
                 <button data-href="<?php echo base_url('admin/category/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</button>
-                <button class="btn btn-default btn-refresh"><i class="glyphicon glyphicon-refresh"></i></button>
             </div>
             <div class="row">
                 <div class="col-sm-12">

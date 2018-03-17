@@ -52,7 +52,16 @@
                 <div class="form-group">
                     <label for="publish" class="col-md-12">Hiển thị</label>
                     <div class="col-md-12">
-                        <?php $checked = isset($model) && $model->publish == true ? 'checked' : '' ?>
+                        <?php
+                            $checked = 'checked';
+                            if (isset($model)) {
+                                if ($model->publish == true) {
+                                    $checked = 'checked';
+                                } else {
+                                    $checked = '';
+                                }
+                            }
+                        ?>
                         <input type="checkbox" <?php echo $checked ?> class="js-switch publish-ajax" data-color="#13dafe" value="1" id="publish" name="Banner[publish]"/>
                     </div>
                 </div>

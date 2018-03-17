@@ -37,7 +37,7 @@ class Settings extends CI_Model {
             ]
         ],
         "contactsetting" => [
-            'label' => 'Liên lạc',
+            'label' => 'Liên hệ',
             'htmlOptions' => [],
             'icon' => '<span class="glyphicon glyphicon-search"></span>',
             'items' => [
