@@ -137,11 +137,14 @@
                             <label class="col-md-12">Thuộc tính <a href="javascript:void(0)" onClick="addAttribute()"><span class="glyphicon glyphicon-plus"></span></a></label>
                             <div class="attribute-input default-item">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-1" style="height: 38px; vertical-align: middle;">
+                                        <button type="button" style="height: 38px;" class="btn btn-primary addAttributeValue">Add</button>
+                                    </div>
+                                    <div class="col-md-3">
                                         <input type="text" class="form-control att-input" value="" name="attributes[]" list="options">
                                         <?php echo form_error('attributes'); ?>
-                                    </div>
-                                    <div class="col-md-2">
+                                        </div>
+                                    <div class="col-md-1">
                                         <input type="text" class="form-control att-value-input" value="" name="attribute_values[]">
                                         <?php echo form_error('attribute_values'); ?>
                                     </div>
@@ -231,7 +234,7 @@
      function addAttribute(){
          $('.attribute-input.default-item').clone().removeClass('default-item').appendTo( ".attribute-container" );
      }
-     
+
      $(document).ready(function() {
         var drEvent = $('.dropify').dropify();
              drEvent.on('dropify.beforeClear', function(event, element){
@@ -242,6 +245,12 @@
      $('body').on('change', '.att-input', function (){
          if($(this).val() === 'Color'){
              $(this).parent().parent().find('.att-value-input').attr('type','color');
+             $(this).parent().parent().append('');
          }
+     })
+
+     $('body').on('click', '.addAttributeValue', function (){
+         var div = $(this).parent().parent().find('.att-value-input').first().parent().clone();
+         $(this).parent().parent().append(div);
      });
  </script>
