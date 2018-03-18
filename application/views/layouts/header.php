@@ -26,13 +26,11 @@
 						<!-- MODULE Block cart -->
 						<div class="ps_cart ">
 							<div class="shopping_cart">
-								<a href="order.html" title="View my shopping cart" rel="nofollow">
-									<b>Giỏ hàng:</b>
-									<span class="ajax_cart_quantity unvisible">0</span>
-									<span class="ajax_cart_product_txt unvisible">Sản phẩm</span>
-									<span class="ajax_cart_product_txt_s unvisible">Sản phẩm</span>
-									<span class="ajax_cart_total unvisible"></span>
-									<span class="ajax_cart_no_product">(trống)</span>
+								<a href="<?php echo base_url('sites/cart')?>" title="View my shopping cart" rel="nofollow">
+									<b>Giỏ hàng</b>
+<!--									<span class="ajax_cart_quantity unvisible">0</span>-->
+<!--									<span class="ajax_cart_product_txt unvisible">Sản phẩm</span>-->
+<!--									<span class="ajax_cart_no_product">(trống)</span>-->
 								</a>
 								<div class="cart_block block exclusive">
 									<div class="block_content">

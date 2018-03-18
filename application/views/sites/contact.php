@@ -84,6 +84,7 @@
                                     <span style="color: red;display: none" id="error-email">Email không hợp lệ</span>
                                 </p>
 			                	<?php if ($is_product): ?>
+                                    <h3 class="page-subheading">THÔNG TIN SẢN PHẨM YÊU CẦU</h3>
 	                                <div class="form-group selector1">
 	                            		<label style="float: left"> Mã sản phẩm</label>
 	                                    <input class="form-control grey" type="text" value="<?php echo $product->product_name.' - '.$product->product_code ?>" disabled/>
@@ -93,12 +94,12 @@
 						                <thead>
 						                    <tr>
 						                        <th> Màu sắc
-						                        	<?php if (isset($arr_color) && !empty($arr_color)): ?>
+						                        	<?php /*if (isset($arr_color) && !empty($arr_color)): ?>
 						                        		<i class=" icon-question-sign" />
 							                        	<span class="ps_property iq-color">
 							                        		<?php echo implode('<br>', $arr_color) ?>
 														</span>
-						                        	<?php endif ?>
+						                        	<?php endif*/ ?>
 												</th>
 						                        <th>Độ dày
 						                        	<?php if (isset($arr_thick) && !empty($arr_thick)): ?>
