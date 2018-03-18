@@ -142,31 +142,19 @@
                                                 <div class="attribute_list">
                                                 <?php if($item->name == "color" || $item->name == "Color"): ?>
                                                     <ul id="color_to_pick_list" class="clearfix">
-                                                        <?php
-                                                            $attributeValues = $item->getAttributeValues();
-                                                            $values = array();
-                                                            if(isset($attributeValues[0])){
-                                                                $values = explode(';', $attributeValues[0]->name);
-                                                            }
-                                                        ?>
-                                                        <?php foreach($values as $key1 => $value): ?>
+                                                        <?php $attributeValues = $item->getAttributeValues(); ?>
+                                                        <?php foreach($attributeValues as $key1 => $value): ?>
                                                             <li>
-                                                                <a href="#" id="color_<?php echo $key1; ?>" name="<?php echo $value; ?>" class="color_pick" style="background:<?php echo strtolower($value); ?>;" title="<?php echo $value; ?>">
+                                                                <a href="#" id="color_<?php echo $key1; ?>" name="<?php echo $value->name; ?>" class="color_pick" style="background:<?php echo $value->name; ?>;" title="<?php echo $value->name; ?>">
                                                                 </a>
                                                             </li>
                                                         <?php endforeach; ?>
                                                     </ul>
                                                 <?php else: ?>
                                                     <select name="group_<?php echo $key; ?>" id="group_<?php echo $key; ?>" class="form-control attribute_select no-print">
-                                                        <?php
-                                                        $attributeValues = $item->getAttributeValues();
-                                                        $values = array();
-                                                        if(isset($attributeValues[0])){
-                                                            $values = explode(';', $attributeValues[0]->name);
-                                                        }
-                                                        ?>
-                                                        <?php foreach($values as $key1 => $value): ?>
-                                                            <option value="<?php echo $value; ?>" title="<?php echo $value; ?>"><?php echo $value; ?></option>
+                                                        <?php $attributeValues = $item->getAttributeValues(); ?>
+                                                        <?php foreach($attributeValues   as $key1 => $value): ?>
+                                                            <option value="<?php echo $value->name; ?>" title="<?php echo $value->name; ?>"><?php echo $value->name ; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
                                                 <?php endif; ?>

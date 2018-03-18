@@ -253,7 +253,7 @@ class Categories extends CI_Model {
 
         if(!empty($productCategories)){
             foreach($productCategories as $productCategory){
-                $query1 = $this->db->get_where('products', array('id' => $productCategory->product_id));
+                $query1 = $this->db->get_where('products', array('id' => $productCategory->product_id, 'status' => STATUS_ACTIVE));
                 $products[] = $query1->row(0,'Products');
             }
         }

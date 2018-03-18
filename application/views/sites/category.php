@@ -28,7 +28,7 @@
                                                 <ul>
                                                     <?php foreach($cate['child'] as $childCate): ?>
                                                     <li>
-                                                        <a href="<?php echo base_url('sites/category/'.$childCate['slug']); ?>" <?php echo ($cate['slug'] == $category->slug)? 'class="selected"': ''; ?> title="<?php echo $childCate['title']; ?>">
+                                                        <a href="<?php echo base_url('sites/category/'.$childCate['slug']); ?>" <?php echo ($childCate['slug'] == $category->slug)? 'class="selected"': ''; ?> title="<?php echo $childCate['title']; ?>">
                                                             <?php echo $childCate['title']; ?>
                                                         </a>
                                                     </li>
@@ -48,11 +48,12 @@
                 <!-- Products list -->
                 <ul class="product_list grid row">
                     <?php foreach($products as $product): ?>
+                        <?php if($product   ): ?>
                         <li class="ajax_block_product col-xs-12 col-sm-6 col-md-4 first-item-of-tablet-line">
                             <div class="product-container" itemscope itemtype="http://schema.org/Product">
                                 <div class="left-block">
                                     <div class="product-image-container">
-                                        <a class="product_img_link"	href="<?php echo base_url('sites/product/'.$product->slug); ?>" title="<?php echo $product->title; ?>" itemprop="url">
+                                        <a class="pro   duct_img_link"	href="<?php echo base_url('sites/product/'.$product->slug); ?>" title="<?php echo $product->title; ?>" itemprop="url">
                                             <img class="replace-2x img-responsive center-cropped" src="<?php echo $product->getFirstImage(); ?>" alt="<?php echo $product->title; ?>"  width="270" height="270" itemprop="image" />
                                         </a>
                                         <div class="quick-view-wrapper-mobile">
@@ -116,6 +117,7 @@
                                 </div>
                             </div><!-- .product-container> -->
                         </li>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </ul>
                 <div class="content_sortPagiBar">
