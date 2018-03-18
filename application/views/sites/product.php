@@ -92,29 +92,22 @@
 
 
                             <!-- add to cart form-->
-                            <form id="buy_block" action="http://namvietplastic.com/vn/cart" method="post">
+                            <form id="buy_block" action="" method="post">
                                 <!-- hidden datas -->
                                 <p class="hidden">
-                                    <input type="hidden" name="token" value="8d00693119003431c3f67d6e75a922f0" />
-                                    <input type="hidden" name="id_product" value="35" id="product_page_product_id" />
-                                    <input type="hidden" name="add" value="1" />
-                                    <input type="hidden" name="id_product_attribute" id="idCombination" value="" />
+                                    <input type="hidden" name="Orders[product_id]" value="<?php echo $product->id?>" id="product_page_product_id" />
                                 </p>
                                 <!-- quantity wanted -->
-                                <p id="quantity_wanted_p" style="display: none;">
+                                <p id="quantity_wanted_p">
                                     <label>Số lượng</label>
-                                    <input type="text" name="qty" id="quantity_wanted" class="text" value="1" />
-                                    <a href="#" data-field-qty="qty" class="btn btn-default button-minus product_quantity_down">
+                                    <input type="text" name="Orders[quantity]" id="quantity_wanted" class="text" value="1" />
+                                    <a class="btn btn-default button-minus">
                                         <span><i class="icon-minus"></i></span>
                                     </a>
-                                    <a href="#" data-field-qty="qty" class="btn btn-default button-plus product_quantity_up">
+                                    <a  class="btn btn-default button-plus">
                                         <span><i class="icon-plus"></i></span>
                                     </a>
                                     <span class="clearfix"></span>
-                                </p>
-                                <!-- minimal quantity wanted -->
-                                <p id="minimal_quantity_wanted_p" style="display: none;">
-                                    This product is not sold individually. You must select at least <b id="minimal_quantity_label">1</b> số lượng của sản phẩm.
                                 </p>
                                 <!-- attributes -->
                                 <div id="attributes">
@@ -172,8 +165,6 @@
                                                 <?php endif; ?>
                                                 </div>
                                             <?php endforeach; ?>
-
-                                            <input type="hidden" class="color_pick_hidden" name="group_3" value="14" />
                                          <!-- end attribute_list -->
                                     </fieldset>
                                 </div> <!-- end attributes -->
@@ -184,6 +175,21 @@
                                         </button>
                                     </p>
                                 </div>
+                                <p id="add-success" style="display: none">Đã thêm vào giỏ hàng</p>
+                                <?php if(isset($this->session->userdata['logged_in_FE'])){ ?>
+                                <div>
+                                    <div style="padding: 15px 15px 30px 0;float: left">
+                                        <p class="buttons_bottom_block no-print">
+                                            <a title="" class="btn-add-cart">
+                                                <button type="button" class="exclusive ps_product_addcart">
+                                                    <span>Thêm vào giỏ hàng</span>
+
+                                                </button>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <?php } ?>
                                 <div>
                                     <div style="padding: 15px 15px 30px 0;float: left">
                                         <p class="buttons_bottom_block no-print">
@@ -198,14 +204,11 @@
                                         <p class="buttons_bottom_block no-print">
                                             <a href="<?php echo base_url('sites/contact/bao-gia/'.$product->slug); ?>" title="" target="blank">
                                                 <button type="button" class="exclusive ps_product_addcart">
-                                                    <span>Liên Hệ Bảng Giá</span>
+                                                    <span>Liên Hệ Báo Giá</span>
                                                 </button>
                                             </a>
                                         </p>
                                     </div>
-
-                                    <span id="quantity_wanted" value="1" style="display: none"/></span>
-
                                 </div>
                             </form>
 
@@ -227,7 +230,6 @@
                                     <!-- <img src="http://namvietplastic.com/modules/socialsharing/img/pinterest.gif" alt="Pinterest" /> -->
                                 </button>
                             </p>
-
                         </div>
                         <!-- end center infos-->
                         <!-- pb-right-column-->
@@ -261,3 +263,35 @@
         width: 458px;
     }
 </style>
+
+<script>
+    $(document).ready(function () {
+        $('.button-minus').click(function () {
+            var qty = parseInt($('#quantity_wanted').val());
+            if (qty > 1) {
+                qty = qty - 1;
+                $('#quantity_wanted').val(qty);
+            }
+        });
+        $('.button-plus').click(function () {
+            var qty = parseInt($('#quantity_wanted').val());
+            qty = qty + 1;
+            $('#quantity_wanted').val(qty);
+        });
+
+        $('.btn-add-cart').click(function () {
+            var form = $('#buy_block').serialize();
+            $.ajax({
+                url: '<?php echo base_url('sites/addCart')?>',
+                type: 'POST',
+                data: form,
+                success: function (returndata) {
+                    if (returndata == 1) {
+                        $('#add-success').show();
+//                        $('.ajax_cart_no_product').css('display', 'none');
+                    }
+                }
+            });
+        });
+    });
+</script>

@@ -57,8 +57,10 @@ class Sites extends Front_Controller {
                 foreach ($attributes as $attribute) {
                     if (strtolower($attribute->name) == 'color') {
                         $colors = $attribute->getAttributeValues();
-                        if (isset($colors[0])) {
-                            $arr_color = array_merge($arr_color, explode(';', $colors[0]->name));
+                        if (count($colors) > 0) {
+                            foreach ($colors as $color) {
+                                $arr_color[$color->id] = $color->name;
+                            }
                         }
                     }
                 }
@@ -445,6 +447,107 @@ class Sites extends Front_Controller {
             $this->load->view('layouts/index', $data);
         }else{
             redirect('sites/index', 'refresh');
+        }
+    }
+
+    public function addCart() {
+        if(isset($this->session->userdata['logged_in_FE'])) {
+            $info_login_fe = $this->session->userdata['logged_in_FE'];
+            $query_user = $this->db->get_where('users', array('email' => $info_login_fe['email'], 'application_id' => FE));
+            $user = $query_user->row('1', 'Users');
+            if (count($user) > 0) {
+                if (isset($_POST['Orders'])) {
+                    $query = $this->db->query('SELECT * FROM ci_orders WHERE status = '.STATUS_ORDER_TEMP.' AND user_id = '.$user->id.' AND id IN (SELECT o.order_id FROM ci_order_details o WHERE product_id = '.$_POST['Orders']['product_id'].')');
+                    $order = $query->row();
+                    if (count($order) > 0) {
+                        $query = $this->db->get_where('order_details', ['order_id' => $order->id, 'product_id' => $_POST['Orders']['product_id']]);
+                        $order_details = $query->row();
+                        if (count($order_details) > 0) {
+                            $data_update_detail['quantity'] = $_POST['Orders']['quantity'];
+                            $this->db->where('id', $order_details->id);
+                            $this->db->update('order_details', $data_update_detail);
+
+                            $data_update['update_date'] = date('Y-m-d H:i:s');
+                            $this->db->where('id', $order->id);
+                            $this->db->update('orders', $data_update);
+                        }
+                    } else {
+                        $this->load->model('orders');
+                        $this->load->model('orderDetails');
+                        $data_insert['number_invoice'] = $this->orders->generateCode();
+                        $data_insert['user_id'] = $user->id;
+                        $data_insert['email'] = $user->email;
+                        $data_insert['status'] = STATUS_ORDER_TEMP;
+                        $data_insert['created_date'] = date('Y-m-d H:i:s');
+                        $data_insert['update_date'] = date('Y-m-d H:i:s');
+                        $this->db->insert('orders', $data_insert);
+                        $order_id = $this->db->insert_id();
+
+                        $data_insert_detail = $_POST['Orders'];
+                        $data_insert_detail['order_id'] = $order_id;
+                        $data_insert_detail['created_date'] = date('Y-m-d H:i:s');
+                        $this->db->insert('order_details', $data_insert_detail);
+                    }
+                    echo 1;
+                }
+            }
+        }
+    }
+
+    public function cart() {
+        $data['template'] = 'sites/cart';
+        if(isset($this->session->userdata['logged_in_FE'])) {
+            $info_login_fe = $this->session->userdata['logged_in_FE'];
+            $query_user = $this->db->get_where('users', array('email' => $info_login_fe['email'], 'application_id' => FE));
+            $user = $query_user->row('1', 'Users');
+            if (count($user) > 0) {
+                $this->load->model('orders');
+                $this->load->model('orderDetails');
+                $this->load->model('billingAddress');
+                $query = $this->db->query('SELECT * FROM ci_orders WHERE status = '.STATUS_ORDER_TEMP.' AND user_id = '.$user->id);
+                $order = $query->row();
+                if (count($order) > 0) {
+                    $data['order_id'] = $order->id;
+                    $query = $this->db->get_where('order_details', ['order_id' => $order->id]);
+                    $order_details = $query->result('OrderDetails');
+                    $data['order_details'] = $order_details;
+                    $query = $this->db->query('SELECT * FROM ci_billing_address WHERE user_id = '.$user->id);
+                    $billings = $query->result('BillingAddress');
+                    $data['billings'] = $billings;
+                    if (isset($_POST['Orders'])) {
+                        foreach ($_POST['Orders'] as $order_detail_id => $order_detail) {
+                            $data_detail = $order_detail;
+                            $this->db->where('id', $order_detail_id);
+                            $this->db->update('order_details', $data_detail);
+                        }
+                        if (isset($_POST['shipping_address'])) {
+                            $data_order['shipping_address'] = $_POST['shipping_address'];
+                        }
+                        $data_order['order_date'] = date('Y-m-d H:i:s');
+                        $data_order['update_date'] = date('Y-m-d H:i:s');
+                        $data_order['status'] = STATUS_ORDER_PENDING;
+                        $this->db->where('id', $order_detail_id);
+                        $this->db->update('orders', $data_order);
+                        $data['order_success'] = 'Bạn đã đặt hàng thành công !';
+                    }
+                }
+            }
+        }
+        $this->load->view('layouts/index', $data);
+    }
+
+    public function deleteCart() {
+        if (isset($_POST['id']) && isset($_POST['order_id'])) {
+            $this->load->model('orders');
+            $this->load->model('orderDetails');
+            $this->db->where('id', $_POST['id']);
+            $this->db->delete('order_details');
+            $query = $this->db->get_where('order_details', ['order_id' => $_POST['order_id']]);
+            $order_details = $query->result();
+            if (count($order_details) == 0) {
+                $this->db->where('id', $_POST['order_id']);
+                $this->db->delete('orders');
+            }
         }
     }
 }
