@@ -162,7 +162,7 @@ class Product extends MY_Controller {
             $attributes = (is_array($this->input->post('attributes')))? array_filter($this->input->post('attributes')) : array();
             $attributes_values = (is_array($this->input->post('attributes_values')))? array_filter($this->input->post('attributes_values')) : array();
 
-            if(count($attributes) > 1 && count($attributes_values) > 1) {
+            if(!empty($attributes) && !empty($attributes_values)) {
                 $this->productOption->delete_all_model($id);
                 $this->productOptionValue->delete_all_model($id);
 
@@ -277,5 +277,21 @@ class Product extends MY_Controller {
             }
         }
         redirect('admin/product/index', 'refresh');
+    }
+
+    public function deleteImage($id) {
+        if (!$this->input->is_ajax_request()) {
+            exit('No direct script access allowed');
+        }
+
+        $model = $this->productImages->get_model(array('id' => $id));
+
+        if($model){
+            $this->productImages->delete_model($id);
+            @unlink('.'.$model->image);
+            echo 'Success';
+        }else{
+            echo 'Cannot find image to delete!';
+        }
     }
 }

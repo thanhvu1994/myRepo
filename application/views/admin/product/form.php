@@ -139,12 +139,14 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <input type="text" class="form-control att-input" value="" list="options">
+                                        <a class='delete-att' href="javascript:void(0)"><i class="glyphicon glyphicon-minus"></i></a>
                                         <?php echo form_error('attributes'); ?>
                                     </div>
                                     <div class="att-value-container" style="margin-top: 0px;">
                                         <div class="col-md-1">
                                            <input type="text" class="form-control att-value-input" value="">
-                                           <?php echo form_error('attribute_values'); ?>
+                                            <a class='delete-att-value' href="javascript:void(0)"><i class="glyphicon glyphicon-minus"></i></a>
+                                            <?php echo form_error('attribute_values'); ?>
                                         </div>
                                     </div>
                                     <div class="col-md-1" style="height: 38px; vertical-align: middle;">
@@ -159,27 +161,28 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <input type="text" class="form-control att-input" value="<?php echo $attribute->name; ?>" name="attributes[<?php echo $key; ?>]" list="options">
+                                                <a class='delete-att' href="javascript:void(0)"><i class="glyphicon glyphicon-minus"></i></a>
                                                 <?php echo form_error('attributes'); ?>
                                             </div>
 
                                             <?php if(isset($attributes_values[$attribute->id]) && !empty($attributes_values[$attribute->id])): ?>
-                                                <?php foreach($attributes_values[$attribute->id] as $attVal): ?>
-                                                    <?php if($attribute->name == 'Color'): ?>
-                                                        <div class="att-value-container" style="margin-top: 0px;">
-                                                            <div class="col-md-1">
-                                                                <input type="color" class="form-control att-value-input" value="<?php echo $attVal->name; ?>" name="attributes_values[<?php echo $key; ?>][]">
-                                                                <?php echo form_error('attribute_values'); ?>
-                                                            </div>
-                                                        </div>
-                                                    <?php else: ?>
-                                                        <div class="att-value-container" style="margin-top: 0px;">
-                                                            <div class="col-md-1">
-                                                                <input type="text" class="form-control att-value-input" value="<?php echo $attVal->name; ?>" name="attributes_values[<?php echo $key; ?>][]">
-                                                                <?php echo form_error('attribute_values'); ?>
-                                                            </div>
-                                                        </div>
-                                                    <?php endif; ?>
-                                                <?php endforeach; ?>
+                                                <div class="att-value-container" style="margin-top: 0px;">
+                                                    <?php foreach($attributes_values[$attribute->id] as $attVal): ?>
+                                                        <?php if($attribute->name == 'Color'): ?>
+                                                                <div class="col-md-1">
+                                                                    <input type="color" class="form-control att-value-input" value="<?php echo $attVal->name; ?>" name="attributes_values[<?php echo $key; ?>][]">
+                                                                    <a class='delete-att-value' href="javascript:void(0)"><i class="glyphicon glyphicon-minus"></i></a>
+                                                                    <?php echo form_error('attribute_values'); ?>
+                                                                </div>
+                                                        <?php else: ?>
+                                                                <div class="col-md-1">
+                                                                    <input type="text" class="form-control att-value-input" value="<?php echo $attVal->name; ?>" name="attributes_values[<?php echo $key; ?>][]">
+                                                                    <a class='delete-att-value' href="javascript:void(0)"><i class="glyphicon glyphicon-minus"></i></a>
+                                                                    <?php echo form_error('attribute_values'); ?>
+                                                                </div>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                </div>
                                             <?php endif; ?>
 
                                             <div class="col-md-1" style="height: 38px; vertical-align: middle;">
@@ -204,7 +207,8 @@
                                 <input type="file" name="product_image[]" class="dropify" multiple/>
                                 <?php if(isset($images) && !empty($images)): ?>
                                     <?php foreach($images as $image): ?>
-                                        <div class="gallery">
+                                        <div id="image-<?php echo $image->id; ?>" class="gallery">
+                                            <span class="close" onClick="deleteImage('<?php echo $image->id; ?>')">&times;</span>
                                             <a target="_blank" href="<?php echo base_url($image->image); ?>">
                                                 <img style="max-height: 150px;" src="<?php echo base_url($image->image); ?>"/>
                                             </a>
@@ -263,8 +267,40 @@
          }
      });
 
+     $('body').on('click', '.delete-att-value', function (){
+         var count = $(this).parent().parent().find('.col-md-1').length;
+
+         if(count > 1){
+             $(this).parent().remove();
+         }else{
+             $(this).closest('.attribute-input').remove();
+         }
+
+     });
+
+     $('body').on('click', '.delete-att', function (){
+         $(this).parent().parent().parent().remove();
+     });
+
      $('body').on('click', '.addAttributeValue', function (){
          var div = $(this).parent().parent().find('.att-value-input').first().parent().clone();
          $(this).parent().parent().find('.att-value-container').first().append(div);
      });
+
+     function deleteImage(id){
+         if(confirm("Bạn có chắc chắn muốn xóa hình này ?")){
+             $.ajax({
+                 url: '<?php echo base_url('admin/product/deleteImage')?>'+'/'+id,
+                 type: 'POST',
+                 contentType: "application/json; charset=utf-8",
+                 success: function (returndata) {
+                     if (returndata === 'Success') {
+                         $('#image-'+id).remove();
+                     }else{
+                         alert(returndata);
+                     }
+                 },
+             });
+         }
+     };
  </script>

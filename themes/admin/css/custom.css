@@ -54,3 +54,52 @@ span.required {
 .attribute-input {
     padding: 0px 7.5px 0px 7.5px;
 }
+
+.gallery {
+    position: relative;
+}
+.gallery .close {
+    color: red;
+    position: absolute;
+    font-size: 30px;
+    top: -7px;
+    right: 2px;
+    z-index: 100;
+    opacity: 1;
+}
+
+.delete-att-value{
+    position: absolute;
+    top:-5%;
+    left:70%;
+    color: red;
+    opacity:0;
+    transition:opacity 0.5s linear;
+    -moz-transition: opacity 0.5s linear;
+    -webkit-transition: opacity 0.5s linear;
+}
+
+.delete-att{
+    position: absolute;
+    top:-5%;
+    left:90%;
+    color: red;
+    opacity:0;
+    transition:opacity 0.5s linear;
+    -moz-transition: opacity 0.5s linear;
+    -webkit-transition: opacity 0.5s linear;
+}
+
+.col-md-1:hover .delete-att-value {
+    opacity: 1;
+    transition:opacity 2s linear;
+    -moz-transition: opacity 2s linear;
+    -webkit-transition: opacity 2s linear;
+}​,
+
+.col-md-3:hover .delete-att {
+    opacity: 1;
+    transition:opacity 2s linear;
+    -moz-transition: opacity 2s linear;
+    -webkit-transition: opacity 2s linear;
+}​
