@@ -43,8 +43,8 @@ class Product extends MY_Controller {
                 $this->productCategory->set_model($id,$category);
             }
 
-            $attributes = array_filter($this->input->post('attributes'));
-            $attributes_values = array_filter($this->input->post('attributes_values'));
+            $attributes = (is_array($this->input->post('attributes')))? array_filter($this->input->post('attributes')) : array();
+            $attributes_values = (is_array($this->input->post('attributes_values')))? array_filter($this->input->post('attributes_values')) : array();
 
             foreach($attributes as $attId => $att){
                 if(!empty($attributes_values[$attId])){
@@ -159,8 +159,8 @@ class Product extends MY_Controller {
                 $this->productCategory->set_model($id,$category);
             }
 
-            $attributes = array_filter($this->input->post('attributes'));
-            $attributes_values = array_filter($this->input->post('attributes_values'));
+            $attributes = (is_array($this->input->post('attributes')))? array_filter($this->input->post('attributes')) : array();
+            $attributes_values = (is_array($this->input->post('attributes_values')))? array_filter($this->input->post('attributes_values')) : array();
 
             if(count($attributes) > 1 && count($attributes_values) > 1) {
                 $this->productOption->delete_all_model($id);
@@ -184,8 +184,6 @@ class Product extends MY_Controller {
             }
 
             if(!empty($arrFiles)){
-                $this->productImages->delete_all_model($id);
-
                 $_FILES = $arrFiles;
                 foreach($_FILES as $key => $value){
                     if (!$this->upload->do_upload($key)) {
