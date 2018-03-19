@@ -3,7 +3,7 @@
     <div class="sidebar-nav navbar-collapse slimscrollsidebar">
         <div class="user-profile">
             <div class="dropdown user-pro-body">
-                <div><img src="../plugins/images/users/varun.jpg" alt="user-img" class="img-circle"></div>
+                <div><img src="<?php echo base_url('themes/admin/plugins/images/users/varun.jpg')?>" alt="user-img" class="img-circle"></div>
                 <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Steave Gection <span class="caret"></span></a>
                 <ul class="dropdown-menu animated flipInY">
                     <li><a href="<?php echo base_url('admin/site/profile')?>"><i class="ti-user"></i> My Profile</a></li>

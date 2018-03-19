@@ -9,7 +9,7 @@ class Banner extends CI_Model {
 
     public function getRule() {
     	$rules = [
-    		['image', 'Image', 'trim|required'],
+    		// ['image', 'Image', 'trim|required'],
     	];
 
     	return $rules;
@@ -82,10 +82,10 @@ class Banner extends CI_Model {
 	}
 
 	public function get_image() {
-		if (file_exists(base_url($this->image))) {
+		// if (file_exists(base_url($this->image))) {
 			return base_url($this->image);
-		}
+		// }
 
-		return '';
+		// return '';
 	}
 }

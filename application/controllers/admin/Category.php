@@ -39,6 +39,28 @@ class Category extends MY_Controller {
 		$this->load->view('admin/layouts/index', $data);
     }
 
+    public function view($id) {
+        if ($this->input->is_ajax_request()) {
+            $query = $this->db->get_where('categories', ['id' => $id]);
+
+            $model = $query->result('Categories');
+            if (count($model) > 0) {
+                $result['category_name'] = $model[0]->category_name;
+                $result['parent_id'] = $model[0]->get_parent_name();
+                $result['title'] = $model[0]->title;
+                $result['description'] = $model[0]->description;
+                $result['url'] = $model[0]->url;
+                $result['created_date'] = $model[0]->get_created_date();
+                $result['update_date'] = $model[0]->get_update_date();
+                echo json_encode($result);
+            } else {
+                echo json_encode([]);
+            }
+        } else {
+            echo json_encode([]);
+        }
+    }
+
     public function update($id) {
         $data['title'] = 'Chỉnh sửa danh mục';
         $data['template'] = 'admin/category/form';

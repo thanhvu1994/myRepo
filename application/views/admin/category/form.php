@@ -3,7 +3,7 @@
         <h4 class="page-title"><?php echo $title ?></h4>
     </div>
     <?php
-        $breadcrumb = [base_url('admin/site') => 'Dashboard', base_url('admin/banners') => 'Banners', 'active' => $title];
+        $breadcrumb = [base_url('admin/site') => 'Dashboard', base_url('admin/category') => 'Danh mục', 'active' => $title];
         $this->load->view('admin/layouts/breadcrumbs', ['breadcrumb' => $breadcrumb]);
      ?>
     <!-- /.col-lg-12 -->
@@ -59,8 +59,8 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
-                <a href="<?php echo base_url('admin/category')?>" class="btn btn-inverse waves-effect waves-light">Cancel</a>
+                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Lưu</button>
+                <a href="<?php echo base_url('admin/category')?>" class="btn btn-inverse waves-effect waves-light">Hủy</a>
             <?php echo form_close(); ?>
         </div>
     </div>
