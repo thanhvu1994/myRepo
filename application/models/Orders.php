@@ -21,7 +21,7 @@ class Orders extends CI_Model {
 
             return $query->row();
         } else {
-            $query = $this->db->query("SELECT * FROM ci_orders");
+            $query = $this->db->query("SELECT * FROM ci_orders ORDER BY status asc");
             return $query->result('Orders');
         }
     }
@@ -57,6 +57,10 @@ class Orders extends CI_Model {
         return date_format(date_create($this->update_date), 'd-m-Y');
     }
 
+    public function get_order_date() {
+        return date_format(date_create($this->order_date), 'd-m-Y');
+    }
+
     public function generateCode(){
         $maxid = 0;
         $row = $this->db->query('SELECT MAX(id) AS `maxid` FROM `ci_orders`')->row();
@@ -64,5 +68,22 @@ class Orders extends CI_Model {
             $maxid = $row->maxid;
         }
         return 'P'.date('dmY').(str_pad($maxid+1, 4, '0', STR_PAD_LEFT));
+    }
+
+    public function getStatus() {
+        switch ($this->status) {
+            case STATUS_ORDER_PENDING:
+                return 'Đang chờ';
+                break;
+            case STATUS_ORDER_COMPLETE:
+                return 'Đã xử lý';
+                break;
+            case STATUS_ORDER_CANCEL:
+                return 'Hủy bỏ';
+                break;
+            default:
+                return 'Chưa đặt hàng';
+                break;
+        }
     }
 }
