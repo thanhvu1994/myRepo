@@ -9,8 +9,10 @@ class Posts extends CI_Model {
 
     public function getRule() {
     	$rules = [
-    		['menu_name', 'Menu Name', 'trim|required'],
-    		// ['menu_link', 'Menu Link', 'trim|required'],
+    		['title', 'Title', 'trim|required'],
+            ['description', 'Description', 'trim|required'],
+            ['short_content', 'Short Content', 'trim|required'],
+            ['content', 'Content', 'trim|required'],
     	];
 
     	return $rules;
@@ -28,136 +30,39 @@ class Posts extends CI_Model {
 		}
 	}
 
-	public function set_model()
+	public function set_model($image)
 	{
-	    $display_order = $this->input->post('display_order') == "" ? 1 : $this->input->post('display_order');
-	    $show_in_menu = ($this->input->post('show_in_menu') == 'on') ? 1 : 0;
+        $data = array(
+            'title' => $this->input->post('title'),
+            'description' => $this->input->post('description'),
+            'short_content' => $this->input->post('short_content'),
+            'content' => $this->input->post('content'),
+            'featured_image' => $image,
+            'slug' => $this->generateSlug($this->input->post('title')),
+            'language' => 'vn',
+        );
 
-	    $data = array(
-	        'menu_name' => $this->input->post('menu_name'),
-	        'menu_link' => $this->input->post('menu_link'),
-	        'parent_id' => $this->input->post('parent_id'),
-	        'icon' => $this->input->post('icon'),
-	        'show_in_menu' => $show_in_menu,
-	        'display_order' => $display_order,
-	        'application_id' => 1,
-	        'update_date' => date('Y-m-d H:i:s'),
-	    );
-
-	    return $this->db->insert('menus', $data);
+	    return $this->db->insert('posts', $data);
 	}
 
-	public function update_model($id)
+	public function update_model($id,$image)
 	{
-	    $display_order = $this->input->post('display_order') == "" ? 1 : $this->input->post('display_order');
-	    $show_in_menu = ($this->input->post('show_in_menu') == 'on') ? 1 : 0;
-
 	    $data = array(
-	        'menu_name' => $this->input->post('menu_name'),
-	        'menu_link' => $this->input->post('menu_link'),
-	        'parent_id' => $this->input->post('parent_id'),
-	        'icon' => $this->input->post('icon'),
-	        'show_in_menu' => $show_in_menu,
-	        'display_order' => $display_order,
-	        'application_id' => 1,
-	        'update_date' => date('Y-m-d H:i:s'),
+	        'title' => $this->input->post('title'),
+	        'description' => $this->input->post('description'),
+	        'short_content' => $this->input->post('short_content'),
+	        'content' => $this->input->post('content'),
+	        'featured_image' => $image,
+            'language' => 'vn',
 	    );
 
 	    $this->db->where('id', $id);
-        $this->db->update('menus', $data);
+        $this->db->update('posts', $data);
 	}
 
 	public function delete_model($id) {
 		$this->db->where('id', $id);
-  		$this->db->delete('menus');
-	}
-
-	public function rChilds($parent_id, &$items, $level) {
-		$query = $this->db->query("SELECT * FROM ci_menus WHERE parent_id = ".$parent_id);
-		$childs = $query->result('Menus');
-
-		if (count($childs) > 0) {
-			$str = '';
-			for ($i=0; $i < $level; $i++) {
-				$str .= '---';
-			}
-			$level++;
-			foreach ($childs as $child) {
-				$items[$child->id] = $str.$child->menu_name;
-				$this->rChilds($child->id, $items, $level);
-			}
-		}
-	}
-
-	public function get_dropdown_menu() {
-		$items = [];
-		$query = $this->db->query("SELECT * FROM ci_menus WHERE parent_id = 0");
-		$parents = $query->result('Menus');
-		$level = 1;
-		if (count($parents) > 0) {
-			foreach ($parents as $row) {
-				$items[$row->id] = $row->menu_name;
-				$this->rChilds($row->id, $items, $level);
-			}
-		}
-
-		return $items;
-	}
-
-	public function get_childs($parent, &$items) {
-		$query = $this->db->query("SELECT * FROM ci_menus WHERE show_in_menu = 1 AND parent_id = ".$parent->id);
-		$childs = $query->result('Menus');
-
-		if (count($childs) > 0) {
-			foreach ($childs as $child) {
-				$item[$child->id] = [
-					'menu_name' => $child->menu_name,
-					'menu_icon' => $child->icon,
-					'menu_link' => $child->menu_link,
-				];
-
-				$items[$parent->id]['childs'] = $item;
-				// $this->get_childs($child, $items);
-			}
-		} else {
-			$items[$parent->id]['childs'] = [];
-		}
-	}
-
-	public function show_menus() {
-		$items = [];
-		$query = $this->db->query("SELECT * FROM ci_menus WHERE parent_id = 0 AND show_in_menu = 1");
-		$parents = $query->result('Menus');
-
-		if (count($parents) > 0) {
-			foreach ($parents as $parent) {
-				$items[$parent->id] = [
-					'menu_name' => $parent->menu_name,
-					'menu_icon' => $parent->icon,
-					'menu_link' => $parent->menu_link,
-				];
-				$this->get_childs($parent, $items);
-			}
-		}
-		return $items;
-	}
-
-	public function get_parent_name() {
-		$query = $this->db->get_where('menus', array('id' => $this->parent_id));
-
-		if ($query->row()) {
-			return $query->row()->menu_name;
-		}
-
-    	return '';
-	}
-
-	public function get_show_menu() {
-		if ($this->show_in_menu) {
-			return 'Yes';
-		}
-
-		return 'No';
+  		$this->db->delete('posts');
 	}
 
 	public function get_created_date() {
@@ -167,4 +72,101 @@ class Posts extends CI_Model {
 	public function get_update_date() {
 		return date_format(date_create($this->update_date), 'd-m-Y');
 	}
+
+	public function get_dropdown_posts() {
+        $result = ['sites/news' => 'Tổng hợp Tin tức'];
+
+        $this->load->model('products');
+        $query = $this->db->query("SELECT * FROM ci_categories WHERE type = 'category' ORDER BY display_order asc, category_name asc");
+        $categories =  $query->result('Categories');
+
+        if (count($categories) > 0) {
+            foreach ($categories as $category) {
+                $url = 'sites/category/'.$category->slug;
+                $result[$url] = 'Danh mục: '.$category->category_name;
+            }
+        }
+
+		$posts = $this->get_model();
+		if (count($posts) > 0) {
+			foreach ($posts as $post) {
+				$url = 'sites/news/'.$post->slug;
+				$result[$url] = 'Bài viết: '.$post->title;
+			}
+		}
+
+		return $result;
+	}
+
+	public function getProjectsFE(){
+        $query = $this->db->query("SELECT * FROM ci_posts WHERE type = 'project'");
+        return $query->result('Posts');
+    }
+
+    public function getNews($limit, $start){
+        $this->db->limit($limit, $start);
+        $this->db->order_by('created_date desc');
+        $query = $this->db->get_where('posts', array() );
+
+        return $query->result();
+    }
+
+    public function countNews(){
+        $this->db->from('posts');
+        return $this->db->count_all_results();
+    }
+
+    public function fb_comment_count()
+    {
+        $json = json_decode(file_get_contents('https://graph.facebook.com/?ids=' . base_url('sites/newDetail/'. $this->slug)));
+        return isset($json->url->comments) ? $json->url->comments : 0;
+    }
+
+    public function generateSlug($text){
+        $text = $this->stripUnicode($text);
+        $maxid = 0;
+        $row = $this->db->query('SELECT MAX(id) AS `maxid` FROM `ci_news`')->row();
+        if ($row) {
+            $maxid = $row->maxid;
+        }
+
+        // replace non letter or digits by -
+        $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+
+        // transliterate
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+        // remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // remove duplicate -
+        $text = preg_replace('~-+~', '-', $text);
+
+        // lowercase
+        $text = strtolower($text);
+
+        if (empty($text)) {
+            return 'n-a';
+        }
+
+        return $text.'-'.$maxid;
+    }
+
+    function stripUnicode($str){
+        if(!$str) return false;
+        $unicode = array(
+            'a'=>'á|à|ả|ã|ạ|ă|ắ|ặ|ằ|ẳ|ẵ|â|ấ|ầ|ẩ|ẫ|ậ',
+            'd'=>'đ',
+            'e'=>'é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ',
+            'i'=>'í|ì|ỉ|ĩ|ị',
+            'o'=>'ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ',
+            'u'=>'ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự',
+            'y'=>'ý|ỳ|ỷ|ỹ|ỵ',
+        );
+        foreach($unicode as $nonUnicode=>$uni) $str = preg_replace("/($uni)/i",$nonUnicode,$str);
+        return $str;
+    }
 }

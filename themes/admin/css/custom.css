@@ -1,8 +1,53 @@
 .button-column a{
 	padding: 5px 8px 5px 8px;
     margin-right: 5px;
-    border-radius: 3px;
-    border: solid 1px #231f1f;
-    font-size: 16px;
-    background-color: #eaeaea;
+}
+
+div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+.attribute-container div:nth-child(n+1) {
+    margin-top:10px;
+}
+
+.attribute-input.default-item{
+    display:none;
+}
+.del-img-setting {
+    position: absolute !important;
+    top: 0;
+    right: 22px;
+    font-size: 15px;
+    cursor: pointer;
+}
+body, h1, h2, h3, h4, h5, h6{
+    font-family: 'Source Sans Pro' !important;
+}
+.no-sort:after {
+     display:none !important;
+}
+.btn-create{
+    background-color: #13dafe;
+    color: #fff;
+}
+span.required {
+    color: red;
 }

@@ -9,6 +9,16 @@ class MY_Controller extends CI_Controller {
         $this->load->model('users');
         $this->load->model('menus');
         $this->load->model('posts');
+        $this->load->model('news');
+        $this->load->model('products');
+        $this->load->model('projects');
+        $this->load->model('productImages');
+        $this->load->model('productOption');
+        $this->load->model('productOptionValue');
+        $this->load->model('categories');
+        $this->load->model('productCategory');
+        $this->load->model('settings');
+
         // validate user
         if (!$this->users->check_logged()) {
             redirect('admin/login', 'refresh');

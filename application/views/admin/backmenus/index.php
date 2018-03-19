@@ -1,9 +1,9 @@
 <div class="row bg-title">
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <h4 class="page-title">Data Table</h4>
+        <h4 class="page-title"><?php echo $title ?></h4>
     </div>
     <?php
-        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Backmenus'];
+        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Quản lý menu'];
         $this->load->view('admin/layouts/breadcrumbs', ['breadcrumb' => $breadcrumb]);
      ?>
     <!-- /.col-lg-12 -->
@@ -14,7 +14,7 @@
         <div class="white-box">
             <div class="row m-b-30">
                 <div class="col-lg-2 col-sm-4 col-xs-12">
-                    <a href="<?php echo base_url('admin/backmenus/create')?>" class="btn btn-block btn-default">Create</a>
+                    <a href="<?php echo base_url('admin/backmenus/create')?>" class="btn btn-block btn-default">Thêm mới</a>
                 </div>
             </div>
             <div class="row">
@@ -40,9 +40,9 @@
                                         <td><?php echo $model->display_order ?></td>
                                         <td><?php echo $model->get_created_date() ?></td>
                                         <td class="button-column">
-                                            <a href="javascript:void(0)" class="button-view" data-id="<?php echo $model->id?>"><i class="fa fa-eye"></i></a>
-                                            <a href="<?php echo base_url('admin/backmenus/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)" class="button-delete" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
+                                            <a class="btn btn-danger" href="javascript:void(0)" class="button-view" data-id="<?php echo $model->id?>"><i class="fa fa-eye"></i></a>
+                                            <a class="btn btn-danger" href="<?php echo base_url('admin/backmenus/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
+                                            <a class="btn btn-danger button-delete" href="javascript:void(0)" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>

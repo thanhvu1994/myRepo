@@ -1,6 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+defined('STATUS_ACTIVE')  OR define('STATUS_ACTIVE', 1);
+defined('STATUS_INACTIVE')  OR define('STATUS_INACTIVE', 0);
+defined('STATUS_TEMP')  OR define('STATUS_TEMP', -1);
+defined('BE')  OR define('BE', 1);
+defined('FE')  OR define('FE', 2);
+defined('STATUS_ORDER_TEMP')  OR define('STATUS_ORDER_TEMP', 0);
+defined('STATUS_ORDER_PENDING')  OR define('STATUS_ORDER_PENDING', 1);
+defined('STATUS_ORDER_COMPLETE')  OR define('STATUS_ORDER_COMPLETE', 2);
+defined('STATUS_ORDER_CANCEL')  OR define('STATUS_ORDER_CANCEL', 3);
 /*
 |--------------------------------------------------------------------------
 | Display Debug backtrace

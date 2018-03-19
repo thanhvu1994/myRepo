@@ -57,33 +57,6 @@
                                         <li><a href="javascript:void(0)" theme="purple-dark" class="purple-dark-theme">11</a></li>
                                         <li><a href="javascript:void(0)" theme="megna-dark" class="megna-dark-theme">12</a></li>
                                     </ul>
-                                    <ul class="m-t-20 chatonline">
-                                        <li><b>Chat option</b></li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/arijit.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/govinda.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/hritik.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/john.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/pawandeep.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -106,6 +79,7 @@
         <!--Wave Effects -->
         <script src="<?php echo base_url('themes/admin/js/waves.js')?>"></script>
         <!-- Custom Theme JavaScript -->
+        <script src="<?php echo base_url('themes/admin/js/jasny-bootstrap.js')?>"></script>
         <script src="<?php echo base_url('themes/admin/js/custom.min.js')?>"></script>
         <script src="<?php echo base_url('themes/admin/plugins/bower_components/datatables/jquery.dataTables.min.js')?>"></script>
         <!-- start - This is for export functionality only -->
@@ -116,51 +90,67 @@
         <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
         <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+        <script src="<?php echo base_url('themes/admin/plugins/bower_components/switchery/dist/switchery.min.js')?>"></script>
+        <script src="<?php echo base_url('themes/admin/plugins/bower_components/colorpicker/bootstrap-colorpicker.js')?>"></script>
+        <link rel="stylesheet" href="<?php echo base_url('themes/admin/plugins/bower_components/colorpicker/colorpicker.css')?>">
+
         <!-- end - This is for export functionality only -->
         <script>
         $(document).ready(function() {
-            $('#myTable').DataTable();
-            $(document).ready(function() {
-                var table = $('#example').DataTable({
-                    "columnDefs": [{
-                        "visible": false,
-                        "targets": 2
-                    }],
-                    "order": [
-                        [2, 'asc']
-                    ],
-                    "displayLength": 25,
-                    "drawCallback": function(settings) {
-                        var api = this.api();
-                        var rows = api.rows({
-                            page: 'current'
-                        }).nodes();
-                        var last = null;
-
-                        api.column(2, {
-                            page: 'current'
-                        }).data().each(function(group, i) {
-                            if (last !== group) {
-                                $(rows).eq(i).before(
-                                    '<tr class="group"><td colspan="5">' + group + '</td></tr>'
-                                );
-
-                                last = group;
-                            }
-                        });
-                    }
-                });
-
-                // Order by the grouping
-                $('#example tbody').on('click', 'tr.group', function() {
-                    var currentOrder = table.order()[0];
-                    if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
-                        table.order([2, 'desc']).draw();
-                    } else {
-                        table.order([2, 'asc']).draw();
-                    }
-                });
+            $('.js-switch').each(function() {
+                new Switchery($(this)[0], $(this).data());
             });
+            // $.toast({
+            //     heading: 'Welcome to Agile admin',
+            //     text: 'Use the predefined ones, or specify a custom position object.',
+            //     position: 'top-right',
+            //     loaderBg: '#ff6849',
+            //     icon: 'info',
+            //     hideAfter: 3500,
+            //     stack: 6
+            // });
+            // $('#myTable').DataTable();
+            // $(document).ready(function() {
+            //     var table = $('#example').DataTable({
+            //         "columnDefs": [{
+            //             "visible": false,
+            //             "targets": 2
+            //         }],
+            //         "order": [
+            //             [2, 'asc']
+            //         ],
+            //         "displayLength": 25,
+            //         "drawCallback": function(settings) {
+            //             var api = this.api();
+            //             var rows = api.rows({
+            //                 page: 'current'
+            //             }).nodes();
+            //             var last = null;
+
+            //             api.column(2, {
+            //                 page: 'current'
+            //             }).data().each(function(group, i) {
+            //                 if (last !== group) {
+            //                     $(rows).eq(i).before(
+            //                         '<tr class="group"><td colspan="5">' + group + '</td></tr>'
+            //                     );
+
+            //                     last = group;
+            //                 }
+            //             });
+            //         }
+            //     });
+
+            //     // Order by the grouping
+            //     $('#example tbody').on('click', 'tr.group', function() {
+            //         var currentOrder = table.order()[0];
+            //         if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+            //             table.order([2, 'desc']).draw();
+            //         } else {
+            //             table.order([2, 'asc']).draw();
+            //         }
+            //     });
+            // });
         });
         // $('#example23').DataTable({
         //     dom: 'Bfrtip',
@@ -169,8 +159,6 @@
         //     ],
         // });
         </script>
-        <!--Style Switcher -->
-        <script src="<?php echo base_url('themes/admin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js')?>"></script>
 
         <!-- jQuery -->
         <script src="<?php echo base_url('themes/admin/plugins/bower_components/waypoints/lib/jquery.waypoints.js')?>"></script>
@@ -182,27 +170,16 @@
             <!-- Custom Theme JavaScript -->
             <script src="<?php echo base_url('themes/admin/js/dashboard1.js')?>"></script>
         <?php endif ?>
-        
+
         <!-- Sparkline chart JavaScript -->
         <script src="<?php echo base_url('themes/admin/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js')?>"></script>
         <script src="<?php echo base_url('themes/admin/plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js')?>"></script>
         <script src="<?php echo base_url('themes/admin/plugins/bower_components/toast-master/js/jquery.toast.js')?>"></script>
         <!-- jQuery file upload -->
          <script src="<?php echo base_url('themes/admin/plugins/bower_components/dropify/dist/js/dropify.min.js')?>"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('.dropify').dropify();
-                // $.toast({
-                //     heading: 'Welcome to Agile admin',
-                //     text: 'Use the predefined ones, or specify a custom position object.',
-                //     position: 'top-right',
-                //     loaderBg: '#ff6849',
-                //     icon: 'info',
-                //     hideAfter: 3500,
-                //     stack: 6
-                // })
-            });
-        </script>
+
+         <!--Style Switcher -->
+        <script src="<?php echo base_url('themes/admin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js')?>"></script>
     </body>
 
 </html>

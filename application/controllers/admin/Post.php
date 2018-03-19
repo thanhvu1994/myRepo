@@ -5,22 +5,26 @@ class Post extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
+        $config['upload_path']          = './uploads/posts';
+        $config['allowed_types']        = 'jpg|png';
+        $config['encrypt_name']         = TRUE;
+        $this->load->library('upload', $config);
     }
 
     public function index()
     {
+        $data['title'] = 'Quản Lý Trang Tĩnh';
         $data['template'] = 'admin/post/index';
         $data['models'] = $this->posts->get_model();
 		$this->load->view('admin/layouts/index', $data);
     }
 
     public function create() {
-        $data['title'] = 'Create a Backend Menu';
-        $data['dropdown_menu'] = $this->menus->get_dropdown_menu();
-    	$data['content'] = 'admin/backmenus/form';
-        $data['link_submit'] = base_url('admin/backmenus/create');
-
-        $rules = $this->menus->getRule();
+        $data['title'] = 'Create a Post';
+    	$data['template'] = 'admin/post/form';
+        $data['link_submit'] = base_url('admin/post/create');
+        $data['scenario'] = 'create';
+        $rules = $this->posts->getRule();
         foreach ($rules as $rule) {
             if (count($rule) >= 3) {
                 $this->form_validation->set_rules($rule[0], $rule[1], $rule[2]);
@@ -28,7 +32,16 @@ class Post extends MY_Controller {
         }
 
         if ($this->form_validation->run() == TRUE) {
-            $this->menus->set_model();
+            $image = '';
+            if (!$this->upload->do_upload('featured_image')) {
+                $data['error'] = $this->upload->display_errors();
+            } else {
+                $uploadData = $this->upload->data();
+                $image = '/uploads/posts/'. $uploadData['file_name'];
+            }
+
+            $this->posts->set_model($image);
+            redirect('admin/post/index', 'refresh');
         }
 		$this->load->view('admin/layouts/index', $data);
     }
@@ -45,6 +58,8 @@ class Post extends MY_Controller {
                 $result['content'] = $model[0]->content;
                 $result['featured_image'] = $model[0]->featured_image;
                 $result['slug'] = $model[0]->slug;
+                $result['type'] = ucfirst($model[0]->type);
+                $result['language'] = ($model[0]->language == 'vn')? 'Tiếng Việt': 'English';
                 $result['created_date'] = $model[0]->created_date;
 
                 echo json_encode($result);
@@ -57,12 +72,13 @@ class Post extends MY_Controller {
     }
 
     public function update($id) {
-        $data['title'] = 'Update a Backend Menu';
-        $data['dropdown_menu'] = $this->menus->get_dropdown_menu();
-        $data['content'] = 'admin/backmenus/form';
-        $data['model'] = $this->menus->get_model(['id' => $id]);
-        $data['link_submit'] = base_url('admin/backmenus/update/'.$id);
-        $rules = $this->menus->getRule();
+        $data['title'] = 'Update a Post';
+        $data['template'] = 'admin/post/form';
+        $data['model'] = $this->posts->get_model(['id' => $id]);
+        $data['link_submit'] = base_url('admin/post/update/'.$id);
+        $data['scenario'] = 'update';
+
+        $rules = $this->posts->getRule();
         foreach ($rules as $rule) {
             if (count($rule) >= 3) {
                 $this->form_validation->set_rules($rule[0], $rule[1], $rule[2]);
@@ -70,19 +86,44 @@ class Post extends MY_Controller {
         }
 
         if ($this->form_validation->run() == TRUE) {
-            $this->menus->update_model($id);
-            redirect('admin/backmenus/index', 'refresh');
+            $oldModel = $this->posts->get_model(array('id' => $id));
+            if (!$this->upload->do_upload('featured_image')) {
+                $data['error'] = $this->upload->display_errors();
+
+                $this->posts->update_model($id,$oldModel->featured_image);
+                redirect('admin/post/index', 'refresh');
+            } else {
+                $path = '.'.$oldModel->featured_image;
+                @unlink($path);
+
+                $uploadData = $this->upload->data();
+                $image = '/uploads/posts/'. $uploadData['file_name'];
+                $this->posts->update_model($id,$image);
+                redirect('admin/post/index', 'refresh');
+            }
         }
 
         $this->load->view('admin/layouts/index', $data);
     }
 
     public function delete($id) {
-        $model = $this->menus->get_model(['id' => $id]);
+        $model = $this->posts->get_model(['id' => $id]);
 
         if (count($model) > 0) {
-            $this->menus->delete_model($id);
+            $this->posts->delete_model($id);
         }
     }
 
+    public function bulkDelete() {
+        $deleteItems = isset($_POST['select']) ? $_POST['select'] : [];
+
+        if (!empty($deleteItems)) {
+            $query = $this->db->query("SELECT * FROM ci_posts WHERE id in(".implode(',', $deleteItems).")");
+            $models = $query->result('Posts');
+            foreach ($models as $model) {
+                $this->posts->delete_model($model->id);
+            }
+        }
+        redirect('admin/post/index', 'refresh');
+    }
 }
