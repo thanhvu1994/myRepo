@@ -18,7 +18,7 @@
                         <div class="form-group">
                             <label class="col-md-12">Mã Sản Phẩm</label>
                             <div class="col-md-12">
-                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->product_code : $newCode ;?>" name="product_code" readonly>
+                                <input required type="text" class="form-control" value="<?php echo (isset($model)) ? $model->product_code : $newCode ;?>" name="product_code" readonly>
                                 <?php echo form_error('product_code'); ?>
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                         <div class="form-group">
                             <label class="col-md-12">Tên Sản Phẩm</label>
                             <div class="col-md-12">
-                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->product_name : ''?>" name="product_name">
+                                <input required type="text" class="form-control" value="<?php echo (isset($model)) ? $model->product_name : ''?>" name="product_name">
                                 <?php echo form_error('product_name'); ?>
                             </div>
                         </div>
@@ -120,14 +120,14 @@
                         <div class="form-group">
                             <label class="col-md-12">Mô Tả</label>
                             <div class="col-md-12">
-                                    <textarea class="form-control" name="description" id="editor-full-2" rows="10" cols="80"><?php echo (isset($model)) ? $model->description : ''?></textarea>
+                                    <textarea required class="form-control" name="description" id="editor-full-2" rows="10" cols="80"><?php echo (isset($model)) ? $model->description : ''?></textarea>
                                 <?php echo form_error('description'); ?>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-12">Nội Dung</label>
                             <div class="col-md-12">
-                                <textarea class="form-control" name="content" id="editor-full" rows="10" cols="80"><?php echo (isset($model)) ? $model->content : ''?></textarea>
+                                <textarea required class="form-control" name="content" id="editor-full" rows="10" cols="80"><?php echo (isset($model)) ? $model->content : ''?></textarea>
                                 <?php echo form_error('content'); ?>
                             </div>
                         </div>
@@ -137,44 +137,56 @@
                             <label class="col-md-12">Thuộc tính <a href="javascript:void(0)" onClick="addAttribute()"><span class="glyphicon glyphicon-plus"></span></a></label>
                             <div class="attribute-input default-item">
                                 <div class="row">
-                                    <div class="col-md-1" style="height: 38px; vertical-align: middle;">
-                                        <button type="button" style="height: 38px;" class="btn btn-primary addAttributeValue">Add</button>
-                                    </div>
                                     <div class="col-md-3">
-                                        <input type="text" class="form-control att-input" value="" name="attributes[]" list="options">
+                                        <input type="text" class="form-control att-input" value="" list="options">
                                         <?php echo form_error('attributes'); ?>
+                                    </div>
+                                    <div class="att-value-container" style="margin-top: 0px;">
+                                        <div class="col-md-1">
+                                           <input type="text" class="form-control att-value-input" value="">
+                                           <?php echo form_error('attribute_values'); ?>
                                         </div>
-                                    <div class="col-md-1">
-                                        <input type="text" class="form-control att-value-input" value="" name="attribute_values[]">
-                                        <?php echo form_error('attribute_values'); ?>
+                                    </div>
+                                    <div class="col-md-1" style="height: 38px; vertical-align: middle;">
+                                        <button type="button" style="height: 38px;" class="btn btn-primary addAttributeValue"><i class="glyphicon glyphicon-plus"></i></button>
                                     </div>
                                 </div>
                             </div>
 
-                            <?php if(isset($attribute_value) && !empty($attribute_value)): ?>
-                                <?php foreach($attribute_value as $att => $attVals): ?>
-                                    <?php foreach($attVals as $attVal): ?>
-                                        <div class="attribute-input">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <input type="text" class="form-control att-input" value="<?php echo $attVal->getAttributeName($att); ?>" name="attributes[]" list="options">
-                                                    <?php echo form_error('attributes'); ?>
-                                                </div>
+                            <?php if(!empty($attributes)): ?>
+                                <?php foreach($attributes as $key => $attribute): ?>
+                                    <div class="attribute-input">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control att-input" value="<?php echo $attribute->name; ?>" name="attributes[<?php echo $key; ?>]" list="options">
+                                                <?php echo form_error('attributes'); ?>
+                                            </div>
 
-                                                <?php if($attVal->getAttributeName($att) == 'Color'): ?>
-                                                    <div class="col-md-2">
-                                                        <input type="color" class="form-control att-value-input" value="<?php echo $attVal->name; ?>" name="attribute_values[]">
-                                                        <?php echo form_error('attribute_values'); ?>
-                                                    </div>
-                                                <?php else: ?>
-                                                    <div class="col-md-2">
-                                                        <input type="text" class="form-control att-value-input" value="<?php echo $attVal->name; ?>" name="attribute_values[]">
-                                                        <?php echo form_error('attribute_values'); ?>
-                                                    </div>
-                                                <?php endif; ?>
+                                            <?php if(isset($attributes_values[$attribute->id]) && !empty($attributes_values[$attribute->id])): ?>
+                                                <?php foreach($attributes_values[$attribute->id] as $attVal): ?>
+                                                    <?php if($attribute->name == 'Color'): ?>
+                                                        <div class="att-value-container" style="margin-top: 0px;">
+                                                            <div class="col-md-1">
+                                                                <input type="color" class="form-control att-value-input" value="<?php echo $attVal->name; ?>" name="attributes_values[<?php echo $key; ?>][]">
+                                                                <?php echo form_error('attribute_values'); ?>
+                                                            </div>
+                                                        </div>
+                                                    <?php else: ?>
+                                                        <div class="att-value-container" style="margin-top: 0px;">
+                                                            <div class="col-md-1">
+                                                                <input type="text" class="form-control att-value-input" value="<?php echo $attVal->name; ?>" name="attributes_values[<?php echo $key; ?>][]">
+                                                                <?php echo form_error('attribute_values'); ?>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+
+                                            <div class="col-md-1" style="height: 38px; vertical-align: middle;">
+                                                <button type="button" style="height: 38px;" class="btn btn-primary addAttributeValue"><i class="glyphicon glyphicon-plus"></i></button>
                                             </div>
                                         </div>
-                                    <?php endforeach; ?>
+                                    </div>
                                 <?php endforeach; ?>
                             <?php endif; ?>
 
@@ -232,7 +244,10 @@
      } );
 
      function addAttribute(){
-         $('.attribute-input.default-item').clone().removeClass('default-item').appendTo( ".attribute-container" );
+         var count = $('.attribute-input').length;
+         var att = $('.attribute-input.default-item').clone().removeClass('default-item').appendTo( ".attribute-container" );
+         att.find('.att-input').attr('name','attributes['+count+']');
+         att.find('.att-value-input').attr('name','attributes_values['+count+'][]');
      }
 
      $(document).ready(function() {
@@ -245,12 +260,11 @@
      $('body').on('change', '.att-input', function (){
          if($(this).val() === 'Color'){
              $(this).parent().parent().find('.att-value-input').attr('type','color');
-             $(this).parent().parent().append('');
          }
-     })
+     });
 
      $('body').on('click', '.addAttributeValue', function (){
          var div = $(this).parent().parent().find('.att-value-input').first().parent().clone();
-         $(this).parent().parent().append(div);
+         $(this).parent().parent().find('.att-value-container').first().append(div);
      });
  </script>

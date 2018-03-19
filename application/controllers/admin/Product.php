@@ -44,9 +44,19 @@ class Product extends MY_Controller {
             }
 
             $attributes = array_filter($this->input->post('attributes'));
-            $attribute_values = array_filter($this->input->post('attribute_values'));
+            $attributes_values = array_filter($this->input->post('attributes_values'));
 
-            $arrAttributes = $this->reArrayAttributes($attributes, $attribute_values);
+            foreach($attributes as $attId => $att){
+                if(!empty($attributes_values[$attId])){
+                    $productOptionId = $this->productOption->set_model($id,$att);
+
+                    foreach($attributes_values[$attId] as $attval){
+                        $this->productOptionValue->set_model($id,$productOptionId,$attval);
+                    }
+                }
+            }
+
+            /*$arrAttributes = $this->reArrayAttributes($attributes, $attribute_values);
 
             foreach($arrAttributes as $att => $attvals){
                 if(!empty($attvals)){
@@ -56,7 +66,7 @@ class Product extends MY_Controller {
                         $this->productOptionValue->set_model($id,$productOptionId,$attval);
                     }
                 }
-            }
+            }*/
 
             if(isset($_FILES['product_image'])){
                 $arrFiles = $this->reArrayFiles($_FILES['product_image']);
@@ -126,12 +136,12 @@ class Product extends MY_Controller {
         $data['link_submit'] = base_url('admin/product/update/'.$id);
         $data['scenario'] = 'update';
         $data['newCode'] = $this->products->generateCode();
-        $data['attribute'] = $this->productOption->get_model($id);
-        $data['attribute_value'] = array();
+        $data['attributes'] = $this->productOption->get_model($id);
+        $data['attributes_values'] = array();
         $data['categories'] = $this->categories->get_dropdown_category(0, 'category');
 
-        foreach( $data['attribute'] as $key => $item){
-            $data['attribute_value'][$item->id] = $this->productOptionValue->get_model($item->id);
+        foreach( $data['attributes'] as $key => $item){
+            $data['attributes_values'][$item->id] = $this->productOptionValue->get_model($item->id);
         }
 
         $rules = $this->products->getRule();
@@ -150,20 +160,18 @@ class Product extends MY_Controller {
             }
 
             $attributes = array_filter($this->input->post('attributes'));
-            $attribute_values = array_filter($this->input->post('attribute_values'));
+            $attributes_values = array_filter($this->input->post('attributes_values'));
 
-            $arrAttributes = $this->reArrayAttributes($attributes, $attribute_values);
-
-            if(count($attributes) > 1 && count($attribute_values) > 1) {
+            if(count($attributes) > 1 && count($attributes_values) > 1) {
                 $this->productOption->delete_all_model($id);
                 $this->productOptionValue->delete_all_model($id);
 
-                foreach ($arrAttributes as $att => $attvals) {
-                    if (!empty($attvals)) {
-                        $productOptionId = $this->productOption->set_model($id, $att);
+                foreach($attributes as $attId => $att){
+                    if(!empty($attributes_values[$attId])){
+                        $productOptionId = $this->productOption->set_model($id,$att);
 
-                        foreach ($attvals as $attval) {
-                            $this->productOptionValue->set_model($id, $productOptionId, $attval);
+                        foreach($attributes_values[$attId] as $attval){
+                            $this->productOptionValue->set_model($id,$productOptionId,$attval);
                         }
                     }
                 }
