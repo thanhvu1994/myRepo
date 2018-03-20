@@ -58,33 +58,39 @@
                                 <?php endforeach;?>
                                 </tbody>
                             </table>
-                            <div style="padding: 15px 15px 30px 0;">
-                                <p>Địa chỉ giao hàng: </p>
+                            <div class="row">
+                                <div class="form-group">
+                                    <?php if(isset($billings) && count($billings) > 0) :?>
+                                        <div class="col-xs-3">
+                                            <p>Địa chỉ giao hàng: </p>
+                                            <select name="shipping_address" class="form-control">
+                                                <?php foreach ($billings as $billing) :?>
+                                                    <option value="<?php echo $billing->id?>"><?php echo $billing->title?></option>
+                                                <?php endforeach;?>
+                                            </select>
+                                        </div>
+                                    <?php else: ?>
+                                        <p class="buttons_bottom_block no-print">
+                                            <a href="<?php echo base_url('sites/addresses')?>">
+                                                <button type="button" class="exclusive ps_product_addcart">
+                                                    <span>Thêm địa chỉ mua hàng</span>
+                                                </button>
+                                            </a>
+                                        </p>
+                                    <?php endif;?>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 30px">
                                 <?php if(isset($billings) && count($billings) > 0) :?>
-                                    <select name="shipping_address">
-                                        <?php foreach ($billings as $billing) :?>
-                                            <option value="<?php echo $billing->id?>"><?php echo $billing->title?></option>
-                                        <?php endforeach;?>
-                                    </select>
-                                <?php else: ?>
-                                    <p class="buttons_bottom_block no-print">
-                                        <a href="<?php echo base_url('sites/addresses')?>">
-                                            <button type="button" class="exclusive ps_product_addcart">
-                                                <span>Thêm địa chỉ mua hàng</span>
+                                    <div class="col-xs-3">
+                                        <p class="buttons_bottom_block no-print">
+                                            <button type="submit" class="exclusive ps_product_addcart">
+                                                <span>Đặt hàng</span>
                                             </button>
-                                        </a>
-                                    </p>
+                                        </p>
+                                    </div>
                                 <?php endif;?>
                             </div>
-                            <?php if(isset($billings) && count($billings) > 0) :?>
-                                <div style="padding: 15px 15px 30px 0;float: left">
-                                    <p class="buttons_bottom_block no-print">
-                                        <button type="submit" class="exclusive ps_product_addcart">
-                                            <span>Đặt hàng</span>
-                                        </button>
-                                    </p>
-                                </div>
-                            <?php endif;?>
                         </form>
                     <?php endif;?>
                 <?php endif?>
