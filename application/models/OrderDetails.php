@@ -97,4 +97,24 @@ class OrderDetails extends CI_Model {
 
         return '';
     }
+
+    public function getMoreInfo()
+    {
+        if (!empty($this->more_info)) {
+            return $this->more_info;
+        }
+    }
+
+    public function getColor() {
+        if ($this->product_option_value_id) {
+            $this->load->model('productOptionValue');
+            $query = $this->db->get_where('product_option_value', ['id' => $this->product_option_value_id]);
+            $color = $query->row();
+            if (count($color) > 0) {
+                return $color->name;
+            }
+        }
+
+        return '';
+    }
 }

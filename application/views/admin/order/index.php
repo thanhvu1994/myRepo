@@ -41,7 +41,6 @@
                                         <td><?php echo $model->getStatus() ?></td>
                                         <td><?php echo $model->get_order_date() ?></td>
                                         <td class="button-column">
-                                            <a class="btn btn-danger" href="<?php echo base_url('admin/order/view/'.$model->id)?>" title="Xem"><i class="fa fa-eye"></i></a>
                                             <a class="btn btn-danger" href="<?php echo base_url('admin/order/update/'.$model->id)?>" title="Cập nhật"><i class="fa fa-edit"></i></a>
                                             <a class="btn btn-danger button-delete" href="javascript:void(0)" title="Xóa" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
                                         </td>

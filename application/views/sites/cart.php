@@ -30,7 +30,7 @@
                                 <tr>
                                     <td>
                                         <?php if ($order_detail->getProductImage() != '') {
-                                            echo '<img src="'.$order_detail->getProductImage().'">';
+                                            echo '<img src="'.$order_detail->getProductImage().'" width="100">';
                                         }?>
                                     </td>
                                     <td>
@@ -70,13 +70,15 @@
                                             </select>
                                         </div>
                                     <?php else: ?>
-                                        <p class="buttons_bottom_block no-print">
-                                            <a href="<?php echo base_url('sites/addresses')?>">
-                                                <button type="button" class="exclusive ps_product_addcart">
-                                                    <span>Thêm địa chỉ mua hàng</span>
-                                                </button>
-                                            </a>
-                                        </p>
+                                        <div class="col-xs-3" style="margin-top:30px">
+                                            <p class="buttons_bottom_block no-print">
+                                                <a href="<?php echo base_url('sites/addresses')?>">
+                                                    <button type="button" class="exclusive ps_product_addcart">
+                                                        <span>Thêm địa chỉ mua hàng</span>
+                                                    </button>
+                                                </a>
+                                            </p>
+                                        </div>
                                     <?php endif;?>
                                 </div>
                             </div>

@@ -15,11 +15,11 @@
         <ul class="nav navbar-top-links navbar-left hidden-xs">
             <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
         </ul>
-        <ul class="nav navbar-top-links navbar-right pull-right">
+        <!-- <ul class="nav navbar-top-links navbar-right pull-right"> -->
             <!-- /.Megamenu -->
-            <li class="right-side-toggle"> <a class="waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li>
+            <!-- <li class="right-side-toggle"> <a class="waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li> -->
             <!-- /.dropdown -->
-        </ul>
+        <!-- </ul> -->
     </div>
     <!-- /.navbar-header -->
     <!-- /.navbar-top-links -->

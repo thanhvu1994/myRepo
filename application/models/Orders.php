@@ -1,6 +1,12 @@
 <?php
 class Orders extends CI_Model {
 
+    public $all_status = [
+        STATUS_ORDER_PENDING => 'Đang chờ',
+        STATUS_ORDER_COMPLETE => 'Đã xử lý',
+        STATUS_ORDER_CANCEL => 'Hủy',
+    ];
+
     public function __construct()
     {
         $this->load->database();
@@ -31,7 +37,7 @@ class Orders extends CI_Model {
         $data_insert['created_date'] = date('Y-m-d H:i:s');
         $data_insert['update_date'] = date('Y-m-d H:i:s');
 
-        return $this->db->insert('partner', $data_insert);
+        return $this->db->insert('orders', $data_insert);
     }
 
     public function update_model($id, $data_insert)
@@ -39,7 +45,7 @@ class Orders extends CI_Model {
         $data_insert['update_date'] = date('Y-m-d H:i:s');
 
         $this->db->where('id', $id);
-        $this->db->update('partner', $data_insert);
+        $this->db->update('orders', $data_insert);
     }
 
 
@@ -105,10 +111,25 @@ class Orders extends CI_Model {
             $this->load->model('billingAddress');
             $query = $this->db->get_where('billing_address', ['id' => $this->shipping_address]);
 
-            $billing = $query->row();
+            $billing = $query->row(0, 'BillingAddress');
 
             if (count($billing) > 0) {
                 return $billing;
+            }
+        }
+
+        return null;
+    }
+
+    public function getOrderDetails() {
+        if ($this->id) {
+            $this->load->model('orderDetails');
+            $query = $this->db->get_where('order_details', ['order_id' => $this->id]);
+
+            $orderr_details = $query->result('OrderDetails');
+
+            if (count($orderr_details) > 0) {
+                return $orderr_details;
             }
         }
 

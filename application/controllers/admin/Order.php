@@ -28,10 +28,18 @@ class Order extends MY_Controller {
         } else {
             redirect('admin/order/index', 'refresh');
         }
+        $order_details = $model->getOrderDetails();
+        if (count($order_details) > 0) {
+            $data['order_details'] = $order_details;
+        } else {
+            redirect('admin/order/index', 'refresh');
+        }
+
         $data['link_submit'] = base_url('admin/order/update/'.$id);
 
-        if (isset($_POST) && !empty($_POST)) {
-            $this->orders->update_model($id);
+        if (isset($_POST['Orders'])) {
+            $data_update = $_POST['Orders'];
+            $this->orders->update_model($id, $data_update);
             redirect('admin/order/index', 'refresh');
         }
 
@@ -42,7 +50,13 @@ class Order extends MY_Controller {
         $model = $this->orders->get_model(['id' => $id]);
 
         if (count($model) > 0) {
-            $this->order->delete_model($id);
+            $order_details = $model->getOrderDetails();
+            if (count($order_details) > 0) {
+                foreach ($order_details as $detail) {
+                    $detail->delete_model($detail->id);
+                }
+            }
+            $this->orders->delete_model($id);
             echo 1;
         } else {
             echo 0;
@@ -56,6 +70,12 @@ class Order extends MY_Controller {
             $query = $this->db->query("SELECT * FROM ci_orders WHERE id in(".implode(',', $deleteItems).")");
             $models = $query->result('Orders');
             foreach ($models as $model) {
+                $order_details = $model->getOrderDetails();
+                if (count($order_details) > 0) {
+                    foreach ($order_details as $detail) {
+                        $detail->delete_model($detail->id);
+                    }
+                }
                 $this->orders->delete_model($model->id);
             }
         }

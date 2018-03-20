@@ -5,7 +5,7 @@
 		<div class="row">
 			<div id="center_column" class="center_column col-xs-12 col-sm-12">
                 <h1 class="page-heading">My Account</h1>
-                <p class="info-account">Chào mừng đến với tài khoản của bạn. Tại đây bạn có thể quản lý địa chỉ giao hàng/thanh toán cũng như các đơn hàng.</p>
+                <p class="info-account">Chào mừng đến với tài khoản của bạn. Tại đây bạn có thể quản lý thông tin cá nhân và địa chỉ giao hàng.</p>
                 <div class="row addresses-lists">
                     <div class="col-xs-12 col-sm-6 col-lg-4">
                         <ul class="myaccount-link-list">
@@ -16,11 +16,11 @@
                                     </a>
                                 </li>
                             <?php endif ?>
-                            <li>
+                            <!-- <li>
                                 <a href="<?php echo base_url('sites/order') ?>" title="đặt hàng">
                                     <span><i class="icon-list-ol"></i>Lịch sử và chi tiết của đơn đặt hàng</span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="<?php echo base_url('sites/addresses') ?>" title="Địa chỉ">
                                     <span><i class="icon-building"></i>Địa chỉ của tôi</span>
