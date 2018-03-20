@@ -19,7 +19,7 @@ class Orders extends CI_Model {
         if (!empty($conditions)) {
             $query = $this->db->get_where('orders', $conditions);
 
-            return $query->row();
+            return $query->row(0, 'Orders');
         } else {
             $query = $this->db->query("SELECT * FROM ci_orders ORDER BY status asc");
             return $query->result('Orders');
@@ -85,5 +85,33 @@ class Orders extends CI_Model {
                 return 'Chưa đặt hàng';
                 break;
         }
+    }
+
+    public function getCustomerName() {
+        if ($this->user_id) {
+            $query = $this->db->get_where('users', ['id' => $this->user_id]);
+
+            $user = $query->row();
+            if (count($user) > 0) {
+                return ucwords($user->full_name);
+            }
+        }
+
+        return '';
+    }
+
+    public function getBilling() {
+        if ($this->shipping_address) {
+            $this->load->model('billingAddress');
+            $query = $this->db->get_where('billing_address', ['id' => $this->shipping_address]);
+
+            $billing = $query->row();
+
+            if (count($billing) > 0) {
+                return $billing;
+            }
+        }
+
+        return null;
     }
 }

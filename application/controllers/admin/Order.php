@@ -6,7 +6,7 @@ class Order extends MY_Controller {
     {
         parent::__construct();
         $this->load->model('orders');
-        $this->load->model('order_details');
+        $this->load->model('orderDetails');
     }
 
     public function index()
@@ -17,15 +17,17 @@ class Order extends MY_Controller {
 		$this->load->view('admin/layouts/index', $data);
     }
 
-    public function view($id) {
-        
-    }
-
     public function update($id) {
         $data['title'] = 'Cập nhật đơn đặt hàng';
         $data['template'] = 'admin/order/form';
-        $model = $this->order->get_model(['id' => $id]);
+        $model = $this->orders->get_model(['id' => $id]);
         $data['model'] = $model;
+        $billing = $model->getBilling();
+        if (count($billing) > 0) {
+            $data['billing'] = $billing;
+        } else {
+            redirect('admin/order/index', 'refresh');
+        }
         $data['link_submit'] = base_url('admin/order/update/'.$id);
 
         if (isset($_POST) && !empty($_POST)) {
