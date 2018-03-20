@@ -8,7 +8,7 @@
         <h4 class="page-title"><?php echo $title ?></h4>
     </div>
     <?php
-        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Chỉnh sửa website'];
+        $breadcrumb = ['active' => 'Dashboard'];
         $this->load->view('admin/layouts/breadcrumbs', ['breadcrumb' => $breadcrumb]);
      ?>
     <!-- /.col-lg-12 -->
