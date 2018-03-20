@@ -48,3 +48,15 @@ ADD COLUMN `product_name_en`  varchar(255) NOT NULL AFTER `product_name`,
 ADD COLUMN `description_en`  text NOT NULL AFTER `description`,
 ADD COLUMN `content_en`  longtext NOT NULL AFTER `content`;
 
+ALTER TABLE `ci_projects`
+ADD COLUMN `title_en`  varchar(255) NOT NULL AFTER `title`,
+ADD COLUMN `short_content_en`  varchar(255) NOT NULL AFTER `short_content`,
+ADD COLUMN `content_en`  longtext NOT NULL AFTER `content`;
+
+ALTER TABLE `ci_posts`
+ADD COLUMN `title_en`  varchar(255) NOT NULL AFTER `title`,
+ADD COLUMN `short_content_en`  varchar(255) NOT NULL AFTER `short_content`,
+ADD COLUMN `content_en`  longtext NOT NULL AFTER `content`;
+
+
+
