@@ -3,7 +3,7 @@
         <h4 class="page-title"><?php echo $title ?></h4>
     </div>
     <?php
-        $breadcrumb = [base_url('admin/site') => 'Dashboard', 'active' => 'Thông tin tài khoản'];
+        $breadcrumb = [base_url('admin/system') => 'Dashboard', 'active' => 'Thông tin tài khoản'];
         $this->load->view('admin/layouts/breadcrumbs', ['breadcrumb' => $breadcrumb]);
      ?>
 </div>

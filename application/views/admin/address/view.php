@@ -3,7 +3,7 @@
         <h4 class="page-title"><?php echo $title ?></h4>
     </div>
     <?php
-        $breadcrumb = [base_url('admin/site') => 'Dashboard', base_url('admin/user') => 'Quản lý người dùng', base_url('admin/address/index/'.$model->user_id) => 'Danh sách địa chỉ', 'active' => $title];
+        $breadcrumb = [base_url('admin/system') => 'Dashboard', base_url('admin/user') => 'Quản lý người dùng', base_url('admin/address/index/'.$model->user_id) => 'Danh sách địa chỉ', 'active' => $title];
         $this->load->view('admin/layouts/breadcrumbs', ['breadcrumb' => $breadcrumb]);
      ?>
     <!-- /.col-lg-12 -->
