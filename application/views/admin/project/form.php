@@ -22,7 +22,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-12">Mô Tả <span class="required">*</span></label>
+                            <label class="col-md-12">Meta Description <span class="required">*</span></label>
                             <div class="col-md-12">
                                 <input required type="text" class="form-control" value="<?php echo (isset($model)) ? $model->description : ''?>" name="description">
                                 <?php echo form_error('description'); ?>

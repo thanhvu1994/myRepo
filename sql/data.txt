@@ -37,3 +37,14 @@ ALTER TABLE  `ci_categories` ADD  `language` TEXT NOT NULL AFTER  `display_order
 ALTER TABLE  `ci_categories` CHANGE  `language`  `language` VARCHAR( 10 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ;
 
 ALTER TABLE  `ci_users` ADD  `birth_date` DATE NOT NULL AFTER  `gender` ;
+
+ALTER TABLE `ci_news`
+ADD COLUMN `title_en`  varchar(255) NULL AFTER `title`,
+ADD COLUMN `short_content_en`  varchar(255) NOT NULL AFTER `short_content`,
+ADD COLUMN `content_en`  longtext NOT NULL AFTER `content`;
+
+ALTER TABLE `ci_products`
+ADD COLUMN `product_name_en`  varchar(255) NOT NULL AFTER `product_name`,
+ADD COLUMN `description_en`  text NOT NULL AFTER `description`,
+ADD COLUMN `content_en`  longtext NOT NULL AFTER `content`;
+
