@@ -13,18 +13,42 @@
     <div class="col-sm-12">
         <div class="white-box">
             <?php echo form_open_multipart($link_submit, ['class' => 'form-horizontal']); ?>
-                <div class="form-group">
-                    <label class="col-md-12">Tiêu đề Slider</label>
-                    <div class="col-md-12">
-                        <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->name : ''?>" name="Banner[name]">
-                        <?php echo form_error('name'); ?>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#content_vn">Tiếng Việt</a></li>
+                    <li><a data-toggle="tab" href="#content_en">Tiếng Anh</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="content_vn" class="tab-pane fade in active">
+                        <div class="form-group">
+                            <label class="col-md-12">Tiêu đề Slider</label>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->name : ''?>" name="Banner[name]">
+                                <?php echo form_error('name'); ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12">Tên nút Slider</label>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->button_name : ''?>" name="Banner[button_name]">
+                                <?php echo form_error('button_name'); ?>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-12">Tên nút Slider</label>
-                    <div class="col-md-12">
-                        <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->button_name : ''?>" name="Banner[button_name]">
-                        <?php echo form_error('button_name'); ?>
+                    <div id="content_en" class="tab-pane fade">
+                        <div class="form-group">
+                            <label class="col-md-12">Tiêu đề Slider (tiếng anh)</label>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->name_en : ''?>" name="Banner[name_en]">
+                                <?php echo form_error('name_en'); ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12">Tên nút Slider (tiếng anh)</label>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->button_name_en : ''?>" name="Banner[button_name_en]">
+                                <?php echo form_error('button_name_en'); ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">

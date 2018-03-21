@@ -31,13 +31,14 @@ class Partner extends CI_Model {
 	{
 	    $data = array(
 	        'name' => $this->input->post('name'),
+	        'name_en' => $this->input->post('name_en'),
 	        'description' => $this->input->post('description'),
+	        'description_en' => $this->input->post('description_en'),
 	        'url' => $this->input->post('url'),
 	        'logo' => $logo,
 	        'publish' => $this->input->post('publish'),
 	        'update_date' => date('Y-m-d H:i:s'),
 	    );
-
 	    return $this->db->insert('partner', $data);
 	}
 
@@ -45,7 +46,9 @@ class Partner extends CI_Model {
 	{
 	    $data = array(
 	        'name' => $this->input->post('name'),
+	        'name_en' => $this->input->post('name_en'),
 	        'description' => $this->input->post('description'),
+	        'description_en' => $this->input->post('description_en'),
 	        'url' => $this->input->post('url'),
 	        'publish' => $this->input->post('publish'),
 	        'update_date' => date('Y-m-d H:i:s'),
@@ -96,4 +99,11 @@ class Partner extends CI_Model {
 
 		return $models;
 	}
+
+	public function getFieldFollowLanguage($field) {
+		if ($this->session->userdata['languages'] == 'en')
+			$field = $field.'_en';
+
+		return $this->$field;
+    }
 }

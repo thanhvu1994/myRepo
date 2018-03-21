@@ -51,9 +51,9 @@
                                     if ($itemObject->items && is_array($itemObject->items)):
                                         foreach ($itemObject->items as $data):
                                             $dataObj = (object)$data;
-                                            if ($totalField >= 8 && $i == 0): ?>
+                                            if ($totalField >= 10 && $i == 0): ?>
                                                 <div class="col-sm-6">
-                                            <?php elseif ($totalField >= 8 && $i % $aHalf == 0): ?>
+                                            <?php elseif ($totalField >= 10 && $i % $aHalf == 0): ?>
                                                 </div>
                                                 <div class="col-sm-6">
                                             <?php endif;?>
@@ -146,6 +146,12 @@
             }
         });
         CKEDITOR.replace('editor-full', {
+            filebrowserBrowseUrl: "<?php echo base_url('themes/admin/plugins/ckfinder/ckfinder.html')?>",
+            filebrowserUploadUrl: "<?php echo base_url('themes/admin/plugins/ckfinder/core/connector/php/connector.php').'?command=QuickUpload&type=Files' ?>",
+            filebrowserWindowWidth: '1000',
+            filebrowserWindowHeight: '700'
+        });
+        CKEDITOR.replace('editor-full-2', {
             filebrowserBrowseUrl: "<?php echo base_url('themes/admin/plugins/ckfinder/ckfinder.html')?>",
             filebrowserUploadUrl: "<?php echo base_url('themes/admin/plugins/ckfinder/core/connector/php/connector.php').'?command=QuickUpload&type=Files' ?>",
             filebrowserWindowWidth: '1000',

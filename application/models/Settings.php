@@ -17,7 +17,9 @@ class Settings extends CI_Model {
                 ['name' => 'favicon', 'controlTyle' => 'file', 'notes' => '', 'unit' => '', 'htmlOptions' => [], 'rules' => ''],
                 // ['name' => 'logoBE', 'controlTyle' => 'file', 'notes' => '', 'unit' => '', 'htmlOptions' => [], 'rules' => ''],
                 ['name' => 'defaultPageTitle', 'controlTyle' => 'text', 'notes' => '', 'unit' => '', 'htmlOptions' => ['maxlength' => 80], 'rules' => 'required'],
+                ['name' => 'defaultPageTitle_en', 'controlTyle' => 'text', 'notes' => '', 'unit' => '', 'htmlOptions' => ['maxlength' => 80], 'rules' => 'required'],
                 ['name' => 'introduce', 'controlTyle' => 'textarea', 'notes' => '', 'unit' => '', 'htmlOptions' => ['class' => 'editor-full', 'id' => 'editor-full'], 'rules' => ''],
+                ['name' => 'introduce_en', 'controlTyle' => 'textarea', 'notes' => '', 'unit' => '', 'htmlOptions' => ['class' => 'editor-full', 'id' => 'editor-full-2'], 'rules' => ''],
                 ['name' => 'copyrightOnFooter', 'controlTyle' => 'textarea', 'notes' => '', 'unit' => '', 'htmlOptions' => ['class' => 'editor-full'], 'rules' => ''],
                 ['name' => 'googleAnalytics', 'controlTyle' => 'textarea', 'notes' => '', 'unit' => '', 'htmlOptions' => ['cols' => 77, 'rows' => 4], 'rules' => ''],
             ],
@@ -57,6 +59,7 @@ class Settings extends CI_Model {
             'favicon' => 'Favicon',
             'logoBE' => 'Logo Trang Admin',
             'defaultPageTitle' => 'Tiêu đề trang web',
+            'defaultPageTitle_en' => 'Tiêu đề trang web (tiếng anh)',
             'copyrightOnFooter' => 'Bản quyền trang web',
             'googleAnalytics' => 'Google Analytics',
             'companyAddress' => 'Địa chỉ công ty',
@@ -64,7 +67,8 @@ class Settings extends CI_Model {
             'companyCellPhone' => 'Điện thoại di động',
             'companyPhone' => 'Điện thoại công ty',
             'companyEmail' => 'Địa chỉ Email',
-            'introduce' => 'Sơ lược công ty'
+            'introduce' => 'Sơ lược công ty',
+            'introduce_en' => 'Sơ lược công ty (tiếng anh)'
         ];
 
         if (isset($attrbute_name[$field])) {
@@ -150,10 +154,24 @@ class Settings extends CI_Model {
     }
 
     public function get_param($key) {
+        if ($key == 'introduce') {
+            $key = $this->getFieldFollowLanguage('introduce');
+        } elseif ($key == 'companyAddress') {
+            $key = $this->getFieldFollowLanguage('companyAddress');
+        } elseif ($key == 'defaultPageTitle') {
+            $key = $this->getFieldFollowLanguage('defaultPageTitle');
+        }
         $setting = $this->get_model(['key' => $key]);
         if (count($setting) > 0) {
-                return $setting->value;
+            return $setting->value;
         }
         return '';
+    }
+
+    public function getFieldFollowLanguage($field) {
+        if ($this->session->userdata['languages'] == 'en')
+            $field = $field.'_en';
+
+        return $field;
     }
 }

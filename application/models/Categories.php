@@ -31,6 +31,7 @@ class Categories extends CI_Model {
 	public function set_model($data_insert)
 	{
 	    $slug = url_title(convert_accented_characters(strtolower($data_insert['category_name']), 'dash', TRUE));
+	    $slug_en = url_title(convert_accented_characters(strtolower($data_insert['category_name_en']), 'dash', TRUE));
 	    if ($data_insert['parent_id'] == 0) {
 	    	$type_level = 1;
 	    } else {
@@ -44,6 +45,7 @@ class Categories extends CI_Model {
 	    $data_insert['created_date'] = date('Y-m-d H:i:s');
 	    $data_insert['update_date'] = date('Y-m-d H:i:s');
 	    $data_insert['slug'] = $slug;
+	    $data_insert['slug_en'] = $slug_en;
 	    $data_insert['type_level'] = $type_level;
 
 	    return $this->db->insert('categories', $data_insert);
@@ -52,6 +54,7 @@ class Categories extends CI_Model {
 	public function update_model($id, $data_insert)
 	{
 	    $slug = url_title(convert_accented_characters(strtolower($this->input->post('category_name')), 'dash', TRUE));
+	    $slug_en = url_title(convert_accented_characters(strtolower($data_insert['category_name_en']), 'dash', TRUE));
 	    if ($data_insert['parent_id'] == 0) {
 	    	$type_level = 1;
 	    } else {
@@ -64,6 +67,7 @@ class Categories extends CI_Model {
 	    }
 	    $data_insert['update_date'] = date('Y-m-d H:i:s');
 	    $data_insert['slug'] = $slug;
+	    $data_insert['slug_en'] = $slug_en;
 	    $data_insert['type_level'] = $type_level;
 
 	    $this->db->where('id', $id);
@@ -171,7 +175,7 @@ class Categories extends CI_Model {
 		if (count($childs) > 0) {
 			foreach ($childs as $child) {
 				$items[$child->id] = [
-					'name' => $child->category_name,
+					'name' => $child->getFieldFollowLanguage('category_name'),
 					'url' => $child->url,
 					'child' => $this->rChildsFE($child->id),
 				];
@@ -186,10 +190,11 @@ class Categories extends CI_Model {
 		$query = $this->db->query("SELECT * FROM ci_categories WHERE parent_id = 0 AND type = 'menu' ORDER BY display_order asc");
 		$models = $query->result('Categories');
 		$level = 1;
+
 		if (count($models)) {
 			foreach ($models as $model) {
 				$items[$model->id] = [
-					'name' => $model->category_name,
+					'name' => $model->getFieldFollowLanguage('category_name'),
 					'url' => $model->url,
 					'child' => $this->rChildsFE($model->id),
 				];
@@ -206,9 +211,9 @@ class Categories extends CI_Model {
         if (count($childs) > 0) {
             foreach ($childs as $child) {
                 $items[$child->id] = [
-                    'name' => $child->category_name,
-                    'title' => $child->title,
-                    'slug' => $child->slug,
+                    'name' => $child->getFieldFollowLanguage('category_name'),
+                    'title' => $child->getFieldFollowLanguage('title'),
+                    'slug' => $child->getFieldFollowLanguage('slug'),
                     'child' => $this->rChildCategoriesFE($child->id),
                 ];
             }
@@ -225,9 +230,9 @@ class Categories extends CI_Model {
         if (count($models)) {
             foreach ($models as $model) {
                 $items[$model->id] = [
-                    'name' => $model->category_name,
-                    'title' => $model->title,
-                    'slug' => $model->slug,
+                    'name' => $model->getFieldFollowLanguage('category_name'),
+                    'title' => $model->getFieldFollowLanguage('title'),
+                    'slug' => $model->getFieldFollowLanguage('slug'),
                     'child' => $this->rChildCategoriesFE($model->id),
                 ];
             }
@@ -300,5 +305,12 @@ class Categories extends CI_Model {
                 $child->getTableCategory($level);
             }
         }
+    }
+
+    public function getFieldFollowLanguage($field) {
+		if ($this->session->userdata['languages'] == 'en')
+			$field = $field.'_en';
+
+		return $this->$field;
     }
 }

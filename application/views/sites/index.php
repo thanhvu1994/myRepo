@@ -11,7 +11,13 @@
     			<ul class="htmlcontent-home clearfix" >
                     <li class="htmlcontent-item-1">
                     	<!-- <a href="content/38-gioi-thieu-cong-ty-tnhh-tm-dv-sx-nhua-nam-viet.html" class="item-link" onclick="return ! window.open(this.href);" title="S&#416; L&#431;&#7906;C V&#7872; C&Ocirc;NG TY"> -->
-                        	<div class="ps_block_title"> Sơ lược về công ty</div>
+                    	<div class="ps_block_title"> 
+	                    	<?php if ($this->session->userdata['languages'] == 'vn'): ?>
+								Sơ lược về công ty
+							<?php else: ?>
+								About us
+							<?php endif ?>
+                    	</div>
                     	<!-- </a> -->
                         <div class="item-html"><?php echo $this->settings->get_param('introduce') ?>
 						</div>
@@ -36,15 +42,21 @@
 		<div id="KhachHang" style="background: #bcbcbc;padding-bottom: 50px">
 		    <div class="container">
 		        <div class="row">
-		            <div class="col-md-12 ps_block_title">KHÁCH HÀNG CỦA CHÚNG TÔI</div>
+		            <div class="col-md-12 ps_block_title">
+			            <?php if ($this->session->userdata['languages'] == 'vn'): ?>
+							KHÁCH HÀNG CỦA CHÚNG TÔI
+						<?php else: ?>
+							OUR CLIENTS
+						<?php endif ?>
+		            </div>
 		        </div>
 		        <div class="row">  
 		            <div id="htmlcontent_KhachHang" class="col-md-12">
 		    			<ul class="htmlcontent-khachhang clearfix" id="htmlcontent-khachhang" style="text-align: center">
 		    				<?php foreach ($partners as $partner): ?>
 		    					<li class="htmlcontent-item-1" style="display: inline-block">
-			                        <a href="<?php echo !empty($partner->url) ? base_url($partner->url) : 'javascript:void(0)'?>" class="item-link" title="<?php echo $partner->name ?>">
-			                            <img src="<?php echo $partner->get_image() ?>" class="item-img center-cropped-partner" title="<?php echo $partner->name ?>" alt="<?php echo $partner->name ?>" width="100" height="100"/>
+			                        <a href="<?php echo !empty($partner->url) ? base_url($partner->url) : 'javascript:void(0)'?>" class="item-link" title="<?php echo $partner->getFieldFollowLanguage('name') ?>">
+			                            <img src="<?php echo $partner->get_image() ?>" class="item-img center-cropped-partner" title="<?php echo $partner->getFieldFollowLanguage('name') ?>" alt="<?php echo $partner->getFieldFollowLanguage('name') ?>" width="100" height="100"/>
 			                        </a>
 			                    </li>
 		    				<?php endforeach ?>

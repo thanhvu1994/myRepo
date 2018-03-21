@@ -75,4 +75,11 @@ class Banner extends CI_Model {
 
 		return '';
 	}
+
+	public function getFieldFollowLanguage($field) {
+		if ($this->session->userdata['languages'] == 'en')
+			$field = $field.'_en';
+
+		return $this->$field;
+    }
 }

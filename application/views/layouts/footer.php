@@ -7,7 +7,11 @@
 					<div class="row"><!-- MODULE Block new products -->
 						<div class="col-xs-6 col-sm-3 ps_product_footer">
 						    <div>
-						        <h4>Sản phẩm</h4>
+						        <?php if ($this->session->userdata['languages'] == 'vn'): ?>
+						        	<h4>Sản phẩm</h4>
+					            <?php else: ?>
+						        	<h4>Products</h4>
+					            <?php endif ?>
 						        <div class="ps_line">
 						            <hr>
 						        </div>
@@ -20,7 +24,7 @@
 									foreach ($menuFooter as $menu) :?>
 				                        <li>
 				                            <a href="<?php echo base_url('sites/category/'. $menu->slug) ?>" title="<?php echo $menu->category_name ?>">
-				                                <?php echo ucfirst($menu->category_name) ?>
+				                                <?php echo ucfirst($menu->getFieldFollowLanguage('category_name')) ?>
 				                            </a>
 				                        </li>
 				                    <?php endforeach;
@@ -31,7 +35,12 @@
 						<!-- /MODULE Block new products -->
 						<!-- MODULE Block new products -->
 						<div class="col-xs-6 col-sm-3 ps_social_bottom">
-					        <h4>Các bài viết gần đây</h4>
+							<?php if ($this->session->userdata['languages'] == 'vn'): ?>
+					        	<h4>Các bài viết gần đây</h4>
+				            <?php else: ?>
+					        	<h4>Newest Post</h4>
+				            <?php endif ?>
+
 					        <div class="ps_line">
 					            <hr>
 					        </div>
@@ -50,7 +59,11 @@
 						</div>
 						<!-- /MODULE Block new products -->
 						<div class="col-xs-6 col-sm-3 ps_social_bottom">
-						    <h4>Tham gia trên</h4>
+						    <?php if ($this->session->userdata['languages'] == 'vn'): ?>
+					        	<h4>Tham gia trên</h4>
+				            <?php else: ?>
+					        	<h4>Follow Us</h4>
+				            <?php endif ?>
 						    <div class="ps_line">
 						        <hr>
 						    </div>
@@ -118,7 +131,11 @@
 						<!-- MODULE Block contact infos -->
 						<section id="block_contact_infos" class="col-xs-6 col-sm-3">
 							<div>
-						        <h4>Liên hệ</h4>
+						        <?php if ($this->session->userdata['languages'] == 'vn'): ?>
+						        	<h4>Liên hệ</h4>
+					            <?php else: ?>
+						        	<h4>Contact</h4>
+					            <?php endif ?>
 						        <div class="ps_line">
 						            <hr>
 						        </div>

@@ -5,10 +5,20 @@
 				<div class="row">
 					<nav>
 						<div id="contact-link">
-							<a href="<?php echo base_url('sites/contact') ?>" title="Contact Us">contact us</a>
+							<a href="<?php echo base_url('sites/contact') ?>" title="Contact Us">
+							<?php if ($this->session->userdata['languages'] == 'vn'): ?>
+								liên hệ
+							<?php else: ?>
+								contact us
+							<?php endif ?>
+							</a>
 						</div>
 						<span class="shop-phone">
+						<?php if ($this->session->userdata['languages'] == 'vn'): ?>
+							<i class="icon-phone"></i> Gọi ngay bây giờ: <strong><?php echo $this->settings->get_param('companyCellPhone') ?></strong>
+						<?php else: ?>
 							<i class="icon-phone"></i> Call us now: <strong><?php echo $this->settings->get_param('companyCellPhone') ?></strong>
+						<?php endif ?>
 						</span>
 					</nav>
 				</div>
@@ -18,8 +28,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div id="header_logo">
-                        <a href="<?php echo base_url()?>" title="Nhựa Nam Việt">
-                            <img class="logo img-responsive" src="<?php echo $this->settings->get_logoFE() ?>" alt="Nhựa Nam Việt" width="350"/>
+                        <a href="<?php echo base_url()?>" title="<?php echo $this->settings->get_param('defaultPageTitle') ?>">
+                            <img class="logo img-responsive" src="<?php echo $this->settings->get_logoFE() ?>" alt="<?php echo $this->settings->get_param('defaultPageTitle') ?>" width="350"/>
                         </a>
                     </div>
                     <div class="ps_header_right">
@@ -27,7 +37,11 @@
 						<div class="ps_cart ">
 							<div class="shopping_cart">
 								<a href="<?php echo base_url('sites/cart')?>" title="View my shopping cart" rel="nofollow">
-									<b>Giỏ hàng</b>
+									<?php if (isset($this->session->userdata['languages']) && $this->session->userdata['languages'] == 'vn'): ?>
+										<b>Giỏ hàng</b>
+									<?php else: ?>
+										<b>Shopping Cart</b>
+									<?php endif ?>
 <!--									<span class="ajax_cart_quantity unvisible">0</span>-->
 <!--									<span class="ajax_cart_product_txt unvisible">Sản phẩm</span>-->
 <!--									<span class="ajax_cart_no_product">(trống)</span>-->
@@ -118,11 +132,23 @@
 								<a class="login" href="<?php echo base_url('sites/account') ?>" rel="nofollow" title="<?php echo $this->session->userdata['logged_in_FE']['full_name'] ?>"><?php echo $this->session->userdata['logged_in_FE']['full_name'] ?></a>
 							</div>
 							<div class="header_user_info">
-								<a class="login" href="<?php echo base_url('sites/logout') ?>" rel="nofollow" title="Log out">Đăng xuất</a>
+								<a class="login" href="<?php echo base_url('sites/logout') ?>" rel="nofollow" title="Log out">
+									<?php if (isset($this->session->userdata['languages']) && $this->session->userdata['languages'] == 'vn'): ?>
+										Đăng xuất
+									<?php else: ?>
+										Logout
+									<?php endif ?>
+								</a>
 							</div>
 						<?php else: ?>
 							<div class="header_user_info">
-								<a class="login" href="<?php echo base_url('sites/login') ?>" rel="nofollow" title="Log in to your customer account">Đăng nhập</a>
+								<a class="login" href="<?php echo base_url('sites/login') ?>" rel="nofollow" title="Log in to your customer account">
+									<?php if ($this->session->userdata['languages'] == 'vn'): ?>
+										Đăng nhập
+									<?php else: ?>
+										Login
+									<?php endif ?>
+								</a>
 							</div>
 						<?php endif ?>
 					<!-- /Block usmodule NAV -->
@@ -195,13 +221,15 @@
 						</script><!-- Block languages module -->
 						<div id="languages-block-top" class="languages-block">
 							<ul id="first-languages" class="languages-block_ul toogle_content">
-								<li >
-									<a href="../en/index.html" title="English (English)">
-										<img src="http://namvietplastic.com/img/vn-lang.jpg" />
+								<li>
+									<a class="change-languages" href="<?php echo base_url('sites/languages/vn')?>" title="Tiếng Việt (Vietnamese)">
+										<img src="<?php echo base_url('img/vn-lang.jpg')?>" />
 									</a>
 								</li>
-								<li class="selected">
-					                <img src="http://namvietplastic.com/img/us-lang.jpg" />
+								<li>
+									<a class="change-languages" href="<?php echo base_url('sites/languages/en')?>" title="English (English)">
+					                	<img src="<?php echo base_url('img/us-lang.jpg')?>" />
+				                	</a>
 					            </li>
 							</ul>
 						</div>
@@ -211,3 +239,19 @@
 		</div>
 	</header>
 </div>
+
+<script>
+	$(document).ready(function() {
+		$('.change-languages').click(function(e) {
+			e.preventDefault();
+			var url = $(this).attr('href');
+			$.ajax({
+                url: url,
+                type: 'POST',
+                success: function (returndata) {
+                    location.replace(returndata);
+                }
+            });
+		});
+	});
+</script>

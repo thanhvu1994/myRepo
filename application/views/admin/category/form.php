@@ -17,9 +17,29 @@
             <?php echo form_open_multipart($link_submit, ['class' => 'form-horizontal']); ?>
                 <div class="col-sm-6 col-xs-12">
                     <div class="form-group">
+                        <label class="col-md-12">Tiêu đề</label>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->title : ''?>" name="Categories[title]">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-12">Tiêu đề tiếng anh</label>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->title_en : ''?>" name="Categories[title_en]">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label class="col-md-12">Tên danh mục</label>
                         <div class="col-md-12">
                             <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->category_name : ''?>" name="Categories[category_name]" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Tên danh mục tiếng anh</label>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->category_name_en : ''?>" name="Categories[category_name_en]" required>
                         </div>
                     </div>
                     <?php /*
@@ -71,15 +91,15 @@
                 </div>
                 <div class="col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <label class="col-md-12">Tiêu đề</label>
+                        <label class="col-md-12">Mô tả</label>
                         <div class="col-md-12">
-                            <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->title : ''?>" name="Categories[title]">
+                            <textarea class="form-control" rows="5" name="Categories[description]"><?php echo (isset($model)) ? $model->description : ''?></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12">Mô tả</label>
                         <div class="col-md-12">
-                            <textarea class="form-control" rows="5" name="Categories[description]"><?php echo (isset($model)) ? $model->description : ''?></textarea>
+                            <textarea class="form-control" rows="5" name="Categories[description_en]"><?php echo (isset($model)) ? $model->description_en : ''?></textarea>
                         </div>
                     </div>
                 </div>

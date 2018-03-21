@@ -22,6 +22,12 @@
                             <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->category_name : ''?>" name="Categories[category_name]" required>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Tên danh mục tiếng anh</label>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->category_name_en : ''?>" name="Categories[category_name_en]" required>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="col-md-12">Đường dẫn</label>

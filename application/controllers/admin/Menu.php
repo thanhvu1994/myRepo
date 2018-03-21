@@ -27,7 +27,7 @@ class Menu extends MY_Controller {
     public function create() {
         $data['title'] = 'Tạo Menu';
         $data['template'] = 'admin/menu/form';
-        $data['link_submit'] = base_url('admin/category/create');
+        $data['link_submit'] = base_url('admin/menu/create');
 
         if (isset($_POST['Categories'])) {
             $data_insert = $_POST['Categories'];
@@ -52,7 +52,7 @@ class Menu extends MY_Controller {
         $data['template'] = 'admin/menu/form';
         $model = $this->categories->get_model(['id' => $id]);
         $data['model'] = $model;
-        $data['link_submit'] = base_url('admin/category/update/'.$id);
+        $data['link_submit'] = base_url('admin/menu/update/'.$id);
         $rules = $this->categories->getRule();
         foreach ($rules as $rule) {
             if (count($rule) >= 3) {
@@ -107,6 +107,6 @@ class Menu extends MY_Controller {
                 $this->categories->delete_model($model->id);
             }
         }
-        redirect('admin/category/index', 'refresh');
+        redirect('admin/menu/index', 'refresh');
     }
 }

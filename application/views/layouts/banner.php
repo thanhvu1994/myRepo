@@ -16,21 +16,21 @@
     		<ul class="slides" id="homeslider" style="max-height:500px;">
     			<?php foreach ($banners as $banner): ?>
     				<li class="homeslider-container">
-						<a href="<?php echo !empty($banner->url) ? $banner->url : 'javascript:void(0)'?>" title="<?php echo $banner->name ?>">
+						<a href="<?php echo !empty($banner->url) ? $banner->url : 'javascript:void(0)'?>" title="<?php echo $banner->getFieldFollowLanguage('name') ?>">
 							<img src="<?php echo $banner->get_image() ?>" width="1920" height="497" alt="<?php echo $banner->name ?>" class="center-cropped-banner"/>
 						</a>
 						<?php if (!empty($banner->name)): ?>
-		                	<div class="homeslider-title"><?php echo $banner->name ?></div>
+		                	<div class="homeslider-title"><?php echo $banner->getFieldFollowLanguage('name') ?></div>
 						<?php endif ?>
 						<?php if (!empty($banner->button_name)): ?>
 			                <div class="homeslider-description">
 			                    <div class="btn btn-default ps_button" style="background: red;">
 									<div style="float: left;">
-										<a href="<?php echo $banner->url ?>"><?php echo $banner->button_name ?></a>
+										<a href="<?php echo $banner->url ?>"><?php echo $banner->getFieldFollowLanguage('button_name') ?></a>
 									</div>
 									<div style="float: left;">
 										<a href="<?php echo $banner->url ?>">
-											<img src="<?php echo base_url('img/cms/arrow-button.png') ?>" alt="http://namvietplastic.com/vn/3-sn-phm" width="22" height="8" />
+											<img src="<?php echo base_url('img/cms/arrow-button.png') ?>" alt="<?php echo $banner->getFieldFollowLanguage('name') ?>" width="22" height="8" />
 										</a>
 									</div>
 								</div>

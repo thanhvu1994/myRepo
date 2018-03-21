@@ -550,4 +550,17 @@ class Sites extends Front_Controller {
             }
         }
     }
+
+    public function languages($lang) {
+        $this->load->library('user_agent');
+        if (in_array($lang,['vn', 'en'])) {
+            $this->session->set_userdata('languages', $lang);
+            if (!$this->agent->is_referral()) {
+                $refer = $this->agent->referrer();
+                echo $refer;
+            } else {
+                echo base_url('sites');
+            }
+        }
+    }
 }
