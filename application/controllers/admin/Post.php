@@ -20,7 +20,7 @@ class Post extends MY_Controller {
     }
 
     public function create() {
-        $data['title'] = 'Create a Post';
+        $data['title'] = 'Tạo Trang';
     	$data['template'] = 'admin/post/form';
         $data['link_submit'] = base_url('admin/post/create');
         $data['scenario'] = 'create';
@@ -72,7 +72,7 @@ class Post extends MY_Controller {
     }
 
     public function update($id) {
-        $data['title'] = 'Update a Post';
+        $data['title'] = 'Cập Nhật Trang';
         $data['template'] = 'admin/post/form';
         $data['model'] = $this->posts->get_model(['id' => $id]);
         $data['link_submit'] = base_url('admin/post/update/'.$id);
