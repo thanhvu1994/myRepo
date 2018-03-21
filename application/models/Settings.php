@@ -169,7 +169,7 @@ class Settings extends CI_Model {
     }
 
     public function getFieldFollowLanguage($field) {
-        if ($this->session->userdata['languages'] == 'en')
+        if (isset($this->session->userdata['languages']) && $this->session->userdata['languages'] == 'en')
             $field = $field.'_en';
 
         return $field;

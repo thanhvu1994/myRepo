@@ -96,7 +96,7 @@
                                     endif;
                                     ?>
                                 </div>
-                                <?php if ($totalField >= 8) echo '</div>'; ?>
+                                <?php if ($totalField >= 10) echo '</div>'; ?>
                                 <?php
                                 $i++;
                             endforeach;
