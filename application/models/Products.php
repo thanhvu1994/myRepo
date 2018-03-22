@@ -197,7 +197,7 @@ class Products extends CI_Model {
         $posts = $this->get_model();
         if (count($posts) > 0) {
             foreach ($posts as $post) {
-                $url = 'product/'.$post->slug;
+                $url = 'sites/product/'.$post->slug;
                 $result[$url] = $post->title;
             }
         }

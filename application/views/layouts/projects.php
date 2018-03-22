@@ -3,7 +3,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 ps_block_title">
-                CÁC CÔNG TRÌNH GẦN ĐÂY
+                <?php if ($this->session->userdata['languages'] == 'vn'): ?>
+                    CÁC CÔNG TRÌNH GẦN ĐÂY
+                <?php else: ?>
+                    RECENT WORKS
+                <?php endif ?>
             </div>
         </div>
         <div class="row">
@@ -20,7 +24,7 @@
                         </style>
                         <li class="htmlcontent-item-<?php echo $key +1; ?>">
                             <img class="center-cropped-project" src="<?php echo base_url($project->featured_image); ?>" data-toggle="modal" data-target="#myModal_contrinh_<?php echo $key; ?>" class="item-img img-responsive ct-image" title="<?php echo $project->title; ?>" />
-                            <h3 class="item-title"><?php echo $project->title; ?></h3>
+                            <h3 class="item-title"><?php echo ($this->session->userdata['languages'] == 'vn') ? $project->title : $project->title_en; ?></h3>
                             <div class="modal fade" id="myModal_contrinh_<?php echo $key; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -30,12 +34,12 @@
                                             </button>
                                             <h4 class="modal-title" id="myModalLabel">
                                                 <a href="<?php echo $project->url; ?>" class="item-link" onclick="return ! window.open(this.href);" title="<?php echo $project->title; ?>">
-                                                    <h3 class="item-title"><?php echo $project->title; ?></h3></a>
+                                                    <h3 class="item-title"><?php echo ($this->session->userdata['languages'] == 'vn') ? $project->title : $project->title_en; ?></h3></a>
                                             </h4>
                                         </div>
                                         <div class="modal-body">
-                                            <?php echo $project->content; ?>
-                                            <p><a href="<?php echo $project->url; ?>">Xem chi tiết</a></p>
+                                            <?php echo ($this->session->userdata['languages'] == 'vn') ? $project->content : $project->content_en; ?>
+                                            <p><a href="<?php echo $project->url; ?>"><?php echo ($this->session->userdata['languages'] == 'vn') ? 'Xem Chi Tiết' : 'See more'; ?></a></p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close
