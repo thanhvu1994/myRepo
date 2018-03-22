@@ -248,10 +248,25 @@ class Categories extends CI_Model {
     public function getCategoryBySlug($slug){
         if ($this->session->userdata['languages'] == 'vn'){
             $query = $this->db->get_where('categories', array('slug' => $slug) );
+            $category = $query->row(0,'Categories');
+
+            if(empty($category)){
+                $query = $this->db->get_where('categories', array('slug_en' => $slug) );
+                return $query->row(0,'Categories');
+            }else{
+                return $category;
+            }
         }else{
             $query = $this->db->get_where('categories', array('slug_en' => $slug) );
+            $category = $query->row(0,'Categories');
+
+            if(empty($category)){
+                $query = $this->db->get_where('categories', array('slug' => $slug) );
+                return $query->row(0,'Categories');
+            }else{
+                return $category;
+            }
         }
-        return $query->row(0,'Categories');
     }
 
     public function getProducts($limit, $start){

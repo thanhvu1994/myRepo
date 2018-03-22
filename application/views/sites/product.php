@@ -117,6 +117,8 @@
                                 <p class="hidden">
                                     <input type="hidden" name="Orders[product_id]" value="<?php echo $product->id?>" id="product_page_product_id" />
                                  </p>
+
+                                <?php if(isset($this->session->userdata['logged_in_FE'])): ?>
                                 <!-- quantity wanted -->
                                 <p id="quantity_wanted_p">
                                     <a href="#profile" role="tab" data-toggle="tab">
@@ -136,6 +138,7 @@
                                     </a>
                                     <span class="clearfix"></span>
                                 </p>
+                                <?php endif; ?>
                                 <!-- attributes -->
                                 <div id="attributes">
                                     <div class="clearfix"></div>
