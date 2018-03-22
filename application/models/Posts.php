@@ -96,7 +96,7 @@ class Posts extends CI_Model {
 
         $query = $this->db->query("SELECT * FROM ci_news ORDER BY title asc");
         $news =  $query->result('News');
-        $result['sites/news'] = 'Tổng hợp Tin tức';
+        $result['sites/news'] = 'Trang :Tổng hợp Tin tức';
         if (count($news) > 0) {
             foreach ($news as $new) {
                 $url = 'sites/newDetail/'.$new->slug;
@@ -107,7 +107,7 @@ class Posts extends CI_Model {
 		$posts = $this->get_model();
 		if (count($posts) > 0) {
 			foreach ($posts as $post) {
-				$url = 'sites/newDetail/'.$post->slug;
+				$url = 'sites/cms/'.$post->slug;
 				$result[$url] = 'Trang: '.$post->title;
 			}
 		}

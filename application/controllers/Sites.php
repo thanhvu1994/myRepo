@@ -471,6 +471,26 @@ class Sites extends Front_Controller {
         }
     }
 
+    public function cms($slug){
+        $data['template'] = 'sites/page';
+        $data['page'] = $this->posts->get_model(array('slug' => $slug));
+
+        if($data['page']){
+            if ($this->session->userdata['languages'] == 'vn'){
+                $data['title'] = $data['page']->title;
+                $data['description'] = $data['page']->description;
+            }else{
+                $data['title'] = $data['page']->title_en;
+                $data['description'] = $data['page']->description;
+            }
+
+
+            $this->load->view('layouts/index', $data);
+        }else{
+            redirect('sites/index', 'refresh');
+        }
+    }
+
     public function addCart() {
         if(isset($this->session->userdata['logged_in_FE'])) {
             $info_login_fe = $this->session->userdata['logged_in_FE'];

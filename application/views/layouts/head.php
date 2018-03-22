@@ -9,6 +9,7 @@
 		<meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.6, initial-scale=1.0" />
 		<meta name="apple-mobile-web-app-capable" content="yes" /> 
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/global.css')?>" type="text/css" media="all" />
+		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/cms.css')?>" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/product.css')?>" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/fonts/stylesheet.css')?>" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/autoload/bootstrap.min.css')?>" type="text/css" media="all" />
