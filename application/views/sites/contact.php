@@ -12,7 +12,7 @@
 		<div id="slider_row" class="row"></div>
 		<div class="row">
 			<div id="center_column" class="center_column col-xs-12 col-sm-12">
-				<h1 class="page-heading bottom-indent">Dịch vụ Khách hàng - contact us</h1>
+				<h1 class="page-heading bottom-indent"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Dịch vụ Khách hàng' : 'Contact Us'; ?></h1>
 				<?php if (isset($status)): ?>
 					<p class="notify"><?php echo isset($status) ? $status : '' ?></p>
 				<?php endif ?>
@@ -21,79 +21,79 @@
 			            <div class="clearfix">
 			                <div class="col-xs-12 col-md-12">
 			                    <div class="form-group selector1">
-			                        <label for="id_contact" class="page-subheading" style="float: left">Tiêu đề tin nhắn *</label>
+			                        <label for="id_contact" class="page-subheading" style="float: left"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Tiêu đề tin nhắn' : 'Message Title'; ?> *</label>
 			                        <?php if ($is_product):
 			                        	if ($type == 'dat-hang') :?>
 		                                    <select id="id_contact" class="form-control" name="Contact[type]" required>
-		                            			<option value="">-- Chọn --</option>
-		                                        <option value="1" selected>Đặt hàng</option>
+		                            			<option value=""><?php echo ($this->session->userdata['languages'] == 'vn')? '-- Chọn --' : '-- Select --'; ?></option>
+		                                        <option value="1" selected><?php echo ($this->session->userdata['languages'] == 'vn')? 'Đặt hàng' : 'Order'; ?></option>
 		                                	</select>
 	                                	<?php else: ?>
 											<select id="id_contact" class="form-control" name="Contact[type]" required>
-		                            			<option value="">-- Chọn --</option>
-		                                        <option value="2" selected>Báo giá</option>
+		                            			<option value=""><?php echo ($this->session->userdata['languages'] == 'vn')? '-- Chọn --' : '-- Select --'; ?></option>
+		                                        <option value="2" selected><?php echo ($this->session->userdata['languages'] == 'vn')? 'Báo giá' : 'Price'; ?></option>
 		                                	</select>
 	                                	<?php endif; ?>
 			                        <?php else: ?>
 										<select id="id_contact" class="form-control" name="Contact[type]" required>
-	                            			<option value="">-- Chọn --</option>
-	                                        <option value="1" >Đặt hàng</option>
-	                                        <option value="2" >Báo giá</option>
-	                                        <option value="3" >Hỗ trợ</option>
+	                            			<option value=""><?php echo ($this->session->userdata['languages'] == 'vn')? '-- Chọn --' : '-- Select --'; ?></option>
+	                                        <option value="1" ><?php echo ($this->session->userdata['languages'] == 'vn')? 'Đặt hàng' : 'Order'; ?></option>
+	                                        <option value="2" ><?php echo ($this->session->userdata['languages'] == 'vn')? 'Báo giá' : 'Price'; ?></option>
+	                                        <option value="3" ><?php echo ($this->session->userdata['languages'] == 'vn')? 'Hỗ trợ' : 'Support'; ?></option>
 	                                	</select>
 			                        <?php endif; ?>
                     			</div>
                     			<p id="desc_contact0" class="desc_contact">&nbsp;</p>
                                 <p id="desc_contact2" class="desc_contact contact-title" style="display:none;">
-                            		<i class="icon-comment-alt"></i>Báo giá
+                            		<i class="icon-comment-alt"></i><?php echo ($this->session->userdata['languages'] == 'vn')? 'Báo giá' : 'Price'; ?>
                         		</p>
                                 <p id="desc_contact3" class="desc_contact contact-title" style="display:none;">
-                            		<i class="icon-comment-alt"></i>Hỗ trợ
+                            		<i class="icon-comment-alt"></i><?php echo ($this->session->userdata['languages'] == 'vn')? 'Hỗ trợ' : 'Support'; ?>
                     			</p>
                                 <p id="desc_contact1" class="desc_contact contact-title" style="display:none;">
-                            		<i class="icon-comment-alt"></i>Đặt hàng
+                            		<i class="icon-comment-alt"></i><?php echo ($this->session->userdata['languages'] == 'vn')? 'Đặt hàng' : 'Order'; ?>
                         		</p>
-                                <h3 class="page-subheading">Thông tin khách hàng</h3>
+                                <h3 class="page-subheading"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Thông Tin Khách Hàng' : 'Customer Information'; ?></h3>
 			                    <p class="form-group">
-			                        <label for="sender" style="float: left">Tên khách hàng*</label>
+			                        <label for="sender" style="float: left"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Tên Khách Hàng' : 'Customer Name'; ?> *</label>
 			                        <input class="form-control grey" type="text" id="sender" name="Contact[customer_name]" value="" required />
 			                    </p>
                                 <p class="form-group">
-		                            <label for="company" style="float: left"> Tên công ty</label>
+		                            <label for="company" style="float: left"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Tên Công Ty' : 'Company Name'; ?></label>
 		                            <input class="form-control grey" type="text" id="company" name="Contact[company_name]" value="" />
 		                        </p>
 		                        <p class="form-group">
-		                            <label for="tax-code" style="float: left"> Mã số thuế</label>
+		                            <label for="tax-code" style="float: left"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Mã Số Thuế' : 'Tax Code'; ?></label>
 		                            <input class="form-control grey" type="text" id="tax-code" name="Contact[tax_code]" value="" />
 		                        </p>
 		                        <p class="form-group">
-		                            <label for="address" style="float: left">Địa chỉ *</label>
+		                            <label for="address" style="float: left"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Địa Chỉ' : 'Address'; ?> *</label>
 		                            <input class="form-control grey" type="text" id="address" name="Contact[address]" value="" required/>
 		                        </p>
 		                        <p class="form-group">
-		                            <label for="phone" style="float: left">Số điện thoại *</label>
+		                            <label for="phone" style="float: left"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Số Điện Thoại' : 'Phone Number'; ?> *</label>
 		                            <input class="form-control grey" type="number" id="phone" name="Contact[phone]" value="" required/>
 		                        </p>
 		                        <p class="form-group">
-		                            <label for="cell_phone" style="float: left">Điện thoại di động *</label>
+		                            <label for="cell_phone" style="float: left"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Điện Thoại Di Động' : 'Cellphone Number'; ?> *</label>
 		                            <input class="form-control grey" type="number" id="cell_phone" name="Contact[cell_phone]" value="" required/>
 		                        </p>
                                 <p class="form-group">
-                    				<label for="email" style="float: left">Địa chỉ email *</label>
+                    				<label for="email" style="float: left"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Địa Chỉ Email' : 'Email Address'; ?> *</label>
                                     <input class="form-control grey validate" type="text" id="email" name="Contact[email]" value="" required/>
-                                    <span style="color: red;display: none" id="error-email">Email không hợp lệ</span>
+                                    <span style="color: red;display: none" id="error-email"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Email không hợp lệ' : 'Email Invalid'; ?></span>
                                 </p>
 			                	<?php if ($is_product): ?>
-                                    <h3 class="page-subheading">THÔNG TIN SẢN PHẨM YÊU CẦU</h3>
+                                    <h3 class="page-subheading"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Thông Tin Sản Phẩm Yêu Cầu' : 'Product'; ?></h3>
 	                                <div class="form-group selector1">
-	                            		<label style="float: left"> Mã sản phẩm</label>
+	                            		<label style="float: left"> <?php echo ($this->session->userdata['languages'] == 'vn')? 'Mã Sản Phẩm' : 'Product Code'; ?></label>
 	                                    <input class="form-control grey" type="text" value="<?php echo $product->product_name.' - '.$product->product_code ?>" disabled/>
 	                                </div>
 
 	                                <table id="border-add" border="1">
 						                <thead>
 						                    <tr>
-						                        <th> Màu sắc
+						                        <th> <?php echo ($this->session->userdata['languages'] == 'vn')? 'Màu Sắc' : 'Color'; ?>
 						                        	<?php /*if (isset($arr_color) && !empty($arr_color)): ?>
 						                        		<i class=" icon-question-sign" />
 							                        	<span class="ps_property iq-color">
@@ -101,26 +101,26 @@
 														</span>
 						                        	<?php endif*/ ?>
 												</th>
-						                        <th>Độ dày
+						                        <th><?php echo ($this->session->userdata['languages'] == 'vn')? 'Độ Dày' : 'Thickness'; ?>
 						                        	<?php if (isset($arr_thick) && !empty($arr_thick)): ?>
 							                        	<i class="icon-question-sign" />
 							                        	<span class="ps_property iq-thickness">
 														</span>
 						                        	<?php endif ?>
 												</th>
-						                        <th>Chiều rộng / khổ
+						                        <th><?php echo ($this->session->userdata['languages'] == 'vn')? 'Chiều Rộng / Khổ' : 'Width'; ?>
 						                        	<?php if (isset($arr_width) && !empty($arr_width)): ?>
 							                        	<i class="icon-question-sign" />
 							                        	<span class="ps_property iq-width"></span>
 						                        	<?php endif ?>
 												</th>
-						                        <th>Chiều dài
+						                        <th><?php echo ($this->session->userdata['languages'] == 'vn')? 'Chiều Dài' : 'Length'; ?>
 						                        	<?php if (isset($arr_length) && !empty($arr_length)): ?>
 							                        	<i class="icon-question-sign" />
 							                        	<span class="ps_property iq-length"></span>
 						                        	<?php endif ?>
 						                        </th>
-						                        <th>Số lượng
+						                        <th><?php echo ($this->session->userdata['languages'] == 'vn')? 'Số Lượng' : 'Quantity'; ?>
 						                        	<!-- <i class="icon-question-sign" /> -->
 						                        	<!-- <span class="ps_property iq-number"></span> -->
 						                        </th>
@@ -148,54 +148,55 @@
 						            </table>
 						            <button type="button" id="add_row" class="btn btn-default button-small"><span> Thêm</span></button>
 						            <h3 class="page-subheading">Lưu ý:</h3>
-						            <p> Khách hàng có thể đặt hàng ngoài quy cách phổ thông (đặt hàng ngoại khổ) đối với số lượng sản phẩm có giá trị trên 20 triệu đồng.</p>
+						            <p> <?php echo ($this->session->userdata['languages'] == 'vn')? 'Khách hàng có thể đặt hàng ngoài quy cách phổ thông (đặt hàng ngoại khổ) đối với số lượng sản phẩm có giá trị trên 20 triệu đồng' : 'You can order for product that not in regular size with order greater than 20.000.000 vnđ'; ?>.</p>
 				                	<button type="button" class="btn btn-default button-small">
-				                		<a style="color: white" href="" class="iframe" rel="nofollow"> Chính sách đặt hàng ngoại khổ</a>
+				                		<a style="color: white" href="#" class="iframe" rel="nofollow"> <?php echo ($this->session->userdata['languages'] == 'vn')? 'Chính Sách Đặt Hàng Ngoại Khổ' : 'Policy for Custom Order'; ?>.
+                                        </a>
 				                	</button>
-						            <h3 class="page-subheading"> Thông tin thanh toán</h3>
+						            <h3 class="page-subheading"> <?php echo ($this->session->userdata['languages'] == 'vn')? 'Thông Tin Thanh Toán' : 'Payment Detail'; ?></h3>
 						        	<p class="form-group">
-						                <label>Hình thức thanh toán:</label>
-						                <input class="form-control grey" type="radio" id="payment" name="Contact[type_payment]" value="1" checked/> Tiền mặt
-						                <input class="form-control grey" type="radio" id="payment" name="Contact[type_payment]" value="2" /> Chuyển khoản
+						                <label><?php echo ($this->session->userdata['languages'] == 'vn')? 'Hình Thức Thanh Toán' : 'Payment Type'; ?>:</label>
+						                <input class="form-control grey" type="radio" id="payment" name="Contact[type_payment]" value="1" checked/> <?php echo ($this->session->userdata['languages'] == 'vn')? 'Tiền Mặt' : 'Cash'; ?>
+						                <input class="form-control grey" type="radio" id="payment" name="Contact[type_payment]" value="2" /> <?php echo ($this->session->userdata['languages'] == 'vn')? 'Chuyển Khoản' : 'Bank Transfer'; ?>
 						            </p>
-						            <h3 class="page-subheading">Thông tin giao hàng</h3>
+						            <h3 class="page-subheading"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Thông Tin Giao Hàng' : 'Delivery Detail'; ?></h3>
 						            <p class="form-group">
-						                <label for="delivery_address" style="float: left">Địa điểm giao hàng *</label>
+						                <label for="delivery_address" style="float: left"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Địa Điểm Giao Hàng' : 'Delivery Address'; ?> *</label>
 						                <input class="form-control grey" type="text" id="delivery_address" name="Contact[shipping_address]" value="" />
 						            </p>
 						            <p class="form-group">
-						                <label for="invoicer" style="float: left"> Họ tên người nhận hàng</label>
+						                <label for="invoicer" style="float: left"> <?php echo ($this->session->userdata['languages'] == 'vn')? 'Họ Tên Người Nhận' : 'Full Name'; ?></label>
 						                <input class="form-control grey" type="text" id="invoicer" name="Contact[shipping_name]" value="" />
 						            </p>
 						            <p class="form-group">
-						                <label for="invoicer_phone" style="float: left">Điện thoại người nhận hàng * </label>
+						                <label for="invoicer_phone" style="float: left"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Điện Thoại Người Nhận Hàng' : 'Phone Number'; ?> * </label>
 						                <input class="form-control grey" type="text" id="invoicer_phone" name="Contact[shipping_phone]" value="" />
 						            </p>
 						            <p class="form-group">
-						                <label for="sale_employee" style="float: left">Nhân viên kinh doanh liên hệ (nếu có)</label>
+						                <label for="sale_employee" style="float: left"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Nhân Viên Kinh Doanh (nếu có)' : 'Sale Employee ( if there is )'; ?></label>
 						                <input class="form-control grey" type="text" id="sale_employee" name="Contact[business_man]" value="" />
 						            </p>
 			                	<?php endif ?>
                                 <p class="form-group">
-		                            <label for="fileUpload"> Đính kèm tập tin</label>
+		                            <label for="fileUpload"> <?php echo ($this->session->userdata['languages'] == 'vn')? 'Đính Kèm Tập Tin' : 'File'; ?></label>
 		                            <input type="file" name="file" id="fileUpload" class="form-control" />
 		                        </p>
                             </div>
 			                <div class="col-xs-12 col-md-12">
 			                    <div class="form-group">
-			                        <label for="message">Ghi chú </label>
+			                        <label for="message"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Ghi Chú' : 'Note'; ?> </label>
 			                        <textarea class="form-control" id="message" name="Contact[comment]"></textarea>
 			                    </div>
 			                </div>
 			                <?php if ($is_product): ?>
 			                	<div class="col-xs-12 col-md-12">
 				                    <div style="float: left"><input type="checkbox" name="cgv" id="cgv" value="0" checked="checked"></div>
-				                    <div style="float: left"><a href="content/category/4-chinh-sach-khach-hang.html" target="_blank">Tôi đã đọc và chấp nhận các điều khoản và chính sách của công ty TNHH TM-DV-SX Nhựa Nam Việt.</a></div>
+				                    <div style="float: left"><a href="content/category/4-chinh-sach-khach-hang.html" target="_blank"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Tôi đã đọc và chấp nhận các điều khoản và chính sách của công ty' : 'I have read and agree with company\'s policy'; ?>.</a></div>
 				                </div>
 			                <?php endif ?>
     					</div>
 			            <div class="submit col-xs-12 col-md-12">
-			                <button type="submit" name="submitMessage" id="submitMessage" class="button btn btn-default button-medium"><span>Gởi</span>
+			                <button type="submit" name="submitMessage" id="submitMessage" class="button btn btn-default button-medium"><span><?php echo ($this->session->userdata['languages'] == 'vn')? 'Gởi' : 'Send'; ?></span>
 			                </button>
 			            </div>
     				</fieldset>

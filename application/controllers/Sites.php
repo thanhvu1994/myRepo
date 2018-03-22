@@ -20,8 +20,14 @@ class Sites extends Front_Controller {
 
     public function index()
     {
-        $data['title'] = 'Trang Chủ';
-        $data['description'] = 'Trang Chủ';
+        if ($this->session->userdata['languages'] == 'vn'){
+            $data['title'] = 'Trang Chủ';
+            $data['description'] = 'Trang Chủ';
+        }else{
+            $data['title'] = 'Home';
+            $data['description'] = 'Home';
+        }
+
         $data['template'] = 'sites/index';
         $data['categories'] = $this->categories->getDataFE();
         $data['projects'] = $this->projects->getProjectsFE();
@@ -31,8 +37,13 @@ class Sites extends Front_Controller {
 
     public function contact($type = '', $slug = '')
     {
-        $data['title'] = 'Liên Hệ';
-        $data['description'] = 'Liên Hệ';
+        if ($this->session->userdata['languages'] == 'vn'){
+            $data['title'] = 'Liên Hệ';
+            $data['description'] = 'Liên Hệ';
+        }else{
+            $data['title'] = 'Contact';
+            $data['description'] = 'Contact';
+        }
 
     	$this->load->model('contact');
         $this->load->model('contactPro');
@@ -161,7 +172,7 @@ class Sites extends Front_Controller {
 
         if(isset($data['product'])){
             $data['title'] = $data['product']->title;
-            $data['description'] = $data['product']->description;
+            $data['description'] = $data['product']->meta_description;
             $data['template'] = 'sites/product';
         }else{
             $data['template'] = 'sites/index';

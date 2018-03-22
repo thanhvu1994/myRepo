@@ -51,7 +51,7 @@ class Products extends CI_Model {
             'sale_price' => $this->input->post('sale_price'),
             'slug' => $this->products->generateSlug($this->input->post('product_name')),
             'feature' => STATUS_ACTIVE,
-            'status' => $this->input->post('status'),
+            'status' => ($this->input->post('status')) ? $this->input->post('status') : STATUS_INACTIVE
         );
         $this->db->insert('products', $data);
         $insert_id = $this->db->insert_id();
@@ -73,7 +73,7 @@ class Products extends CI_Model {
             'meta_description' => $this->input->post('meta_description'),
             'price' => $this->input->post('price'),
             'sale_price' => $this->input->post('sale_price'),
-            'status' => $this->input->post('status'),
+            'status' => ($this->input->post('status')) ? $this->input->post('status') : STATUS_INACTIVE
         );
 
         $this->db->where('id', $id);
@@ -102,37 +102,29 @@ class Products extends CI_Model {
         return 'P'.date('dmY').(str_pad($maxid+1, 4, '0', STR_PAD_LEFT));
     }
 
-    public function generateSlug($text){
-        $text = $this->stripUnicode($text);
+    public function generateSlug($str){
         $maxid = 0;
         $row = $this->db->query('SELECT MAX(id) AS `maxid` FROM `ci_products`')->row();
         if ($row) {
             $maxid = $row->maxid;
         }
 
-        // replace non letter or digits by -
-        $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+        $str = trim(mb_strtolower($str));
+        $str = preg_replace('/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/', 'a', $str);
+        $str = preg_replace('/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/', 'e', $str);
+        $str = preg_replace('/(ì|í|ị|ỉ|ĩ)/', 'i', $str);
+        $str = preg_replace('/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/', 'o', $str);
+        $str = preg_replace('/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/', 'u', $str);
+        $str = preg_replace('/(ỳ|ý|ỵ|ỷ|ỹ)/', 'y', $str);
+        $str = preg_replace('/(đ)/', 'd', $str);
+        $str = preg_replace('/[^a-z0-9-\s]/', '', $str);
+        $str = preg_replace('/([\s]+)/', '-', $str);
 
-        // transliterate
-        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-
-        // remove unwanted characters
-        $text = preg_replace('~[^-\w]+~', '', $text);
-
-        // trim
-        $text = trim($text, '-');
-
-        // remove duplicate -
-        $text = preg_replace('~-+~', '-', $text);
-
-        // lowercase
-        $text = strtolower($text);
-
-        if (empty($text)) {
+        if (empty($str)) {
             return 'n-a';
         }
 
-        return $text.'-'.$maxid;
+        return $str.'-'.$maxid;
     }
 
     public function getDataFE(){

@@ -29,7 +29,7 @@
                                                     $selected = ($cate['slug'] == $category->slug_en)? 'class="selected"': '';
                                                 }
                                             ?>
-                                            <a href="<?php echo base_url('sites/category/'.$cate['slug']); ?>" <?php echo $selected; ?> title="<?php echo $cate['title']; ?>">
+                                            <a href="<?php echo ($cate['slug'])? base_url('sites/category/'.$cate['slug']) : '#'; ?>" <?php echo $selected; ?> title="<?php echo $cate['title']; ?>">
                                                 <?php echo $cate['title']; ?>
                                             </a>
                                             <?php if(!empty($cate['child'])): ?>
@@ -88,8 +88,8 @@
                                         </a>
                                     </h5>
 
-                                    <p class="product-desc" itemprop="description">
-                                        <?php echo ($this->session->userdata['languages'] == 'vn') ? $product->description : $product->description_en; ?>
+                                    <p style="display:none;" class="product-desc" itemprop="description">
+                                        <?php echo $product->title; ?>
                                     </p>
                                     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="content_price" style="display: none;">&nbsp;
                                         <?php echo $product->sale_price; ?>

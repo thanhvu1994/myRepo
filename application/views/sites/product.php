@@ -300,6 +300,13 @@
         height: 458px;
         width: 458px;
     }
+
+    #thumbs_list_frame > li {
+        object-fit: none; /* Do not scale the image */
+        object-position: center; /* Center the image within the element */
+        height: 82px;
+        width: 82px;
+    }
 </style>
 
 <script>
