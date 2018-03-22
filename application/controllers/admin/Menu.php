@@ -39,7 +39,7 @@ class Menu extends MY_Controller {
                 }
             }
             $data_insert['thumb'] = $thumb;
-            $data_update['type'] = 'menu';
+            $data_insert['type'] = 'menu';
             $this->categories->set_model($data_insert);
             redirect('admin/menu/index', 'refresh');
         }

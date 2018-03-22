@@ -584,4 +584,32 @@ class Sites extends Front_Controller {
             }
         }
     }
+
+    public function search() {
+        if ($this->session->userdata['languages'] == 'vn'){
+            $data['title'] = 'Tìm kiếm';
+            $data['description'] = 'Tìm kiếm';
+        }else{
+            $data['title'] = 'Search';
+            $data['description'] = 'Search';
+        }
+
+        $this->load->model('news');
+
+        if (isset($_GET['key'])) {
+            $query = $this->db->query('SELECT * FROM ci_news WHERE title LIKE "%'.$_GET['key'].'%"');
+            $results = $query->result('News');
+            $data['results'] = $results;
+            $query = $this->db->query('SELECT * FROM ci_news ORDER BY title asc');
+            $all_result = $query->result('News');
+            $data['all_result'] = $all_result;
+            $data['key'] = $_GET['key'];
+        } else {
+            $data['results'] = $data['all_result'] = [];
+            $data['key'] = '';
+        }
+        $data['template'] = 'sites/search';
+
+        $this->load->view('layouts/index', $data);
+    }
 }

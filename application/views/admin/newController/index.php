@@ -23,7 +23,7 @@
                                         <tr>
                                             <th class="no-sort text-center"><input type="checkbox" name="" id="select_all"></th>
                                             <th>Tiêu Đề</th>
-                                            <th>Nội Dung Rút Gọn</th>
+                                            <!-- <th>Nội Dung Rút Gọn</th> -->
                                             <th>Ngày Cập Nhật</th>
                                             <th>Hành Động</th>
                                         </tr>
@@ -33,7 +33,7 @@
                                             <tr id="tr-<?php echo $model->id?>">
                                                 <td class="text-center check-element"><input type="checkbox" name="select[]" value="<?php echo $model->id ?>"></td>
                                                 <td><?php echo $model->title; ?></td>
-                                                <td><?php echo substr($model->short_content, 0, 50); ?></td>
+                                                <!-- <td><?php echo substr($model->short_content, 0, 50); ?></td> -->
                                                 <td><?php echo $model->get_created_date() ?></td>
                                                 <td class="button-column">
                                                     <a class="btn btn-danger" href="<?php echo base_url('admin/newController/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>

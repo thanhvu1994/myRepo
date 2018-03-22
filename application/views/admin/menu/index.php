@@ -13,8 +13,8 @@
     <div class="col-sm-12">
         <div class="white-box">
             <div class="row m-b-30">
-                <a href="<?php echo base_url('admin/category/create')?>" class="btn btn-create"><i class="fa fa-plus"></i> Thêm mới</a>
-                <button data-href="<?php echo base_url('admin/category/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</button>
+                <a href="<?php echo base_url('admin/menu/create')?>" class="btn btn-create"><i class="fa fa-plus"></i> Thêm mới</a>
+                <button data-href="<?php echo base_url('admin/menu/bulkDelete')?>" class="btn btn-danger bulk-delete"><i class="fa fa-trash-o"></i> Xóa tất cả</button>
             </div>
             <div class="row">
                 <div class="col-sm-12">

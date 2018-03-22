@@ -47,7 +47,6 @@ class Categories extends CI_Model {
 	    $data_insert['slug'] = $slug;
 	    $data_insert['slug_en'] = $slug_en;
 	    $data_insert['type_level'] = $type_level;
-
 	    return $this->db->insert('categories', $data_insert);
 	}
 
@@ -169,7 +168,7 @@ class Categories extends CI_Model {
 
 	public function rChildsFE($parent_id) {
 		$items = [];
-		$query = $this->db->query("SELECT * FROM ci_categories WHERE parent_id = ".$parent_id);
+		$query = $this->db->query("SELECT * FROM ci_categories WHERE parent_id = ".$parent_id." AND type = 'menu'  ORDER BY display_order asc");
 		$childs = $query->result('Categories');
 
 		if (count($childs) > 0) {

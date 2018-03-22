@@ -102,23 +102,23 @@
 						                        	<?php endif*/ ?>
 												</th>
 						                        <th><?php echo ($this->session->userdata['languages'] == 'vn')? 'Độ Dày' : 'Thickness'; ?>
-						                        	<?php if (isset($arr_thick) && !empty($arr_thick)): ?>
+						                        	<?php /*if (isset($arr_thick) && !empty($arr_thick)): ?>
 							                        	<i class="icon-question-sign" />
 							                        	<span class="ps_property iq-thickness">
 														</span>
-						                        	<?php endif ?>
+						                        	<?php endif*/  ?>
 												</th>
 						                        <th><?php echo ($this->session->userdata['languages'] == 'vn')? 'Chiều Rộng / Khổ' : 'Width'; ?>
-						                        	<?php if (isset($arr_width) && !empty($arr_width)): ?>
+						                        	<?php /*if (isset($arr_width) && !empty($arr_width)): ?>
 							                        	<i class="icon-question-sign" />
 							                        	<span class="ps_property iq-width"></span>
-						                        	<?php endif ?>
+						                        	<?php endif*/  ?>
 												</th>
 						                        <th><?php echo ($this->session->userdata['languages'] == 'vn')? 'Chiều Dài' : 'Length'; ?>
-						                        	<?php if (isset($arr_length) && !empty($arr_length)): ?>
+						                        	<?php /*if (isset($arr_length) && !empty($arr_length)): ?>
 							                        	<i class="icon-question-sign" />
 							                        	<span class="ps_property iq-length"></span>
-						                        	<?php endif ?>
+						                        	<?php endif*/  ?>
 						                        </th>
 						                        <th><?php echo ($this->session->userdata['languages'] == 'vn')? 'Số Lượng' : 'Quantity'; ?>
 						                        	<!-- <i class="icon-question-sign" /> -->
@@ -169,8 +169,8 @@
 						                <input class="form-control grey" type="text" id="invoicer" name="Contact[shipping_name]" value="" />
 						            </p>
 						            <p class="form-group">
-						                <label for="invoicer_phone" style="float: left"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Điện Thoại Người Nhận Hàng' : 'Phone Number'; ?> * </label>
-						                <input class="form-control grey" type="text" id="invoicer_phone" name="Contact[shipping_phone]" value="" />
+						                <label for="invoicer" style="float: left"> <?php echo ($this->session->userdata['languages'] == 'vn')? 'Điện Thoại Người Nhận Hàng' : 'Phone Number'; ?> *</label>
+						                <input class="form-control grey" type="text" id="invoicer" name="Contact[shipping_name]" value="" />
 						            </p>
 						            <p class="form-group">
 						                <label for="sale_employee" style="float: left"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Nhân Viên Kinh Doanh (nếu có)' : 'Sale Employee ( if there is )'; ?></label>
@@ -190,8 +190,8 @@
 			                </div>
 			                <?php if ($is_product): ?>
 			                	<div class="col-xs-12 col-md-12">
-				                    <div style="float: left"><input type="checkbox" name="cgv" id="cgv" value="0" checked="checked"></div>
-				                    <div style="float: left"><a href="content/category/4-chinh-sach-khach-hang.html" target="_blank"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Tôi đã đọc và chấp nhận các điều khoản và chính sách của công ty' : 'I have read and agree with company\'s policy'; ?>.</a></div>
+				                    <div style="float: left"><input type="checkbox" name="cgv" id="cgv" value="0" checked="checked" required></div>
+				                    <div style="float: left"><a href="javascript:void(0)" target="_blank"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Tôi đã đọc và chấp nhận các điều khoản và chính sách của công ty' : 'I have read and agree with company\'s policy'; ?>.</a></div>
 				                </div>
 			                <?php endif ?>
     					</div>

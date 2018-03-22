@@ -154,13 +154,10 @@
 					<!-- /Block usmodule NAV -->
                     </div>
                     <div id="search_block_top" class="clearfix">
-						<form id="searchbox" method="get" action="http://namvietplastic.com/vn/search" >
-							<input type="hidden" name="controller" value="search" />
-							<input type="hidden" name="orderby" value="position" />
-							<input type="hidden" name="orderway" value="desc" />
-							<input class="search_query form-control" type="text" id="search_query_top" name="search_query" placeholder="<?php echo ($this->session->userdata['languages'] == 'vn')? 'Tìm kiếm' : 'Search'; ?>" value="" />
-							<button type="submit" name="submit_search" class="btn btn-default button-search">
-								<img src="http://namvietplastic.com/img/icon-search.png"/>
+						<form id="searchbox" method="get" action="<?php echo base_url('sites/search') ?>" >
+							<input class="search_query form-control" type="text" id="search_query_top" name="key" placeholder="<?php echo ($this->session->userdata['languages'] == 'vn')? 'Tìm kiếm' : 'Search'; ?>" value="" />
+							<button type="submit" class="btn btn-default button-search">
+								<img src="<?php echo base_url('img/icon-search.png') ?>"/>
 							</button>
 						</form>
 					</div>
