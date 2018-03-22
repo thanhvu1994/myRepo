@@ -9,14 +9,16 @@
                 <div id="content" class="block">
                     <div itemtype="#" itemscope="" id="sdsblogArticle" class="blog-post">
                         <div class="page-item-title">
-                            <h1><?php echo $new->title; ?></h1>
+                            <h1><?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?></h1>
                         </div>
                         <div class="post-info">
-                            <span>Posted by  &nbsp;<i class="icon icon-user"></i><span itemprop="author">Admin</span>&nbsp;<i class="icon icon-calendar"></i>&nbsp;<span itemprop="dateCreated"><?php echo date('d M, Y', strtotime($new->created_date)); ?></span>&nbsp;&nbsp;<i class="icon icon-comments"></i>&nbsp; <div style="display: inline-block;" class="fb-comments-count" data-href="<?php echo base_url('sites/newDetail/'. $new->slug); ?>">0</div> Comments</span>
+                            <span><?php echo ($this->session->userdata['languages'] == 'vn') ? 'Đăng Bởi' : 'Posted By'; ?>  &nbsp;<i class="icon icon-user"></i><span itemprop="author">Admin</span>&nbsp;
+                                <i class="icon icon-calendar"></i>&nbsp;<span itemprop="dateCreated"><?php echo date('d M, Y', strtotime($new->created_date)); ?></span>&nbsp;&nbsp;
+                                <i class="icon icon-comments"></i>&nbsp; <div style="display: inline-block;" class="fb-comments-count" data-href="<?php echo base_url('sites/newDetail/'. $new->slug); ?>">0</div> <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Bình Luận' : 'Comments'; ?></span>
                             <a title="" style="display:none" itemprop="url" href="#"></a>
                         </div>
                         <div itemprop="articleBody">
-                                <?php echo $new->content; ?>
+                            <?php echo ($this->session->userdata['languages'] == 'vn') ? $new->content : $new->content_en; ?>
                         </div>
                     </div>
 

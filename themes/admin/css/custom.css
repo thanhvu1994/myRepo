@@ -71,7 +71,7 @@ span.required {
 .delete-att-value{
     position: absolute;
     top:-5%;
-    left:70%;
+    right:10px;
     color: red;
     opacity:0;
     transition:opacity 0.5s linear;
@@ -82,7 +82,7 @@ span.required {
 .delete-att{
     position: absolute;
     top:-5%;
-    left:90%;
+    right:10px;
     color: red;
     opacity:0;
     transition:opacity 0.5s linear;

@@ -10,14 +10,22 @@
                             <div id="image-block" class="clearfix">
                                 <span id="view_full_size">
                                     <img id="bigpic" itemprop="image" src="<?php echo $product->getFirstImage(); ?>" title="<?php echo $product->title; ?>" alt="<?php echo $product->title; ?>" width="458" height="458"/>
-                                    <span class="span_link no-print">View larger</span>
+                                    <?php if($this->session->userdata['languages'] == 'vn'): ?>
+                                        <span class="span_link no-print">Phóng To</span>
+                                    <?php else: ?>
+                                        <span class="span_link no-print">View larger</span>
+                                    <?php endif; ?>
                                 </span>
                             </div> <!-- end image-block -->
                             <!-- thumbnails -->
                             <div id="views_block" class="clearfix ">
                                 <span class="view_scroll_spacer">
                                 <a id="view_scroll_left" class="" title="Back" href="javascript:{}">
-                                    Trước
+                                    <?php if($this->session->userdata['languages'] == 'vn'): ?>
+                                        Trước
+                                    <?php else: ?>
+                                        Previous
+                                    <?php endif; ?>
                                 </a>
                                 </span>
                                 <div id="thumbs_list">
@@ -33,7 +41,11 @@
                                     </ul>
                                 </div> <!-- end thumbs_list -->
                                 <a id="view_scroll_right" title="Next" href="javascript:{}">
-                                    Sau
+                                    <?php if($this->session->userdata['languages'] == 'vn'): ?>
+                                        Sau
+                                    <?php else: ?>
+                                        Next
+                                    <?php endif; ?>
                                 </a>
                             </div> <!-- end views-block -->
                             <!-- end thumbnails -->
@@ -41,7 +53,7 @@
                         <!-- end left infos-->
                         <!-- center infos -->
                         <div class="pb-center-column col-xs-12 col-sm-6 col-md-7">
-                            <h1 itemprop="name" style="padding-bottom: 20px"><?php echo $product->title; ?></h1>
+                            <h1 itemprop="name" style="padding-bottom: 20px"><?php echo ($this->session->userdata['languages'] == 'vn') ? $product->product_name : $product->product_name_en; ?></h1>
                             <div class="content_prices clearfix" style="display: none">
                                 <!-- prices -->
                                 <div class="price">
@@ -61,12 +73,20 @@
                             <ul class="nav nav-tabs" role="tablist">
                                 <li role="presentation" class="active">
                                     <a href="#home" role="tab" data-toggle="tab">
-                                        Chi Tiết
+                                        <?php if($this->session->userdata['languages'] == 'vn'): ?>
+                                            Chi Tiết
+                                        <?php else: ?>
+                                            Detail
+                                        <?php endif; ?>
                                     </a>
                                 </li>
                                 <li role="presentation" >
                                     <a href="#profile" role="tab" data-toggle="tab">
-                                        Mô Tả
+                                        <?php if($this->session->userdata['languages'] == 'vn'): ?>
+                                            Mô Tả
+                                        <?php else: ?>
+                                            Description
+                                        <?php endif; ?>
                                     </a>
                                 </li>
                             </ul>
@@ -75,7 +95,7 @@
                                     <!-- More info -->
                                     <section class="page-product-box">
                                         <div  class="rte">
-                                            <?php echo $product->content; ?>
+                                            <?php echo ($this->session->userdata['languages'] == 'vn') ? $product->content : $product->content_en; ?>
                                         </div>
                                     </section>
                                     <!--end  More info -->
@@ -83,7 +103,7 @@
                                 <div role="tabpanel" class="tab-pane " id="profile">
                                     <section class="page-product-box">
                                         <div  class="rte">
-                                            <?php echo $product->description; ?>
+                                            <?php echo ($this->session->userdata['languages'] == 'vn') ? $product->description : $product->description_en; ?>
                                         </div>
                                     </section>
                                 </div>
@@ -99,7 +119,14 @@
                                  </p>
                                 <!-- quantity wanted -->
                                 <p id="quantity_wanted_p">
-                                    <label>Số lượng</label>
+                                    <a href="#profile" role="tab" data-toggle="tab">
+                                        <?php if($this->session->userdata['languages'] == 'vn'): ?>
+                                            <label>Số lượng</label>
+                                        <?php else: ?>
+                                            <label>Quantity</label>
+                                        <?php endif; ?>
+                                    </a>
+
                                     <input type="text" name="Orders[quantity]" id="quantity_wanted" class="text" value="1" />
                                     <a href="#" data-field-qty="qty" class="btn btn-default button-minus product_quantity_down">
                                         <span><i class="icon-minus"></i></span>
@@ -116,19 +143,35 @@
                                             <?php $attributes = $product->getAttributes(); ?>
                                             <?php foreach($attributes as $key => $item): ?>
                                                 <?php
-                                                    switch($item->name){
-                                                        case 'Color':
-                                                            $title = 'Màu Sắc';
-                                                            break;
-                                                        case 'Size':
-                                                            $title = 'Kích Thước';
-                                                            break;
-                                                        case 'Material':
-                                                            $title = 'Chất Liệu';
-                                                            break;
-                                                        default:
+                                                    if($this->session->userdata['languages'] == 'vn'){
+                                                        switch($item->name){
+                                                            case 'Color':
+                                                                $title = 'Màu Sắc';
+                                                                break;
+                                                            case 'Size':
+                                                                $title = 'Kích Thước';
+                                                                break;
+                                                            case 'Material':
+                                                                $title = 'Chất Liệu';
+                                                                break;
+                                                            default:
+                                                                $temp = explode(':', $item->name);
+
+                                                                if(count($temp) > 1){
+                                                                    $title = $temp[0];
+                                                                }else{
+                                                                    $title = $item->name;
+                                                                }
+                                                                break;
+                                                        }
+                                                    }else{
+                                                        $temp = explode(':', $item->name);
+
+                                                        if(count($temp) > 1){
+                                                            $title = $temp[1];
+                                                        }else{
                                                             $title = $item->name;
-                                                            break;
+                                                        }
                                                     }
                                                 ?>
                                                 <label class="attribute_label" ><?php echo $title; ?></label>
@@ -160,10 +203,20 @@
                                 <div class="">
                                     <p class="buttons_bottom_block no-print">
                                         <button type="button" class="exclusive ps_product_addcart btn-add-cart">
-                                            <span>Thêm vào giỏ hàng</span>
+                                            <?php if($this->session->userdata['languages'] == 'vn'): ?>
+                                                <span>Thêm vào giỏ hàng</span>
+                                            <?php else: ?>
+                                                <span>Add To Cart</span>
+                                            <?php endif; ?>
                                         </button>
                                     </p>
-                                    <p id="add-success" style="display: none">Đã thêm vào giỏ hàng</p>
+                                    <p id="add-success" style="display: none">
+                                        <?php if($this->session->userdata['languages'] == 'vn'): ?>
+                                            <span>Đã thêm vào giỏ hàng</span>
+                                        <?php else: ?>
+                                            <span>Added To Cart</span>
+                                        <?php endif; ?>
+                                    </p>
                                 </div>
                                 <?php } ?>
                                 <div>
@@ -171,7 +224,11 @@
                                         <p class="buttons_bottom_block no-print">
                                             <a href="<?php echo base_url('sites/contact/dat-hang/'.$product->slug); ?>" title="" target="blank">
                                                 <button type="button" class="exclusive ps_product_addcart">
-                                                    <span>Liên Hệ Đặt Hàng</span>
+                                                    <?php if($this->session->userdata['languages'] == 'vn'): ?>
+                                                        <span>Liên Hệ Đặt Hàng</span>
+                                                    <?php else: ?>
+                                                        <span>Contact For Order</span>
+                                                    <?php endif; ?>
                                                 </button>
                                             </a>
                                         </p>
@@ -180,7 +237,11 @@
                                         <p class="buttons_bottom_block no-print">
                                             <a href="<?php echo base_url('sites/contact/bao-gia/'.$product->slug); ?>" title="" target="blank">
                                                 <button type="button" class="exclusive ps_product_addcart">
-                                                    <span>Liên Hệ Báo Giá</span>
+                                                    <?php if($this->session->userdata['languages'] == 'vn'): ?>
+                                                        <span>Liên Hệ Báo Giá</span>
+                                                    <?php else: ?>
+                                                        <span>Contact For Price</span>
+                                                    <?php endif; ?>
                                                 </button>
                                             </a>
                                         </p>

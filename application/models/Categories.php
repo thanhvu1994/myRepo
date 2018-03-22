@@ -246,7 +246,11 @@ class Categories extends CI_Model {
     }
 
     public function getCategoryBySlug($slug){
-        $query = $this->db->get_where('categories', array('slug' => $slug) );
+        if ($this->session->userdata['languages'] == 'vn'){
+            $query = $this->db->get_where('categories', array('slug' => $slug) );
+        }else{
+            $query = $this->db->get_where('categories', array('slug_en' => $slug) );
+        }
         return $query->row(0,'Categories');
     }
 

@@ -158,7 +158,7 @@
 							<input type="hidden" name="controller" value="search" />
 							<input type="hidden" name="orderby" value="position" />
 							<input type="hidden" name="orderway" value="desc" />
-							<input class="search_query form-control" type="text" id="search_query_top" name="search_query" placeholder="Tìm kiếm" value="" />
+							<input class="search_query form-control" type="text" id="search_query_top" name="search_query" placeholder="<?php echo ($this->session->userdata['languages'] == 'vn')? 'Tìm kiếm' : 'Search'; ?>" value="" />
 							<button type="submit" name="submit_search" class="btn btn-default button-search">
 								<img src="http://namvietplastic.com/img/icon-search.png"/>
 							</button>

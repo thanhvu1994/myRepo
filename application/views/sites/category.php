@@ -7,28 +7,43 @@
             <div id="left_column" class="column col-xs-12 col-sm-3"><!-- Block categories module -->
                 <div id="categories_block_left" class="block">
                     <h2 class="title_block">
-                        <?php echo $category->category_name; ?>
+                        <?php if ($this->session->userdata['languages'] == 'vn'): ?>
+                            <?php echo $category->category_name; ?>
+                        <?php else: ?>
+                            <?php echo $category->category_name_en; ?>
+                        <?php endif; ?>
                     </h2>
                     <div class="block_content">
                         <ul class="tree dhtml">
                             <li>
-                                <a href="javascript:void(0)" title="<?php echo $category->title; ?>">
+                                <a href="javascript:void(0)" title="<?php echo ($this->session->userdata['languages'] == 'vn') ? $category->title : $category->title_en; ?>">
                                     Products
                                 </a>
                                 <ul>
                                     <?php foreach($treeCategory as $cate): ?>
                                         <li>
-                                            <?php if(!empty($cate['child'])): ?>
-                                                <span class="grower CLOSE"> </span>
-                                            <?php endif; ?>
-                                            <a href="<?php echo base_url('sites/category/'.$cate['slug']); ?>" <?php echo ($cate['slug'] == $category->slug)? 'class="selected"': ''; ?> title="<?php echo $cate['title']; ?>">
+                                            <?php
+                                                if($this->session->userdata['languages'] == 'vn'){
+                                                    $selected = ($cate['slug'] == $category->slug)? 'class="selected"': '';
+                                                }else{
+                                                    $selected = ($cate['slug'] == $category->slug_en)? 'class="selected"': '';
+                                                }
+                                            ?>
+                                            <a href="<?php echo base_url('sites/category/'.$cate['slug']); ?>" <?php echo $selected; ?> title="<?php echo $cate['title']; ?>">
                                                 <?php echo $cate['title']; ?>
                                             </a>
                                             <?php if(!empty($cate['child'])): ?>
                                                 <ul>
                                                     <?php foreach($cate['child'] as $childCate): ?>
                                                     <li>
-                                                        <a href="<?php echo base_url('sites/category/'.$childCate['slug']); ?>" <?php echo ($childCate['slug'] == $category->slug)? 'class="selected"': ''; ?> title="<?php echo $childCate['title']; ?>">
+                                                        <?php
+                                                        if($this->session->userdata['languages'] == 'vn'){
+                                                            $selected = ($childCate['slug'] == $category->slug)? 'class="selected"': '';
+                                                        }else{
+                                                            $selected = ($childCate['slug'] == $category->slug_en)? 'class="selected"': '';
+                                                        }
+                                                        ?>
+                                                        <a href="<?php echo base_url('sites/category/'.$childCate['slug']); ?>" <?php echo $selected; ?> title="<?php echo $childCate['title']; ?>">
                                                             <?php echo $childCate['title']; ?>
                                                         </a>
                                                     </li>
@@ -48,7 +63,7 @@
                 <!-- Products list -->
                 <ul class="product_list grid row">
                     <?php foreach($products as $product): ?>
-                        <?php if($product   ): ?>
+                        <?php if($product): ?>
                         <li class="ajax_block_product col-xs-12 col-sm-6 col-md-4 first-item-of-tablet-line">
                             <div class="product-container" itemscope itemtype="http://schema.org/Product">
                                 <div class="left-block">
@@ -69,12 +84,12 @@
                                 <div class="right-block">
                                     <h5 itemprop="name">
                                         <a class="product-name" href="<?php echo base_url('sites/product/'.$product->slug); ?>" title="<?php echo $product->title; ?>" itemprop="url" >
-                                            <?php echo $product->title; ?>
+                                            <?php echo ($this->session->userdata['languages'] == 'vn') ? $product->product_name : $product->product_name_en; ?>
                                         </a>
                                     </h5>
 
                                     <p class="product-desc" itemprop="description">
-                                        <?php echo $product->description; ?>
+                                        <?php echo ($this->session->userdata['languages'] == 'vn') ? $product->description : $product->description_en; ?>
                                     </p>
                                     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="content_price" style="display: none;">&nbsp;
                                         <?php echo $product->sale_price; ?>

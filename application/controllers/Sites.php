@@ -141,8 +141,13 @@ class Sites extends Front_Controller {
 
 
         if(isset($data['category'])){
-            $data['title'] = $data['category']->title;
-            $data['description'] = $data['category']->description;
+            if ($this->session->userdata['languages'] == 'vn'){
+                $data['title'] = $data['category']->title;
+                $data['description'] = $data['category']->description;
+            }else{
+                $data['title'] = $data['category']->title_en;
+                $data['description'] = $data['category']->description_en;
+            }
             $data['template'] = 'sites/category';
         }else{
             redirect('sites/index', 'refresh');
@@ -401,8 +406,13 @@ class Sites extends Front_Controller {
     }
 
     public function news(){
-        $data['title'] = 'Tin Tức';
-        $data['description'] = 'Tin Tức';
+        if ($this->session->userdata['languages'] == 'vn'){
+            $data['title'] = 'Tin Tức';
+            $data['description'] = 'Tin Tức';
+        }else{
+            $data['title'] = 'News';
+            $data['description'] = 'News';
+        }
 
         $data['template'] = 'sites/news';
 
