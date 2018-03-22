@@ -595,17 +595,20 @@ class Sites extends Front_Controller {
         }
 
         $this->load->model('news');
+        $this->load->model('products');
 
         if (isset($_GET['key'])) {
-            $query = $this->db->query('SELECT * FROM ci_news WHERE title LIKE "%'.$_GET['key'].'%"');
+            $query = $this->db->query('SELECT * FROM ci_news WHERE title LIKE "%'.$_GET['key'].'%" OR title_en LIKE "%'.$_GET['key'].'%"');
             $results = $query->result('News');
             $data['results'] = $results;
-            $query = $this->db->query('SELECT * FROM ci_news ORDER BY title asc');
-            $all_result = $query->result('News');
-            $data['all_result'] = $all_result;
+            $query = $this->db->query('SELECT * FROM ci_products WHERE product_name LIKE "%'.$_GET['key'].'%" OR product_name_en LIKE "%'.$_GET['key'].'%"');
+            $products = $query->result('Products');
+            $data['products'] = $products;
+            $data['count'] = count($products) + count($results);
             $data['key'] = $_GET['key'];
         } else {
-            $data['results'] = $data['all_result'] = [];
+            $data['results'] = $data['products'] = [];
+            $data['count'] = 0;
             $data['key'] = '';
         }
         $data['template'] = 'sites/search';

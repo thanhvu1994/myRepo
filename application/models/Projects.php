@@ -138,4 +138,11 @@ class Projects extends CI_Model {
         foreach($unicode as $nonUnicode=>$uni) $str = preg_replace("/($uni)/i",$nonUnicode,$str);
         return $str;
     }
+
+    public function getFieldFollowLanguage($field) {
+        if ($this->session->userdata['languages'] == 'en')
+            $field = $field.'_en';
+
+        return $this->$field;
+    }
 }
