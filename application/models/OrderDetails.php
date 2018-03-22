@@ -61,7 +61,12 @@ class OrderDetails extends CI_Model {
         $this->load->model('products');
         $product = $this->products->get_model(['id' => $this->product_id]);
         if (count($product) > 0) {
-            return $product->product_name;
+            if($this->session->userdata['languages'] == 'vn'){
+                return $product->product_name;
+            }else{
+                return $product->product_name_en;
+            }
+
         }
         return '';
     }

@@ -4,26 +4,37 @@
         </div>
         <div class="row">
             <div id="center_column" class="center_column col-xs-12 col-sm-12">
-                <h1 id="cart_title" class="page-heading">Tổng hợp giỏ hàng
+                <h1 id="cart_title" class="page-heading"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Tổng Hợp Giỏ Hàng' : 'Cart'; ?>
                 </h1>
 
                 <?php if(isset($order_success)) :?>
                     <p class="alert alert-warning"><?php echo $order_success?></p>
                 <?php else: ?>
                     <?php if(!isset($order_details)) :?>
-                        <p class="alert alert-warning">Giỏ hàng trống</p>
+                        <p class="alert alert-warning"><?php echo ($this->session->userdata['languages'] == 'vn')? 'Giỏ Hàng Trống' : 'Cart Empty'; ?></p>
                     <?php else: ?>
                         <form enctype="multipart/form-data" action="" method="post">
                             <table id="border-add" border="1">
                                 <thead>
-                                <tr>
-                                    <th>Hình ảnh</th>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Màu sắc</th>
-                                    <th>Số lượng</th>
-                                    <th>Thông tin thêm</th>
-                                    <th>Hành động</th>
-                                </tr>
+                                <?php if($this->session->userdata['languages'] == 'vn'): ?>
+                                    <tr>
+                                        <th>Hình ảnh</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Màu sắc</th>
+                                        <th>Số lượng</th>
+                                        <th>Thông tin thêm</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                <?php else: ?>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Product Name</th>
+                                        <th>Color</th>
+                                        <th>Quantity</th>
+                                        <th>Additional Information</th>
+                                        <th>Action</th>
+                                    </tr>
+                                <?php endif; ?>
                                 </thead>
                                 <tbody>
                                 <?php foreach ($order_details as $order_detail) : ?>
@@ -52,7 +63,9 @@
                                         <textarea class="form-control grey" name="Orders[<?php echo $order_detail->id?>][more_info]" cols="50" maxlength="255"></textarea>
                                     </td>
                                     <td class="button-column" style="text-align: center">
-                                        <a class="button-delete" href="javascript:void(0)" title="Delete" data-id="<?php echo $order_detail->id?>">Xóa</a>
+                                        <a class="button-delete" href="javascript:void(0)" title="Delete" data-id="<?php echo $order_detail->id?>">
+                                            <?php echo ($this->session->userdata['languages'] == 'vn')? 'Xóa' : 'Delete'; ?>
+                                        </a>
                                     </td>
                                 </tr>
                                 <?php endforeach;?>
@@ -62,10 +75,10 @@
                                 <div class="form-group">
                                     <?php if(isset($billings) && count($billings) > 0) :?>
                                         <div class="col-xs-3">
-                                            <p>Địa chỉ giao hàng: </p>
+                                            <p><?php echo ($this->session->userdata['languages'] == 'vn')? 'Địa Chỉ Giao Hàng' : 'Delivery Address'; ?>: </p>
                                             <select name="shipping_address" class="form-control">
                                                 <?php foreach ($billings as $billing) :?>
-                                                    <option value="<?php echo $billing->id?>"><?php echo $billing->title?></option>
+                                                    <option value="<?php echo $billing->id?>"><?php echo $billing->title; ?></option>
                                                 <?php endforeach;?>
                                             </select>
                                         </div>
@@ -74,7 +87,7 @@
                                             <p class="buttons_bottom_block no-print">
                                                 <a href="<?php echo base_url('sites/addresses')?>">
                                                     <button type="button" class="exclusive ps_product_addcart">
-                                                        <span>Thêm địa chỉ mua hàng</span>
+                                                        <span><?php echo ($this->session->userdata['languages'] == 'vn')? 'Thêm Địa Chỉ Giao Hàng' : 'Add Delivery Address'; ?></span>
                                                     </button>
                                                 </a>
                                             </p>
@@ -87,7 +100,7 @@
                                     <div class="col-xs-3">
                                         <p class="buttons_bottom_block no-print">
                                             <button type="submit" class="exclusive ps_product_addcart">
-                                                <span>Đặt hàng</span>
+                                                <span><?php echo ($this->session->userdata['languages'] == 'vn')? 'Đặt Hàng' : 'Confirm'; ?></span>
                                             </button>
                                         </p>
                                     </div>
