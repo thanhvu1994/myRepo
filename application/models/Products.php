@@ -204,4 +204,11 @@ class Products extends CI_Model {
 
         return $result;
     }
+
+    public function getFieldFollowLanguage($field) {
+        if ($this->session->userdata['languages'] == 'en')
+            $field = $field.'_en';
+
+        return $this->$field;
+    }
 }
