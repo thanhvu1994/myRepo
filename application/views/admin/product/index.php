@@ -25,6 +25,9 @@
                                                 <th>Mã</th>
                                                 <th>Tên</th>
                                                 <th>Danh Mục</th>
+                                                <th>Hình Đại Diện</th>
+                                                <th>Giá</th>
+                                                <th>Giá Khuyến Mãi</th>
                                                 <th>Hiển thị</th>
                                                 <th>Ngày tạo</th>
                                                 <th>Hành động</th>
@@ -37,6 +40,9 @@
                                                     <td><?php echo $model->product_code; ?></td>
                                                     <td><?php echo $model->product_name; ?></td>
                                                     <td><?php echo $model->getCategory(); ?></td>
+                                                    <td><img class="center-cropped" src="<?php echo $model->getFirstImage(); ?>" /></td>
+                                                    <td><?php echo number_format($model->price, 2); ?></td>
+                                                    <td><?php echo number_format($model->sale_price, 2); ?></td>
                                                     <td><?php $checked = $model->status ? 'checked' : '' ?>
                                                         <input type="checkbox" <?php echo $checked ?> class="js-switch publish-ajax" data-color="#13dafe" data-id="<?php echo $model->id ?>" value="1"/>
                                                     </td>
@@ -218,3 +224,11 @@
         });
     });
 </script>
+ <style>
+     .center-cropped {
+         object-fit: none; /* Do not scale the image */
+         object-position: center; /* Center the image within the element */
+         height: 150px;
+         width: 150px;
+     }
+ </style>
