@@ -108,7 +108,7 @@
                                                     <?php foreach($attributeValues as $key => $value): ?>
                                                         <?php ?>
                                                             <li>
-                                                                <a href="<?php echo base_url('sites/product/'.$product->slug); ?>" id="color_<?php echo $key; ?>" class="color_pick" style="background:<?php echo $value->name; ?>;">
+                                                                <a href="<?php echo base_url('sites/product/'.$product->slug); ?>" id="color_<?php echo $key; ?>" style="background:<?php echo $value->name; ?>;">
                                                                 </a>
                                                             </li>
                                                     <?php endforeach; ?>

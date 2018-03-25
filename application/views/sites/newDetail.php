@@ -25,7 +25,7 @@
 
                 </div>
                 <div class="smartblogcomments" id="respond">
-                    <div class="fb-comments" data-href="<?php echo base_url('sites/newDetail/'. $new->slug); ?>" data-numposts="5"></div>
+                    <div data-width="100%" class="fb-comments" data-href="<?php echo base_url('sites/newDetail/'. $new->slug); ?>" data-numposts="5"></div>
                 </div>
 
                 <script type="text/javascript">
