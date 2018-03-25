@@ -22,7 +22,7 @@ class Menus extends CI_Model {
 
         	return $query->row();
 		} else {
-			$query = $this->db->query("SELECT * FROM ci_menus");
+			$query = $this->db->query("SELECT * FROM ci_menus ORDER BY created_date desc");
 			return $query->result('Menus');
 		}
 	}

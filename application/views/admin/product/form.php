@@ -23,26 +23,36 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-md-12">Tên Sản Phẩm</label>
-                            <div class="col-md-12">
-                                <input required type="text" class="form-control" value="<?php echo (isset($model)) ? $model->product_name : ''?>" name="product_name">
-                                <?php echo form_error('product_name'); ?>
-                            </div>
-                        </div>
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#name_vn">Tiếng Việt</a></li>
+                            <li><a data-toggle="tab" href="#name_en">Tiếng Anh</a></li>
+                        </ul>
 
-                        <div class="form-group">
-                            <label class="col-md-12">Tên Sản Phẩm Tiếng Anh</label>
-                            <div class="col-md-12">
-                                <input required type="text" class="form-control" value="<?php echo (isset($model)) ? $model->product_name_en : ''?>" name="product_name_en">
-                                <?php echo form_error('product_name_en'); ?>
+                        <div class="tab-content">
+                            <div id="name_vn" class="tab-pane fade in active">
+                                <div class="form-group">
+                                    <label class="col-md-12">Tên Sản Phẩm</label>
+                                    <div class="col-md-12">
+                                        <input required type="text" class="form-control" value="<?php echo (isset($model)) ? $model->product_name : ''?>" name="product_name">
+                                        <?php echo form_error('product_name'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="name_en" class="tab-pane fade">
+                                <div class="form-group">
+                                    <label class="col-md-12">Tên Sản Phẩm Tiếng Anh</label>
+                                    <div class="col-md-12">
+                                        <input required type="text" class="form-control" value="<?php echo (isset($model)) ? $model->product_name_en : ''?>" name="product_name_en">
+                                        <?php echo form_error('product_name_en'); ?>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-12">Giá</label>
                             <div class="col-md-12">
-                                <input type="number" class="form-control" value="<?php echo (isset($model)) ? $model->price : ''?>" name="price">
+                                <input type="text" class="form-control money" value="<?php echo (isset($model)) ? $model->price : '1000'?>" name="price">
                                 <?php echo form_error('price'); ?>
                             </div>
                         </div>
@@ -50,7 +60,7 @@
                         <div class="form-group">
                             <label class="col-md-12">Giá Khuyến Mãi</label>
                             <div class="col-md-12">
-                                <input type="number" class="form-control" value="<?php echo (isset($model)) ? $model->sale_price : ''?>" name="sale_price">
+                                <input type="text" class="form-control money" value="<?php echo (isset($model)) ? $model->sale_price : '1000'?>" name="sale_price">
                                 <?php echo form_error('sale_price'); ?>
                             </div>
                         </div>
@@ -83,7 +93,9 @@
                         <div class="form-group">
                             <label for="publish" class="col-md-12">Hiển thị</label>
                             <div class="col-md-12">
-                                <?php $checked = isset($model) && $model->status == true ? 'checked' : '' ?>
+                                <?php
+                                    $checked = isset($model) && $model->status == STATUS_INACTIVE ? '' : 'checked'
+                                ?>
                                 <input type="checkbox" <?php echo $checked ?> class="js-switch publish-ajax" data-color="#13dafe" value="1" id="publish" name="status"/>
                             </div>
                         </div>
@@ -133,33 +145,33 @@
                         <div class="tab-content">
                             <div id="content_vn" class="tab-pane fade in active">
                                 <div class="form-group">
-                                    <label class="col-md-12">Mô Tả</label>
-                                    <div class="col-md-12">
-                                        <textarea required class="form-control" name="description" id="editor-full-1" rows="10" cols="80"><?php echo (isset($model)) ? $model->description : ''?></textarea>
-                                        <?php echo form_error('description'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-12">Nội Dung</label>
+                                    <label class="col-md-12">Thông Tin Chi Tiết</label>
                                     <div class="col-md-12">
                                         <textarea required class="form-control" name="content" id="editor-full-2" rows="10" cols="80"><?php echo (isset($model)) ? $model->content : ''?></textarea>
                                         <?php echo form_error('content'); ?>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Thông Số Kỹ Thuật</label>
+                                    <div class="col-md-12">
+                                        <textarea required class="form-control" name="description" id="editor-full-1" rows="10" cols="80"><?php echo (isset($model)) ? $model->description : ''?></textarea>
+                                        <?php echo form_error('description'); ?>
+                                    </div>
+                                </div>
                             </div>
                             <div id="content_en" class="tab-pane fade">
                                 <div class="form-group">
-                                    <label class="col-md-12">Mô Tả</label>
-                                    <div class="col-md-12">
-                                        <textarea required class="form-control" name="description_en" id="editor-full-3" rows="10" cols="80"><?php echo (isset($model)) ? $model->description_en : ''?></textarea>
-                                        <?php echo form_error('description_en'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-12">Nội Dung</label>
+                                    <label class="col-md-12">Thông Tin Chi Tiết</label>
                                     <div class="col-md-12">
                                         <textarea required class="form-control" name="content_en" id="editor-full-4" rows="10" cols="80"><?php echo (isset($model)) ? $model->content_en : ''?></textarea>
                                         <?php echo form_error('content_en'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Thông Số Kỹ Thuật</label>
+                                    <div class="col-md-12">
+                                        <textarea required class="form-control" name="description_en" id="editor-full-3" rows="10" cols="80"><?php echo (isset($model)) ? $model->description_en : ''?></textarea>
+                                        <?php echo form_error('description_en'); ?>
                                     </div>
                                 </div>
                             </div>
@@ -308,6 +320,12 @@
              drEvent.on('dropify.beforeClear', function(event, element){
                  return confirm("Bạn có chắc chắn muốn xóa hình này ?");
              });
+         $('.money').formatCurrency();
+
+         $('.money').blur(function()
+         {
+             $('.money').formatCurrency();
+         });
      });
 
      $('body').on('change', '.att-input', function (){

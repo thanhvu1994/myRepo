@@ -16,57 +16,41 @@
             <!-- Tab panes -->
             <?php echo form_open_multipart($link_submit, ['class' => 'form-horizontal']); ?>
                 <div class="col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label class="col-md-12">Tiêu đề</label>
-                        <div class="col-md-12">
-                            <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->title : ''?>" name="Categories[title]">
-                        </div>
-                    </div>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#content_vn">Tiếng Việt</a></li>
+                        <li><a data-toggle="tab" href="#content_en">Tiếng Anh</a></li>
+                    </ul>
 
-                    <div class="form-group">
-                        <label class="col-md-12">Tiêu đề tiếng anh</label>
-                        <div class="col-md-12">
-                            <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->title_en : ''?>" name="Categories[title_en]">
+                    <div class="tab-content">
+                        <div id="content_vn" class="tab-pane fade in active">
+                            <div class="form-group">
+                                <label class="col-md-12">Tiêu đề</label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->title : ''?>" name="Categories[title]">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">Tên danh mục</label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->category_name : ''?>" name="Categories[category_name]" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="content_en" class="tab-pane fade">
+                            <div class="form-group">
+                                <label class="col-md-12">Tiêu đề</label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->title_en : ''?>" name="Categories[title_en]">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">Tên danh mục</label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->category_name_en : ''?>" name="Categories[category_name_en]" required>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label class="col-md-12">Tên danh mục</label>
-                        <div class="col-md-12">
-                            <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->category_name : ''?>" name="Categories[category_name]" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-12">Tên danh mục tiếng anh</label>
-                        <div class="col-md-12">
-                            <input type="text" class="form-control" value="<?php echo (isset($model)) ? $model->category_name_en : ''?>" name="Categories[category_name_en]" required>
-                        </div>
-                    </div>
-                    <?php /*
-                    <div class="form-group">
-                        <label class="col-md-12">Đường dẫn</label>
-                        <div class="col-md-12">
-                            <?php $url = isset($model) ? $model->url : '';?>
-                            <select class="form-control" name="Categories[url]">
-                                <option value="0"> -- Chọn đường dẫn -- </option>
-                                <?php foreach ($this->posts->get_dropdown_posts() as $post_url => $title):
-                                        $selected = ($url == $post_url) ? 'selected' : ''; ?>
-                                    <option value="<?php echo $post_url?>" <?php echo $selected?>><?php echo $title?></option>
-                                <?php endforeach ?>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-12">Kiểu Danh Mục</label>
-                        <div class="col-md-12">
-                            <select class="form-control" name="Categories[type]" id="type_category">
-                                <option <?php echo (isset($model) && $model->type == 'menu')? 'selected' : ''; ?> value="menu">Menu</option>
-                                <option <?php echo (isset($model) && $model->type == 'category')? 'selected' : ''; ?> value="category">Category</option>
-                            </select>
-                            <?php echo form_error('type'); ?>
-                        </div>
-                    </div>*/?>
 
                     <div class="form-group">
                         <label class="col-sm-12">Lớp cha</label>
@@ -90,19 +74,31 @@
                     </div>
                 </div>
                 <div class="col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label class="col-md-12">Mô tả</label>
-                        <div class="col-md-12">
-                            <textarea class="form-control" rows="5" name="Categories[description]"><?php echo (isset($model)) ? $model->description : ''?></textarea>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#description_vn">Tiếng Việt</a></li>
+                        <li><a data-toggle="tab" href="#description_en">Tiếng Anh</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="description_vn" class="tab-pane fade in active">
+                            <div class="form-group">
+                                <label class="col-md-12">Mô tả</label>
+                                <div class="col-md-12">
+                                    <textarea class="form-control" rows="10" name="Categories[description]"><?php echo (isset($model)) ? $model->description : ''?></textarea>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-12">Mô tả</label>
-                        <div class="col-md-12">
-                            <textarea class="form-control" rows="5" name="Categories[description_en]"><?php echo (isset($model)) ? $model->description_en : ''?></textarea>
+                        <div id="description_en" class="tab-pane fade">
+                            <div class="form-group">
+                                <label class="col-md-12">Mô tả</label>
+                                <div class="col-md-12">
+                                    <textarea class="form-control" rows="10" name="Categories[description_en]"><?php echo (isset($model)) ? $model->description_en : ''?></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label class="col-md-12">Hình ảnh</label>

@@ -24,7 +24,7 @@ class News extends CI_Model {
 
         	return $query->row(0,'News');
 		} else {
-			$query = $this->db->query("SELECT * FROM ci_news");
+			$query = $this->db->query("SELECT * FROM ci_news ORDER BY created_date desc");
 			return $query->result('News');
 		}
 	}

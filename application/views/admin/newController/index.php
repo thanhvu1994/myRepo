@@ -23,7 +23,7 @@
                                         <tr>
                                             <th class="no-sort text-center"><input type="checkbox" name="" id="select_all"></th>
                                             <th>Tiêu Đề</th>
-                                            <!-- <th>Nội Dung Rút Gọn</th> -->
+                                            <th>Hình Đại Diện</th>
                                             <th>Ngày Cập Nhật</th>
                                             <th>Hành Động</th>
                                         </tr>
@@ -33,9 +33,10 @@
                                             <tr id="tr-<?php echo $model->id?>">
                                                 <td class="text-center check-element"><input type="checkbox" name="select[]" value="<?php echo $model->id ?>"></td>
                                                 <td><?php echo $model->title; ?></td>
-                                                <!-- <td><?php echo substr($model->short_content, 0, 50); ?></td> -->
+                                                <td><img class="center-cropped" src="<?php echo $model->featured_image; ?>" /></td>
                                                 <td><?php echo $model->get_created_date() ?></td>
                                                 <td class="button-column">
+                                                    <a class="btn btn-danger button-view" href="javascript:void(0)"  data-id="<?php echo $model->id?>"><i class="fa fa-eye"></i></a>
                                                     <a class="btn btn-danger" href="<?php echo base_url('admin/newController/update/'.$model->id)?>"><i class="fa fa-edit"></i></a>
                                                     <a class="btn btn-danger button-delete" href="javascript:void(0)" title="Delete" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
                                                 </td>
@@ -69,7 +70,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="menu_link" class="control-label col-md-3">Miêu Tả:</label>
+                        <label for="menu_name" class="control-label col-md-3">Tiêu Đề Tiếng Anh:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="title_en" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="menu_link" class="control-label col-md-3">Meta Description:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="description" disabled>
                         </div>
@@ -81,33 +88,33 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="display_order" class="control-label col-md-3">Nội Dung Ngắn Tiếng Anh:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="short_content_en" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="icon" class="control-label col-md-3">Nội Dung:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="content" disabled>
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="icon" class="control-label col-md-3">Nội Dung Tiếng Anh:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="content_en" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="parent_id" class="control-label col-md-3">Ảnh Đại Diện:</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="featured_image" disabled>
+                            <img class=center-cropped id="featured_image" src="" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="show_in_menu" class="control-label col-md-3">Slug:</label>
+                        <label for="parent_id" class="control-label col-md-3">Lượt Xem:</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="slug" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="show_in_menu" class="control-label col-md-3">Ngôn Ngữ:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="language" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="show_in_menu" class="control-label col-md-3">Loại:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="type" disabled>
+                            <input type="text" class="form-control" id="views" disabled>
                         </div>
                     </div>
                     <div class="form-group">
@@ -150,7 +157,11 @@
                   success: function (returndata) {
                       if (returndata) {
                           $.each( returndata, function( key, value ) {
-                              $('#'+key).val(value);
+                              if(key === 'featured_image'){
+                                  $('#'+key).attr('src', value);
+                              }else{
+                                  $('#'+key).val(value);
+                              }
                           });
                       }
                       $('#responsive-modal').modal();
@@ -198,4 +209,12 @@
          });
      });
  </script>
+ <style>
+     .center-cropped {
+         object-fit: none; /* Do not scale the image */
+         object-position: center; /* Center the image within the element */
+         height: 150px;
+         width: 150px;
+     }
+ </style>
 

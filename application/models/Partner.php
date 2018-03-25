@@ -22,7 +22,7 @@ class Partner extends CI_Model {
 
         	return $query->row();
 		} else {
-			$query = $this->db->query("SELECT * FROM ci_partner");
+			$query = $this->db->query("SELECT * FROM ci_partner ORDER BY created_date desc");
 			return $query->result('Partner');
 		}
 	}

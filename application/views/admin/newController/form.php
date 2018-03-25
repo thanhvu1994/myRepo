@@ -72,18 +72,14 @@
                             <div id="content_vn" class="form-group tab-pane fade in active">
                                 <label class="col-md-12">Nội Dung <span class="required">*</span></label>
                                 <div class="col-md-12">
-                                <textarea required class="form-control" name="content" id="editor-full" rows="10" cols="80">
-                                    <?php echo (isset($model)) ? $model->content : ''?>
-                                </textarea>
+                                <textarea required class="form-control" name="content" id="editor-full" rows="10" cols="80"><?php echo (isset($model)) ? $model->content : ''?></textarea>
                                     <?php echo form_error('content'); ?>
                                 </div>
                             </div>
                             <div id="content_en" class="form-group tab-pane fade">
                                 <label class="col-md-12">Nội Dung <span class="required">*</span></label>
                                 <div class="col-md-12">
-                                <textarea required class="form-control" name="content_en" id="editor-full-2" rows="10" cols="80">
-                                    <?php echo (isset($model)) ? $model->content_en : ''?>
-                                </textarea>
+                                <textarea required class="form-control" name="content_en" id="editor-full-2" rows="10" cols="80"><?php echo (isset($model)) ? $model->content_en : ''?></textarea>
                                     <?php echo form_error('content_en'); ?>
                                 </div>
                             </div>

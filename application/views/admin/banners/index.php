@@ -54,7 +54,7 @@
                                             <td><?php echo $model->get_update_date() ?></td>
                                             <td class="button-column">
                                                 <a class="btn btn-danger" href="<?php echo base_url('admin/banners/update/'.$model->id)?>" title="Cập nhật"><i class="fa fa-edit"></i></a>
-                                                <a class="btn btn-danger" href="javascript:void(0)" class="button-delete" title="Xóa" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
+                                                <a href="javascript:void(0)" class="button-delete btn btn-danger" title="Xóa" data-id="<?php echo $model->id?>"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach ?>

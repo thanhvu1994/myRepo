@@ -222,6 +222,45 @@
             var checkboxes = $(this).closest('table').find(':checkbox');
             checkboxes.prop('checked', $(this).is(':checked'));
         });
+
+        $('#example23_filter').prepend('<label for="myInpput">Danh Mục:</label><select style="margin-right: 10px;" id="myInput"><option value="">Tất Cả</option></select>');
+
+        $(function() {
+            var items=[], options=[];
+
+            $('#example23 tbody tr td:nth-child(4)').each( function(){
+                items.push( $(this).text() );
+            });
+
+            var items = $.unique( items );
+
+            $.each( items, function(i, item){
+                options.push('<option value="' + item + '">' + item + '</option>');
+            });
+
+            $('#myInput').append( options.join() );
+        });
+
+        $('#myInput').on('change', function(){
+            var cate = $(this).val();
+            var count = 0;
+            var length = $('#example23_length select').first().val();
+            if (cate.length < 1) {
+                $("#example23 tr").css("display", "");
+                count = $('#example23 tr').length - 1;
+            } else {
+                $("#example23 tbody tr:not(:contains('"+cate+"'))").css("display", "none");
+                $("#example23 tbody tr:contains('"+cate+"')").css("display", "");
+                count = $("#example23 tbody tr:contains('"+cate+"')").length;
+            }
+
+            if(count >= length){
+                $('#example23_info').html('Showing 1 to '+length+' of '+count+' entities');
+            }else{
+                $('#example23_info').html('Showing 1 to '+count+' of '+count+' entities');
+            }
+
+        });
     });
 </script>
  <style>

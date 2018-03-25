@@ -78,6 +78,8 @@
         <script src="<?php echo base_url('themes/admin/js/jquery.slimscroll.js')?>"></script>
         <!--Wave Effects -->
         <script src="<?php echo base_url('themes/admin/js/waves.js')?>"></script>
+        <!--Money Field -->
+        <script src="<?php echo base_url('themes/admin/js/currency.js')?>"></script>
         <!-- Custom Theme JavaScript -->
         <script src="<?php echo base_url('themes/admin/js/jasny-bootstrap.js')?>"></script>
         <script src="<?php echo base_url('themes/admin/js/custom.min.js')?>"></script>

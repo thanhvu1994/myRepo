@@ -23,7 +23,7 @@ class Categories extends CI_Model {
 
         	return $query->row('1', 'Categories');
 		} else {
-			$query = $this->db->query("SELECT * FROM ci_categories ORDER BY display_order asc, category_name asc");
+			$query = $this->db->query("SELECT * FROM ci_categories ORDER BY created_date desc");
 			return $query->result('Categories');
 		}
 	}

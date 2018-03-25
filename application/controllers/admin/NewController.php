@@ -47,12 +47,14 @@ class NewController extends MY_Controller {
             $model = $query->result('News');
             if (count($model) > 0) {
                 $result['title'] = $model[0]->title;
+                $result['title_en'] = $model[0]->title_en;
                 $result['description'] = $model[0]->description;
                 $result['short_content'] = $model[0]->short_content;
+                $result['short_content_en'] = $model[0]->short_content_en;
                 $result['content'] = $model[0]->content;
+                $result['content_en'] = $model[0]->content_en;
                 $result['featured_image'] = $model[0]->featured_image;
-                $result['slug'] = $model[0]->slug;
-                $result['language'] = ($model[0]->language == 'vn')? 'Tiếng Việt': 'English';
+                $result['views'] = $model[0]->views;
                 $result['created_date'] = $model[0]->created_date;
 
                 echo json_encode($result);

@@ -21,7 +21,7 @@ class Banner extends CI_Model {
 
         	return $query->row();
 		} else {
-			$query = $this->db->query("SELECT * FROM ci_banners");
+			$query = $this->db->query("SELECT * FROM ci_banners ORDER BY created_date desc");
 			return $query->result('Banner');
 		}
 	}

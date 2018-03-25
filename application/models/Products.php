@@ -30,7 +30,7 @@ class Products extends CI_Model {
 
             return $query->row(0,'Products');
         } else {
-            $query = $this->db->query("SELECT * FROM ci_products");
+            $query = $this->db->query("SELECT * FROM ci_products ORDER BY created_date desc");
             return $query->result('Products');
         }
     }
