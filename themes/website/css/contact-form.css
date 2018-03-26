@@ -21,7 +21,7 @@
     background: url(../img/form-contact-shadow.png) center bottom no-repeat;
     background-size: contain; }
   .contact-form-box label {
-      font-family: 'Open Sans', sans-serif;
+      /*font-family: 'Open Sans', sans-serif;*/
 color: #858585;
 font-size: 13px;
 font-weight: normal;

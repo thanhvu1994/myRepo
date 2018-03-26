@@ -12,14 +12,12 @@
 								contact us
 							<?php endif ?>
 							</a>
+								<?php if ($this->session->userdata['languages'] == 'vn'): ?>
+								<i class="icon-phone"></i> Gọi ngay bây giờ: <strong><?php echo $this->settings->get_param('companyCellPhone') ?></strong>
+							<?php else: ?>
+								<i class="icon-phone"></i> Call us now: <strong><?php echo $this->settings->get_param('companyCellPhone') ?></strong>
+							<?php endif ?>
 						</div>
-						<span class="shop-phone">
-						<?php if ($this->session->userdata['languages'] == 'vn'): ?>
-							<i class="icon-phone"></i> Gọi ngay bây giờ: <strong><?php echo $this->settings->get_param('companyCellPhone') ?></strong>
-						<?php else: ?>
-							<i class="icon-phone"></i> Call us now: <strong><?php echo $this->settings->get_param('companyCellPhone') ?></strong>
-						<?php endif ?>
-						</span>
 					</nav>
 				</div>
 			</div>
@@ -29,7 +27,7 @@
                 <div class="col-md-12">
                     <div id="header_logo">
                         <a href="<?php echo base_url()?>" title="<?php echo $this->settings->get_param('defaultPageTitle') ?>">
-                            <img class="logo img-responsive" src="<?php echo $this->settings->get_logoFE() ?>" alt="<?php echo $this->settings->get_param('defaultPageTitle') ?>" width="350"/>
+                            <img class="logo img-responsive" src="<?php echo $this->settings->get_logoFE() ?>" alt="<?php echo $this->settings->get_param('defaultPageTitle') ?>" width="250"/>
                         </a>
                     </div>
                     <div class="ps_header_right">

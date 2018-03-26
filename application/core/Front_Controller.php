@@ -15,6 +15,7 @@ class Front_Controller extends CI_Controller {
         // }
         // load helper
         $this->load->helper('url_helper');
+        $this->load->helper('url');
         $this->load->library('session');
 
         if (!isset($this->session->userdata['languages'])) {

@@ -14,7 +14,8 @@
     font-weight: 200;
     margin: 3px 0 8px;
     font-size: 19px;
-    font-family: "Open Sans", sans-serif; }
+    /*font-family: "Open Sans", sans-serif; */
+}
 
 .box-security .product-heading-h5 {
     margin: 3px 0 -8px; }
@@ -294,7 +295,7 @@ span.view_scroll_spacer {
     /* form */ }
 .pb-center-column h1 {
     font-size: 18px;
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
     line-height: 1;
     margin: 0;
     text-transform: uppercase;
@@ -302,7 +303,7 @@ span.view_scroll_spacer {
 .pb-center-column p {
     margin-bottom: 0px;
     line-height: 24px;
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
     text-align: justify;
 }
 .pb-center-column #product_reference {
@@ -325,7 +326,7 @@ span.view_scroll_spacer {
     color: #093a95;
     margin-bottom: 0px;
     line-height: 24px;
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
     font-size: 13px;
     padding: 10px 0;
     text-transform: uppercase; }
@@ -645,7 +646,7 @@ span.view_scroll_spacer {
 .table-data-sheet tr { }
 .table-data-sheet tr.even {}
 .table-data-sheet tr td {
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
     padding: 0px 0px 11px; }
 .table-data-sheet tr td:first-child {
     width: 30%;
@@ -777,7 +778,7 @@ table.table-product-discounts tr th {
     font-weight: normal;
     font-size: 18px;
     line-height: 1;
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
     padding: 15px 0;
     color: #093a95;}
 @media (max-width: 991px) {
@@ -791,7 +792,7 @@ table.table-product-discounts tr th {
     text-decoration: line-through;
     /*display: inline-block;*/
     display: none !important;
-    font-family: "Open Sans", sans-serif;
+    /*font-family: "Open Sans", sans-serif;*/
     line-height: 23px; }
 
 #reduction_percent,
@@ -801,7 +802,7 @@ table.table-product-discounts tr th {
     margin-right: 10px;
     padding: 1px 2px;
     font-weight: 600;
-    font-family: "Open Sans", sans-serif;
+    /*font-family: "Open Sans", sans-serif;*/
     font-size: 21px;
     line-height: 23px;
     color: white;
@@ -1074,7 +1075,7 @@ Quick View Styles
     font-size: 14px;
     text-transform: uppercase;
     padding: 5px 10px;
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
 }
 .ps_product_addcart:hover{
     color: #c1a530;

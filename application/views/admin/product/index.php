@@ -267,7 +267,7 @@
      .center-cropped {
          object-fit: none; /* Do not scale the image */
          object-position: center; /* Center the image within the element */
-         height: 150px;
-         width: 150px;
+         height: 100px;
+         /*width: 150px;*/
      }
  </style>

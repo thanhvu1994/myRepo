@@ -8,6 +8,7 @@
 		<link rel="shortcut icon" href="<?php echo base_url($this->settings->get_param('favicon')) ?>" type="image/x-icon"/>
 		<meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.6, initial-scale=1.0" />
 		<meta name="apple-mobile-web-app-capable" content="yes" /> 
+    	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" rel="stylesheet">
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/global.css')?>" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/cms.css')?>" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php echo base_url('themes/website/css/product.css')?>" type="text/css" media="all" />

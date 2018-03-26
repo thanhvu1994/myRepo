@@ -11,7 +11,7 @@
         float: right;}
 }
 .shopping_cart > a:first-child {
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
     display: block;
     font-size: 14px;
     color: #093a95;
@@ -27,7 +27,7 @@
         display: none !important; } 
 }
 .shopping_cart > a:first-child b {
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
     font-weight: normal;
     font-size: 14px;
     padding-right: 5px; }

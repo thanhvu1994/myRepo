@@ -7,7 +7,8 @@ class System extends MY_Controller {
         parent::__construct();
         $this->load->model('settings');
         $config['upload_path'] = './uploads/system';
-        $config['allowed_types'] = 'jpg|png';
+        $config['allowed_types'] = '*';
+        // $config['allowed_types'] = 'gif|jpg|png';
         $config['overwrite']     = FALSE;
         $config['encrypt_name']         = TRUE;
 

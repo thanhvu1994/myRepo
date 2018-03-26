@@ -6,7 +6,7 @@
 #my-account ul.myaccount-link-list li a {
     display: block;
     overflow: hidden;
-    font-family: "Open Sans", sans-serif;
+    /*font-family: "Open Sans", sans-serif;*/
     font-size: 18px;
     color: #555454;
     text-transform: uppercase;

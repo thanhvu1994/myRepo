@@ -12,11 +12,11 @@
     padding: 0 0 17px 0;
     margin: 0;
     line-height: 22px;
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
     color: #093a95;
 }
 #cms #center_column p {
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
     color: #858585;
   line-height: 24px; }
 #cms #center_column .list-1 li {
@@ -89,7 +89,7 @@
       font-weight: bold;
       color: #333333; }
     #cms #center_column #admin-action-cms p .button {
-      font: 700 17px/21px Arial, Helvetica, sans-serif;
+      /*font: 700 17px/21px Arial, Helvetica, sans-serif;*/
       padding: 0;
       border: 1px solid;
       padding: 10px 14px;

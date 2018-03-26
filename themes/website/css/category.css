@@ -13,7 +13,7 @@
       .content_scene_cat .content_scene_cat_bg {
         padding: 10px 10px 10px 15px; } }
   .content_scene_cat span.category-name {
-    font: 600 42px/51px "Open Sans", sans-serif;
+    /*font: 600 42px/51px "Open Sans", sans-serif;*/
     color: white;
     margin-bottom: 12px; }
     @media (max-width: 1199px) {
@@ -63,7 +63,7 @@
             max-width: 100%;
             vertical-align: top; }
       #subcategories ul li .subcategory-name {
-        font: 600 18px/22px "Open Sans", sans-serif;
+        /*font: 600 18px/22px "Open Sans", sans-serif;*/
         color: #555454;
         text-transform: uppercase; }
         #subcategories ul li .subcategory-name:hover {

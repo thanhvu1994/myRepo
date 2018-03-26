@@ -195,7 +195,8 @@ ul.product_list.grid > li {
             color: #b1b0b0; }
     ul.product_list.grid > li .product-container h5 {
       font-size: 13px;
-    font-family: 'Open Sans', sans-serif; }
+    /*font-family: 'Open Sans', sans-serif; */
+  }
     @media (min-width: 1200px) {
       ul.product_list.grid > li .product-container .comments_note {
         display: none; } }
@@ -410,7 +411,7 @@ Product list(Index page) Styles
     margin: 0;
 }
 #category .title_block{
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
     color: #093a95;
     text-transform: uppercase;
     padding: 0px 5px 17px 0px;

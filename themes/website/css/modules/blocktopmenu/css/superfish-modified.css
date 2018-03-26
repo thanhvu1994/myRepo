@@ -67,14 +67,15 @@
     } 
 }
 .sf-menu > li > a {
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
     font-size: 14px;
     text-transform: uppercase;
     color: #fff;
     display: block;
     font-weight: bold;
-    line-height: 1;
-    padding: 25px 20px; }
+    line-height: 45px;
+    padding: 0px 20px;
+}
 .sf-menu > li.sfHover > a,
 .sf-menu > li > a:hover, .sf-menu > li.sfHoverForce > a {
     /*    border-bottom: 2px solid #c1a530;
@@ -221,7 +222,7 @@ ul.sf-menu li li li.sfHover ul {
     display: none; }
 @media (min-width: 768px) and (max-width: 991px) {
     .sf-menu > li > a {
-        font-family: 'Open Sans', sans-serif;
+        /*font-family: 'Open Sans', sans-serif;*/
         font-size: 11px;
         text-transform: uppercase;
         color: #fff;

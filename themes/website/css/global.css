@@ -18,6 +18,10 @@ time, mark, audio, video {
     font-size: 100%;
     vertical-align: baseline; }
 
+body {
+    font-family: 'Source Sans Pro' !important;
+}
+
 html {
     line-height: 1; }
 
@@ -233,7 +237,6 @@ html {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
     line-height: 1.42857;
     color: #777777;
@@ -308,7 +311,6 @@ hr {
     border: 0; }
 
 p {
-    font-family: Arial,Helvetica,sans-serif;
     margin: 0 0 9px; }
 
 .lead {
@@ -355,7 +357,6 @@ cite {
 .text-center, #cart_summary tbody td.cart_product{
     text-align: center; }
 #cart_summary tbody td.cart_avail {
-    font-family: Arial,Helvetica,sans-serif;
     font-size: 13px;
     color: #858585;
     text-align: left; 
@@ -365,7 +366,7 @@ cite {
 }
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: Arial, Helvetica, sans-serif;
+    /*font-family: Arial, Helvetica, sans-serif;*/
     font-weight: 500;
     line-height: 1.1; }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small,
@@ -1625,7 +1626,6 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
 .btn {
     text-transform: uppercase;
     font-weight: normal;
-    font-family: Arial,Helvetica,sans-serif;
     color: white;
     border: none;
     background: #093a95;
@@ -1662,7 +1662,6 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
     text-transform: uppercase;
     font-size: 12px;
     font-weight: normal;
-    font-family: Arial,Helvetica,sans-serif;
     color: white;
     border: none;
     background: #093a95;}
@@ -2261,7 +2260,6 @@ input[type="button"].btn-block {
     float: left;
     margin-bottom: -1px; }
 .nav-tabs > li > a {
-    font-family: Arial,Helvetica,sans-serif;
     color: #093a95;
     line-height: 1.42857;
     border: 1px solid #dddddd; }
@@ -2269,7 +2267,6 @@ input[type="button"].btn-block {
     border-color: #eeeeee #eeeeee #dddddd; }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     color: #555555;
-    font-family: Arial,Helvetica,sans-serif;
     color: #c1a530;
     background-color: white;
     border: 1px solid #dddddd;
@@ -3108,7 +3105,6 @@ a.thumbnail:focus {
     display: block;
     padding: 10px 0px;
     margin-bottom: -1px;
-    font-family: Arial,Helvetica,sans-serif;
     color: #093a95;
     background-color: white; }
 .list-group-item:first-child {
@@ -5312,7 +5308,7 @@ header .row {
 header .row > .container {
     position: relative; }
 header .row #header_logo {
-    padding: 40px 0; }
+    padding: 10px 0; }
 @media (max-width: 992px) {
     header .row #header_logo {
         padding-top: 40px; } }
@@ -5348,7 +5344,6 @@ p.info-title {
     margin-bottom: 25px; }
 
 p.info-account {
-    font-family: Arial,Helvetica,sans-serif;
     margin: 16px 0 20px 0;}
 
 .dark {
@@ -5386,7 +5381,6 @@ p.info-account {
     padding: 6px 10px; }
 
 label {
-    font-family: Arial,Helvetica,sans-serif;
     color: #858585;
     font-size: 13px;
     font-weight: normal; }
@@ -5403,7 +5397,6 @@ label.required:before {
 .checkbox {
     line-height: 16px; }
 .checkbox label {
-    font-family: Arial,Helvetica,sans-serif;
     color: #858585;
     font-size: 13px; }
 
@@ -5712,7 +5705,6 @@ span.exclusive {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e7e7e7', endColorstr='#e7e7e7',GradientType=0); }
 
 .button.ajax_add_to_cart_button {
-    font: 700 17px/21px Arial, Helvetica, sans-serif;
     color: white;
     text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
     padding: 0;
@@ -5738,7 +5730,6 @@ span.exclusive {
     background: #0084bf; }
 
 .button.lnk_view {
-    font: 700 17px/21px Arial, Helvetica, sans-serif;
     color: #333333;
     text-shadow: 1px 1px white;
     padding: 0;
@@ -5813,7 +5804,6 @@ table.table_block td {
     font-size: 14px;
     font-weight: normal;
     text-transform: uppercase;
-    font-family: Arial,Helvetica,sans-serif;
     vertical-align: middle; }
 .table td a.color-myaccount {
     color: #777777;
@@ -5844,13 +5834,11 @@ table.table_block td {
         font-size: 14px; } }
 
 .price {
-    font-family: Arial,Helvetica,sans-serif;
     font-size: 13px;
     color: #858585;
     white-space: nowrap; }
 
 .price.product-price {
-    font-family: Arial,Helvetica,sans-serif;
     font-size: 14px;
     color: #093a95; }
 
@@ -5872,7 +5860,6 @@ table.table_block td {
     padding: 0 5px 0 3px;
     display: inline-block; }
 .price-percent-reduction.small {
-    font: 700 14px/17px Arial, Helvetica, sans-serif;
     padding: 1px 6px; }
 
 .new-box,
@@ -5892,7 +5879,6 @@ table.table_block td {
     right: -5px; }
 
 .new-label {
-    font: 700 14px/12px Arial, Helvetica, sans-serif;
     color: white;
     background: #6ad4ff;
     text-transform: uppercase;
@@ -5938,7 +5924,6 @@ table.table_block td {
     transform: rotate(135deg); }
 
 .sale-label {
-    font: 700 14px/12px Arial, Helvetica, sans-serif;
     color: white;
     background: #f13340;
     text-transform: uppercase;
@@ -6104,7 +6089,6 @@ table.table_block td {
 
 .block .title_block,
 .block h4 {
-    font-family: Arial,Helvetica,sans-serif;
     color: #093a95;
     text-transform: uppercase;
     padding: 0px 5px 17px 0px;
@@ -6199,7 +6183,6 @@ table.table_block td {
 .block .products-block .product-description {
     margin-bottom: 14px; }
 .block .products-block .price-percent-reduction {
-    font: 700 14px/17px Arial, Helvetica, sans-serif;
     padding: 1px 6px; }
 
 .page-heading {
@@ -6213,11 +6196,9 @@ table.table_block td {
     line-height: 31px;
     font-size: 24px;
     text-transform: uppercase;
-    font-family: Arial,Helvetica,sans-serif;
     color: #093a95;
     overflow: hidden; }
 .page-heading span.heading-counter {
-    font-family: Arial,Helvetica,sans-serif;
     float: right;
     color: #093a95;
     text-transform: none;
@@ -6239,7 +6220,6 @@ table.table_block td {
 .page-subheading {
     text-transform: uppercase;
     font-size: 14px;
-    font-family: Arial,Helvetica,sans-serif;
     color: #093a95;
     line-height: normal;}
 #order .page-subheading {
@@ -6840,9 +6820,9 @@ div.star a:hover {
     color: white; }
 .footer-container #footer h4 {
     text-transform: uppercase;
-    font-family: Arial,Helvetica,sans-serif;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1;
+    font-weight: 600;
     margin: 0 0 20px 0;
     color: #0b3a96; }
 @media (max-width: 767px) {
@@ -6856,12 +6836,10 @@ div.star a:hover {
 .footer-container #footer ul li {
     padding-bottom: 8px; }
 .footer-container #footer ul li a {
-    font-size: 13px;
-    font-family: Arial,Helvetica,sans-serif; 
+    font-size: 13px; 
 }
 .footer-container #footer ul li a:hover {
-    font-size: 13px;
-    font-family: Arial,Helvetica,sans-serif; 
+    font-size: 13px; 
     color: #1525e6;
 }
 @media (max-width: 767px) {
@@ -6875,8 +6853,7 @@ div.star a:hover {
 .footer-container #footer #block_contact_infos > div ul li {
     padding: 0 0 3px 0px;
     overflow: hidden;
-    line-height: 24px;
-    font-family: Arial,Helvetica,sans-serif; }
+    line-height: 24px; }
 .footer-container #footer #block_contact_infos > div ul li > span,
 .footer-container #footer #block_contact_infos > div ul li > span a {
     color: #858585;
@@ -6999,7 +6976,7 @@ div.star a:hover {
 .cart_navigation .button-medium:hover{
     color: #c1a530;
 }
-.cart_navigation .button-medium span { font-family: Arial,Helvetica,sans-serif;}
+.cart_navigation .button-medium sp}
 @media (max-width: 992px) {
     .cart_navigation .button-medium span {
         font-size: 16px; } }
@@ -7010,7 +6987,6 @@ div.star a:hover {
     margin-left: 6px; }
 .cart_navigation .button-exclusive {
     border: none;
-    font-family: Arial,Helvetica,sans-serif;
     padding: 11px 15px 10px 15px;
     text-transform: uppercase;
     font-size: 14px;
@@ -7080,7 +7056,6 @@ a.price_discount_delete:hover {
 #cart_summary tbody td.cart_product img {
     border: 1px solid #d6d4d4; }
 #cart_summary tbody td.cart_unit .price span {
-    font-family: Arial,Helvetica,sans-serif;
     font-size: 13px;
     color: #858585;
     display: inline-block; }
@@ -7093,24 +7068,20 @@ a.price_discount_delete:hover {
 #cart_summary tbody td.cart_description small {
     display: block;
     padding: 5px 0 0 0;
-    font-family: Arial,Helvetica,sans-serif;
     font-size: 13px;
     color: #858585;}
 #cart_summary tfoot td.text-right, #cart_summary tfoot tbody td.cart_unit, #cart_summary tbody tfoot td.cart_unit, #cart_summary tfoot tbody td.cart_total, #cart_summary tbody tfoot td.cart_total {
     font-size: 14px;
-    font-family: Arial,Helvetica,sans-serif;
     color: #858585;
     font-weight: normal; }
 #cart_summary tfoot td.price {
     font-size: 14px;
-    font-family: Arial,Helvetica,sans-serif;
     color: #858585;
     font-weight: normal;
     text-align: center; }
 #cart_summary tfoot td.total_price_container span {
     font-size: 18px;
     text-transform: uppercase;
-    font-family: Arial,Helvetica,sans-serif;
     color: #093a95;
     font-weight: normal; }
 #cart_summary tfoot td{
@@ -7120,7 +7091,6 @@ a.price_discount_delete:hover {
     background: white;
     font-size: 18px;
     text-transform: uppercase;
-    font-family: Arial,Helvetica,sans-serif;
     color: #093a95;
     font-weight: normal; }
 
@@ -7288,7 +7258,6 @@ table#cart_summary .gift-icon {
     float: left;
     margin: 0;
     padding: 15px 0;
-    font-family: Arial,Helvetica,sans-serif;
     color: #858585;
     font-size: 13px;
     font-weight: normal;
@@ -7352,7 +7321,6 @@ table#cart_summary .gift-icon {
     line-height: normal;
     padding-bottom: 16px; }
 .order_carrier_content .carrier_title {
-    font-family: Arial,Helvetica,sans-serif;
     color: #858585;
     font-size: 13px;
     font-weight: normal; }
@@ -7360,7 +7328,6 @@ table#cart_summary .gift-icon {
     margin-top: 2px; }
 .order_carrier_content .delivery_options_address .carrier_title {
     margin-bottom: 17px; 
-    font-family: Arial,Helvetica,sans-serif;
     color: #858585;
     font-size: 13px;
     font-weight: normal;
@@ -7402,7 +7369,6 @@ p.checkbox.gift {
     margin-bottom: 10px; }
 
 a.iframe {
-    font-family: Arial,Helvetica,sans-serif;
     color: #093a95;
     font-size: 13px;
     text-decoration: none; }
@@ -7423,21 +7389,18 @@ p.payment_module a {
     text-transform: uppercase;
     position: relative; }
 p.payment_module a.bankwire {
-    font-family: Arial,Helvetica,sans-serif;
     color: #093a95;
     font-size: 14px;
     font-weight: normal;
     background: url(../img/bankwire.png) 15px 12px no-repeat;
     background: url(../img/bankwire.png) 15px 12px no-repeat; }
 p.payment_module a.cheque {
-    font-family: Arial,Helvetica,sans-serif;
     color: #093a95;
     font-size: 14px;
     font-weight: normal;
     background: url(../img/bankwire.png) 15px 12px no-repeat;
     background: url(../img/cheque.png) 15px 15px no-repeat; }
 p.payment_module a.cash {
-    font-family: Arial,Helvetica,sans-serif;
     color: #093a95;
     font-size: 14px;
     font-weight: normal;
@@ -7633,7 +7596,7 @@ p.cheque-indent {
     opacity: 1;
     line-height: inherit;
     text-transform: none;
-    font-family: Arial, Helvetica, sans-serif; }
+}
 #instant_search_results a.close:hover {
     color: #515151; }
 
@@ -8172,10 +8135,10 @@ div.star.star_hover:after {
 }
 .ps_block_title{
     line-height: 1;
-    font-size: 30px;
+    font-size: 20px;
+    font-weight: 600;
     padding: 30px 15px;
     text-align: center;
-    font-family: Arial,Helvetica,sans-serif;
     color: #0b3a96;
     text-transform: uppercase;
 }
@@ -8183,13 +8146,11 @@ div.star.star_hover:after {
     padding-top: 24px;
 }
 .item-html{
-    font-family: Arial,Helvetica,sans-serif;
     font-size: 13px;
     line-height: 24px;
     padding-bottom: 40px;
 }
 .ps_nav_info{
-    font-family: Arial,Helvetica,sans-serif;
     font-size: 13px;
     line-height: 1;
     color: #858585;
@@ -8244,7 +8205,6 @@ div.star.star_hover:after {
 #htmlcontent_CongTrinh h3{
     font-size: 18px;
     text-align: center;
-    font-family: Arial,Helvetica,sans-serif;
     margin: 0;
     padding-top: 30px;
     color: #0b3a96;
@@ -8261,7 +8221,6 @@ div.star.star_hover:after {
 #block_footer_link{
     color: white;
     font-size: 13px;
-    font-family: Arial,Helvetica,sans-serif;
 }
 #block_footer_link a{
     font-weight: normal;
@@ -8286,11 +8245,9 @@ div.star.star_hover:after {
     line-height: 31px;
     font-size: 24px;
     text-transform: uppercase;
-    font-family: Arial,Helvetica,sans-serif;
     color: #093a95;
 }
 #ordermsg label{
-    font-family: Arial,Helvetica,sans-serif;
     color: #858585;
     font-size: 13px;
     font-weight: normal;

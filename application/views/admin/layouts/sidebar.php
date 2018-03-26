@@ -37,7 +37,7 @@
                     <?php if (!empty($menu['childs'])): ?>
                         <ul class="nav nav-second-level">
                             <?php foreach ($menu['childs'] as $child_id => $child): ?>
-                                <li><a href=" <?php echo !empty($child['menu_link']) ? base_url($child['menu_link']) : 'javascript:void(0)'?>"><?php echo $child['menu_name'] ?></a></li>
+                                <li><a href=" <?php echo !empty($child['menu_link']) ? base_url($child['menu_link']) : 'javascript:void(0)'?>"><i class="<?php echo $child['menu_icon'] ?>" data-icon="v"></i> <?php echo $child['menu_name'] ?></a></li>
                             <?php endforeach ?>
                         </ul>
                     <?php endif ?>
