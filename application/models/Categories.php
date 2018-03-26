@@ -302,6 +302,8 @@ class Categories extends CI_Model {
         $url = 'admin/category';
         if ($this->type == 'menu') {
             $url = 'admin/menu';
+        } elseif ($this->type == 'news') {
+            $url = 'admin/categoryNews';
         }
         echo '<tr id="tr-'.$this->id.'">
                 <td class="text-center check-element"><input type="checkbox" name="select[]" value="'.$this->id.'"></td>
