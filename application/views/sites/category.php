@@ -29,7 +29,7 @@
                                                     $selected = ($cate['slug'] == $category->slug_en)? 'class="selected"': '';
                                                 }
                                             ?>
-                                            <a href="<?php echo ($cate['slug'])? base_url('sites/category/'.$cate['slug']) : '#'; ?>" <?php echo $selected; ?> title="<?php echo $cate['title']; ?>">
+                                            <a href="<?php echo ($cate['slug'])? base_url('sites/category/'.$cate['slug']) : 'javascript:void(0)'; ?>" <?php echo $selected; ?> title="<?php echo $cate['title']; ?>">
                                                 <?php echo $cate['title']; ?>
                                             </a>
                                             <?php if(!empty($cate['child'])): ?>

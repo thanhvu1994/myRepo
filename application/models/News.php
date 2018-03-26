@@ -36,6 +36,7 @@ class News extends CI_Model {
             'description' => $this->input->post('description'),
             'short_content' => $this->input->post('short_content'),
             'content' => $this->input->post('content'),
+            'category_id' => $this->input->post('category'),
             'featured_image' => $image,
             'slug' => $this->generateSlug($this->input->post('title')),
             'language' => 'vn',
@@ -55,7 +56,8 @@ class News extends CI_Model {
 	        'short_content_en' => $this->input->post('short_content_en'),
 	        'content' => $this->input->post('content'),
 	        'content_en' => $this->input->post('content_en'),
-	        'featured_image' => $image,
+            'category_id' => $this->input->post('category'),
+            'featured_image' => $image,
             'language' => 'vn',
             'created_date' => date('Y-m-d H:i:s'),
 	    );
@@ -154,5 +156,19 @@ class News extends CI_Model {
             $field = $field.'_en';
 
         return $this->$field;
+    }
+
+    public function getCategory(){
+        $query = $this->db->get_where('categories', array('id' => $this->category_id) );
+        $category = $query->row('0', 'Categories');
+
+        return $category->title;
+    }
+
+    public function getCategoryLink(){
+        $query = $this->db->get_where('categories', array('id' => $this->category_id) );
+        $category = $query->row('0', 'Categories');
+
+        return '<a href="'.base_url("sites/newCategory/" . $category->slug).'">'.$category->title.'</a>';
     }
 }

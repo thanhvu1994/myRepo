@@ -30,8 +30,6 @@ class Categories extends CI_Model {
 
 	public function set_model($data_insert)
 	{
-	    $slug = url_title(convert_accented_characters(strtolower($data_insert['category_name']), 'dash', TRUE));
-	    $slug_en = url_title(convert_accented_characters(strtolower($data_insert['category_name_en']), 'dash', TRUE));
 	    if ($data_insert['parent_id'] == 0) {
 	    	$type_level = 1;
 	    } else {
@@ -44,16 +42,14 @@ class Categories extends CI_Model {
 	    }
 	    $data_insert['created_date'] = date('Y-m-d H:i:s');
 	    $data_insert['update_date'] = date('Y-m-d H:i:s');
-	    $data_insert['slug'] = $slug;
-	    $data_insert['slug_en'] = $slug_en;
+	    $data_insert['slug'] = $this->generateSlug($this->input->post('category_name'));
+	    $data_insert['slug_en'] = $this->generateSlug($this->input->post('category_name_en'));
 	    $data_insert['type_level'] = $type_level;
 	    return $this->db->insert('categories', $data_insert);
 	}
 
 	public function update_model($id, $data_insert)
 	{
-	    $slug = url_title(convert_accented_characters(strtolower($this->input->post('category_name')), 'dash', TRUE));
-	    $slug_en = url_title(convert_accented_characters(strtolower($data_insert['category_name_en']), 'dash', TRUE));
 	    if ($data_insert['parent_id'] == 0) {
 	    	$type_level = 1;
 	    } else {
@@ -65,8 +61,8 @@ class Categories extends CI_Model {
 	    	}
 	    }
 	    $data_insert['update_date'] = date('Y-m-d H:i:s');
-	    $data_insert['slug'] = $slug;
-	    $data_insert['slug_en'] = $slug_en;
+        $data_insert['slug'] = $this->generateSlug($this->input->post('category_name'));
+        $data_insert['slug_en'] = $this->generateSlug($this->input->post('category_name_en'));
 	    $data_insert['type_level'] = $type_level;
 
 	    $this->db->where('id', $id);
@@ -283,9 +279,23 @@ class Categories extends CI_Model {
         return $products;
     }
 
+    public function getNews($limit, $start){
+        $this->db->limit($limit, $start);
+        $query = $this->db->get_where('news', array('category_id' => $this->id) );
+        $news = $query->result('News');
+
+        return $news;
+    }
+
     public function countProducts() {
         $this->db->where('category_id', $this->id);
         $this->db->from('product_categories');
+        return $this->db->count_all_results();
+    }
+
+    public function countNews() {
+        $this->db->where('category_id', $this->id);
+        $this->db->from('news');
         return $this->db->count_all_results();
     }
 
@@ -332,5 +342,48 @@ class Categories extends CI_Model {
 			$field = $field.'_en';
 
 		return $this->$field;
+    }
+
+    public function getCategoryNewFE() {
+        $items = [];
+        $query = $this->db->query("SELECT * FROM ci_categories WHERE parent_id = 0 AND type = 'news' ORDER BY display_order asc");
+        $models = $query->result('Categories');
+        $level = 1;
+        if (count($models)) {
+            foreach ($models as $model) {
+                $items[$model->id] = [
+                    'name' => $model->getFieldFollowLanguage('category_name'),
+                    'title' => $model->getFieldFollowLanguage('title'),
+                    'slug' => $model->getFieldFollowLanguage('slug'),
+                    'child' => $this->rChildCategoriesFE($model->id),
+                ];
+            }
+        }
+        return $items;
+    }
+
+    public function generateSlug($str){
+        $maxid = 0;
+        $row = $this->db->query('SELECT MAX(id) AS `maxid` FROM `ci_categories`')->row();
+        if ($row) {
+            $maxid = $row->maxid;
+        }
+
+        $str = trim(mb_strtolower($str));
+        $str = preg_replace('/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/', 'a', $str);
+        $str = preg_replace('/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/', 'e', $str);
+        $str = preg_replace('/(ì|í|ị|ỉ|ĩ)/', 'i', $str);
+        $str = preg_replace('/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/', 'o', $str);
+        $str = preg_replace('/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/', 'u', $str);
+        $str = preg_replace('/(ỳ|ý|ỵ|ỷ|ỹ)/', 'y', $str);
+        $str = preg_replace('/(đ)/', 'd', $str);
+        $str = preg_replace('/[^a-z0-9-\s]/', '', $str);
+        $str = preg_replace('/([\s]+)/', '-', $str);
+
+        if (empty($str)) {
+            return 'n-a';
+        }
+
+        return $str.'-'.$maxid;
     }
 }

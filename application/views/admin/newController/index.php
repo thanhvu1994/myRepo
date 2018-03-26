@@ -23,6 +23,7 @@
                                         <tr>
                                             <th class="no-sort text-center"><input type="checkbox" name="" id="select_all"></th>
                                             <th>Tiêu Đề</th>
+                                            <th>Danh Mục</th>
                                             <th>Hình Đại Diện</th>
                                             <th>Ngày Cập Nhật</th>
                                             <th>Hành Động</th>
@@ -33,6 +34,7 @@
                                             <tr id="tr-<?php echo $model->id?>">
                                                 <td class="text-center check-element"><input type="checkbox" name="select[]" value="<?php echo $model->id ?>"></td>
                                                 <td><?php echo $model->title; ?></td>
+                                                <td><?php echo $model->getCategory(); ?></td>
                                                 <td><img class="center-cropped" src="<?php echo $model->featured_image; ?>" /></td>
                                                 <td><?php echo $model->get_created_date() ?></td>
                                                 <td class="button-column">
@@ -103,6 +105,12 @@
                         <label for="icon" class="control-label col-md-3">Nội Dung Tiếng Anh:</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="content_en" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="parent_id" class="control-label col-md-3">Danh Mục:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="category" disabled>
                         </div>
                     </div>
                     <div class="form-group">

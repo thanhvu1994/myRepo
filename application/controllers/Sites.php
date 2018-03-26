@@ -431,6 +431,8 @@ class Sites extends Front_Controller {
     }
 
     public function news(){
+        $data['treeCategory'] = $this->categories->getCategoryNewFE();
+
         if ($this->session->userdata['languages'] == 'vn'){
             $data['title'] = 'Tin Tức';
             $data['description'] = 'Tin Tức';
@@ -646,6 +648,55 @@ class Sites extends Front_Controller {
             $data['key'] = '';
         }
         $data['template'] = 'sites/search';
+
+        $this->load->view('layouts/index', $data);
+    }
+
+    public function newCategory($slug){
+        $data['category'] = $this->categories->getCategoryBySlug($slug);
+        $data['treeCategory'] = $this->categories->getCategoryNewFE();
+
+        if($data['category']){
+            $config['base_url'] = base_url('sites/newCategory/'. $slug);
+            $config['total_rows'] = $data['category']->countProducts();
+            $config['per_page'] = 10;
+            $config['uri_segment'] = 4;
+            $config['use_page_numbers'] = TRUE;
+
+            $config["prev_tag_open"] = "<li id='pagination_previous_bottom' class='pagination_previous'>";
+            $config["prev_tag_close"] = "<li>";
+
+            $config["next_tag_open"] = "<li id='pagination_next_bottom' class='pagination_next'>";
+            $config["next_tag_open"] = "<li>";
+
+            $config["num_tag_open"] = "<li>";
+            $config["num_tag_close"] = "</li>";
+
+            $config["cur_tag_open"] = "<li><span>";
+            $config["cur_tag_close"] = "</span></li>";
+
+            $this->pagination->initialize($config);
+
+            $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+            $data['news'] = $data['category']->getNews($config["per_page"], $page);
+            $data["links"] = $this->pagination->create_links();
+        }else{
+            $data['news'] = array();
+        }
+
+
+        if(isset($data['category'])){
+            if ($this->session->userdata['languages'] == 'vn'){
+                $data['title'] = $data['category']->title;
+                $data['description'] = $data['category']->description;
+            }else{
+                $data['title'] = $data['category']->title_en;
+                $data['description'] = $data['category']->description_en;
+            }
+            $data['template'] = 'sites/newCategory';
+        }else{
+            redirect('sites/index', 'refresh');
+        }
 
         $this->load->view('layouts/index', $data);
     }

@@ -23,6 +23,7 @@ class NewController extends MY_Controller {
         $data['title'] = 'Tạo Tin Tức';
     	$data['template'] = 'admin/newController/form';
         $data['link_submit'] = base_url('admin/newController/create');
+        $data['categories'] = $this->categories->get_dropdown_category(0, 'news');
         $data['scenario'] = 'create';
 
         if(isset($_POST['title']) && isset($_POST['short_content']) && isset($_POST['content'])) {
@@ -53,6 +54,7 @@ class NewController extends MY_Controller {
                 $result['short_content_en'] = $model[0]->short_content_en;
                 $result['content'] = $model[0]->content;
                 $result['content_en'] = $model[0]->content_en;
+                $result['category'] = $model[0]->getCategory();
                 $result['featured_image'] = $model[0]->featured_image;
                 $result['views'] = $model[0]->views;
                 $result['created_date'] = $model[0]->created_date;
@@ -71,6 +73,7 @@ class NewController extends MY_Controller {
         $data['template'] = 'admin/newController/form';
         $data['model'] = $this->news->get_model(['id' => $id]);
         $data['link_submit'] = base_url('admin/newController/update/'.$id);
+        $data['categories'] = $this->categories->get_dropdown_category(0, 'news');
         $data['scenario'] = 'update';
 
 

@@ -86,6 +86,20 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-12">Danh Mục</label>
+                            <div class="col-md-3">
+                                <select class="form-control" name="category">
+                                    <?php if(isset($categories)) : ?>
+                                        <?php foreach($categories as $id => $cate): ?>
+                                            <option value="<?php echo $id; ?>"><?php echo $cate; ?></option>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </select>
+                                <?php echo form_error('category'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-md-12">Hình Ảnh</label>
                             <div class="col-md-12">
                                 <?php if (isset($model)): ?>
