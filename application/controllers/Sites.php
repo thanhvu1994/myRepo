@@ -394,16 +394,30 @@ class Sites extends Front_Controller {
 
     public function forgot() {
         $this->load->library('email');
+        $config['protocol'] = 'sendmail';
+        $config['smtp_host'] = 'smtp.gmail.com';
+        $config['smtp_user'] = 'lucjfer0407@gmail.com';
+        $config['smtp_pass'] = 'cbqltyrncpgreijv';
+        $config['smtp_port'] = '465';
+        $config['smtp_crypto'] = 'ssl';
+        $config['charset'] = 'iso-8859-1';
+        $config['wordwrap'] = TRUE;
+        $this->email->initialize($config);
         $data['template'] = 'sites/forgot';
 
         if (isset($_POST['email'])) {
-            // $this->email->from('lucjfer0407@gmail.com', 'Lucjfer');
-            // $this->email->to($_POST['email']);
-            // $this->email->subject('Email Test');
-            // $this->email->message('Testing the email class.');
+            $query_user = $this->db->get_where('users', array('email' => $_POST['email'], 'application_id' => FE));
+            $user = $query_user->row('1', 'Users');
 
-            // $this->email->send();
-            redirect('sites/login', 'refresh');
+            if ($user) {
+                $this->email->from('lucjfer0407@gmail.com', 'Lucjfer');
+                $this->email->to($_POST['email']);
+                $this->email->subject('Email Test');
+                $this->email->message('Testing the email class.');
+
+                $this->email->send();
+                redirect('sites/login', 'refresh');
+            }
         }
         $this->load->view('layouts/index', $data);
     }
