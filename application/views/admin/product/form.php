@@ -13,7 +13,7 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="row">
-                    <?php echo form_open_multipart($link_submit, ['class' => 'form-horizontal']); ?>
+                    <?php echo form_open_multipart($link_submit, ['id' => 'form-product', 'class' => 'form-horizontal']); ?>
                     <div class="col-sm-6 col-xs-12">
                         <div class="form-group">
                             <label class="col-md-12">Mã Sản Phẩm</label>
@@ -31,7 +31,9 @@
                         <div class="tab-content">
                             <div id="name_vn" class="tab-pane fade in active">
                                 <div class="form-group">
-                                    <label class="col-md-12">Tên Sản Phẩm</label>
+                                    <label class="col-md-12">Tên Sản Phẩm
+                                        <span class="required"> *</span>
+                                    </label>
                                     <div class="col-md-12">
                                         <input required type="text" class="form-control" value="<?php echo (isset($model)) ? $model->product_name : ''?>" name="product_name">
                                         <?php echo form_error('product_name'); ?>
@@ -40,7 +42,9 @@
                             </div>
                             <div id="name_en" class="tab-pane fade">
                                 <div class="form-group">
-                                    <label class="col-md-12">Tên Sản Phẩm Tiếng Anh</label>
+                                    <label class="col-md-12">Tên Sản Phẩm Tiếng Anh
+                                        <span class="required"> *</span>
+                                    </label>
                                     <div class="col-md-12">
                                         <input required type="text" class="form-control" value="<?php echo (isset($model)) ? $model->product_name_en : ''?>" name="product_name_en">
                                         <?php echo form_error('product_name_en'); ?>

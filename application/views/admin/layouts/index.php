@@ -98,6 +98,21 @@
 
         <!-- end - This is for export functionality only -->
         <script>
+            $('button[type="submit"]').click(function(){
+                $.each($('input:required'),function(){
+                    if(!$(this).val()){
+                        var id = $(this).closest('.tab-pane').attr('id');
+                        $('a[href="#'+id+'"]').parent().parent().find('li').removeClass('active');
+                        $('#'+id).parent().find('div').removeClass('active').removeClass('in');
+
+                        $('a[href="#'+id+'"]').parent().addClass('active');
+                        $('#'+id).addClass('active').addClass('in');
+
+                        $(this).focus();
+                    }
+                });
+            });
+
         $(document).ready(function() {
             $('.js-switch').each(function() {
                 new Switchery($(this)[0], $(this).data());
