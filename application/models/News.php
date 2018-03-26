@@ -162,13 +162,21 @@ class News extends CI_Model {
         $query = $this->db->get_where('categories', array('id' => $this->category_id) );
         $category = $query->row('0', 'Categories');
 
-        return $category->title;
+        if($category){
+            return $category->title;
+        }else{
+            return '';
+        }
     }
 
     public function getCategoryLink(){
         $query = $this->db->get_where('categories', array('id' => $this->category_id) );
         $category = $query->row('0', 'Categories');
 
-        return '<a href="'.base_url("sites/newCategory/" . $category->slug).'">'.$category->title.'</a>';
+        if($category){
+            return '<a href="'.base_url("sites/newCategory/" . $category->slug).'">'.$category->title.'</a>';
+        }else{
+            return '';
+        }
     }
 }
