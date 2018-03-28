@@ -96,7 +96,7 @@ class Posts extends CI_Model {
 
         $query = $this->db->query("SELECT * FROM ci_news ORDER BY title asc");
         $news =  $query->result('News');
-        $result['tin-tuc'] = 'Trang :Tổng hợp Tin tức';
+        $result['tin-tuc.html'] = 'Trang :Tổng hợp Tin tức';
         if (count($news) > 0) {
             foreach ($news as $new) {
                 $url = 'new-'.$new->getCategoryLink().'/'.$new->slug.'.html';

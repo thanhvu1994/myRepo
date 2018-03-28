@@ -58,7 +58,7 @@ $route['admin'] = 'admin/login';
 $route['page-(:any).html'] = 'sites/cms/$1';
 $route['cat-(:any).html'] = 'sites/category/$1';
 $route['pro-(:any)/(:any).html'] = 'sites/product/$2';
-$route['new.html'] = 'sites/news';
+$route['tin-tuc.html'] = 'sites/news';
 $route['new-(:any).html'] = 'sites/newCategory/$1';
 $route['new-(:any)/(:any).html'] = 'sites/newDetail/$2';
 
