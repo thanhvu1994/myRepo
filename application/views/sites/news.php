@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?php echo base_url('themes/website/modules/smartblog/css/smartblogstyle.css')?>" type="text/css" media="all" />
+
 <div class="columns-container">
     <div id="columns" class="container" >
         <div id="slider_row" class="row">

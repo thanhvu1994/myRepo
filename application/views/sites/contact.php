@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?php echo base_url('themes/website/css/contact-form.css')?>" type="text/css" media="all" />
+
 <style type="text/css">
 	.notify{
 	    border: 1px solid;

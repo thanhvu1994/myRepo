@@ -1,3 +1,11 @@
+<script type="text/javascript" src="<?php echo base_url('themes/website/js/product.js')?>"></script>
+<script type="text/javascript" src="<?php echo base_url('themes/website/js/jquery/plugins/jquery.scrollTo.js')?>"></script>
+<script type="text/javascript" src="<?php echo base_url('themes/website/js/products-comparison.js')?>"></script>
+<script type="text/javascript" src="<?php echo base_url('themes/website/modules/socialsharing/js/socialsharing.js')?>"></script>
+<link rel="stylesheet" href="<?php echo base_url('themes/website/css/product.css')?>" type="text/css" media="all" />
+<link rel="stylesheet" href="<?php echo base_url('themes/website/js/jquery/plugins/fancybox/jquery.fancybox.css')?>" type="text/css" media="all" />
+
+
 <div class="columns-container">
     <div id="columns" class="container" >
         <div class="row">

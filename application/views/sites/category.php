@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?php echo base_url('themes/website/css/product_list.css')?>" type="text/css" media="all" />
+
 <?php if($category): ?>
     <div class="columns-container">
     <div id="columns" class="container" >
