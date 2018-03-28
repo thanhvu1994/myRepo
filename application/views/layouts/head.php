@@ -48,7 +48,6 @@
 		<script type="text/javascript" src="<?php /*echo base_url('themes/website/js/autoload/15-jquery.uniform-modified.js')*/?>"></script>
 		<script type="text/javascript" src="<?php /*echo base_url('themes/website/js/contact-form.js')*/?>"></script>
 		<script type="text/javascript" src="<?php /*echo base_url('themes/website/js/modules/blockcart/ajax-cart.js')*/?>"></script>
-		<script type="text/javascript" src="<?php /*echo base_url('themes/website/js/tools/treeManagement.js')*/?>"></script>
 		<script type="text/javascript" src="<?php /*echo base_url('themes/website/js/modules/blocknewsletter/blocknewsletter.js')*/?>"></script>
 		<script type="text/javascript" src="<?php /*echo base_url('themes/website/js/jquery/plugins/autocomplete/jquery.autocomplete.js')*/?>"></script>
         <script type="text/javascript" src="<?php /*echo base_url('themes/website/js/modules/blocksearch/blocksearch.js')*/?>"></script>

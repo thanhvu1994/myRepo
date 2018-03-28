@@ -89,7 +89,7 @@ class Posts extends CI_Model {
 
         if (count($categories) > 0) {
             foreach ($categories as $category) {
-                $url = 'danh-muc/'.$category->slug;
+                $url = 'cat-'.$category->slug;
                 $result[$url] = 'Danh mục: '.$category->category_name;
             }
         }

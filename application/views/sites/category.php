@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="<?php echo base_url('themes/website/css/product_list.css')?>" type="text/css" media="all" />
+<link rel="stylesheet" href="<?php echo base_url('themes/website/css/block.css')?>" type="text/css" media="all" />
+<script type="text/javascript" src="<?php echo base_url('themes/website/js/tools/treeManagement.js')?>"></script>
 
 <?php if($category): ?>
     <div class="columns-container">
@@ -31,7 +33,7 @@
                                                     $selected = ($cate['slug'] == $category->slug_en)? 'class="selected"': '';
                                                 }
                                             ?>
-                                            <a href="<?php echo ($cate['slug'])? base_url('danh-muc/'.$cate['slug']) : 'javascript:void(0)'; ?>" <?php echo $selected; ?> title="<?php echo $cate['title']; ?>">
+                                            <a href="<?php echo ($cate['slug'])? base_url('cat-'.$cate['slug']) : 'javascript:void(0)'; ?>" <?php echo $selected; ?> title="<?php echo $cate['title']; ?>">
                                                 <?php echo $cate['title']; ?>
                                             </a>
                                             <?php if(!empty($cate['child'])): ?>
@@ -45,7 +47,7 @@
                                                             $selected = ($childCate['slug'] == $category->slug_en)? 'class="selected"': '';
                                                         }
                                                         ?>
-                                                        <a href="<?php echo base_url('danh-muc/'.$childCate['slug']); ?>" <?php echo $selected; ?> title="<?php echo $childCate['title']; ?>">
+                                                        <a href="<?php echo base_url('cat-'.$childCate['slug']); ?>" <?php echo $selected; ?> title="<?php echo $childCate['title']; ?>">
                                                             <?php echo $childCate['title']; ?>
                                                         </a>
                                                     </li>
