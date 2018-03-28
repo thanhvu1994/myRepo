@@ -17,7 +17,7 @@
                     <div class="block_content">
                         <ul class="tree dhtml">
                             <li>
-                                <a href="<?php echo base_url('news.html'); ?>" title="<?php echo ($this->session->userdata['languages'] == 'vn') ? 'Tin Tức' : 'News'; ?>">
+                                <a href="<?php echo base_url('new.html'); ?>" title="<?php echo ($this->session->userdata['languages'] == 'vn') ? 'Tin Tức' : 'News'; ?>">
                                     <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Tin Tức' : 'News'; ?>
                                 </a>
                                 <ul>

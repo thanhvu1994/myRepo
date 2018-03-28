@@ -18,7 +18,7 @@
                         <ul class="tree dhtml">
                             <li>
                                 <ul>
-                                    <a class="selected" href="<?php echo base_url('news.html'); ?>" title="<?php echo ($this->session->userdata['languages'] == 'vn') ? 'Tin Tức' : 'News'; ?>">
+                                    <a class="selected" href="<?php echo base_url('new.html'); ?>" title="<?php echo ($this->session->userdata['languages'] == 'vn') ? 'Tin Tức' : 'News'; ?>">
                                         <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Tin Tức' : 'News'; ?>
                                     </a>
                                     <?php foreach($treeCategory as $cate): ?>
