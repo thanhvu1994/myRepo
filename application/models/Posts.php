@@ -107,7 +107,7 @@ class Posts extends CI_Model {
 		$posts = $this->get_model();
 		if (count($posts) > 0) {
 			foreach ($posts as $post) {
-				$url = 'page-'.$post->slug;
+				$url = 'page-'.$post->slug.'.html';
 				$result[$url] = 'Trang: '.$post->title;
 			}
 		}
