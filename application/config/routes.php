@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'sites/index';
 $route['admin'] = 'admin/login';
 $route['trang/(:any)'] = 'sites/cms/$1';
-$route['cat-(:any)'] = 'sites/category/$1';
+$route['cat-(:any).html'] = 'sites/category/$1';
 $route['pro-(:any)/(:any)'] = 'sites/product/$2';
 $route['tin-tuc'] = 'sites/news';
 $route['tin-tuc/(:any)'] = 'sites/newCategory/$1';

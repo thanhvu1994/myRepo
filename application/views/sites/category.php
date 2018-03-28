@@ -33,7 +33,7 @@
                                                     $selected = ($cate['slug'] == $category->slug_en)? 'class="selected"': '';
                                                 }
                                             ?>
-                                            <a href="<?php echo ($cate['slug'])? base_url('cat-'.$cate['slug']) : 'javascript:void(0)'; ?>" <?php echo $selected; ?> title="<?php echo $cate['title']; ?>">
+                                            <a href="<?php echo ($cate['slug'])? base_url('cat-'.$cate['slug'].'.html') : 'javascript:void(0)'; ?>" <?php echo $selected; ?> title="<?php echo $cate['title']; ?>">
                                                 <?php echo $cate['title']; ?>
                                             </a>
                                             <?php if(!empty($cate['child'])): ?>
@@ -47,7 +47,7 @@
                                                             $selected = ($childCate['slug'] == $category->slug_en)? 'class="selected"': '';
                                                         }
                                                         ?>
-                                                        <a href="<?php echo base_url('cat-'.$childCate['slug']); ?>" <?php echo $selected; ?> title="<?php echo $childCate['title']; ?>">
+                                                        <a href="<?php echo base_url('cat-'.$childCate['slug'].'.html'); ?>" <?php echo $selected; ?> title="<?php echo $childCate['title']; ?>">
                                                             <?php echo $childCate['title']; ?>
                                                         </a>
                                                     </li>
