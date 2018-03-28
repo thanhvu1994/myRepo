@@ -23,7 +23,7 @@
 									echo '<ul class="product_images clearfix">';
 									foreach ($menuFooter as $menu) :?>
 				                        <li>
-				                            <a href="<?php echo base_url('sites/category/'. $menu->slug) ?>" title="<?php echo $menu->category_name ?>">
+				                            <a href="<?php echo base_url('danh-muc/'. $menu->slug) ?>" title="<?php echo $menu->category_name ?>">
 				                                <?php echo ucfirst($menu->getFieldFollowLanguage('category_name')) ?>
 				                            </a>
 				                        </li>
@@ -49,7 +49,7 @@
                                     <?php $news = $this->news->getNews(6,0); ?>
                                     <?php foreach($news as $new): ?>
                                         <li style="float: none">
-                                            <a href="<?php echo base_url('sites/newDetail/'. $new->slug); ?>" title="<?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?>">
+                                            <a href="<?php echo base_url('tin-tuc/'.$new->getCategoryLink().'/'.$new->slug); ?>" title="<?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?>">
                                                 <?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?>
                                             </a>
                                         </li>

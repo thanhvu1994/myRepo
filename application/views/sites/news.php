@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?php echo base_url('themes/website/modules/smartblog/css/smartblogstyle.css')?>" type="text/css" media="all" />
+
 <div class="columns-container">
     <div id="columns" class="container" >
         <div id="slider_row" class="row">
@@ -18,14 +20,14 @@
                                 <ul>
                                     <?php foreach($treeCategory as $cate): ?>
                                         <li>
-                                            <a href="<?php echo ($cate['slug'])? base_url('sites/newCategory/'.$cate['slug']) : 'javascript:void(0)'; ?>" title="<?php echo $cate['title']; ?>">
+                                            <a href="<?php echo ($cate['slug'])? base_url('tin-tuc/'.$cate['slug']) : 'javascript:void(0)'; ?>" title="<?php echo $cate['title']; ?>">
                                                 <?php echo $cate['title']; ?>
                                             </a>
                                             <?php if(!empty($cate['child'])): ?>
                                                 <ul>
                                                     <?php foreach($cate['child'] as $childCate): ?>
                                                         <li>
-                                                            <a href="<?php echo base_url('sites/newCategory/'.$childCate['slug']); ?>" title="<?php echo $childCate['title']; ?>">
+                                                            <a href="<?php echo base_url('tin-tuc/'.$childCate['slug']); ?>" title="<?php echo $childCate['title']; ?>">
                                                                 <?php echo $childCate['title']; ?>
                                                             </a>
                                                         </li>
@@ -47,15 +49,15 @@
                     <div itemtype="#" itemscope="" class="sdsarticleCat clearfix">
                         <div id="smartblogpost-<?php echo $new->id; ?>">
                             <div class="sdsarticleHeader">
-                                <p class='sdstitle_block'><a title="<?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?>" href='<?php echo base_url('sites/newDetail/'.$new->slug); ?>'><?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?></a></p>
+                                <p class='sdstitle_block'><a title="<?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?>" href='<?php echo base_url('tin-tuc/'.$new->getCategoryLink().'/'.$new->slug); ?>'><?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?></a></p>
                                 <span><?php echo ($this->session->userdata['languages'] == 'vn') ? 'Đăng Bởi' : 'Posted By'; ?>
                                     <span itemprop="author">&nbsp;<i class="icon icon-user"></i>&nbsp; Admin</span> &nbsp;&nbsp;
                                     <i class="icon icon-tags"></i> <span itemprop="articleSection"><?php echo $new->getCategoryLink(); ?></span>
-                                    <span class="comment"> &nbsp;<i class="icon icon-comments"></i>&nbsp; <div style="display: inline-block;" class="fb-comments-count" data-href="<?php echo base_url('sites/newDetail/'. $new->slug); ?>">0</div> <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Bình Luận' : 'Comments'; ?></span>&nbsp;
+                                    <span class="comment"> &nbsp;<i class="icon icon-comments"></i>&nbsp; <div style="display: inline-block;" class="fb-comments-count" data-href="<?php echo base_url('tin-tuc/'.$new->getCategoryLink().'/'.$new->slug); ?>">0</div> <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Bình Luận' : 'Comments'; ?></span>&nbsp;
                                     <i class="icon icon-eye-open"></i> <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Lượt Xem' : 'Views'; ?> (<?php echo $new->views; ?>)</span>
                             </div>
                             <div class="articleContent">
-                                <a  href='<?php echo base_url('sites/newDetail/'.$new->slug); ?>' itemprop="url" title="<?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?>" class="imageFeaturedLink">
+                                <a  href='<?php echo base_url('tin-tuc/'.$new->getCategoryLink().'/'.$new->slug); ?>' itemprop="url" title="<?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?>" class="imageFeaturedLink">
                                     <img class="center-cropped-new" itemprop="image" alt="<?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?>" src="<?php echo base_url($new->featured_image); ?>" class="imageFeatured">
                                 </a>
                             </div>
@@ -65,7 +67,7 @@
                                         <?php echo ($this->session->userdata['languages'] == 'vn') ? $new->short_content : $new->short_content_en; ?>
                                     </div>
                                 <div class="sdsreadMore">
-                                    <span class="more"><a title="<?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?>" href="<?php echo base_url('sites/newDetail/'.$new->slug); ?>" class="r_more button-medium"><?php echo ($this->session->userdata['languages'] == 'vn') ? 'Xem Thêm' : 'Read More'; ?></a></span>
+                                    <span class="more"><a title="<?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?>" href="<?php echo base_url('tin-tuc/'.$new->getCategoryLink().'/'.$new->slug); ?>" class="r_more button-medium"><?php echo ($this->session->userdata['languages'] == 'vn') ? 'Xem Thêm' : 'Read More'; ?></a></span>
                                 </div>
                             </div>
                         </div>

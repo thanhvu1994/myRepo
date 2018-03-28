@@ -19,7 +19,7 @@
 						<ul id="articles_list" class="clear">
 							<?php foreach ($results as $result): ?>
 								<li style="padding-bottom: 20px">
-				                    <a class="product-name" href="<?php echo base_url('sites/newDetail/'.$result->slug) ?>"><?php echo $result->getFieldFollowLanguage('title') ?></a>
+				                    <a class="product-name" href="<?php echo base_url('tin-tuc/'.$new->getCategoryLink().'/'.$new->slug); ?>"><?php echo $result->getFieldFollowLanguage('title') ?></a>
 									<div><?php echo $result->getFieldFollowLanguage('short_content') ?></div>
 								</li>
 							<?php endforeach ?>
@@ -30,7 +30,7 @@
 						<ul id="articles_list" class="clear">
 							<?php foreach ($products as $product): ?>
 								<li style="padding-bottom: 20px">
-				                    <a class="product-name" href="<?php echo base_url('sites/product/'.$product->slug) ?>"><?php echo $product->getFieldFollowLanguage('product_name') ?></a>
+				                    <a class="product-name" href="<?php echo base_url('san-pham/'.$product->getCategorySlug().'/'.$product->slug) ?>"><?php echo $product->getFieldFollowLanguage('product_name') ?></a>
 								</li>
 							<?php endforeach ?>
 						</ul>

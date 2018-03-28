@@ -89,17 +89,17 @@ class Posts extends CI_Model {
 
         if (count($categories) > 0) {
             foreach ($categories as $category) {
-                $url = 'sites/category/'.$category->slug;
+                $url = 'danh-muc/'.$category->slug;
                 $result[$url] = 'Danh mục: '.$category->category_name;
             }
         }
 
         $query = $this->db->query("SELECT * FROM ci_news ORDER BY title asc");
         $news =  $query->result('News');
-        $result['sites/news'] = 'Trang :Tổng hợp Tin tức';
+        $result['tin-tuc'] = 'Trang :Tổng hợp Tin tức';
         if (count($news) > 0) {
             foreach ($news as $new) {
-                $url = 'sites/newDetail/'.$new->slug;
+                $url = 'tin-tuc/'.$new->getCategoryLink().'/'.$new->slug;
                 $result[$url] = 'Tin Tức: '.$new->title;
             }
         }
@@ -107,7 +107,7 @@ class Posts extends CI_Model {
 		$posts = $this->get_model();
 		if (count($posts) > 0) {
 			foreach ($posts as $post) {
-				$url = 'sites/cms/'.$post->slug;
+				$url = 'trang/'.$post->slug;
 				$result[$url] = 'Trang: '.$post->title;
 			}
 		}
@@ -135,7 +135,7 @@ class Posts extends CI_Model {
 
     public function fb_comment_count()
     {
-        $json = json_decode(file_get_contents('https://graph.facebook.com/?ids=' . base_url('sites/newDetail/'. $this->slug)));
+        $json = json_decode(file_get_contents('https://graph.facebook.com/?ids=' . base_url('tin-tuc/'.$this->getCategoryLink().'/'.$this->slug)));
         return isset($json->url->comments) ? $json->url->comments : 0;
     }
 

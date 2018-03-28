@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?php echo base_url('themes/website/css/product_list.css')?>" type="text/css" media="all" />
+
 <?php if($category): ?>
     <div class="columns-container">
     <div id="columns" class="container" >
@@ -29,7 +31,7 @@
                                                     $selected = ($cate['slug'] == $category->slug_en)? 'class="selected"': '';
                                                 }
                                             ?>
-                                            <a href="<?php echo ($cate['slug'])? base_url('sites/category/'.$cate['slug']) : 'javascript:void(0)'; ?>" <?php echo $selected; ?> title="<?php echo $cate['title']; ?>">
+                                            <a href="<?php echo ($cate['slug'])? base_url('danh-muc/'.$cate['slug']) : 'javascript:void(0)'; ?>" <?php echo $selected; ?> title="<?php echo $cate['title']; ?>">
                                                 <?php echo $cate['title']; ?>
                                             </a>
                                             <?php if(!empty($cate['child'])): ?>
@@ -43,7 +45,7 @@
                                                             $selected = ($childCate['slug'] == $category->slug_en)? 'class="selected"': '';
                                                         }
                                                         ?>
-                                                        <a href="<?php echo base_url('sites/category/'.$childCate['slug']); ?>" <?php echo $selected; ?> title="<?php echo $childCate['title']; ?>">
+                                                        <a href="<?php echo base_url('danh-muc/'.$childCate['slug']); ?>" <?php echo $selected; ?> title="<?php echo $childCate['title']; ?>">
                                                             <?php echo $childCate['title']; ?>
                                                         </a>
                                                     </li>
@@ -68,22 +70,22 @@
                             <div class="product-container" itemscope itemtype="http://schema.org/Product">
                                 <div class="left-block">
                                     <div class="product-image-container">
-                                        <a class="pro   duct_img_link"	href="<?php echo base_url('sites/product/'.$product->slug); ?>" title="<?php echo $product->title; ?>" itemprop="url">
+                                        <a class="pro   duct_img_link"	href="<?php echo base_url('san-pham/'.$product->getCategorySlug().'/'.$product->slug); ?>" title="<?php echo $product->title; ?>" itemprop="url">
                                             <img class="replace-2x img-responsive center-cropped" src="<?php echo $product->getFirstImage(); ?>" alt="<?php echo $product->title; ?>"  width="270" height="270" itemprop="image" />
                                         </a>
                                         <div class="quick-view-wrapper-mobile">
-                                            <a class="quick-view-mobile" href="<?php echo base_url('sites/product/'.$product->slug); ?>" rel="<?php echo base_url('sites/product/'.$product->slug); ?>">
+                                            <a class="quick-view-mobile" href="<?php echo base_url('san-pham/'.$product->getCategorySlug().'/'.$product->slug); ?>" rel="<?php echo base_url('san-pham/'.$product->getCategorySlug().'/'.$product->slug); ?>">
                                                 <i class="icon-eye-open"></i>
                                             </a>
                                         </div>
-                                        <a class="quick-view" href="<?php echo base_url('sites/product/'.$product->slug); ?>" rel="<?php echo base_url('sites/product/'.$product->slug); ?>">
+                                        <a class="quick-view" href="<?php echo base_url('san-pham/'.$product->getCategorySlug().'/'.$product->slug); ?>" rel="<?php echo base_url('san-pham/'.$product->getCategorySlug().'/'.$product->slug); ?>">
                                             <span>Quick View</span>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="right-block">
                                     <h5 itemprop="name">
-                                        <a class="product-name" href="<?php echo base_url('sites/product/'.$product->slug); ?>" title="<?php echo $product->title; ?>" itemprop="url" >
+                                        <a class="product-name" href="<?php echo base_url('san-pham/'.$product->getCategorySlug().'/'.$product->slug); ?>" title="<?php echo $product->title; ?>" itemprop="url" >
                                             <?php echo ($this->session->userdata['languages'] == 'vn') ? $product->product_name : $product->product_name_en; ?>
                                         </a>
                                     </h5>
@@ -95,7 +97,7 @@
                                         <?php echo $product->sale_price; ?>
                                     </div>
                                     <div class="button-container">
-                                        <a itemprop="url" class="button lnk_view btn btn-default" href="<?php echo base_url('sites/product/'.$product->slug); ?>" title="View">
+                                        <a itemprop="url" class="button lnk_view btn btn-default" href="<?php echo base_url('san-pham/'.$product->getCategorySlug().'/'.$product->slug); ?>" title="View">
                                             <span>Add</span>
                                         </a>
                                     </div>
@@ -108,7 +110,7 @@
                                                     <?php foreach($attributeValues as $key => $value): ?>
                                                         <?php ?>
                                                             <li>
-                                                                <a href="<?php echo base_url('sites/product/'.$product->slug); ?>" id="color_<?php echo $key; ?>" style="background:<?php echo $value->name; ?>;">
+                                                                <a href="<?php echo base_url('san-pham/'.$product->getCategorySlug().'/'.$product->slug); ?>" id="color_<?php echo $key; ?>" style="background:<?php echo $value->name; ?>;">
                                                                 </a>
                                                             </li>
                                                     <?php endforeach; ?>

@@ -42,8 +42,8 @@ class Categories extends CI_Model {
 	    }
 	    $data_insert['created_date'] = date('Y-m-d H:i:s');
 	    $data_insert['update_date'] = date('Y-m-d H:i:s');
-	    $data_insert['slug'] = $this->generateSlug($this->input->post('category_name'));
-	    $data_insert['slug_en'] = $this->generateSlug($this->input->post('category_name_en'));
+	    $data_insert['slug'] = $this->generateSlug($data_insert['category_name']);
+	    $data_insert['slug_en'] = $this->generateSlug($data_insert['category_name_en']);
 	    $data_insert['type_level'] = $type_level;
 	    return $this->db->insert('categories', $data_insert);
 	}
@@ -61,8 +61,8 @@ class Categories extends CI_Model {
 	    	}
 	    }
 	    $data_insert['update_date'] = date('Y-m-d H:i:s');
-        $data_insert['slug'] = $this->generateSlug($this->input->post('category_name'));
-        $data_insert['slug_en'] = $this->generateSlug($this->input->post('category_name_en'));
+        $data_insert['slug'] = $this->generateSlug($data_insert['category_name']);
+        $data_insert['slug_en'] = $this->generateSlug($data_insert['category_name_en']);
 	    $data_insert['type_level'] = $type_level;
 
 	    $this->db->where('id', $id);

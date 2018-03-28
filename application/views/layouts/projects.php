@@ -63,4 +63,13 @@
         height: 428px;
         width: 570px;
     }
+
+    @media (max-width: 480px) {
+        .center-cropped-project {
+            object-fit: none; /* Do not scale the image */
+            object-position: center; /* Center the image within the element */
+            height: 126px;
+            width: 169px;
+        }
+    }
 </style>
