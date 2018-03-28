@@ -20,14 +20,14 @@
                                 <ul>
                                     <?php foreach($treeCategory as $cate): ?>
                                         <li>
-                                            <a href="<?php echo ($cate['slug'])? base_url('sites/newCategory/'.$cate['slug']) : 'javascript:void(0)'; ?>" title="<?php echo $cate['title']; ?>">
+                                            <a href="<?php echo ($cate['slug'])? base_url('tin-tuc/'.$cate['slug']) : 'javascript:void(0)'; ?>" title="<?php echo $cate['title']; ?>">
                                                 <?php echo $cate['title']; ?>
                                             </a>
                                             <?php if(!empty($cate['child'])): ?>
                                                 <ul>
                                                     <?php foreach($cate['child'] as $childCate): ?>
                                                         <li>
-                                                            <a href="<?php echo base_url('sites/newCategory/'.$childCate['slug']); ?>" title="<?php echo $childCate['title']; ?>">
+                                                            <a href="<?php echo base_url('tin-tuc/'.$childCate['slug']); ?>" title="<?php echo $childCate['title']; ?>">
                                                                 <?php echo $childCate['title']; ?>
                                                             </a>
                                                         </li>

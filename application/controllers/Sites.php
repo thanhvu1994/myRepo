@@ -657,7 +657,7 @@ class Sites extends Front_Controller {
         $data['treeCategory'] = $this->categories->getCategoryNewFE();
 
         if($data['category']){
-            $config['base_url'] = base_url('sites/newCategory/'. $slug);
+            $config['base_url'] = base_url('tin-tuc/'. $slug);
             $config['total_rows'] = $data['category']->countProducts();
             $config['per_page'] = 10;
             $config['uri_segment'] = 4;
