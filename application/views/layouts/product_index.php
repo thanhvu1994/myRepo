@@ -1,5 +1,5 @@
 <?php if(!empty($categories)): ?>
-    <div id="SanPham" style="clear: both">
+    <div id="SanPham" style="clear: both; overflow: hidden">
         <div class="row">
             <div class="col-md-12 ps_block_title">
             <?php if ($this->session->userdata['languages'] == 'vn'): ?>

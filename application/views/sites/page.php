@@ -10,7 +10,7 @@
 
             <div id="center_column" class="center_column col-xs-12 col-sm-12">
                 <div class="block-cms">
-                    <h1><?php echo ($this->session->userdata['languages'] == 'vn') ? $page->title : $page->title_en; ?></h1>
+                    <h1><?php //echo ($this->session->userdata['languages'] == 'vn') ? $page->title : $page->title_en; ?></h1>
 
                     <?php echo ($this->session->userdata['languages'] == 'vn') ? $page->content : $page->content_en; ?>
                 </div>

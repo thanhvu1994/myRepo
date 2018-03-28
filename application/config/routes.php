@@ -61,3 +61,18 @@ $route['san-pham/(:any)/(:any)'] = 'sites/product/$2';
 $route['tin-tuc'] = 'sites/news';
 $route['tin-tuc/(:any)'] = 'sites/newCategory/$1';
 $route['tin-tuc/(:any)/(:any)'] = 'sites/newDetail/$2';
+
+$route['(lien-he).html'] = 'sites/contact';
+$route['(dang-nhap).html'] = 'sites/login';
+$route['(quen-mat-khau).html'] = 'sites/forgot';
+$route['(dang-ki).html'] = 'sites/register';
+$route['(gio-hang).html'] = 'sites/cart';
+$route['(them-dia-chi).html'] = 'sites/address';
+$route['(dia-chi-cua-toi).html'] = 'sites/addresses';
+$route['(tai-khoan).html'] = 'sites/account';
+$route['(thong-tin-ca-nhan).html'] = 'sites/infomation';
+$route['(dang-xuat).html'] = 'sites/logout';
+
+
+
+

@@ -684,6 +684,9 @@
     padding: 13px 15px 7px 15px;
     margin-bottom: 0; }
 @media (max-width: 767px) {
+    .change-languages{
+        line-height: 38px;
+    }
     #footer #newsletter_block_left {
         width: 100%; } }
 #footer #newsletter_block_left h4 {
@@ -754,6 +757,9 @@
 @media (max-width: 767px) {
     #search_block_top {
         padding-bottom: 20px;
+    }
+    #search_block_top #searchbox {
+        width: 100% !important; 
     }
 }
 #search_block_top #searchbox {
@@ -922,7 +928,9 @@ form#searchbox .button.button-small i {
     color: #fff; }
 @media (max-width: 767px) {
     .sf-menu > li > a {
-        padding: 10px; }
+        padding: 10px; 
+        line-height: 15px;
+    }
     .sf-menu > li.sfHover > a,
     .sf-menu > li > a:hover, .sf-menu > li.sfHoverForce > a {
         border-bottom: none }
@@ -948,7 +956,7 @@ form#searchbox .button.button-small i {
 .sf-menu li ul {
     display: none;
     /*left: 0;*/
-    top: 64px;
+    top: 45px;
     /* match top ul list item height */
     z-index: 99;
     padding: 12px 0px 18px 0px;
@@ -1004,7 +1012,7 @@ ul.sf-menu li li li.sfHover ul {
     top: 0; }
 
 .sf-menu > li > ul {
-    padding: 16px 25px 16px;
+    padding: 10px 15px;
     width: auto; }
 .sf-menu > li > ul > li > a {
     text-transform: uppercase;
@@ -1018,8 +1026,8 @@ ul.sf-menu li li li.sfHover ul {
 .sf-menu > li > ul > li {
     /*float: left;*/
     /*    width: 16.5%;*/
-    line-height: 27px;
-    padding-right: 15px; }
+    line-height: 30px;
+}
 @media (max-width: 767px) {
     .sf-menu > li > ul > li {
         width: 100%; } }
@@ -1057,7 +1065,34 @@ ul.sf-menu li li li.sfHover ul {
     max-width: 100%; }
 
 .cat-title {
-    display: none; }
+    display: none; 
+    height: 40px;
+}
+.cat-title span{
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    float: left;
+    position: relative;
+}
+.cat-title span::after{
+    content: '';
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    position: absolute;
+    top: 7px;
+    left: 0;
+}
+.cat-title span::before{
+    content: '';
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    position: absolute;
+    top: 14px;
+    left: 0;
+}
 @media (min-width: 768px) and (max-width: 991px) {
     .sf-menu > li > a {
         /*font-family: 'Open Sans', sans-serif;*/
@@ -1084,7 +1119,7 @@ ul.sf-menu li li li.sfHover ul {
     .cat-title {
         text-transform: uppercase;
         display: block;
-        padding: 20px;
+        padding: 10px 0;
         font-size: 30px;
         color: #fff;
         position: relative; }
@@ -1578,6 +1613,7 @@ html[xmlns] .slides  {
         font-size: 0.8em; } }
 @media (max-width: 768px) {
     #homepage-slider .homeslider-description {
+        display: none;
         padding: 30px;
         font-size: 0.7em; }
     #homepage-slider .homeslider-description p {
@@ -1644,6 +1680,7 @@ html[xmlns] .slides  {
 }
 @media (max-width: 959px) {
     .homeslider-title{
+        display: none;
         width: 50%;
         padding: 30px 30px 40px;
     }

@@ -5,11 +5,11 @@
 				<div class="row">
 					<nav>
 						<div id="contact-link">
-							<a href="<?php echo base_url('sites/contact') ?>" title="Contact Us">
+							<a href="<?php echo base_url('lien-he.html') ?>" title="Contact Us">
 							<?php if ($this->session->userdata['languages'] == 'vn'): ?>
-								liên hệ
+								Liên hệ &nbsp
 							<?php else: ?>
-								contact us
+								&nbsp Contact us &nbsp
 							<?php endif ?>
 							</a>
 								<?php if ($this->session->userdata['languages'] == 'vn'): ?>
@@ -34,7 +34,7 @@
 						<!-- MODULE Block cart -->
 						<div class="ps_cart ">
 							<div class="shopping_cart">
-								<a href="<?php echo base_url('sites/cart')?>" title="View my shopping cart" rel="nofollow">
+								<a href="<?php echo base_url('gio-hang.html')?>" title="View my shopping cart" rel="nofollow">
 									<?php if (isset($this->session->userdata['languages']) && $this->session->userdata['languages'] == 'vn'): ?>
 										<b>Giỏ hàng</b>
 									<?php else: ?>
@@ -127,10 +127,10 @@
 						<!-- /MODULE Block cart -->
 						<?php if (isset($this->session->userdata['logged_in_FE'])): ?>
 							<div class="header_user_info">
-								<a class="login" href="<?php echo base_url('sites/account') ?>" rel="nofollow" title="<?php echo $this->session->userdata['logged_in_FE']['full_name'] ?>"><?php echo $this->session->userdata['logged_in_FE']['full_name'] ?></a>
+								<a class="login" href="<?php echo base_url('tai-khoan.html') ?>" rel="nofollow" title="<?php echo $this->session->userdata['logged_in_FE']['full_name'] ?>"><?php echo $this->session->userdata['logged_in_FE']['full_name'] ?></a>
 							</div>
 							<div class="header_user_info">
-								<a class="login" href="<?php echo base_url('sites/logout') ?>" rel="nofollow" title="Log out">
+								<a class="login" href="<?php echo base_url('dang-xuat.html') ?>" rel="nofollow" title="Log out">
 									<?php if (isset($this->session->userdata['languages']) && $this->session->userdata['languages'] == 'vn'): ?>
 										Đăng xuất
 									<?php else: ?>
@@ -140,7 +140,7 @@
 							</div>
 						<?php else: ?>
 							<div class="header_user_info">
-								<a class="login" href="<?php echo base_url('sites/login') ?>" rel="nofollow" title="Log in to your customer account">
+								<a class="login" href="<?php echo base_url('dang-nhap.html') ?>" rel="nofollow" title="Login">
 									<?php if ($this->session->userdata['languages'] == 'vn'): ?>
 										Đăng nhập
 									<?php else: ?>
@@ -173,7 +173,7 @@
 						<!-- Menu -->
 						<div id="block_top_menu" class="sf-contener">
 							<div class="cat-title">
-					            <i class="icon-align-justify"></i>
+								<span></span>
 			                </div>
 			                <?php
 				                $menus = $this->categories->get_menuFE();

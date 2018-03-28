@@ -18,6 +18,9 @@ time, mark, audio, video {
     font-size: 100%;
     vertical-align: baseline; }
 
+.clear{
+    clear: both;
+}
 body {
     font-family: 'Source Sans Pro' !important;
 }
@@ -453,6 +456,9 @@ dd {
     margin-left: 0; }
 
 @media (min-width: 768px) {
+    h2, .h2 {
+        font-size: 18px; 
+    }
     .dl-horizontal dt {
         float: left;
         width: 160px;
@@ -6823,7 +6829,7 @@ div.star a:hover {
     font-size: 14px;
     line-height: 1;
     font-weight: 600;
-    margin: 0 0 20px 0;
+    margin: 20px 0 -10px 0;
     color: #0b3a96; }
 @media (max-width: 767px) {
     .footer-container #footer h4 {
@@ -8186,6 +8192,9 @@ div.star.star_hover:after {
 @media (max-width: 767px) {
     .ps_product_footer{
         clear: both;
+    }
+    #htmlcontent_CongTrinh .bx-prev, #htmlcontent_CongTrinh .bx-next{
+        display: none;
     }
 }
 @media (max-width: 1100px) {
