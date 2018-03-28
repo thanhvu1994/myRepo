@@ -16,7 +16,7 @@
                         <?php foreach($categories as $key => $item): ?>
                             <li class="htmlcontent-item-<?php echo $key + 1; ?> col-xs-4" style="text-align: center">
                                 <?php if ($this->session->userdata['languages'] == 'vn'): ?>
-                                    <a href="<?php echo base_url('sites/category/'.$item->slug); ?>" class="item-link" onclick="return !window.open(this.href);" title="<?php echo $item->title; ?>">
+                                    <a href="<?php echo $item->slug ?>" class="item-link" onclick="return !window.open(this.href);" title="<?php echo $item->title; ?>">
                                 <?php else: ?>
                                     <a href="<?php echo base_url('sites/category/'.$item->slug_en); ?>" class="item-link" onclick="return !window.open(this.href);" title="<?php echo $item->title; ?>">
                                 <?php endif ?>
