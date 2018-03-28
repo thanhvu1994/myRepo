@@ -123,7 +123,7 @@ class Sites extends Front_Controller {
         $data['treeCategory'] = $this->categories->getCategoryFE();
 
         if($data['category']){
-            $config['base_url'] = base_url('sites/category/'. $slug);
+            $config['base_url'] = base_url('danh-muc/'. $slug);
             $config['total_rows'] = $data['category']->countProducts();
             $config['per_page'] = 12;
             $config['uri_segment'] = 4;

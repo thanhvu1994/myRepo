@@ -23,7 +23,7 @@
 									echo '<ul class="product_images clearfix">';
 									foreach ($menuFooter as $menu) :?>
 				                        <li>
-				                            <a href="<?php echo base_url('sites/category/'. $menu->slug) ?>" title="<?php echo $menu->category_name ?>">
+				                            <a href="<?php echo base_url('danh-muc/'. $menu->slug) ?>" title="<?php echo $menu->category_name ?>">
 				                                <?php echo ucfirst($menu->getFieldFollowLanguage('category_name')) ?>
 				                            </a>
 				                        </li>
