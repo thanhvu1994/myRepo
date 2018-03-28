@@ -95,7 +95,7 @@
             var usingSecureMode = false;
         </script>
 	</head>
-	<body id="<?php echo $this->uri->segment(2); ?>">
+	<body id="<?php echo $this->router->fetch_method(); ?>">
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];

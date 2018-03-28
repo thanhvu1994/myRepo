@@ -218,6 +218,7 @@ class Product extends MY_Controller {
 
         if (count($model) > 0) {
             $this->productImages->delete_all_model($id);
+            $this->productCategory->delete_all_model($id);
             $this->products->delete_model($id);
         }
     }

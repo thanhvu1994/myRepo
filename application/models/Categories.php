@@ -269,13 +269,25 @@ class Categories extends CI_Model {
         $this->db->limit($limit, $start);
         $query = $this->db->get_where('product_categories', array('category_id' => $this->id) );
         $productCategories = $query->result();
-
         if(!empty($productCategories)){
             foreach($productCategories as $productCategory){
                 $query1 = $this->db->get_where('products', array('id' => $productCategory->product_id, 'status' => STATUS_ACTIVE));
-                $products[] = $query1->row(0,'Products');
+                $product = $query1->row(0,'Products');
+
+                if($product){
+                    $products[] = $product;
+                }
             }
         }
+        return $products;
+    }
+
+    public function getAllProducts($limit, $start){
+        $this->db->limit($limit, $start);
+
+        $query1 = $this->db->get_where('products', array('status' => STATUS_ACTIVE));
+        $products = $query1->result('Products');
+
         return $products;
     }
 
@@ -288,8 +300,26 @@ class Categories extends CI_Model {
     }
 
     public function countProducts() {
-        $this->db->where('category_id', $this->id);
-        $this->db->from('product_categories');
+        $products = array();
+        $query = $this->db->get_where('product_categories', array('category_id' => $this->id) );
+        $productCategories = $query->result();
+
+        if(!empty($productCategories)){
+            foreach($productCategories as $productCategory){
+                $query1 = $this->db->get_where('products', array('id' => $productCategory->product_id, 'status' => STATUS_ACTIVE));
+                $product = $query1->row(0,'Products');
+
+                if($product){
+                    $products[] = $product;
+                }
+            }
+        }
+        return count($products);
+    }
+
+    public function countAllProducts() {
+        $this->db->where('status', STATUS_ACTIVE);
+        $this->db->from('products');
         return $this->db->count_all_results();
     }
 

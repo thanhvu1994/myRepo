@@ -20,7 +20,7 @@
                     <div class="block_content">
                         <ul class="tree dhtml">
                             <li>
-                                <a href="javascript:void(0)" title="<?php echo ($this->session->userdata['languages'] == 'vn') ? $category->title : $category->title_en; ?>">
+                                <a href="<?php echo base_url('cat.html'); ?>" title="<?php echo ($this->session->userdata['languages'] == 'vn')  ? 'Sản Phẩm' : 'Products'; ?>">
                                     <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Sản Phẩm' : 'Products'; ?>
                                 </a>
                                 <ul>

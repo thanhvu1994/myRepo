@@ -126,7 +126,7 @@ class Sites extends Front_Controller {
             $config['base_url'] = base_url('cat-'. $slug.'.html');
             $config['total_rows'] = $data['category']->countProducts();
             $config['per_page'] = 12;
-            $config['uri_segment'] = 4;
+            $config['uri_segment'] = 2;
             $config['use_page_numbers'] = TRUE;
 
             $config["prev_tag_open"] = "<li id='pagination_previous_bottom' class='pagination_previous'>";
@@ -143,7 +143,7 @@ class Sites extends Front_Controller {
 
             $this->pagination->initialize($config);
 
-            $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+            $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
             $data['products'] = $data['category']->getProducts($config["per_page"], $page);
             $data["links"] = $this->pagination->create_links();
         }else{
@@ -163,6 +163,45 @@ class Sites extends Front_Controller {
         }else{
             redirect('sites/index', 'refresh');
         }
+
+        $this->load->view('layouts/index', $data);
+    }
+
+    public function categoryAll(){
+        $data['treeCategory'] = $this->categories->getCategoryFE();
+
+        $config['base_url'] = base_url('cat.html');
+        $config['total_rows'] = $this->categories->countAllProducts();
+        $config['per_page'] = 12;
+        $config['uri_segment'] = 2;
+        $config['use_page_numbers'] = TRUE;
+
+        $config["prev_tag_open"] = "<li id='pagination_previous_bottom' class='pagination_previous'>";
+        $config["prev_tag_close"] = "<li>";
+
+        $config["next_tag_open"] = "<li id='pagination_next_bottom' class='pagination_next'>";
+        $config["next_tag_open"] = "<li>";
+
+        $config["num_tag_open"] = "<li>";
+        $config["num_tag_close"] = "</li>";
+
+        $config["cur_tag_open"] = "<li><span>";
+        $config["cur_tag_close"] = "</span></li>";
+
+        $this->pagination->initialize($config);
+
+        $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
+        $data['products'] = $this->categories->getAllProducts($config["per_page"], $page);
+        $data["links"] = $this->pagination->create_links();
+
+        if ($this->session->userdata['languages'] == 'vn'){
+            $data['title'] = 'Sản Phẩm';
+            $data['description'] = 'Tất Cả Sản Phẩm';
+        }else{
+            $data['title'] = 'Products';
+            $data['description'] = 'All Products';
+        }
+        $data['template'] = 'sites/categoryAll';
 
         $this->load->view('layouts/index', $data);
     }
@@ -443,10 +482,10 @@ class Sites extends Front_Controller {
 
         $data['template'] = 'sites/news';
 
-        $config['base_url'] = base_url('sites/news');
+        $config['base_url'] = base_url('new.html');
         $config['total_rows'] = $this->news->countNews();
         $config['per_page'] = 5;
-        $config['uri_segment'] = 3;
+        $config['uri_segment'] = 2;
         $config['use_page_numbers'] = TRUE;
 
         $config["prev_tag_open"] = "<li id='pagination_previous_bottom' class='pagination_previous'>";
@@ -463,7 +502,7 @@ class Sites extends Front_Controller {
 
         $this->pagination->initialize($config);
 
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
         $data['news'] = $this->news->getNews($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
 
@@ -660,7 +699,7 @@ class Sites extends Front_Controller {
             $config['base_url'] = base_url('new-'. $slug.'.html');
             $config['total_rows'] = $data['category']->countProducts();
             $config['per_page'] = 10;
-            $config['uri_segment'] = 4;
+            $config['uri_segment'] = 2;
             $config['use_page_numbers'] = TRUE;
 
             $config["prev_tag_open"] = "<li id='pagination_previous_bottom' class='pagination_previous'>";
@@ -677,7 +716,7 @@ class Sites extends Front_Controller {
 
             $this->pagination->initialize($config);
 
-            $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+            $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
             $data['news'] = $data['category']->getNews($config["per_page"], $page);
             $data["links"] = $this->pagination->create_links();
         }else{
