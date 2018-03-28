@@ -49,7 +49,7 @@
                                     <?php $news = $this->news->getNews(6,0); ?>
                                     <?php foreach($news as $new): ?>
                                         <li style="float: none">
-                                            <a href="<?php echo base_url('sites/newDetail/'. $new->slug); ?>" title="<?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?>">
+                                            <a href="<?php echo base_url('tin-tuc/'.$new->getCategoryLink().'/'.$new->slug); ?>" title="<?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?>">
                                                 <?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?>
                                             </a>
                                         </li>

@@ -107,7 +107,7 @@ class News extends CI_Model {
 
     public function fb_comment_count()
     {
-        $json = json_decode(file_get_contents('https://graph.facebook.com/?ids=' . base_url('sites/newDetail/'. $this->slug)));
+        $json = json_decode(file_get_contents('https://graph.facebook.com/?ids=' . base_url('tin-tuc/'.$this->getCategoryLink().'/'.$this->slug)));
         return isset($json->url->comments) ? $json->url->comments : 0;
     }
 
@@ -164,6 +164,17 @@ class News extends CI_Model {
 
         if($category){
             return $category->title;
+        }else{
+            return '';
+        }
+    }
+
+    public function getCategoryLink(){
+        $query = $this->db->get_where('categories', array('id' => $this->category_id) );
+        $category = $query->row('0', 'Categories');
+
+        if($category){
+            return $category->slug;
         }else{
             return '';
         }

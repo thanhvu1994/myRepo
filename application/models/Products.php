@@ -177,6 +177,21 @@ class Products extends CI_Model {
         return '';
     }
 
+    public function getCategorySlug(){
+        $query = $this->db->get_where('product_categories', array('product_id' => $this->id));
+        $productCategory = $query->row();
+
+        if ($productCategory) {
+            $query = $this->db->get_where('categories', array('id' => $productCategory->category_id));
+            $category = $query->row();
+            if($category){
+                return $category->slug;
+            }
+        }
+
+        return '';
+    }
+
     function stripUnicode($str){
         if(!$str) return false;
         $unicode = array(
@@ -197,7 +212,7 @@ class Products extends CI_Model {
         $posts = $this->get_model();
         if (count($posts) > 0) {
             foreach ($posts as $post) {
-                $url = 'sites/product/'.$post->slug;
+                $url = 'san-pham/'.$post->getCategorySlug().'/'.$post->slug;
                 $result[$url] = $post->title;
             }
         }
