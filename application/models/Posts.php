@@ -89,14 +89,14 @@ class Posts extends CI_Model {
 
         if (count($categories) > 0) {
             foreach ($categories as $category) {
-                $url = 'danh-muc'.$category->slug;
+                $url = 'danh-muc/'.$category->slug;
                 $result[$url] = 'Danh mục: '.$category->category_name;
             }
         }
 
         $query = $this->db->query("SELECT * FROM ci_news ORDER BY title asc");
         $news =  $query->result('News');
-        $result['sites/news'] = 'Trang :Tổng hợp Tin tức';
+        $result['tin-tuc'] = 'Trang :Tổng hợp Tin tức';
         if (count($news) > 0) {
             foreach ($news as $new) {
                 $url = 'tin-tuc/'.$new->getCategoryLink().'/'.$new->slug;
