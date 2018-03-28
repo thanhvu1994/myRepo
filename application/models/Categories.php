@@ -291,14 +291,6 @@ class Categories extends CI_Model {
         return $products;
     }
 
-    public function getNews($limit, $start){
-        $this->db->limit($limit, $start);
-        $query = $this->db->get_where('news', array('category_id' => $this->id) );
-        $news = $query->result('News');
-
-        return $news;
-    }
-
     public function countProducts() {
         $products = array();
         $query = $this->db->get_where('product_categories', array('category_id' => $this->id) );
@@ -321,6 +313,14 @@ class Categories extends CI_Model {
         $this->db->where('status', STATUS_ACTIVE);
         $this->db->from('products');
         return $this->db->count_all_results();
+    }
+
+    public function getNews($limit, $start){
+        $this->db->limit($limit, $start);
+        $query = $this->db->get_where('news', array('category_id' => $this->id) );
+        $news = $query->result('News');
+
+        return $news;
     }
 
     public function countNews() {

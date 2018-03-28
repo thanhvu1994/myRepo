@@ -697,8 +697,8 @@ class Sites extends Front_Controller {
 
         if($data['category']){
             $config['base_url'] = base_url('new-'. $slug.'.html');
-            $config['total_rows'] = $data['category']->countProducts();
-            $config['per_page'] = 10;
+            $config['total_rows'] = $data['category']->countNews();
+            $config['per_page'] = 5;
             $config['uri_segment'] = 2;
             $config['use_page_numbers'] = TRUE;
 
