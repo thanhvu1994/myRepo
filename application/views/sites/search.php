@@ -30,7 +30,7 @@
 						<ul id="articles_list" class="clear">
 							<?php foreach ($products as $product): ?>
 								<li style="padding-bottom: 20px">
-				                    <a class="product-name" href="<?php echo base_url('san-pham/'.$product->getCategorySlug().'/'.$product->slug) ?>"><?php echo $product->getFieldFollowLanguage('product_name') ?></a>
+				                    <a class="product-name" href="<?php echo base_url('pro-'.$product->getCategorySlug().'/'.$product->slug) ?>"><?php echo $product->getFieldFollowLanguage('product_name') ?></a>
 								</li>
 							<?php endforeach ?>
 						</ul>
