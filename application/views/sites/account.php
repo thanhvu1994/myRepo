@@ -15,7 +15,7 @@
                         <ul class="myaccount-link-list">
                             <?php if (count($this->billingAddress->get_model(['user_id' => $user_id])) == 0): ?>
                                 <li>
-                                    <a href="<?php echo base_url('sites/address') ?>" title="Thêm địa chỉ đầu tiên của tôi">
+                                    <a href="<?php echo base_url('them-dia-chi.html') ?>" title="Thêm địa chỉ đầu tiên của tôi">
                                         <span><i class="icon-building"></i>
                                             <?php echo ($this->session->userdata['languages'] == 'vn')
                                                 ? 'Thêm Địa Chỉ Đầu Tiên'
@@ -30,7 +30,7 @@
                                 </a>
                             </li> -->
                             <li>
-                                <a href="<?php echo base_url('sites/addresses') ?>" title="Địa chỉ">
+                                <a href="<?php echo base_url('dia-chi-cua-toi.html') ?>" title="Địa chỉ">
                                     <span><i class="icon-building"></i>
                                         <?php echo ($this->session->userdata['languages'] == 'vn')
                                             ? 'Địa Chỉ Của Tôi'
@@ -39,7 +39,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url('sites/infomation') ?>" title="Thông tin">
+                                <a href="<?php echo base_url('thong-tin-ca-nhan.html') ?>" title="Thông tin">
                                     <span><i class="icon-user"></i>
                                         <?php echo ($this->session->userdata['languages'] == 'vn')
                                             ? 'Thông Tin Cá Nhân Của Tôi'

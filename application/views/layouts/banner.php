@@ -20,10 +20,10 @@
 							<img src="<?php echo $banner->get_image() ?>" width="1920" height="497" alt="<?php echo $banner->name ?>" class="center-cropped-banner"/>
 						</a>
 						<?php if (!empty($banner->name)): ?>
-		                	<div class="homeslider-title"><?php echo $banner->getFieldFollowLanguage('name') ?></div>
+		                	<div class="homeslider-title hidden-xs"><?php echo $banner->getFieldFollowLanguage('name') ?></div>
 						<?php endif ?>
 						<?php if (!empty($banner->button_name)): ?>
-			                <div class="homeslider-description">
+			                <div class="homeslider-description hidden-xs">
 			                    <div class="btn btn-default ps_button" style="background: red;">
 									<div style="float: left;">
 										<a href="<?php echo $banner->url ?>"><?php echo $banner->getFieldFollowLanguage('button_name') ?></a>

@@ -40,7 +40,7 @@
                                         <?php endif; ?></label>
 									<span><input class="form-control" type="password" name="Users[password]" value="" required/></span>
 								</div>
-								<p class="lost_password form-group"><a href="<?php echo base_url('sites/forgot') ?>" title="Khôi phục mật khẩu bị quên" rel="nofollow">
+								<p class="lost_password form-group"><a href="<?php echo base_url('quen-mat-khau.html') ?>" title="Khôi phục mật khẩu bị quên" rel="nofollow">
                                         <?php if($this->session->userdata['languages'] == 'vn'): ?>
                                             Quên Mật Khẩu?
                                         <?php else: ?>
@@ -56,7 +56,7 @@
                                             <?php endif; ?>
 										</span>
 									</button>
-									<a class="btn btn-default button button-medium exclusive" href="<?php echo base_url('sites/register') ?>">
+									<a class="btn btn-default button button-medium exclusive" href="<?php echo base_url('dang-ki-html') ?>">
 										<span>
 											<?php if($this->session->userdata['languages'] == 'vn'): ?>
                                                 Tạo Tài Khoản Mới

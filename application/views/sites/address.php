@@ -75,7 +75,7 @@
 				</div>
 				<ul class="footer_links clearfix">
 					<li>
-						<a class="btn btn-defaul button button-small" href="<?php echo base_url('/sites/addresses')?>">
+						<a class="btn btn-defaul button button-small" href="<?php echo base_url('dia-chi-cua-toi.html')?>">
 							<span> <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Trở lại' : 'Back'; ?></span>
 						</a>
 					</li>

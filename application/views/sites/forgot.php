@@ -40,7 +40,7 @@
 					</form>
 				</div>
 				<ul class="clearfix footer_links">
-					<li><a class="btn btn-default button button-small" href="<?php echo base_url('sites/login') ?>" title="Quay lại Đăng nhập" rel="nofollow"><span><?php if($this->session->userdata['languages'] == 'vn'): ?>
+					<li><a class="btn btn-default button button-small" href="<?php echo base_url('dang-nhap.html') ?>" title="Quay lại Đăng nhập" rel="nofollow"><span><?php if($this->session->userdata['languages'] == 'vn'): ?>
                                     Quay lại
                                 <?php else: ?>
                                     Back

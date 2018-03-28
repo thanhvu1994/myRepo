@@ -5,7 +5,7 @@
 		        </div>
 				<footer id="footer"  class="container">
 					<div class="row"><!-- MODULE Block new products -->
-						<div class="col-xs-6 col-sm-3 ps_product_footer">
+						<div class="col-xs-12 col-sm-3 ps_product_footer">
 						    <div>
 						        <?php if ($this->session->userdata['languages'] == 'vn'): ?>
 						        	<h4>Sản phẩm</h4>
@@ -34,7 +34,7 @@
 						</div>
 						<!-- /MODULE Block new products -->
 						<!-- MODULE Block new products -->
-						<div class="col-xs-6 col-sm-3 ps_social_bottom">
+						<div class="col-xs-12 col-sm-3 ps_social_bottom">
 							<?php if ($this->session->userdata['languages'] == 'vn'): ?>
 					        	<h4>Các bài viết gần đây</h4>
 				            <?php else: ?>
@@ -58,7 +58,7 @@
 		            		</div>
 						</div>
 						<!-- /MODULE Block new products -->
-						<div class="col-xs-6 col-sm-3 ps_social_bottom">
+						<div class="col-xs-12 col-sm-3 ps_social_bottom">
 						    <?php if ($this->session->userdata['languages'] == 'vn'): ?>
 					        	<h4>Tham gia trên</h4>
 				            <?php else: ?>
@@ -129,8 +129,8 @@
 		                    </ul>
 						</div>
 						<!-- MODULE Block contact infos -->
-						<section id="block_contact_infos" class="col-xs-6 col-sm-3">
-							<div>
+						<div class="clear hidden-lg hidden-md hidden-sm"></div>
+						<div id="block_contact_infos" class="col-xs-12 col-sm-3">
 						        <?php if ($this->session->userdata['languages'] == 'vn'): ?>
 						        	<h4>Liên hệ</h4>
 					            <?php else: ?>
@@ -142,7 +142,7 @@
 						        <ul>
 					            	<?php if (!empty($this->settings->get_param('companyAddress'))): ?>
 			                        	<li>
-			                    			<a href="content/45-lien-he.html">
+			                    			<a href="<?php echo base_url('lien-he.html') ?>">
 			                    				<i class="icon-map-marker"></i>
 			                    				<?php echo $this->settings->get_param('companyAddress') ?>
 			                    			</a>
@@ -170,8 +170,7 @@
 						            	</li>
 					            	<?php endif ?>
 			                    </ul>
-						    </div>
-						</section>
+						</div>
 						<!-- /MODULE Block contact infos -->
 					</div>
 				</footer>

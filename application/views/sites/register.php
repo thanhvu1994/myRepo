@@ -186,7 +186,7 @@
 				<?php if (isset($info['info'])): ?>
 					<ul class="footer_links clearfix" style="margin-top: 30px">
 						<li>
-					        <a class="btn btn-default button button-small" href="<?php echo base_url('sites/account') ?>">
+					        <a class="btn btn-default button button-small" href="<?php echo base_url('tai-khoan.html') ?>">
 					            <span>
 					                <?php if($this->session->userdata['languages'] == 'vn'): ?>
                                         Quay Lại
@@ -197,7 +197,7 @@
 					        </a>
 					    </li>
 						<li>
-					        <a class="btn btn-default button button-small" href="<?php echo base_url('sites') ?>">
+					        <a class="btn btn-default button button-small" href="<?php echo base_url('/') ?>">
 					            <span>
 					                <?php if($this->session->userdata['languages'] == 'vn'): ?>
                                         Trang Chủ

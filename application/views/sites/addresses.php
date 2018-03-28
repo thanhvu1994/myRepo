@@ -65,13 +65,13 @@
                     </div>
                 <?php endif ?>
                 <div class="clearfix main-page-indent">
-                	<a href="<?php echo base_url('sites/address') ?>" title="Thêm địa chỉ mới" class="btn btn-default button button-medium">
+                	<a href="<?php echo base_url('them-dia-chi.html') ?>" title="Thêm địa chỉ mới" class="btn btn-default button button-medium">
                         <span><?php echo ($this->session->userdata['languages'] == 'vn') ? 'Thêm Địa Chỉ Mới' : 'Add Address'; ?></span>
                     </a>
                 </div>
                 <ul class="footer_links clearfix">
-                	<li><a class="btn btn-defaul button button-small" href="<?php echo base_url('sites/account') ?>"><span> <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Quay Lại Trang Tài Khoản' : 'Back to Account'; ?></span></a></li>
-                	<li><a class="btn btn-defaul button button-small" href="<?php echo base_url('sites') ?>"><span> <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Trang Chủ' : 'Home'; ?></span></a></li>
+                	<li><a class="btn btn-defaul button button-small" href="<?php echo base_url('tai-khoan.html') ?>"><span> <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Quay Lại Trang Tài Khoản' : 'Back to Account'; ?></span></a></li>
+                	<li><a class="btn btn-defaul button button-small" href="<?php echo base_url('/') ?>"><span> <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Trang Chủ' : 'Home'; ?></span></a></li>
                 </ul>
             </div><!-- #center_column -->
 		</div><!-- .row -->
