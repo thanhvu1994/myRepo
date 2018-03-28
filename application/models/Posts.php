@@ -99,7 +99,7 @@ class Posts extends CI_Model {
         $result['tin-tuc'] = 'Trang :Tổng hợp Tin tức';
         if (count($news) > 0) {
             foreach ($news as $new) {
-                $url = 'tin-tuc/'.$new->getCategoryLink().'/'.$new->slug;
+                $url = 'new-'.$new->getCategoryLink().'/'.$new->slug.'.html';
                 $result[$url] = 'Tin Tức: '.$new->title;
             }
         }
@@ -135,7 +135,7 @@ class Posts extends CI_Model {
 
     public function fb_comment_count()
     {
-        $json = json_decode(file_get_contents('https://graph.facebook.com/?ids=' . base_url('tin-tuc/'.$this->getCategoryLink().'/'.$this->slug)));
+        $json = json_decode(file_get_contents('https://graph.facebook.com/?ids=' . base_url('new-'.$this->getCategoryLink().'/'.$this->slug.'.html')));
         return isset($json->url->comments) ? $json->url->comments : 0;
     }
 

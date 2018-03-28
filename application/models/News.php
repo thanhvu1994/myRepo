@@ -107,7 +107,7 @@ class News extends CI_Model {
 
     public function fb_comment_count()
     {
-        $json = json_decode(file_get_contents('https://graph.facebook.com/?ids=' . base_url('tin-tuc/'.$this->getCategoryLink().'/'.$this->slug)));
+        $json = json_decode(file_get_contents('https://graph.facebook.com/?ids=' . base_url('new-'.$this->getCategoryLink().'/'.$this->slug.'.html')));
         return isset($json->url->comments) ? $json->url->comments : 0;
     }
 

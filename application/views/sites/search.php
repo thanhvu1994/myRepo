@@ -19,7 +19,7 @@
 						<ul id="articles_list" class="clear">
 							<?php foreach ($results as $result): ?>
 								<li style="padding-bottom: 20px">
-				                    <a class="product-name" href="<?php echo base_url('tin-tuc/'.$new->getCategoryLink().'/'.$new->slug); ?>"><?php echo $result->getFieldFollowLanguage('title') ?></a>
+				                    <a class="product-name" href="<?php echo base_url('new-'.$new->getCategoryLink().'/'.$new->slug.'.html'); ?>"><?php echo $result->getFieldFollowLanguage('title') ?></a>
 									<div><?php echo $result->getFieldFollowLanguage('short_content') ?></div>
 								</li>
 							<?php endforeach ?>
