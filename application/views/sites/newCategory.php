@@ -17,8 +17,8 @@
                     <div class="block_content">
                         <ul class="tree dhtml">
                             <li>
-                                <a href="javascript:void(0)" title="<?php echo ($this->session->userdata['languages'] == 'vn') ? $category->title : $category->title_en; ?>">
-                                    <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Sản Phẩm' : 'Products'; ?>
+                                <a href="<?php echo base_url('news.html'); ?>" title="<?php echo ($this->session->userdata['languages'] == 'vn') ? 'Tin Tức' : 'News'; ?>">
+                                    <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Tin Tức' : 'News'; ?>
                                 </a>
                                 <ul>
                                     <?php foreach($treeCategory as $cate): ?>

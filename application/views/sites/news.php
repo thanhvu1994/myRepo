@@ -9,15 +9,18 @@
                 <div id="categories_block_left" class="block">
                     <h2 class="title_block">
                         <?php if ($this->session->userdata['languages'] == 'vn'): ?>
-                            <?php echo 'Danh Mục'; ?>
+                            <?php echo 'Tin Tức'; ?>
                         <?php else: ?>
-                            <?php echo 'Category'; ?>
+                            <?php echo 'News'; ?>
                         <?php endif; ?>
                     </h2>
                     <div class="block_content">
                         <ul class="tree dhtml">
                             <li>
                                 <ul>
+                                    <a class="selected" href="<?php echo base_url('news.html'); ?>" title="<?php echo ($this->session->userdata['languages'] == 'vn') ? 'Tin Tức' : 'News'; ?>">
+                                        <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Tin Tức' : 'News'; ?>
+                                    </a>
                                     <?php foreach($treeCategory as $cate): ?>
                                         <li>
                                             <a href="<?php echo ($cate['slug'])? base_url('new-'.$cate['slug'].'.html') : 'javascript:void(0)'; ?>" title="<?php echo $cate['title']; ?>">

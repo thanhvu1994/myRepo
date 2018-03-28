@@ -61,7 +61,7 @@ $route['cat.html/(:num)'] = 'sites/categoryAll';
 $route['cat-(:any).html'] = 'sites/category/$1';
 $route['cat-(:any).html/(:num)'] = 'sites/category/$1';
 $route['pro-(:any)/(:any).html'] = 'sites/product/$2';
-$route['tin-tuc.html'] = 'sites/news';
+$route['new.html'] = 'sites/news';
 $route['new-(:any).html'] = 'sites/newCategory/$1';
 $route['new-(:any)/(:any).html'] = 'sites/newDetail/$2';
 
