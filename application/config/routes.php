@@ -55,12 +55,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'sites/index';
 $route['admin'] = 'admin/login';
-$route['trang/(:any)'] = 'sites/cms/$1';
+$route['page-(:any)'] = 'sites/cms/$1';
 $route['cat-(:any).html'] = 'sites/category/$1';
 $route['pro-(:any)/(:any).html'] = 'sites/product/$2';
-$route['tin-tuc'] = 'sites/news';
-$route['tin-tuc/(:any)'] = 'sites/newCategory/$1';
-$route['tin-tuc/(:any)/(:any)'] = 'sites/newDetail/$2';
+$route['new.html'] = 'sites/news';
+$route['new-(:any).html'] = 'sites/newCategory/$1';
+$route['new-(:any)/(:any).html'] = 'sites/newDetail/$2';
 
 $route['(lien-he).html'] = 'sites/contact';
 $route['(dang-nhap).html'] = 'sites/login';
