@@ -275,6 +275,19 @@ class Sites extends Front_Controller {
                 $this->users->set_model($data_insert);
                 redirect('sites/login', 'refresh');
             }
+        } else {
+            $date = DateTime::createFromFormat("Y-m-d", date('Y-m-d'));
+            $info = [
+                'gender' => 0,
+                'last_name' => '',
+                'first_name' => '',
+                'email' => '',
+                'days' => $date->format("d"),
+                'months' => $date->format("m"),
+                'years' => $date->format("Y"),
+                'info' => true,
+            ];
+            $data['info'] = $info;
         }
         $this->load->view('layouts/index', $data);
     }
