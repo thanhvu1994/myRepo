@@ -59,14 +59,9 @@ $route['danh-muc.html'] = 'sites/categoryAll';
 $route['danh-muc.html/(:num)'] = 'sites/categoryAll';
 $route['tin-tuc.html'] = 'sites/news';
 $route['tin-tuc.html/(:num)'] = 'sites/news';
-$route['(:any)p.html'] = 'sites/cms/$1';
-$route['(:any)c.html'] = 'sites/category/$1';
-$route['(:any)c.html/(:num)'] = 'sites/category/$1';
-$route['(:any)/(:any)p.html'] = 'sites/product/$2';
-$route['(:any)n.html'] = 'sites/newCategory/$1';
-$route['(:any)n.html/(:num)'] = 'sites/newCategory/$1';
-$route['(:any)/(:any)n.html'] = 'sites/newDetail/$2';
 
+$route['(dat-hang)/(:any).html'] = 'sites/contact/dat-hang/$2';
+$route['(bao-gia)/(:any).html'] = 'sites/contact/bao-gia/$2';
 $route['(lien-he).html'] = 'sites/contact';
 $route['(dang-nhap).html'] = 'sites/login';
 $route['(quen-mat-khau).html'] = 'sites/forgot';
@@ -77,6 +72,14 @@ $route['(dia-chi-cua-toi).html'] = 'sites/addresses';
 $route['(tai-khoan).html'] = 'sites/account';
 $route['(thong-tin-ca-nhan).html'] = 'sites/infomation';
 $route['(dang-xuat).html'] = 'sites/logout';
+
+$route['(:any)p.html'] = 'sites/cms/$1';
+$route['(:any)c.html'] = 'sites/category/$1';
+$route['(:any)c.html/(:num)'] = 'sites/category/$1';
+$route['(:any)/(:any)p.html'] = 'sites/product/$2';
+$route['(:any)n.html'] = 'sites/newCategory/$1';
+$route['(:any)n.html/(:num)'] = 'sites/newCategory/$1';
+$route['(:any)/(:any)n.html'] = 'sites/newDetail/$2';
 
 
 

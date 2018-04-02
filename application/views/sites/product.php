@@ -233,7 +233,7 @@
                                 <div>
                                     <div style="padding: 15px 15px 30px 0;float: left">
                                         <p class="buttons_bottom_block no-print">
-                                            <a href="<?php echo base_url('sites/contact/dat-hang/'.$product->slug); ?>" title="" target="blank">
+                                            <a href="<?php echo base_url('dat-hang/'.$product->slug.'.html'); ?>" title="" target="blank">
                                                 <button type="button" class="exclusive ps_product_addcart">
                                                     <?php if($this->session->userdata['languages'] == 'vn'): ?>
                                                         <span>Liên Hệ Đặt Hàng</span>
@@ -246,7 +246,7 @@
                                     </div>
                                     <div style="padding: 15px 15px 30px 0;float: left">
                                         <p class="buttons_bottom_block no-print">
-                                            <a href="<?php echo base_url('sites/contact/bao-gia/'.$product->slug); ?>" title="" target="blank">
+                                            <a href="<?php echo base_url('bao-gia/'.$product->slug.'.html'); ?>" title="" target="blank">
                                                 <button type="button" class="exclusive ps_product_addcart">
                                                     <?php if($this->session->userdata['languages'] == 'vn'): ?>
                                                         <span>Liên Hệ Báo Giá</span>
