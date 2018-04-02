@@ -58,6 +58,7 @@ class News extends CI_Model {
 	        'content_en' => $this->input->post('content_en'),
             'category_id' => $this->input->post('category'),
             'featured_image' => $image,
+            'slug' => $this->generateSlug($this->input->post('title'), $id),
             'language' => 'vn',
             'created_date' => date('Y-m-d H:i:s'),
 	    );
@@ -107,15 +108,21 @@ class News extends CI_Model {
 
     public function fb_comment_count()
     {
-        $json = json_decode(file_get_contents('https://graph.facebook.com/?ids=' . base_url('new-'.$this->getCategoryLink().'/'.$this->slug.'.html')));
+        $json = json_decode(file_get_contents('https://graph.facebook.com/?ids=' . base_url($this->getCategoryLink().'/'.$this->slug.'n.html')));
         return isset($json->url->comments) ? $json->url->comments : 0;
     }
 
-    public function generateSlug($str){
+    public function generateSlug($str, $id = null){
         $maxid = 0;
         $row = $this->db->query('SELECT MAX(id) AS `maxid` FROM `ci_news`')->row();
-        if ($row) {
-            $maxid = $row->maxid;
+
+        if($id){
+            $maxid = $id;
+
+        }else{
+            if ($row) {
+                $maxid = $row->maxid;
+            }
         }
 
         $str = trim(mb_strtolower($str));

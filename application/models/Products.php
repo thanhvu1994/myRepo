@@ -73,6 +73,7 @@ class Products extends CI_Model {
             'meta_description' => $this->input->post('meta_description'),
             'price' => $this->input->post('price'),
             'sale_price' => $this->input->post('sale_price'),
+            'slug' => $this->products->generateSlug($this->input->post('product_name'), $id),
             'status' => ($this->input->post('status')) ? $this->input->post('status') : STATUS_INACTIVE
         );
 
@@ -102,11 +103,17 @@ class Products extends CI_Model {
         return 'P'.date('dmY').(str_pad($maxid+1, 4, '0', STR_PAD_LEFT));
     }
 
-    public function generateSlug($str){
+    public function generateSlug($str, $id = null){
         $maxid = 0;
         $row = $this->db->query('SELECT MAX(id) AS `maxid` FROM `ci_products`')->row();
-        if ($row) {
-            $maxid = $row->maxid;
+
+        if($id){
+            $maxid = $id;
+
+        }else{
+            if ($row) {
+                $maxid = $row->maxid;
+            }
         }
 
         $str = trim(mb_strtolower($str));
@@ -212,7 +219,7 @@ class Products extends CI_Model {
         $posts = $this->get_model();
         if (count($posts) > 0) {
             foreach ($posts as $post) {
-                $url = 'pro-'.$post->getCategorySlug().'/'.$post->slug.'.html';
+                $url = $post->getCategorySlug().'/'.$post->slug.'p.html';
                 $result[$url] = $post->title;
             }
         }

@@ -14,7 +14,7 @@
                         <div class="post-info">
                             <span><?php echo ($this->session->userdata['languages'] == 'vn') ? 'Đăng Bởi' : 'Posted By'; ?>  &nbsp;<i class="icon icon-user"></i><span itemprop="author">Admin</span>&nbsp;
                                 <i class="icon icon-calendar"></i>&nbsp;<span itemprop="dateCreated"><?php echo date('d M, Y', strtotime($new->created_date)); ?></span>&nbsp;&nbsp;
-                                <i class="icon icon-comments"></i>&nbsp; <div style="display: inline-block;" class="fb-comments-count" data-href="<?php echo base_url('new-'.$new->getCategoryLink().'/'.$new->slug.'.html'); ?>">0</div> <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Bình Luận' : 'Comments'; ?></span>
+                                <i class="icon icon-comments"></i>&nbsp; <div style="display: inline-block;" class="fb-comments-count" data-href="<?php echo base_url($new->getCategoryLink().'/'.$new->slug.'n.html'); ?>">0</div> <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Bình Luận' : 'Comments'; ?></span>
                             <a title="" style="display:none" itemprop="url" href="#"></a>
                         </div>
                         <div itemprop="articleBody">
@@ -25,7 +25,7 @@
 
                 </div>
                 <div class="smartblogcomments" id="respond">
-                    <div data-width="100%" class="fb-comments" data-href="<?php echo base_url('new-'.$new->getCategoryLink().'/'.$new->slug.'.html'); ?>" data-numposts="5"></div>
+                    <div data-width="100%" class="fb-comments" data-href="<?php echo base_url($new->getCategoryLink().'/'.$new->slug.'n.html'); ?>" data-numposts="5"></div>
                 </div>
 
                 <script type="text/javascript">

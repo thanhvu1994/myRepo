@@ -20,7 +20,7 @@
                     <div class="block_content">
                         <ul class="tree dhtml">
                             <li>
-                                <a href="<?php echo base_url('cat.html'); ?>" title="<?php echo ($this->session->userdata['languages'] == 'vn')  ? 'Sản Phẩm' : 'Products'; ?>">
+                                <a href="<?php echo base_url('danh-muc.html'); ?>" title="<?php echo ($this->session->userdata['languages'] == 'vn')  ? 'Sản Phẩm' : 'Products'; ?>">
                                     <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Sản Phẩm' : 'Products'; ?>
                                 </a>
                                 <ul>
@@ -33,7 +33,7 @@
                                                     $selected = ($cate['slug'] == $category->slug_en)? 'class="selected"': '';
                                                 }
                                             ?>
-                                            <a href="<?php echo ($cate['slug'])? base_url('cat-'.$cate['slug'].'.html') : 'javascript:void(0)'; ?>" <?php echo $selected; ?> title="<?php echo $cate['title']; ?>">
+                                            <a href="<?php echo ($cate['slug'])? base_url($cate['slug'].'c.html') : 'javascript:void(0)'; ?>" <?php echo $selected; ?> title="<?php echo $cate['title']; ?>">
                                                 <?php echo $cate['title']; ?>
                                             </a>
                                             <?php if(!empty($cate['child'])): ?>
@@ -47,7 +47,7 @@
                                                             $selected = ($childCate['slug'] == $category->slug_en)? 'class="selected"': '';
                                                         }
                                                         ?>
-                                                        <a href="<?php echo base_url('cat-'.$childCate['slug'].'.html'); ?>" <?php echo $selected; ?> title="<?php echo $childCate['title']; ?>">
+                                                        <a href="<?php echo base_url($childCate['slug'].'c.html'); ?>" <?php echo $selected; ?> title="<?php echo $childCate['title']; ?>">
                                                             <?php echo $childCate['title']; ?>
                                                         </a>
                                                     </li>
@@ -72,22 +72,22 @@
                             <div class="product-container" itemscope itemtype="http://schema.org/Product">
                                 <div class="left-block">
                                     <div class="product-image-container">
-                                        <a class="pro   duct_img_link"	href="<?php echo base_url('pro-'.$product->getCategorySlug().'/'.$product->slug.'.html'); ?>" title="<?php echo $product->title; ?>" itemprop="url">
+                                        <a class="pro   duct_img_link"	href="<?php echo base_url($product->getCategorySlug().'/'.$product->slug.'p.html'); ?>" title="<?php echo $product->title; ?>" itemprop="url">
                                             <img class="replace-2x img-responsive center-cropped" src="<?php echo $product->getFirstImage(); ?>" alt="<?php echo $product->title; ?>"  width="270" height="270" itemprop="image" />
                                         </a>
                                         <div class="quick-view-wrapper-mobile">
-                                            <a class="quick-view-mobile" href="<?php echo base_url('pro-'.$product->getCategorySlug().'/'.$product->slug.'.html'); ?>" rel="<?php echo base_url('pro-'.$product->getCategorySlug().'/'.$product->slug.'.html'); ?>">
+                                            <a class="quick-view-mobile" href="<?php echo base_url($product->getCategorySlug().'/'.$product->slug.'p.html'); ?>" rel="<?php echo base_url($product->getCategorySlug().'/'.$product->slug.'p.html'); ?>">
                                                 <i class="icon-eye-open"></i>
                                             </a>
                                         </div>
-                                        <a class="quick-view" href="<?php echo base_url('pro-'.$product->getCategorySlug().'/'.$product->slug.'.html'); ?>" rel="<?php echo base_url('pro-'.$product->getCategorySlug().'/'.$product->slug.'.html'); ?>">
+                                        <a class="quick-view" href="<?php echo base_url($product->getCategorySlug().'/'.$product->slug.'p.html'); ?>" rel="<?php echo base_url($product->getCategorySlug().'/'.$product->slug.'p.html'); ?>">
                                             <span>Quick View</span>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="right-block">
                                     <h5 itemprop="name">
-                                        <a class="product-name" href="<?php echo base_url('pro-'.$product->getCategorySlug().'/'.$product->slug.'.html'); ?>" title="<?php echo $product->title; ?>" itemprop="url" >
+                                        <a class="product-name" href="<?php echo base_url($product->getCategorySlug().'/'.$product->slug.'p.html'); ?>" title="<?php echo $product->title; ?>" itemprop="url" >
                                             <?php echo ($this->session->userdata['languages'] == 'vn') ? $product->product_name : $product->product_name_en; ?>
                                         </a>
                                     </h5>
@@ -99,7 +99,7 @@
                                         <?php echo $product->sale_price; ?>
                                     </div>
                                     <div class="button-container">
-                                        <a itemprop="url" class="button lnk_view btn btn-default" href="<?php echo base_url('pro-'.$product->getCategorySlug().'/'.$product->slug.'.html'); ?>" title="View">
+                                        <a itemprop="url" class="button lnk_view btn btn-default" href="<?php echo base_url($product->getCategorySlug().'/'.$product->slug.'p.html'); ?>" title="View">
                                             <span>Add</span>
                                         </a>
                                     </div>
@@ -112,7 +112,7 @@
                                                     <?php foreach($attributeValues as $key => $value): ?>
                                                         <?php ?>
                                                             <li>
-                                                                <a href="<?php echo base_url('pro-'.$product->getCategorySlug().'/'.$product->slug.'.html'); ?>" id="color_<?php echo $key; ?>" style="background:<?php echo $value->name; ?>;">
+                                                                <a href="<?php echo base_url($product->getCategorySlug().'/'.$product->slug.'p.html'); ?>" id="color_<?php echo $key; ?>" style="background:<?php echo $value->name; ?>;">
                                                                 </a>
                                                             </li>
                                                     <?php endforeach; ?>

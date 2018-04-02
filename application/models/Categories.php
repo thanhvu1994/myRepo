@@ -61,8 +61,8 @@ class Categories extends CI_Model {
 	    	}
 	    }
 	    $data_insert['update_date'] = date('Y-m-d H:i:s');
-        $data_insert['slug'] = $this->generateSlug($data_insert['category_name']);
-        $data_insert['slug_en'] = $this->generateSlug($data_insert['category_name_en']);
+        $data_insert['slug'] = $this->generateSlug($data_insert['category_name'], $id);
+        $data_insert['slug_en'] = $this->generateSlug($data_insert['category_name_en'], $id);
 	    $data_insert['type_level'] = $type_level;
 
 	    $this->db->where('id', $id);
@@ -392,11 +392,16 @@ class Categories extends CI_Model {
         return $items;
     }
 
-    public function generateSlug($str){
+    public function generateSlug($str, $id = null){
         $maxid = 0;
         $row = $this->db->query('SELECT MAX(id) AS `maxid` FROM `ci_categories`')->row();
-        if ($row) {
-            $maxid = $row->maxid;
+
+        if($id){
+            $maxid = $id;
+        }else{
+            if ($row) {
+                $maxid = $row->maxid;
+            }
         }
 
         $str = trim(mb_strtolower($str));

@@ -123,7 +123,7 @@ class Sites extends Front_Controller {
         $data['treeCategory'] = $this->categories->getCategoryFE();
 
         if($data['category']){
-            $config['base_url'] = base_url('cat-'. $slug.'.html');
+            $config['base_url'] = base_url($slug.'c.html');
             $config['total_rows'] = $data['category']->countProducts();
             $config['per_page'] = 12;
             $config['uri_segment'] = 2;
@@ -170,7 +170,7 @@ class Sites extends Front_Controller {
     public function categoryAll(){
         $data['treeCategory'] = $this->categories->getCategoryFE();
 
-        $config['base_url'] = base_url('cat.html');
+        $config['base_url'] = base_url('danh-muc.html');
         $config['total_rows'] = $this->categories->countAllProducts();
         $config['per_page'] = 12;
         $config['uri_segment'] = 2;
@@ -482,7 +482,7 @@ class Sites extends Front_Controller {
 
         $data['template'] = 'sites/news';
 
-        $config['base_url'] = base_url('new.html');
+        $config['base_url'] = base_url('tin-tuc.html');
         $config['total_rows'] = $this->news->countNews();
         $config['per_page'] = 5;
         $config['uri_segment'] = 2;
@@ -696,7 +696,7 @@ class Sites extends Front_Controller {
         $data['treeCategory'] = $this->categories->getCategoryNewFE();
 
         if($data['category']){
-            $config['base_url'] = base_url('new-'. $slug.'.html');
+            $config['base_url'] = base_url($slug.'n.html');
             $config['total_rows'] = $data['category']->countNews();
             $config['per_page'] = 5;
             $config['uri_segment'] = 2;

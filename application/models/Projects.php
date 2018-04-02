@@ -60,6 +60,7 @@ class Projects extends CI_Model {
 	        'content' => $this->input->post('content'),
 	        'content_en' => $this->input->post('content_en'),
 	        'featured_image' => $image,
+            'slug' => $this->generateSlug($this->input->post('title'), $id),
             'url' => $this->input->post('url'),
             'language' => 'vn',
 	    );
@@ -99,11 +100,16 @@ class Projects extends CI_Model {
         return $query->result('Projects');
     }
 
-    public function generateSlug($str){
+    public function generateSlug($str, $id = null){
         $maxid = 0;
         $row = $this->db->query('SELECT MAX(id) AS `maxid` FROM `ci_projects`')->row();
-        if ($row) {
-            $maxid = $row->maxid;
+
+        if($id){
+            $maxid = $id;
+        }else{
+            if ($row) {
+                $maxid = $row->maxid;
+            }
         }
 
         $str = trim(mb_strtolower($str));
