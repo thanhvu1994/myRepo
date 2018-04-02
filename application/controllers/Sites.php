@@ -727,10 +727,10 @@ class Sites extends Front_Controller {
         if(isset($data['category'])){
             if ($this->session->userdata['languages'] == 'vn'){
                 $data['title'] = $data['category']->title;
-                $data['description'] = $data['category']->description;
+                $data['description'] = 'Tin tức về '.$data['category']->title;
             }else{
                 $data['title'] = $data['category']->title_en;
-                $data['description'] = $data['category']->description_en;
+                $data['description'] = 'News in '.$data['category']->title_en;
             }
             $data['template'] = 'sites/newCategory';
         }else{
