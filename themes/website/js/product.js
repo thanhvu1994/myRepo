@@ -148,7 +148,9 @@ $(document).ready(function(){
 	}
 	//add a link on the span 'view full size' and on the big image
 	$(document).on('click', '#view_full_size, #image-block', function(e){
-		$('#views_block .shown').click();
+        var img = $(this).find('#bigpic').attr('src');
+
+        $('#thumbs_list').find('a[href="'+img+'"]').trigger('click');
 	});
 
 	//catch the click on the "more infos" button at the top of the page

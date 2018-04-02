@@ -67,11 +67,8 @@
                             <div id="smartblogpost-<?php echo $new->id; ?>">
                                 <div class="sdsarticleHeader">
                                     <p class='sdstitle_block'><a title="<?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?>" href='<?php echo base_url($new->getCategoryLink().'/'.$new->slug.'n.html'); ?>'><?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?></a></p>
-                                    <span><?php echo ($this->session->userdata['languages'] == 'vn') ? 'Đăng Bởi' : 'Posted By'; ?>
-                                    <span itemprop="author">&nbsp;<i class="icon icon-user"></i>&nbsp; Admin</span>
-                                    <span itemprop="articleSection">  <i class="icon icon-tags"></i> <?php echo $new->getCategoryLink(); ?></span>
-                                    <span class="comment"> &nbsp;<i class="icon icon-comments"></i>&nbsp; <div style="display: inline-block;" class="fb-comments-count" data-href="<?php echo base_url($new->getCategoryLink().'/'.$new->slug.'n.html'); ?>">0</div> <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Bình Luận' : 'Comments'; ?></span>&nbsp;
-                                    <i class="icon icon-eye-open"></i> <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Lượt Xem' : 'Views'; ?> (<?php echo $new->views; ?>)</span>
+                                    <i class="icon icon-tags"></i> <a href="<?php echo base_url($new->getCategoryLink().'n.html'); ?>"><span itemprop="articleSection"><?php echo $new->getCategory(); ?></span></a>
+                                    <i style="margin-left: 5px;" class="icon icon-eye-open"></i> <span> <?php echo ($this->session->userdata['languages'] == 'vn') ? 'Lượt Xem' : 'Views'; ?> (<?php echo $new->views; ?>)</span>
                                 </div>
                                 <div class="articleContent">
                                     <a  href='<?php echo base_url($new->getCategoryLink().'/'.$new->slug.'n.html'); ?>' itemprop="url" title="<?php echo ($this->session->userdata['languages'] == 'vn') ? $new->title : $new->title_en; ?>" class="imageFeaturedLink">
