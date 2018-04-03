@@ -44,6 +44,7 @@ class Posts extends CI_Model {
             'slug' => $this->generateSlug($this->input->post('title')),
             'language' => 'vn',
         );
+        $data['show_map'] = $this->input->post('show_map') ? $this->input->post('show_map') : 0;
 
 	    return $this->db->insert('posts', $data);
 	}
@@ -62,7 +63,7 @@ class Posts extends CI_Model {
             'slug' => $this->generateSlug($this->input->post('title'), $id),
             'language' => 'vn',
 	    );
-
+        $data['show_map'] = $this->input->post('show_map') ? $this->input->post('show_map') : 0;
 	    $this->db->where('id', $id);
         $this->db->update('posts', $data);
 	}

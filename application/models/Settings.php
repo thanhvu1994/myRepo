@@ -48,6 +48,7 @@ class Settings extends CI_Model {
                 ['name' => 'companyCellPhone', 'controlTyle' => 'text', 'notes' => '', 'unit' => '', 'htmlOptions' => ['maxlength' => 80], 'rules' => ''],
                 ['name' => 'companyPhone', 'controlTyle' => 'text', 'notes' => '', 'unit' => '', 'htmlOptions' => ['maxlength' => 80], 'rules' => ''],
                 ['name' => 'companyEmail', 'controlTyle' => 'text', 'notes' => '', 'unit' => '', 'htmlOptions' => ['maxlength' => 80], 'rules' => ''],
+                ['name' => 'map', 'controlTyle' => 'text', 'notes' => '', 'unit' => '', 'htmlOptions' => ['maxlength' => 500], 'rules' => ''],
 
             ],
         ],
@@ -68,7 +69,8 @@ class Settings extends CI_Model {
             'companyPhone' => 'Điện thoại công ty',
             'companyEmail' => 'Địa chỉ Email',
             'introduce' => 'Sơ lược công ty',
-            'introduce_en' => 'Sơ lược công ty (tiếng anh)'
+            'introduce_en' => 'Sơ lược công ty (tiếng anh)',
+            'map' => 'Bản đồ',
         ];
 
         if (isset($attrbute_name[$field])) {

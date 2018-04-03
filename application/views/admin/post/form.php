@@ -102,6 +102,23 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="publish" class="col-md-12">Hiển thị bản đồ</label>
+                            <div class="col-md-12">
+                                <?php
+                                    $checked = 'checked';
+                                    if (isset($model)) {
+                                        if ($model->show_map == true) {
+                                            $checked = 'checked';
+                                        } else {
+                                            $checked = '';
+                                        }
+                                    }
+                                ?>
+                                <input type="checkbox" <?php echo $checked ?> class="js-switch publish-ajax" data-color="#13dafe" value="1" id="publish" name="show_map"/>
+                            </div>
+                        </div>
+
                         <!--<div class="form-group">
                             <label class="col-md-12">Language</label>
                             <div class="col-md-12">

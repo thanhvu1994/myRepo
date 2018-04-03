@@ -12,7 +12,13 @@
                 <div class="block-cms">
                     <h1><?php //echo ($this->session->userdata['languages'] == 'vn') ? $page->title : $page->title_en; ?></h1>
 
-                    <?php echo ($this->session->userdata['languages'] == 'vn') ? $page->content : $page->content_en; ?>
+                    <?php 
+                        echo ($this->session->userdata['languages'] == 'vn') ? $page->content : $page->content_en; 
+                        $map = $this->settings->get_param('map');
+                    ?>
+                    <?php if ($page->show_map && !empty($map)): ?>
+                        <iframe src="<?php echo $map ?>" width="100%" height="600" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+                    <?php endif ?>
                 </div>
 
                 <div class="content_sortPagiBar">
