@@ -61,6 +61,8 @@ ADD COLUMN `content_en`  longtext NOT NULL AFTER `content`;
 ALTER TABLE `ci_news`
 ADD COLUMN `category_id`  int(11) NOT NULL AFTER `content_en`;
 
+ALTER TABLE `ci_posts` ADD `show_map` TINYINT(1) NOT NULL AFTER `language`;
+
 
 
 

@@ -278,7 +278,7 @@ class Sites extends Front_Controller {
         } else {
             $date = DateTime::createFromFormat("Y-m-d", date('Y-m-d'));
             $info = [
-                'gender' => 0,
+                'gender' => 'Nam',
                 'last_name' => '',
                 'first_name' => '',
                 'email' => '',
