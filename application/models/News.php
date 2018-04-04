@@ -33,9 +33,12 @@ class News extends CI_Model {
 	{
         $data = array(
             'title' => $this->input->post('title'),
+            'title_en' => $this->input->post('title_en'),
             'description' => $this->input->post('description'),
             'short_content' => $this->input->post('short_content'),
+            'short_content_en' => $this->input->post('short_content_en'),
             'content' => $this->input->post('content'),
+            'content_en' => $this->input->post('content_en'),
             'category_id' => $this->input->post('category'),
             'featured_image' => $image,
             'slug' => $this->generateSlug($this->input->post('title')),
