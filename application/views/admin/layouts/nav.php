@@ -3,7 +3,7 @@
     <div class="navbar-header">
         <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
         <div class="top-left-part">
-            <a class="logo" href="<?php echo base_url('admin/site')?>">
+            <a class="logo" href="<?php echo base_url('admin/system')?>">
                 <b>
                 <!--This is dark logo icon--><img src="<?php echo base_url('themes/admin/plugins/images/agileadmin-logo.png')?>" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="<?php echo base_url('themes/admin/plugins/images/agileadmin-logo-dark.png')?>" alt="home" class="light-logo" />
              </b>

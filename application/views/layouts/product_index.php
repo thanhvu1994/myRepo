@@ -14,7 +14,7 @@
                 <div id="htmlcontent_SanPham">
                     <ul class="htmlcontent-home clearfix">
                         <?php foreach($categories as $key => $item): ?>
-                            <li class="htmlcontent-item-<?php echo $key + 1; ?> col-xs-4" style="text-align: center">
+                            <li class="htmlcontent-item-<?php echo $key + 1; ?> col-xs-4" style="text-align: center; max-height: 296px;">
                                 <?php if ($this->session->userdata['languages'] == 'vn'): ?>
                                     <a href="<?php echo base_url($item->slug.'c.html'); ?>" class="item-link" onclick="return !window.open(this.href);" title="<?php echo $item->title; ?>">
                                 <?php else: ?>
