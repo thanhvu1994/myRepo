@@ -189,7 +189,7 @@ class Realhome_Widget extends WP_Widget {
                         </div>
                         <div  class="ser-top">
                             <h4><?php echo $item->post_title; ?></h4>
-                            <p><?php echo $item->post_content; ?></p>
+                            <p><?php echo get_field('short_content', $item->ID); ?></p>
                         </div>
                         <div class="clearfix"> </div>
                     </div>

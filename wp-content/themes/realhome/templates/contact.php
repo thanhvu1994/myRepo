@@ -13,15 +13,21 @@
 <!--//header-->
 <?php get_header(); ?>
 
+<!--page banner-->
+<?php
+set_query_var( 'post', $post );
+get_template_part( 'inc/page_banner');
+?>
+
 <div class="contact">
 	<div class="container">
 		<h3><?php echo get_the_title($post) ?></h3>
 	 	<div class="contact-top">
-			<div class="col-md-6 contact-top1">
-                <ol class="breadcrumb">
+	 		<ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo home_url(); ?>">Home</a></li>
                     <li class="breadcrumb-item active"><?php echo $post->post_title; ?></li>
-                </ol>
+            </ol>
+			<div class="col-md-6 contact-top1">
 			  	<h4> Info</h4>
 	          	<p class="text-contact"><?php echo $post->post_content; ?></p>
 	          	<?php $info = get_posts(['posts_per_page' => 1, 'post_type' => 'info', 'post_status' => 'publish', 'suppress_filters' => true]);
@@ -74,7 +80,7 @@
 		</div>
 	</div>
 	<div class="map">
-     	<?php echo get_field('map', $info[0]->ID) ?>
+     	<iframe src="<?php echo get_field('map', $info[0]->ID) ?>"></iframe>
     </div>
 </div>
 

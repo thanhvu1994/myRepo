@@ -83,15 +83,22 @@
  	<div class="blog-list1">
      	<h4>Popular Blog</h4>
      	<?php if ($menuItem_array) {
-     		foreach ($menuItem_array as $blog) { ?>
+     		foreach ($menuItem_array as $blog) { 
+     			$detail_url = home_url( '/blog/');
+     			$category = get_the_category();
+                if (isset($category[0])) {
+                    $slug_category_detail = $category[0]->slug;
+                    $detail_url = home_url( '/blog/').$slug_category_detail.'/'.get_post_field( 'post_name', $blog->ID);
+                }
+				?>
 	     		<div class="blog-list-top">
 					<div class="blog-img">
-						<a href="<?php echo get_permalink($blog)?>">
+						<a href="<?php echo $detail_url?>">
 							<img class="img-responsive" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($blog->ID)); ?>" alt="<?php echo $blog->post_title?>">
 						</a>
 					</div>
 					<div class="blog-text">
-						<p ><a href="<?php echo get_permalink($blog)?>"><?php echo $blog->post_title?></a></p>
+						<p ><a href="<?php echo $detail_url?>"><?php echo $blog->post_title?></a></p>
 						<span class="link">
 							<?php echo get_the_date('d-m-Y', $blog->ID) ?>
 						</span>

@@ -10,7 +10,9 @@
 
 <!--//head-->
 <?php get_template_part('head'); ?>
-
+<link rel="stylesheet" href="<?php echo THEME_URL; ?>/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo THEME_URL; ?>/css/templatemo-style.css">
+<script src="<?php echo THEME_URL; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
 <!--//header-->
 <?php get_header(); ?>
 
@@ -21,7 +23,7 @@ get_template_part( 'inc/page_banner');
 ?>
     <!--top city-->
     <?php $args = array(
-        'posts_per_page'   => 6,
+        'posts_per_page'   => 64,
         'offset'           => 0,
         'category'         => '',
         'category_name'    => '',
@@ -50,133 +52,34 @@ get_template_part( 'inc/page_banner');
             </ol>
 
             <h3>Top City</h3>
-            <div class="grid-at">
-                <?php if(array_key_exists(0,$cities)) : ?>
-                    <div class="col-md-3 grid-city">
-                        <div class="grid-lo">
-                            <a href="<?php echo get_permalink( $cities[0]->ID ).'rent/'; ?>">
-                                <figure class="effect-layla">
-                                    <?php
-                                        $image = wp_get_attachment_url( get_post_thumbnail_id($cities[0]->ID));
-                                    ?>
-                                    <div class="city-image-1" style="background: url(<?php echo $image; ?>); background-size: cover">
-                                    </div>
+        </div>
+    </div>
 
-                                    <figcaption>
-                                        <h4><?php echo $cities[0]->post_title; ?></h4>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                    </div>
-                <?php endif; ?>
-
-                <?php if(array_key_exists(1,$cities)) : ?>
-                    <div class="col-md-3 grid-city">
-                    <div class="grid-lo">
-                        <a href="<?php echo get_permalink( $cities[1]->ID ).'rent/'; ?>">
-                            <figure class="effect-layla">
+    <div class="main-posts">
+        <div class="container">
+            <div class="row">
+                <div class="blog-masonry masonry-true">
+                    <?php foreach ($cities as $city): ?>
+                        <div class="post-masonry col-md-4 col-sm-6">
+                            <div class="post-thumb">
                                 <?php
-                                $image = wp_get_attachment_url( get_post_thumbnail_id($cities[1]->ID));
-                                ?>
-
-                                <div class="city-image-2" style="background: url(<?php echo $image; ?>); background-size: cover">
+                                    $image = wp_get_attachment_url( get_post_thumbnail_id($city->ID));
+                                 ?>
+                                <img src="<?php echo $image; ?>" alt="<?php echo $city->post_title; ?>">
+                                <div class="title-over">
+                                    <h4><a href="<?php echo get_permalink( $city->ID ).'rent/'; ?>"><?php echo $city->post_title; ?></a></h4>
                                 </div>
-                                <figcaption>
-                                    <h4><?php echo $cities[1]->post_title; ?></h4>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
+                                <div class="post-hover text-center">
+                                    <div class="inside">
+                                        <i class="fa fa-plus"></i>
+                                        <h4><a href="<?php echo get_permalink( $city->ID ).'rent/'; ?>"><?php echo $city->post_title; ?></a></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
                 </div>
-                <?php endif; ?>
-
-
-                <div class="col-md-6 grid-city grid-city1">
-                    <div class="grid-me">
-                        <?php if(array_key_exists(2,$cities)) : ?>
-                        <div class="col-md-8 grid-lo1">
-                            <div class=" grid-lo">
-                                <a href="<?php echo get_permalink( $cities[2]->ID ).'rent/'; ?>">
-                                    <figure class="effect-layla">
-                                        <?php
-                                        $image = wp_get_attachment_url( get_post_thumbnail_id($cities[2]->ID));
-                                        ?>
-                                        <div class="city-image-3" style="background: url(<?php echo $image; ?>); background-size: cover">
-                                        </div>
-                                        <figcaption>
-                                            <h4 class="effect1"><?php echo $cities[2]->post_title; ?></h4>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </div>
-                        <?php endif; ?>
-
-                        <?php if(array_key_exists(3,$cities)) : ?>
-                        <div class="col-md-4 grid-lo2">
-                            <div class=" grid-lo">
-                                <a href="<?php echo get_permalink( $cities[3]->ID ).'rent/'; ?>">
-                                    <figure class="effect-layla">
-                                        <?php
-                                        $image = wp_get_attachment_url( get_post_thumbnail_id($cities[3]->ID));
-                                        ?>
-                                        <div class="city-image-4" style="background: url(<?php echo $image; ?>); background-size: cover">
-                                        </div>
-                                        <figcaption>
-                                            <h4 class="effect2"><?php echo $cities[3]->post_title; ?></h4>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </div>
-                        <?php endif; ?>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="grid-me">
-                        <?php if(array_key_exists(4,$cities)) : ?>
-                        <div class="col-md-6 grid-lo3">
-                            <div class=" grid-lo">
-                                <a href="<?php echo get_permalink( $cities[4]->ID ).'rent/'; ?>">
-                                    <figure class="effect-layla">
-                                        <?php
-                                        $image = wp_get_attachment_url( get_post_thumbnail_id($cities[4]->ID));
-                                        ?>
-                                        <div class="city-image-5" style="background: url(<?php echo $image; ?>); background-size: cover">
-                                        </div>
-                                        <figcaption>
-                                            <h4 class="effect3"><?php echo $cities[4]->post_title; ?></h4>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </div>
-                        <?php endif; ?>
-
-                        <?php if(array_key_exists(5,$cities)) : ?>
-                        <div class="col-md-6 grid-lo4">
-                            <div class=" grid-lo">
-                                <a href="<?php echo get_permalink( $cities[5]->ID ).'rent/'; ?>">
-                                    <figure class="effect-layla">
-                                        <?php
-                                        $image = wp_get_attachment_url( get_post_thumbnail_id($cities[5]->ID));
-                                        ?>
-                                        <div class="city-image-6" style="background: url(<?php echo $image; ?>); background-size: cover">
-                                        </div>
-                                        <figcaption>
-                                            <h4 class="effect3"><?php echo $cities[5]->post_title; ?></h4>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </div>
-                        <?php endif; ?>
-                        <div class="clearfix"> </div>
-                    </div>
-                </div>
-                <div class="clearfix"> </div>
             </div>
-
         </div>
     </div>
 
@@ -273,6 +176,9 @@ get_template_part( 'inc/page_banner');
         </div>
     </div>
 <!--//footer-->
+<script src="<?php echo THEME_URL; ?>/js/min/plugins.min.js"></script>
+<script src="<?php echo THEME_URL; ?>/js/min/main.min.js"></script>
+<?php get_footer(); ?>
 <?php get_footer(); ?>
 
 <?php set_query_var( 'meta_key', 'type' ); ?>
