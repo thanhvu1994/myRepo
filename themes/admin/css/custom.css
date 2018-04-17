@@ -1,0 +1,106 @@
+.button-column a{
+	padding: 5px 8px 5px 8px;
+    margin-right: 5px;
+}
+
+div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+.attribute-container div:nth-child(n+1) {
+    margin-top:10px;
+}
+
+.attribute-input.default-item{
+    display:none;
+}
+.del-img-setting {
+    position: absolute !important;
+    top: 0;
+    right: 22px;
+    font-size: 15px;
+    cursor: pointer;
+}
+body, h1, h2, h3, h4, h5, h6{
+    font-family: 'Source Sans Pro' !important;
+    font-weight: 500 !important;
+}
+.no-sort:after {
+     display:none !important;
+}
+.btn-create{
+    background-color: #13dafe;
+    color: #fff;
+}
+span.required {
+    color: red;
+}
+.attribute-input {
+    padding: 0px 7.5px 0px 7.5px;
+}
+
+.gallery {
+    position: relative;
+}
+.gallery .close {
+    color: red;
+    position: absolute;
+    font-size: 30px;
+    top: -7px;
+    right: 2px;
+    z-index: 100;
+    opacity: 1;
+}
+
+.delete-att-value{
+    position: absolute;
+    top:-5%;
+    right:10px;
+    color: red;
+    opacity:0;
+    transition:opacity 0.5s linear;
+    -moz-transition: opacity 0.5s linear;
+    -webkit-transition: opacity 0.5s linear;
+}
+
+.delete-att{
+    position: absolute;
+    top:-5%;
+    right:10px;
+    color: red;
+    opacity:0;
+    transition:opacity 0.5s linear;
+    -moz-transition: opacity 0.5s linear;
+    -webkit-transition: opacity 0.5s linear;
+}
+
+.col-md-1:hover .delete-att-value {
+    opacity: 1;
+    transition:opacity 2s linear;
+    -moz-transition: opacity 2s linear;
+    -webkit-transition: opacity 2s linear;
+}​,
+
+.col-md-3:hover .delete-att {
+    opacity: 1;
+    transition:opacity 2s linear;
+    -moz-transition: opacity 2s linear;
+    -webkit-transition: opacity 2s linear;
+}​

@@ -1,0 +1,18 @@
+/* Home hook CSS */
+#htmlcontent_home ul {
+    margin: 0 -5px; }
+#htmlcontent_home ul li {
+    padding: 0 5px 10px; }
+.htmlcontent-home li h3{
+    font-weight: 600;
+    font-size: 14px;
+    /*font-family: 'Open Sans', sans-serif;*/
+    line-height: 1;
+    margin: 0 0 30px 0;
+    color: #0b3a96;
+}
+@media (max-width: 480px) {
+    #htmlcontent_SanPham > ul > li.col-xs-4{
+        width: 100%;
+    }
+}
